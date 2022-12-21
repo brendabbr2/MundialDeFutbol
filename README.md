@@ -1,15 +1,15 @@
-# MundialDeFutbol
+# Football World Cup
 
-Consideraciones de formato:
+Formatting considerations:
 
-El código debe estar documentado 
-internamente según Clean Code.
+Code must be documented 
+internally according to Clean Code.
 
-El modelo conceptual y lógico así 
-como las tablas, atributos y código 
-debe estar en inglés.
+The conceptual and logical model thus 
+such as tables, attributes, and code 
+must be in English.
 
-Los procedimientos, funciones o 
-paquetes importantes deben ir 
-documentados con descripción, el 
-autor principal, fecha de creación
+The procedures, functions or 
+Important packages must go 
+documented with description, the 
+lead author, creation date
