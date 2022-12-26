@@ -1,3 +1,8 @@
+---Tables Created: Gender,Phone,Email,Identification,identificationType,person,
+---                userType,personUser,userLog,userComment,userReview,userSave,News
+---By: David Salazar Rodriguez
+---Date: 22/12/2022 4:23 PM
+
 --------People Tables-----------------
 CREATE TABLE Gender(
     --------------PK------------------
