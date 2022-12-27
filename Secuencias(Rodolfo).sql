@@ -1,0 +1,17 @@
+--Sequence for idWorkerType in WorkerType
+CREATE SEQUENCE s_workerType
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0
+MAXVALUE 10000000
+NOCACHE
+NOCYCLE;
+
+--Sequence for idPlayerPosition in playerPosition
+CREATE SEQUENCE s_playerPosition
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0
+MAXVALUE 10000000
+NOCACHE
+NOCYCLE;
