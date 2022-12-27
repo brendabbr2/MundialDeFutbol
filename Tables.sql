@@ -231,7 +231,7 @@ CREATE TABLE ParameterEvent(
     idParameter NUMBER(6),
     --------------Attribute-----------
     nameParameter VARCHAR2(20) NOT NULL,
-    valuesParameter NUMBER(6) NOT NULL,
+    valueParameter NUMBER(6) NOT NULL,
     --------------Audit---------------
     creationUser VARCHAR(20),
     creationDate DATE,
