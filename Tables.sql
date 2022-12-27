@@ -77,7 +77,7 @@ CREATE TABLE person(
     idAddress number(6),
     --------------Attribute------------
     birthday date NOT NULL,
-    perosnName varchar2(20) NOT NULL,
+    personName varchar2(20) NOT NULL,
     photo blob,
     --------------Audit---------------
     creationUser varchar(20),
