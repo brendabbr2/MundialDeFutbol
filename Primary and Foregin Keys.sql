@@ -325,7 +325,6 @@ ADD CONSTRAINT fk_StadiumXSportMatch_SpMatch FOREIGN KEY
 (idSportMatch) REFERENCES SportMatch(idSportMatch);
 
 -----------------------------------------------------
-<<<<<<< Updated upstream
 --------------------FOREIGN KEYS---------------------
 -----------------------------------------------------
 
@@ -435,4 +434,3 @@ ALTER TABLE news
 ADD CONSTRAINT fk_news_Event FOREIGN KEY
 (idEvent) REFERENCES Event(idEvent);
 
->>>>>>> Stashed changes
