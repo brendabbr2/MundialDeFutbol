@@ -1,21 +1,3 @@
---Sequence for idGender in Gender
-CREATE SEQUENCE s_Gender
-START WITH 0
-INCREMENT BY 1
-MINVALUE 0
-MAXVALUE 10000000
-NOCACHE
-NOCYCLE;
-
---Sequence for idWorker in Worker
-CREATE SEQUENCE s_Worker
-START WITH 0
-INCREMENT BY 1
-MINVALUE 0
-MAXVALUE 10000000
-NOCACHE
-NOCYCLE;
-
 --Sequence for idWorkerType in WorkerType
 CREATE SEQUENCE s_workerType
 START WITH 0
