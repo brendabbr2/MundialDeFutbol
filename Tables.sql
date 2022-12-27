@@ -77,7 +77,7 @@ CREATE TABLE person(
     idAddress number(6),
     --------------Attribute------------
     birthday date NOT NULL,
-    perosnName varchar2(20) NOT NULL,
+    personName varchar2(20) NOT NULL,
     photo blob,
     --------------Audit---------------
     creationUser varchar(20),
@@ -475,7 +475,7 @@ CREATE TABLE WorkerType(
 CREATE TABLE WorkerXSportMatch (
     --------------PK-FK---------------
     idWorker NUMBER(6),
-    idMatch NUMBER(6),
+    idSportMatch NUMBER(6),
     --------------Audit---------------
     creationUser VARCHAR2(50),
     creationDate DATE,
@@ -487,7 +487,7 @@ CREATE TABLE WorkerXSportMatch (
 CREATE TABLE PlayerXSportMatch(
     --------------PK-FK---------------
     idPlayer NUMBER(6),
-    idMatch NUMBER(6),
+    idSportMatch NUMBER(6),
     --------------Attribute-----------
     yellow_card INTEGER,
     red_card INTEGER,

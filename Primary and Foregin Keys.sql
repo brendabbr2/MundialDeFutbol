@@ -141,15 +141,15 @@ TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 -----------------------------------------------------
 ----------------Worker/Match Relation----------------
-ALTER TABLE WorkerXMatch
-ADD CONSTRAINT pk_worker_match PRIMARY KEY (idWorker, idMatch) 
+ALTER TABLE WorkerXSportMatch
+ADD CONSTRAINT pk_worker_sportmatch PRIMARY KEY (idWorker, idSportMatch) 
 USING INDEX
 TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 -----------------------------------------------------
 ----------------Player/Match Relation----------------
-ALTER TABLE PlayerXMatch
-ADD CONSTRAINT pk_player_match PRIMARY KEY (idPlayer, idMatch) 
+ALTER TABLE PlayerXSportMatch
+ADD CONSTRAINT pk_player_sportmatch PRIMARY KEY (idPlayer, idSportMatch) 
 USING INDEX
 TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
@@ -340,8 +340,8 @@ ADD CONSTRAINT fk_playerxsportMatch_player FOREIGN KEY
 (idPlayer) REFERENCES Player(idPlayer);
 
 ALTER TABLE PlayerXSportMatch
-ADD CONSTRAINT fk_playerxmatch_Sportmatch FOREIGN KEY
-(idMatch) REFERENCES SportMatch(idSportMatch);
+ADD CONSTRAINT fk_playerxmatch_sportmatch FOREIGN KEY
+(idSportMatch) REFERENCES SportMatch(idSportMatch);
 
 ALTER TABLE PlayerXCountry
 ADD CONSTRAINT fk_PlayerXCountry_player FOREIGN KEY
@@ -357,9 +357,9 @@ ADD CONSTRAINT fk_workerxmatch_worker FOREIGN KEY
 
 ALTER TABLE WorkerXSportMatch
 ADD CONSTRAINT fk_workerxmatch_sportMatch FOREIGN KEY
-(idMatch) REFERENCES SportMatch(idSportMatch);
+(idSportMatch) REFERENCES SportMatch(idSportMatch);
 
-=======
+
 --By: David Salazar Rodriguez
 --Date: 26/Dic/2022 08:17 p.m
 -----------------People Tables-----------------------
