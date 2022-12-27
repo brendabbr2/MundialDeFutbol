@@ -338,3 +338,10 @@ ALTER TABLE Worker
 ADD CONSTRAINT fk_worker_workertype FOREIGN KEY
 (idWorkerType) REFERENCES WorkerType(idWorkerType);
 
+ALTER TABLE PlayerXMatch
+ADD CONSTRAINT fk_player_playerxmatch FOREIGN KEY
+(idPlayer) REFERENCES Player(idPlayer);
+
+ALTER TABLE PlayerXMatch
+ADD CONSTRAINT fk_match_playerxmatch FOREIGN KEY
+(idMatch) REFERENCES SportMatch(idSportMatch);
