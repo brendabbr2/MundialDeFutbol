@@ -246,6 +246,7 @@ USING INDEX
 TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 
+
 -----------------------------------------------------
 --------------------FOREIGN KEYS---------------------
 -----------------------------------------------------
@@ -325,3 +326,15 @@ ADD CONSTRAINT fk_StadiumXSportMatch_Stadium FOREIGN KEY
 ALTER TABLE StadiumXSportMatch
 ADD CONSTRAINT fk_StadiumXSportMatch_SpMatch FOREIGN KEY
 (idSportMatch) REFERENCES SportMatch(idSportMatch);
+
+-----------------------------------------------------
+--------------------FOREIGN KEYS---------------------
+-----------------------------------------------------
+
+--By: Rodolfo David Acuna Lopez
+--Date: 26/Dic/2022 08:50 p.m
+
+ALTER TABLE Worker
+ADD CONSTRAINT fk_worker_workertype FOREIGN KEY
+(idWorkerType) REFERENCES WorkerType(idWorkerType);
+
