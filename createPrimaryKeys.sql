@@ -360,6 +360,10 @@ ALTER TABLE WorkerXMatch
 ADD CONSTRAINT fk_worker_workerxmatch FOREIGN KEY
 (idMatch) REFERENCES Match(idSportMatch);
 
+ALTER TABLE Worker
+ADD CONSTRAINT fk_worker_Person FOREIGN KEY
+(idWorker) REFERENCES Person(idPerson);
+
 =======
 --By: David Salazar Rodriguez
 --Date: 26/Dic/2022 08:17 p.m
