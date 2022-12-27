@@ -89,7 +89,7 @@ CREATE TABLE person(
 -------------------User Tables-----------------------
 CREATE TABLE userType(
     --------------PK------------------
-    idUsertype number(6),
+    idUserType number(6),
     --------------Attribute------------
     nameUserType varchar(50) NOT NULL,
     --------------Audit---------------
@@ -486,7 +486,7 @@ CREATE TABLE WorkerXMatch (
 ----------------Player/Match Relation----------------
 CREATE TABLE PlayerXMatch(
     --------------PK-FK---------------
-    idWorker NUMBER(6),
+    idPlayer NUMBER(6),
     idMatch NUMBER(6),
     --------------Attribute-----------
     yellow_card INTEGER,

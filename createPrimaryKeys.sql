@@ -1,7 +1,6 @@
 -----------------------------------------------------
 --------------------PRYMARY KEYS---------------------
 -----------------------------------------------------
-
 -----------------------------------------------------
 --Primary keys created: Event, EventType, GroupEvent, Helper, HelperType, ParameterEvent, Player, Team
 --By: Brenda Badilla Rodriguez
@@ -145,23 +144,110 @@ STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 ALTER TABLE WorkerXMatch
 ADD CONSTRAINT pk_worker_match PRIMARY KEY (idWorker, idMatch) 
 USING INDEX
-TABLESPACE ge_ind PCTFREE 20
+TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 -----------------------------------------------------
 ----------------Player/Match Relation----------------
 ALTER TABLE PlayerXMatch
 ADD CONSTRAINT pk_player_match PRIMARY KEY (idPlayer, idMatch) 
 USING INDEX
-TABLESPACE ge_ind PCTFREE 20
+TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 -----------------------------------------------------
 ---------------Player/Country Relation---------------
 ALTER TABLE PlayerXCountry
 ADD CONSTRAINT pk_player_country PRIMARY KEY (idPlayer, idCountry) 
 USING INDEX
-TABLESPACE ge_ind PCTFREE 20
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+---Primary Keys Created: Gender,Phone,Email,Identification,identificationType,person,
+---                userType,personUser,userLog,userComment,userReview,userSave,News
+---By: David Salazar Rodriguez
+---Date: 26/12/2022 7:00 PM
+--------------------Person Tables---------------------
+ALTER TABLE Gender
+ADD CONSTRAINT pk_Gender PRIMARY KEY (idGender) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE Phone
+ADD CONSTRAINT pk_Phone PRIMARY KEY (Phone) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE Email
+ADD CONSTRAINT pk_Email PRIMARY KEY (idEmail) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE Identification
+ADD CONSTRAINT pk_Id PRIMARY KEY (idIdentification) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE identificationType
+ADD CONSTRAINT pk_IdType PRIMARY KEY (idType) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE person
+ADD CONSTRAINT pk_person PRIMARY KEY (idPerson) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+-----------------------------------------------------
+-------------------User Tables-----------------------
+ALTER TABLE userType
+ADD CONSTRAINT pk_userType PRIMARY KEY (idUserType) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE userPerson
+ADD CONSTRAINT pk_UserPerson PRIMARY KEY (idUser) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+-----------------------------------------------------
+----------------User/News Relations------------------
+ALTER TABLE userLog
+ADD CONSTRAINT pk_userLog PRIMARY KEY (idLog) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE userComment
+ADD CONSTRAINT pk_userComment PRIMARY KEY (idComment) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE userReview
+ADD CONSTRAINT pk_userReview PRIMARY KEY (idReview) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE userSave
+ADD CONSTRAINT pk_userSave PRIMARY KEY (idSave) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE News
+ADD CONSTRAINT pk_News PRIMARY KEY (idNews) 
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 
 -----------------------------------------------------
 --------------------FOREIGN KEYS---------------------
 -----------------------------------------------------
+
+
