@@ -332,32 +332,32 @@ ADD CONSTRAINT fk_StadiumXSportMatch_SpMatch FOREIGN KEY
 --Date: 26/Dic/2022 08:50 p.m
 
 ALTER TABLE Worker
-ADD CONSTRAINT fk_worker_workertype FOREIGN KEY
+ADD CONSTRAINT fk_workertype_worker FOREIGN KEY
 (idWorkerType) REFERENCES WorkerType(idWorkerType);
 
-ALTER TABLE PlayerXMatch
-ADD CONSTRAINT fk_player_playerxmatch FOREIGN KEY
+ALTER TABLE PlayerXSportMatch
+ADD CONSTRAINT fk_playerxsportMatch_player FOREIGN KEY
 (idPlayer) REFERENCES Player(idPlayer);
 
-ALTER TABLE PlayerXMatch
-ADD CONSTRAINT fk_match_playerxmatch FOREIGN KEY
+ALTER TABLE PlayerXSportMatch
+ADD CONSTRAINT fk_playerxmatch_Sportmatch FOREIGN KEY
 (idMatch) REFERENCES SportMatch(idSportMatch);
 
 ALTER TABLE PlayerXCountry
-ADD CONSTRAINT fk_player_PlayerXCountry FOREIGN KEY
+ADD CONSTRAINT fk_PlayerXCountry_player FOREIGN KEY
 (idPlayer) REFERENCES Player(idPlayer);
 
 ALTER TABLE PlayerXCountry
-ADD CONSTRAINT fk_country_playerxcountry FOREIGN KEY
+ADD CONSTRAINT fk_playerxcountry_country FOREIGN KEY
 (idCountry) REFERENCES Country(idCountry);
 
-ALTER TABLE WorkerXMatch
-ADD CONSTRAINT fk_worker_workerxmatch FOREIGN KEY
+ALTER TABLE WorkerXSportMatch
+ADD CONSTRAINT fk_workerxmatch_worker FOREIGN KEY
 (idWorker) REFERENCES Worker(idWorker);
 
-ALTER TABLE WorkerXMatch
-ADD CONSTRAINT fk_worker_workerxmatch FOREIGN KEY
-(idMatch) REFERENCES Match(idSportMatch);
+ALTER TABLE WorkerXSportMatch
+ADD CONSTRAINT fk_workerxmatch_sportMatch FOREIGN KEY
+(idMatch) REFERENCES SportMatch(idSportMatch);
 
 =======
 --By: David Salazar Rodriguez
