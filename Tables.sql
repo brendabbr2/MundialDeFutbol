@@ -205,7 +205,7 @@ CREATE TABLE Event(
     --------------FK------------------
     idEventType NUMBER(6),
     --------------Attribute------------
-    nombre VARCHAR2(20) NOT NULL,
+    nameEvent VARCHAR2(20) NOT NULL,
     --------------Audit---------------
     creationUser VARCHAR2(20),
     creationDate DATE,
