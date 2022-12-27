@@ -250,4 +250,37 @@ STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 --------------------FOREIGN KEYS---------------------
 -----------------------------------------------------
 
+--By: Brenda Badilla Rodriguez
+--Date: 26/Dic/2022 08:00 p.m
 
+ALTER TABLE Event
+ADD CONSTRAINT fk_event_type FOREIGN KEY
+(idEventType) REFERENCES EventType(idEventType);
+
+ALTER TABLE GroupEvent
+ADD CONSTRAINT fk_group_event FOREIGN KEY
+(idEvent) REFERENCES Event(idEvent);
+
+ALTER TABLE Helper
+ADD CONSTRAINT fk_helper_team FOREIGN KEY
+(idTeam) REFERENCES Team(idTeam);
+
+ALTER TABLE Helper
+ADD CONSTRAINT fk_helper_type FOREIGN KEY
+(idHelperType) REFERENCES HelperType(idHelperType);
+
+ALTER TABLE Player
+ADD CONSTRAINT fk_player_team FOREIGN KEY
+(idTeam) REFERENCES Team(idTeam);
+
+ALTER TABLE Player
+ADD CONSTRAINT fk_player_position FOREIGN KEY
+(idPosition) REFERENCES PlayerPosition(idPosition);
+
+ALTER TABLE Team
+ADD CONSTRAINT fk_team_group FOREIGN KEY
+(idGroup) REFERENCES GroupEvent(idGroup);
+
+ALTER TABLE Team
+ADD CONSTRAINT fk_team_country FOREIGN KEY
+(idCountry) REFERENCES Country(idCountry);
