@@ -284,3 +284,44 @@ ADD CONSTRAINT fk_team_group FOREIGN KEY
 ALTER TABLE Team
 ADD CONSTRAINT fk_team_country FOREIGN KEY
 (idCountry) REFERENCES Country(idCountry);
+
+-----------------------------------------------------
+--------------------FOREIGN KEYS---------------------
+-----------------------------------------------------
+
+--By: Joxan Andrey Fuertes Villegas
+--Date: 26/Dic/2022 08:05 p.m
+
+-- country
+ALTER TABLE Country
+ADD CONSTRAINT fk_Country_Continent FOREIGN KEY
+(idContinent) REFERENCES Continent(idContinent);
+
+-- province
+ALTER TABLE Province
+ADD CONSTRAINT fk_Province_Country FOREIGN KEY
+(idCountry) REFERENCES Country(idCountry);
+
+-- district
+ALTER TABLE District
+ADD CONSTRAINT fk_District_Province FOREIGN KEY
+(idProvince) REFERENCES Province(idProvince);
+
+-- address
+ ALTER TABLE Address
+ADD CONSTRAINT fk_Address_District FOREIGN KEY
+(idDistrict) REFERENCES District(idDistrict);
+
+-- stadium
+ALTER TABLE Stadium
+ADD CONSTRAINT fk_Stadium_Address FOREIGN KEY
+(idAddress) REFERENCES Address(idAddress);
+
+-- stadiumXsportMatch
+ALTER TABLE StadiumXSportMatch
+ADD CONSTRAINT fk_StadiumXSportMatch_Stadium FOREIGN KEY
+(idStadium) REFERENCES Stadium(idStadium);
+
+ALTER TABLE StadiumXSportMatch
+ADD CONSTRAINT fk_StadiumXSportMatch_SpMatch FOREIGN KEY
+(idSportMatch) REFERENCES SportMatch(idSportMatch);
