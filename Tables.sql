@@ -472,7 +472,7 @@ CREATE TABLE WorkerType(
 );
 -----------------------------------------------------
 ----------------Worker/Match Relation----------------
-CREATE TABLE WorkerXMatch (
+CREATE TABLE WorkerXSportMatch (
     --------------PK-FK---------------
     idWorker NUMBER(6),
     idMatch NUMBER(6),
@@ -484,7 +484,7 @@ CREATE TABLE WorkerXMatch (
 );
 -----------------------------------------------------
 ----------------Player/Match Relation----------------
-CREATE TABLE PlayerXMatch(
+CREATE TABLE PlayerXSportMatch(
     --------------PK-FK---------------
     idPlayer NUMBER(6),
     idMatch NUMBER(6),
