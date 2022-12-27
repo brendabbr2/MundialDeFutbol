@@ -239,7 +239,8 @@ ADD CONSTRAINT pk_userSave PRIMARY KEY (idSave)
 USING INDEX
 TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
-
+-----------------------------------------------------
+---------------------News----------------------------
 ALTER TABLE News
 ADD CONSTRAINT pk_News PRIMARY KEY (idNews) 
 USING INDEX
@@ -286,10 +287,6 @@ ALTER TABLE Team
 ADD CONSTRAINT fk_team_country FOREIGN KEY
 (idCountry) REFERENCES Country(idCountry);
 
------------------------------------------------------
---------------------FOREIGN KEYS---------------------
------------------------------------------------------
-
 --By: Joxan Andrey Fuertes Villegas
 --Date: 26/Dic/2022 08:05 p.m
 
@@ -328,6 +325,7 @@ ADD CONSTRAINT fk_StadiumXSportMatch_SpMatch FOREIGN KEY
 (idSportMatch) REFERENCES SportMatch(idSportMatch);
 
 -----------------------------------------------------
+<<<<<<< Updated upstream
 --------------------FOREIGN KEYS---------------------
 -----------------------------------------------------
 
@@ -345,3 +343,79 @@ ADD CONSTRAINT fk_player_playerxmatch FOREIGN KEY
 ALTER TABLE PlayerXMatch
 ADD CONSTRAINT fk_match_playerxmatch FOREIGN KEY
 (idMatch) REFERENCES SportMatch(idSportMatch);
+=======
+--By: David Salazar Rodriguez
+--Date: 26/Dic/2022 08:17 p.m
+-----------------People Tables-----------------------
+ALTER TABLE Phone
+ADD CONSTRAINT fk_phone_person FOREIGN KEY
+(idPerson) REFERENCES Person(idPerson);
+
+ALTER TABLE Email
+ADD CONSTRAINT fk_email_person FOREIGN KEY
+(idPerson) REFERENCES Person(idPerson);
+
+ALTER TABLE Identification
+ADD CONSTRAINT fk_id_person FOREIGN KEY
+(idPerson) REFERENCES Person(idPerson);
+
+ALTER TABLE Identification
+ADD CONSTRAINT fk_id_idType FOREIGN KEY
+(idType) REFERENCES identificationType(idType);
+
+ALTER TABLE person
+ADD CONSTRAINT fk_person_Gender FOREIGN KEY
+(idGender) REFERENCES Gender(idGender);
+
+ALTER TABLE person
+ADD CONSTRAINT fk_person_Adress FOREIGN KEY
+(idAddress) REFERENCES Address(idAddress);
+-----------------------------------------------------
+-------------------User Tables-----------------------
+ALTER TABLE userPerson
+ADD CONSTRAINT fk_user_userType FOREIGN KEY
+(idUserType) REFERENCES userType(idUserType);
+-----------------------------------------------------
+----------------User/News Relations------------------
+ALTER TABLE userLog
+ADD CONSTRAINT fk_log_News FOREIGN KEY
+(idNews) REFERENCES News(idNews);
+
+ALTER TABLE userLog
+ADD CONSTRAINT fk_log_User FOREIGN KEY
+(idUser) REFERENCES userPerson(idUser);
+
+ALTER TABLE userComment
+ADD CONSTRAINT fk_comment_news FOREIGN KEY
+(idNews) REFERENCES News(idNews);
+
+ALTER TABLE userComment
+ADD CONSTRAINT fk_comment_User FOREIGN KEY
+(idUser) REFERENCES userPerson(idUser);
+
+ALTER TABLE userReview
+ADD CONSTRAINT fk_review_news FOREIGN KEY
+(idNews) REFERENCES News(idNews);
+
+ALTER TABLE userReview
+ADD CONSTRAINT fk_review_User FOREIGN KEY
+(idUser) REFERENCES userPerson(idUser);
+
+ALTER TABLE userSave
+ADD CONSTRAINT fk_save_news FOREIGN KEY
+(idNews) REFERENCES News(idNews);
+
+ALTER TABLE userSave
+ADD CONSTRAINT fk_save_User FOREIGN KEY
+(idUser) REFERENCES userPerson(idUser);
+-----------------------------------------------------
+---------------------News Table----------------------
+ALTER TABLE news
+ADD CONSTRAINT fk_news_User FOREIGN KEY
+(idUser) REFERENCES userPerson(idUser);
+
+ALTER TABLE news
+ADD CONSTRAINT fk_news_Event FOREIGN KEY
+(idEvent) REFERENCES Event(idEvent);
+
+>>>>>>> Stashed changes

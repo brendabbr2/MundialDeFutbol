@@ -74,7 +74,7 @@ CREATE TABLE person(
     idPerson number(6),
     --------------FK------------------
     idGender number(6),
-    idAdress number(6),
+    idAddress number(6),
     --------------Attribute------------
     birthday date NOT NULL,
     perosnName varchar2(20) NOT NULL,
