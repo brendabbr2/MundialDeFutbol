@@ -351,6 +351,15 @@ ADD CONSTRAINT fk_player_PlayerXCountry FOREIGN KEY
 ALTER TABLE PlayerXCountry
 ADD CONSTRAINT fk_country_playerxcountry FOREIGN KEY
 (idCountry) REFERENCES Country(idCountry);
+
+ALTER TABLE WorkerXMatch
+ADD CONSTRAINT fk_worker_workerxmatch FOREIGN KEY
+(idWorker) REFERENCES Worker(idWorker);
+
+ALTER TABLE WorkerXMatch
+ADD CONSTRAINT fk_worker_workerxmatch FOREIGN KEY
+(idMatch) REFERENCES Match(idSportMatch);
+
 =======
 --By: David Salazar Rodriguez
 --Date: 26/Dic/2022 08:17 p.m
