@@ -1,3 +1,5 @@
+--By: David Acuna Lopez
+
 --This procedure delete an element in the table Gender
 CREATE OR REPLACE PROCEDURE deleteGender (v_idGender IN NUMBER) 
 AS BEGIN 
