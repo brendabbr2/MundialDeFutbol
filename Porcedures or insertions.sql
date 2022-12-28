@@ -181,3 +181,77 @@ CREATE OR REPLACE PROCEDURE insertNews
     --COMMIT; 
 END insertNews;
 -----------------------------------------------------
+--By: Brenda Badilla Rodriguez
+--Date: 28/Dic/2022 00:00 a.m
+
+--Event
+CREATE OR REPLACE PROCEDURE insertEvent 
+    (VidEventType IN NUMBER, VnameEvent IN VARCHAR2)
+    AS BEGIN
+    INSERT INTO Event(idEvent, idEventType, nameEvent)
+    VALUES(s_event.nextval, VidEventType, VnameEvent);
+    --COMMIT; 
+END insertEvent;
+
+--Event Type
+CREATE OR REPLACE PROCEDURE insertEventType 
+    (VnameEventType IN VARCHAR2)
+    AS BEGIN
+    INSERT INTO EventType(idEventType, nameEventType)
+    VALUES(s_eventtype.nextval, VnameEventType);
+    --COMMIT; 
+END insertEventType;
+
+--Group Event
+CREATE OR REPLACE PROCEDURE insertGroupEvent 
+    (VidEvent IN NUMBER, VnameGroup IN VARCHAR2)
+    AS BEGIN
+    INSERT INTO groupEvent(idGroup, idEvent, nameGroup)
+    VALUES(s_groupevent.nextval, VidEvent, VnameGroup);
+    --COMMIT; 
+END insertGroupEvent;
+
+--Helper
+CREATE OR REPLACE PROCEDURE insertHelper 
+    (VidHelper IN NUMBER, VidTeam IN NUMBER, VidHelperType IN NUMBER, VhireDate IN DATE)
+    AS BEGIN
+    INSERT INTO helper(idHelper, idTeam, idHelperType, hireDate)
+    VALUES(VidHelper, VidTeam, VidHelperType, VhireDate);
+    --COMMIT; 
+END insertHelper;
+
+--HelperType
+CREATE OR REPLACE PROCEDURE insertHelper 
+    (VidTeam IN NUMBER, VidHelperType IN NUMBER, VhireDate IN DATE)
+    AS BEGIN
+    INSERT INTO helper(idHelper, idTeam, idHelperType, hireDate)
+    VALUES(s_person.nextval, VidTeam, VidHelperType, VhireDate);
+    --COMMIT; 
+END insertHelper;
+
+--Parameter
+CREATE OR REPLACE PROCEDURE insertParameterEvent 
+    (VnameParameter IN VARCHAR2, VvalueParameter IN NUMBER)
+    AS BEGIN
+    INSERT INTO ParameterEvent(idParameter, nameParameter, valueParameter)
+    VALUES(s_parameterEvent.nextval, VnameParameter,VvalueParameter);
+    --COMMIT; 
+END insertParameterEvent;
+
+--Player
+CREATE OR REPLACE PROCEDURE insertPlayer 
+    (VidTeam IN NUMBER, VidPosition IN NUMBER, VnumberPlayer IN NUMBER)
+    AS BEGIN
+    INSERT INTO Player(idPlayer, idTeam, idPosition, numberPlayer)
+    VALUES(s_person.nextval, VidTeam, VidPosition, VnumberPlayer);
+    --COMMIT; 
+END insertPlayer;
+
+--Team
+CREATE OR REPLACE PROCEDURE insertTeam 
+    (VidGroup IN NUMBER, VidCountry IN NUMBER, VcaptainNumber IN NUMBER, VlogoPhoto IN BLOB, Vlineup IN NUMBER)
+    AS BEGIN
+    INSERT INTO Team(idteam, idgroup, idcountry, captainnumber, logophoto, lineup)
+    VALUES(s_team.nextval, VidGroup, VidCountry, VcaptainNumber, VlogoPhoto, Vlineup);
+    --COMMIT; 
+END insertTeam;
