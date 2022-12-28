@@ -65,3 +65,119 @@ CREATE OR REPLACE PROCEDURE insertWorkerXSportMatch
     VALUES(V_idWorker, V_idSportMatch);
     --COMMIT; 
 END insertWorkerXSportMatch;
+
+--By: David Salazar Rodriguez
+--Date: 27/Dic/2022 7:31 p.m
+------------------Person procedures-------------------
+CREATE OR REPLACE PROCEDURE insertGender
+    (Vdescription IN VARCHAR2)
+    AS BEGIN 
+    INSERT INTO Gender(idGender,genderdescription)  
+    VALUES(s_gender.NEXTVAL, Vdescription);
+    --COMMIT; 
+END insertGender;
+
+CREATE OR REPLACE PROCEDURE insertPhone
+    (Vphone IN NUMBER, VidPerson IN NUMBER)
+    AS BEGIN 
+    INSERT INTO Phone(phone,idPerson)  
+    VALUES(Vphone, VidPerson);
+    --COMMIT; 
+END insertPhone;
+
+CREATE OR REPLACE PROCEDURE insertEmail
+    (VidPerson IN NUMBER, Vmail IN VARCHAR2)
+    AS BEGIN 
+    INSERT INTO Email(idEmail,idPerson,mail) 
+    VALUES(s_email.nextVal, VidPerson, Vmail);
+    --COMMIT; 
+END insertEmail;
+
+CREATE OR REPLACE PROCEDURE insertIdentificationType
+    (VidName IN VARCHAR2, idMask IN NUMBER)
+    AS BEGIN 
+    INSERT INTO identificationType(idType,idName,idMask) 
+    VALUES(s_identificationtype.nextval, VidName, idMask);
+    --COMMIT; 
+END insertIdentificationType;
+
+CREATE OR REPLACE PROCEDURE insertIdentification
+    (VidPerson IN NUMBER, VidType IN NUMBER, VvalueIdentification IN NUMBER)
+    AS BEGIN 
+    INSERT INTO identification(idIdentification,idPerson,idType,valueIdentification) 
+    VALUES(s_identification.nextval,VidPerson, VidType, VvalueIdentification);
+    --COMMIT; 
+END insertIdentification;
+
+CREATE OR REPLACE PROCEDURE insertPerson
+    (VidGender IN NUMBER, Vadress IN NUMBER,
+        Vbirthdate IN DATE, Vname IN VARCHAR2, Vphoto IN BLOB)
+    AS BEGIN 
+    INSERT INTO Person(idPerson, idGender, idAddress,
+        birthday, personName, photo)  
+    VALUES(s_person.NEXTVAL, VidGender, Vadress,
+        Vbirthdate, Vname, Vphoto);
+    --COMMIT; 
+END insertPerson;
+-----------------------------------------------------
+-------------------User procedures-----------------------
+CREATE OR REPLACE PROCEDURE insertUserType
+    (VuserType IN VARCHAR2)
+    AS BEGIN 
+    INSERT INTO userType(idUserType, nameUserType)  
+    VALUES(s_userType.NEXTVAL,VuserType);
+    --COMMIT; 
+END insertUserType;
+
+CREATE OR REPLACE PROCEDURE insertUserPerson
+    (VidUserType IN NUMBER,VuserName IN VARCHAR2,Vpasssword IN VARCHAR2)
+    AS BEGIN 
+    INSERT INTO userPerson(idUser,idUserType, username, password)  
+    VALUES(s_userPerson.NEXTVAL,VidUserType, VuserName, Vpasssword);
+    --COMMIT; 
+END insertUserPerson;
+
+-----------------------------------------------------
+----------------User/News procedures------------------
+CREATE OR REPLACE PROCEDURE insertUserLog
+    (VidNews IN NUMBER,VidUser IN NUMBER, VlogDate date, VlogText varchar2)
+    AS BEGIN 
+    INSERT INTO userLog(idLog,idNews, idUser, logDate,logText)  
+    VALUES(s_userLog.NEXTVAL,VidNews, VidUser, VlogDate,VlogText);
+    --COMMIT; 
+END insertUserLog;
+
+CREATE OR REPLACE PROCEDURE insertUserComment
+    (VidNews IN NUMBER,VidUser IN NUMBER, VcommentDate date, VlcommentText varchar2)
+    AS BEGIN 
+    INSERT INTO UserComment(idComment,idNews, idUser, commentDate,commentText)  
+    VALUES(s_UserComment.NEXTVAL,VidNews, VidUser, VcommentDate,VlcommentText);
+    --COMMIT; 
+END insertUserComment;
+
+CREATE OR REPLACE PROCEDURE insertUserReview
+    (VidNews IN NUMBER,VidUser IN NUMBER, Vscore IN NUMBER)
+    AS BEGIN 
+    INSERT INTO UserReview(idReview,idNews, idUser, score)  
+    VALUES(s_UserReview.NEXTVAL,VidNews, VidUser, Vscore);
+    --COMMIT; 
+END insertUserReview;
+
+CREATE OR REPLACE PROCEDURE insertUserSave
+    (VidNews IN NUMBER,VidUser IN NUMBER)
+    AS BEGIN 
+    INSERT INTO UserSave(idSave,idNews, idUser)  
+    VALUES(s_UserSave.NEXTVAL,VidNews, VidUser);
+    --COMMIT; 
+END insertUserSave;
+-----------------------------------------------------
+---------------------News Table----------------------
+CREATE OR REPLACE PROCEDURE insertNews
+    (VidUser IN NUMBER,VidEvent IN NUMBER,Vtitle IN VARCHAR2,Vtext IN VARCHAR2,
+    Vauthor IN VARCHAR2,VnewsDate IN DATE,Vphoto IN blob)
+    AS BEGIN 
+    INSERT INTO News(idNews,idUser,idEvent,title,text,author,newsDate,photo)  
+    VALUES(s_News.NEXTVAL,VidUser, VidEvent,Vtitle,Vtext,Vauthor, VnewsDate,Vphoto);
+    --COMMIT; 
+END insertNews;
+-----------------------------------------------------
