@@ -117,3 +117,144 @@ FOR EACH ROW
 BEGIN 
 :new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
 END beforeUpdateWorkerXSportMatch;
+
+-----------------------------------------------------
+--By: Joxan Andrey Fuertes Villegas
+--Date: 28/Dic/2022 14:10 p.m
+
+---------------Continent------------------
+------- ContinentCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertContinent
+BEFORE INSERT ON proj.Continent
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertContinent;
+
+------- ContinentModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateContinent
+BEFORE UPDATE ON proj.Continent
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateContinent;
+
+---------------Country------------------
+------- CountryCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertCountry
+BEFORE INSERT ON proj.Country
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertCountry;
+
+------- CountryModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateCountry
+BEFORE UPDATE ON proj.Country
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateCountry;
+
+---------------Province------------------
+------- ProvinceCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertProvince
+BEFORE INSERT ON proj.Province
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertProvince;
+
+------- ProvinceModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateProvince
+BEFORE UPDATE ON proj.Province
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateProvince;
+
+---------------District------------------
+------- DistrictCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertDistrict
+BEFORE INSERT ON proj.District
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertDistrict;
+
+------- DistrictModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateDistrict
+BEFORE UPDATE ON proj.District
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateDistrict;
+
+---------------Address------------------
+------- AddressCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertAddress
+BEFORE INSERT ON proj.Address
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertAddress;
+
+------- AddressModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateAddress
+BEFORE UPDATE ON proj.Address
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateAddress;
+
+---------------Stadium------------------
+------- StadiumCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertStadium
+BEFORE INSERT ON proj.Stadium
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertStadium;
+
+------- StadiumModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateStadium
+BEFORE UPDATE ON proj.Stadium
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateStadium;
+
+---------------SportMatch------------------
+------- SportMatchCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertSportMatch
+BEFORE INSERT ON proj.SportMatch
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertSportMatch;
+
+------- SportMatchModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateSportMatch
+BEFORE UPDATE ON proj.SportMatch
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateSportMatch;
+
+---------------StadiumXSportMatch------------------
+------- StadiumXSportMatchCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertStadiumXSportMatch
+BEFORE INSERT ON proj.StadiumXSportMatch
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertStadiumXSportMatch;
+
+------- StadiumXSportMatchModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateStadiumXSportMatch
+BEFORE UPDATE ON proj.StadiumXSportMatch
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateStadiumXSportMatch;
+   
