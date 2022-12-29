@@ -55,3 +55,58 @@ BEGIN
     AND idSportMatch = NVL(v_idSportMatch, idSportMatch); 
     RETURN PlayerXSportMatchCursor; 
 END getPlayerXSportMatch;
+
+-----------------------------------------------------
+--By: Joxan Andrey Fuertes Villegas
+--Date: 28/Dic/2022 9:00 p.m
+
+--return a cursor of Continent
+CREATE OR REPLACE FUNCTION getContinent(v_idContinent IN NUMBER) 
+RETURN SYS_REFCURSOR AS ContinentCursor SYS_REFCURSOR; 
+BEGIN 
+    OPEN ContinentCursor FOR  
+        SELECT idContinent, nameContinent
+        FROM Continent  
+        WHERE idContinent = NVL(v_idContinent, idContinent); 
+    RETURN ContinentCursor; 
+END getContinent;
+
+--return a cursor of Country
+CREATE OR REPLACE FUNCTION getCountry(v_idCountry IN NUMBER) 
+RETURN SYS_REFCURSOR AS CountryCursor SYS_REFCURSOR; 
+BEGIN 
+    OPEN CountryCursor FOR  
+        SELECT idCountry, nameCountry, demonym
+        FROM Country  
+        WHERE idCountry = NVL(v_idCountry, idCountry); 
+    RETURN CountryCursor; 
+END getCountry;
+
+--return a cursor of Province
+CREATE OR REPLACE FUNCTION getProvince(v_idProvince IN NUMBER) 
+RETURN SYS_REFCURSOR AS ProvinceCursor SYS_REFCURSOR; 
+BEGIN 
+    OPEN ProvinceCursor FOR  
+        SELECT idProvince, nameProvince
+        FROM Province 
+        WHERE idProvince = NVL(v_idProvince, idProvince); 
+    RETURN ProvinceCursor; 
+END getProvince;
+
+--- code for making tests ------
+DECLARE 
+    pContinents SYS_REFCURSOR := getProvince(NULL);
+    idContinent NUMBER(6);
+    nameContinent VARCHAR2(50);
+
+BEGIN
+    LOOP 
+        FETCH pContinents
+        INTO idContinent,    
+        nameContinent;
+        EXIT WHEN pContinents%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(idContinent || '|' || nameContinent);
+    END LOOP;
+    CLOSE pContinents;
+END;
+--------------------------------------------------------
