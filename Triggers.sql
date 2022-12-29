@@ -1,3 +1,4 @@
+--By: Rodolfo Acuña López
 ------- GenderCreation
 CREATE OR REPLACE TRIGGER proj.beforeInsertGender
 BEFORE INSERT ON proj.Gender
