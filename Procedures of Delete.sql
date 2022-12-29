@@ -55,3 +55,75 @@ AS BEGIN
     WHERE idWorker = v_idWorker AND idSportMatch = v_idSportMatch; 
     Commit;  
 END deleteWorkerXSportMatch;
+
+-----------------------------------------------------
+--By: Joxan Andrey Fuertes Villegas
+--Date: 28/Dic/2022 9:00 p.m
+
+--Delete StadiumXSportMatch
+CREATE OR REPLACE PROCEDURE deleteStadiumXSportMatch (v_idStadium IN NUMBER, v_idSportMatch IN NUMBER) 
+AS BEGIN 
+    DELETE FROM StadiumXSportMatch 
+    WHERE idStadium = v_idStadium AND idSportMatch = v_idSportMatch; 
+    Commit;  
+END deleteStadiumXSportMatch;
+
+--Delete Stadium
+CREATE OR REPLACE PROCEDURE deleteStadium (v_idStadium IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Stadium
+    WHERE idStadium = v_idStadium ; 
+    Commit;  
+END deleteStadium;
+
+--Delete SportMatch
+CREATE OR REPLACE PROCEDURE deleteSportMatch (v_idSportMatch IN NUMBER) 
+AS BEGIN 
+    DELETE FROM SportMatch
+    WHERE idSportMatch = v_idSportMatch; 
+    Commit;  
+END deleteSportMatch;
+
+--Delete Address
+CREATE OR REPLACE PROCEDURE deleteAddress (v_idAddress IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Address
+    WHERE idAddress = v_idAddress; 
+    Commit;  
+END deleteAddress;
+
+--Delete District
+CREATE OR REPLACE PROCEDURE deleteDistrict (v_idDistrict IN NUMBER) 
+AS BEGIN 
+    DELETE FROM District
+    WHERE idDistrict = v_idDistrict; 
+    Commit;  
+END deleteDistrict;
+
+--Delete Province
+CREATE OR REPLACE PROCEDURE deleteProvince (v_idProvince IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Province
+    WHERE idProvince = v_idProvince; 
+    Commit;  
+END deleteProvince;
+
+--Delete Country
+CREATE OR REPLACE PROCEDURE deleteCountry (v_idCountry IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Country
+    WHERE idCountry = v_idCountry; 
+    Commit;  
+END deleteCountry;
+
+--Delete Continent
+CREATE OR REPLACE PROCEDURE deleteContinent (v_idContinent IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Continent
+    WHERE idContinent = v_idContinent; 
+    Commit;  
+END deleteContinent;
+
+BEGIN
+    deleteContinent(3);
+END;
