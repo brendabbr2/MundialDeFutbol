@@ -127,3 +127,90 @@ END deleteContinent;
 BEGIN
     deleteContinent(3);
 END;
+
+-----------------------------------------------------
+--By: David Salazar Rodriguez
+--Date: 26/Dic/2022 6:32 p.m
+-------------------People Deletes--------------------
+--Delete Phone
+CREATE OR REPLACE PROCEDURE deletePhone (vPhoneNum IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Phone 
+    WHERE phone = PhoneNum; 
+    Commit;
+END deletePhone;
+
+--Delete Email
+CREATE OR REPLACE PROCEDURE deleteEmail (vEmail IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Email 
+    WHERE vEmail = mail; 
+    Commit;
+END deleteEmail;
+
+--Delete Identification
+CREATE OR REPLACE PROCEDURE deleteIdentification (vidValue IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Identification 
+    WHERE valueIdentification = vidValue; 
+    Commit;
+END deleteIdentification;
+
+--Delete Identification type
+CREATE OR REPLACE PROCEDURE deleteIdentificationType (vidType IN NUMBER) 
+AS BEGIN 
+    DELETE FROM identificationType 
+    WHERE idType = vidType; 
+    Commit;
+END deleteIdentificationType;
+
+--Delete Person
+CREATE OR REPLACE PROCEDURE deletePerson (VidPerson IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Person 
+    WHERE idPerson = VidPerson; 
+    Commit;
+END deletePerson;
+
+-----------------------------------------------------
+----------------User/News Relations------------------
+--Delete Log
+CREATE OR REPLACE PROCEDURE deleteUserLog (VidLog IN NUMBER) 
+AS BEGIN 
+    DELETE FROM UserLog 
+    WHERE idLog = VidLog; 
+    Commit;
+END deleteUserLog;
+
+--Delete Comment
+CREATE OR REPLACE PROCEDURE deleteUserComment (VidComment IN NUMBER) 
+AS BEGIN 
+    DELETE FROM UserComment 
+    WHERE idComment = VidComment; 
+    Commit;
+END deleteUserComment;
+
+--Delete Review
+CREATE OR REPLACE PROCEDURE deleteUserReview (VidReview IN NUMBER) 
+AS BEGIN 
+    DELETE FROM UserReview 
+    WHERE idReview = VidReview; 
+    Commit;
+END deleteUserReview;
+
+--Delete Save
+CREATE OR REPLACE PROCEDURE deleteUserSave (VidSave IN NUMBER) 
+AS BEGIN 
+    DELETE FROM UserSave
+    WHERE idSave = VidSave;
+    Commit;
+END deleteUserSave;
+
+--Delete News
+CREATE OR REPLACE PROCEDURE deleteUserNews (VidNews IN NUMBER) 
+AS BEGIN 
+    DELETE FROM UserNews
+    WHERE idNews = VidNews; 
+    Commit;
+END deleteUserNews;
+-----------------------------------------------------
