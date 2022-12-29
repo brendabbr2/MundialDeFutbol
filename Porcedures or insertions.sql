@@ -255,3 +255,73 @@ CREATE OR REPLACE PROCEDURE insertTeam
     VALUES(s_team.nextval, VidGroup, VidCountry, VcaptainNumber, VlogoPhoto, Vlineup);
     --COMMIT; 
 END insertTeam;
+
+-----------------------------------------------------
+--By: Joxan Andrey Fuertes Villegas
+--Date: 28/Dic/2022 8:00 p.m
+
+--Continent
+CREATE OR REPLACE PROCEDURE insertContinent 
+    (VnameContinent IN VARCHAR2)
+    AS BEGIN
+    INSERT INTO Continent(idContinent, nameContinent)
+    VALUES(s_continent.nextval, VnameContinent);
+    --COMMIT; 
+END insertContinent;
+
+-- Insert Country
+CREATE OR REPLACE PROCEDURE insertCountry
+    (V_idContinent IN NUMBER, V_nameCountry IN VARCHAR2, V_demonym IN VARCHAR2)
+    AS BEGIN 
+    INSERT INTO Country(idCountry, idContinent, nameCountry, demonym)  
+    VALUES(s_Country.NEXTVAL, V_idContinent, V_nameCountry, V_demonym);
+    --COMMIT; 
+END insertCountry;
+
+-- Insert Province
+CREATE OR REPLACE PROCEDURE insertProvince
+    (V_idCountry IN NUMBER, V_nameProvince IN VARCHAR2)
+    AS BEGIN 
+    INSERT INTO Province(idProvince, idCountry, nameProvince)  
+    VALUES(s_Province.NEXTVAL, V_idCountry, V_nameProvince);
+    --COMMIT; 
+END insertProvince;
+
+-- Insert District
+CREATE OR REPLACE PROCEDURE insertDistrict
+    (V_idProvince IN NUMBER, V_nameDistrict IN VARCHAR2) 
+    AS BEGIN
+    INSERT INTO District(idDistrict, idProvince, nameDistrict)
+    VALUES(s_District.NEXTVAL, V_idProvince, V_nameDistrict);
+END insertDistrict;
+
+-- Insert Address
+CREATE OR REPLACE PROCEDURE insertAddress
+    (V_idDistrict IN NUMBER, V_nameAddress IN VARCHAR2) 
+    AS BEGIN
+    INSERT INTO Address(idAddress, idDistrict, nameAddress)
+    VALUES(s_Address.NEXTVAL, V_idDistrict, V_nameAddress);
+END insertAddress;
+
+-- Insert Stadium
+CREATE OR REPLACE PROCEDURE insertStadium
+    (V_idAddress IN NUMBER, V_nameStadium IN VARCHAR2) 
+    AS BEGIN
+    INSERT INTO Stadium(idStadium, idAddress, nameStadium)
+    VALUES(s_Stadium.NEXTVAL, V_idAddress, V_nameStadium);
+END insertStadium;
+
+-- Insert SportMatch
+CREATE OR REPLACE PROCEDURE insertSportMatch 
+    AS BEGIN
+    INSERT INTO SportMatch(idSportMatch)
+    VALUES(s_SportMatch.NEXTVAL);
+END insertSportMatch;
+
+-- Insert StadiumXSportMatch
+CREATE OR REPLACE PROCEDURE insertStadiumXSportMatch
+    (V_idStadium IN NUMBER, V_idSportMatch IN NUMBER, V_dateStadiumXSportMatch IN DATE)
+    AS BEGIN
+    INSERT INTO StadiumXSportMatch(idStadium, idSportMatch, dateStadiumXSportMatch)
+    VALUES(V_idStadium, V_idSportMatch, V_dateStadiumXSportMatch);
+END insertStadiumXSportMatch;
