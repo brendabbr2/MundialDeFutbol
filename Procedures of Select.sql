@@ -93,20 +93,76 @@ BEGIN
     RETURN ProvinceCursor; 
 END getProvince;
 
+--return a cursor of District
+CREATE OR REPLACE FUNCTION getDistrict(v_idDistrict IN NUMBER) 
+RETURN SYS_REFCURSOR AS DistrictCursor SYS_REFCURSOR; 
+BEGIN 
+    OPEN DistrictCursor FOR  
+        SELECT idDistrict, nameDistrict
+        FROM District 
+        WHERE idDistrict = NVL(v_idDistrict, idDistrict); 
+    RETURN DistrictCursor; 
+END getDistrict;
+
+--return a cursor of Address
+CREATE OR REPLACE FUNCTION getAddress(v_idAddress IN NUMBER) 
+RETURN SYS_REFCURSOR AS AddressCursor SYS_REFCURSOR; 
+BEGIN 
+    OPEN AddressCursor FOR  
+        SELECT idAddress, nameAddress
+        FROM Address 
+        WHERE idAddress = NVL(v_idAddress, idAddress); 
+    RETURN AddressCursor; 
+END getAddress;
+
+--return a cursor of Stadium
+CREATE OR REPLACE FUNCTION getStadium(v_idStadium IN NUMBER) 
+RETURN SYS_REFCURSOR AS StadiumCursor SYS_REFCURSOR; 
+BEGIN 
+    OPEN StadiumCursor FOR  
+        SELECT idStadium, nameStadium
+        FROM Stadium 
+        WHERE idStadium = NVL(v_idStadium, idStadium); 
+    RETURN StadiumCursor; 
+END getStadium;
+
+--return a cursor of SportMatch
+CREATE OR REPLACE FUNCTION getSportMatch(v_idSportMatch IN NUMBER) 
+RETURN SYS_REFCURSOR AS SportMatchCursor SYS_REFCURSOR; 
+BEGIN 
+    OPEN SportMatchCursor FOR  
+        SELECT idSportMatch
+        FROM SportMatch
+        WHERE idSportMatch = NVL(v_idSportMatch, idSportMatch); 
+    RETURN SportMatchCursor; 
+END getSportMatch;
+
+--return a cursor of StadiumXSportMatch
+CREATE OR REPLACE FUNCTION getStadiumXSportMatch(v_idStadium IN NUMBER, v_idSportMatch IN NUMBER) 
+RETURN SYS_REFCURSOR AS StadiumXSportMatchCursor SYS_REFCURSOR; 
+BEGIN 
+    OPEN StadiumXSportMatchCursor FOR  
+        SELECT idStadium, idSportMatch, dateStadiumXSportMatch
+        FROM StadiumXSportMatch
+        WHERE idStadium = NVL(v_idStadium, idStadium) AND 
+        idSportMatch = NVL(v_idSportMatch, idSportMatch); 
+    RETURN StadiumXSportMatchCursor; 
+END getStadiumXSportMatch;
+
 --- code for making tests ------
 DECLARE 
-    pContinents SYS_REFCURSOR := getProvince(NULL);
-    idContinent NUMBER(6);
-    nameContinent VARCHAR2(50);
+    pStadiumXSportMatch SYS_REFCURSOR := getStadiumXSportMatch(NULL, NULL);
+    idStadium NUMBER(6);
+    idSportMatch NUMBER(6);
+    dateStadiumXSportMatch VARCHAR2(50);
 
 BEGIN
     LOOP 
-        FETCH pContinents
-        INTO idContinent,    
-        nameContinent;
-        EXIT WHEN pContinents%NOTFOUND;
-        DBMS_OUTPUT.PUT_LINE(idContinent || '|' || nameContinent);
+        FETCH pStadiumXSportMatch
+        INTO idStadium, idSportMatch, dateStadiumXSportMatch;
+        EXIT WHEN pStadiumXSportMatch%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(idStadium || '|' || idSportMatch || '|' || dateStadiumXSportMatch);
     END LOOP;
-    CLOSE pContinents;
+    CLOSE pStadiumXSportMatch;
 END;
 --------------------------------------------------------
