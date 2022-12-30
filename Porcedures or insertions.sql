@@ -31,7 +31,7 @@ END insertWorkerType;
 CREATE OR REPLACE PROCEDURE insertPlayerPosition
     (V_descritionPos IN VARCHAR2)
     AS BEGIN 
-    INSERT INTO PlayerPosition(idPosition, descriptionPos)  
+    INSERT INTO PlayerPosition(idPosition, positionName)  
     VALUES(s_PlayerPosition.NEXTVAL, v_descritionpos);
     --COMMIT; 
 END insertPlayerPosition;
