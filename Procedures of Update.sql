@@ -138,5 +138,139 @@ CREATE OR REPLACE PROCEDURE updatePlayerXSportMatch
         AND idSportMatch = v_idsportmatch;
     --COMMIT;
 END updatePlayerXSportMatch;
-
 --------------------------------------------------------------------------------------------
+--By: David Salazar Rodriguez
+--Date: 29/Dic/2022 5:45 a.m
+
+CREATE OR REPLACE PROCEDURE updatePhone
+    (V_oldPhone IN NUMBER, V_newPhone IN NUMBER)
+    AS BEGIN
+        UPDATE Phone
+        SET phone = NVL(V_newPhone, phone)
+        WHERE phone = V_oldPhone;
+    --COMMIT; 
+END updatePhone;
+
+CREATE OR REPLACE PROCEDURE updateEmail
+    (V_oldEmail IN NUMBER, V_newEmail IN NUMBER)
+    AS BEGIN
+        UPDATE Email
+        SET mail = NVL(V_newEmail, mail)
+        WHERE mail = V_oldEmail;
+    --COMMIT; 
+END updateEmail;
+
+CREATE OR REPLACE PROCEDURE updateIdentification
+    (V_oldIdentification IN NUMBER, V_newIdentification IN NUMBER)
+    AS BEGIN
+        UPDATE Identification
+        SET valueIdentification = NVL(V_newIdentification, valueIdentification)
+        WHERE valueIdentification = V_oldIdentification;
+    --COMMIT; 
+END updateIdentification;
+
+CREATE OR REPLACE PROCEDURE updateIdentificationType
+    (V_idType IN NUMBER, V_idName IN VARCHAR2, V_idMask IN NUMBER)
+    AS BEGIN
+        UPDATE identificationType
+        SET idName = NVL(V_idName , idName),
+        idMask = NVL(V_idMask , idMask)
+        WHERE idType = V_idType;
+    --COMMIT; 
+END updateIdentificationType;
+
+CREATE OR REPLACE PROCEDURE updatePerson
+    (V_idPerson IN NUMBER, V_idGender IN NUMBER, V_idAddress IN NUMBER, V_BirthDate IN Date,
+        V_personName IN VARCHAR2, V_Photo IN blob)
+    AS BEGIN
+        UPDATE person
+        SET idGender = NVL(V_idGender, idGender),
+        idAddress = NVL(V_idAddress, idAddress),
+        birthday = NVL(V_BirthDate, birthday),
+        personName = NVL(V_personName, personName),
+        photo = NVL(V_Photo, photo)
+        WHERE valueIdentification = V_oldIdentification;
+    --COMMIT; 
+END updatePerson;
+
+CREATE OR REPLACE PROCEDURE updateUserType
+    (V_idUserType IN NUMBER, V_nameUserType IN NUMBER)
+    AS BEGIN
+        UPDATE userType
+        SET nameUserType = NVL(V_nameUserType, nameUserType)
+        WHERE idUserType = V_idUserType;
+    --COMMIT; 
+END updateUserType;
+
+CREATE OR REPLACE PROCEDURE updateUserPerson
+    (V_idUserType IN NUMBER, V_username IN VARCHAR2, V_password VARCHAR2)
+    AS BEGIN
+        UPDATE userPerson
+        SET idUserType = NVL(V_idUserType, idUserType),
+        username = NVL(V_username, username),
+        passwordUser = NVL(V_password, passwordUser)
+        WHERE idUserType = V_idUserType;
+    --COMMIT; 
+END updateUserPerson;
+
+CREATE OR REPLACE PROCEDURE updateUserLog
+    (V_idLog IN NUMBER, V_idNews IN NUMBER, V_idUser NUMBER, V_logDate IN DATE, V_logText IN VARCHAR2)
+    AS BEGIN
+        UPDATE userLog
+        SET idNews = NVL(V_idNews, idNews),
+        idUser = NVL(V_idUser, idUser),
+        logDate = NVL(V_logDate, logDate),
+        logText = NVL(V_logText, logText)
+        WHERE idLog = V_idLog;
+    --COMMIT; 
+END updateUserLog;
+
+CREATE OR REPLACE PROCEDURE updateUserComment
+    (V_idComment IN NUMBER, V_idNews IN NUMBER, V_idUser NUMBER, V_commentDate IN DATE, V_commentText IN VARCHAR2)
+    AS BEGIN
+        UPDATE userComment
+        SET idNews = NVL(V_idNews, idNews),
+        idUser = NVL(V_idUser, idUser),
+        commentDate = NVL(V_commentDate, commentDate),
+        commentText = NVL(V_commentText, commentText)
+        WHERE idComment = V_idComment;
+    --COMMIT; 
+END updateUserComment;
+
+CREATE OR REPLACE PROCEDURE updateUserReview
+    (V_idReview IN NUMBER, V_idNews IN NUMBER, V_idUser NUMBER, V_score IN NUMBER)
+    AS BEGIN
+        UPDATE userReview
+        SET idNews = NVL(V_idNews, idNews),
+        idUser = NVL(V_idUser, idUser),
+        score = NVL(V_score, score)
+        WHERE idReview = V_idReview;
+    --COMMIT; 
+END updateUserReview;
+
+CREATE OR REPLACE PROCEDURE updateUserSave
+    (V_idSave IN NUMBER, V_idNews IN NUMBER, V_idUser NUMBER)
+    AS BEGIN
+        UPDATE userSave
+        SET idNews = NVL(V_idNews, idNews),
+        idUser = NVL(V_idUser, idUser)
+        WHERE idSave = V_idSave;
+    --COMMIT; 
+END updateUserSave;
+
+CREATE OR REPLACE PROCEDURE updateNews
+    (V_idNews IN NUMBER, V_idUser IN NUMBER, V_idEvent NUMBER, V_title IN VARCHAR2, V_text IN VARCHAR2,
+        V_author IN VARCHAR2, V_newsDate IN DATE,V_Photo IN BLOB)
+    AS BEGIN
+        UPDATE News
+        SET idUser = NVL(V_idUser, idUser),
+            idEvent = NVL(V_idEvent, idEvent),
+            title = NVL(V_title, title),
+            text = NVL(V_text, text),
+            author = NVL(V_author, author),
+            newsDate = NVL(V_newsDate, newsDate),
+            photo = NVL(V_Photo, photo)
+        WHERE idNews = V_idNews;
+    --COMMIT; 
+END updateUserSave;
+
