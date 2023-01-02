@@ -1,14 +1,5 @@
 --By: Rodolfo Acuna Lopez
 
---This is an insertion for the table gender
-CREATE OR REPLACE PROCEDURE insertGender 
-    (vDescription IN VARCHAR2)
-    AS BEGIN 
-    INSERT INTO Gender(idGender, descriptionGender)  
-    VALUES(s_Person.NEXTVAL, vDescription);
-    --COMMIT; 
-END insertGender;
-
 --This is an insertion for the table worker
 CREATE OR REPLACE PROCEDURE insertWorker 
     (V_idWorkerType IN NUMBER, V_hireDate IN DATE)
@@ -132,7 +123,7 @@ END insertUserType;
 CREATE OR REPLACE PROCEDURE insertUserPerson
     (VidUserType IN NUMBER,VuserName IN VARCHAR2,Vpasssword IN VARCHAR2)
     AS BEGIN 
-    INSERT INTO userPerson(idUser,idUserType, username, password)  
+    INSERT INTO userPerson(idUser,idUserType, username, passwordUser)  
     VALUES(s_userPerson.NEXTVAL,VidUserType, VuserName, Vpasssword);
     --COMMIT; 
 END insertUserPerson;
