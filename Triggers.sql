@@ -257,4 +257,209 @@ FOR EACH ROW
 BEGIN 
 :new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
 END beforeUpdateStadiumXSportMatch;
-   
+
+--By: David Salazar Rodriguez
+---------------Phone------------------
+------- Phone Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertPhone
+BEFORE INSERT ON proj.Phone
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertPhone;
+
+------- Phone Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdatePhone
+BEFORE UPDATE ON proj.Phone
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdatePhone;
+
+---------------Email------------------
+------- Email Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertEmail
+BEFORE INSERT ON proj.Email
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertEmail;
+
+------- Email Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateEmail
+BEFORE UPDATE ON proj.Email
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateEmail;
+
+---------------Identification------------------
+------- Identification Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertIdentification
+BEFORE INSERT ON proj.Identification
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertIdentification;
+
+------- Identification Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateIdentification
+BEFORE UPDATE ON proj.Identification
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateIdentification;
+
+---------------IdentificationType------------------
+------- IdentificationType Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertIdentificationType
+BEFORE INSERT ON proj.IdentificationType
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertIdentificationType;
+
+------- identificationType Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateidentificationType
+BEFORE UPDATE ON proj.identificationType
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateidentificationType;
+
+---------------Person------------------
+------- Person Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertPerson
+BEFORE INSERT ON proj.Person
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertPerson;
+
+------- Person Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdatePerson
+BEFORE UPDATE ON proj.Person
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdatePerson;
+
+---------------UserType------------------
+------- UserType Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertUserType
+BEFORE INSERT ON proj.UserType
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertUserType;
+
+------- UserType Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateUserType
+BEFORE UPDATE ON proj.UserType
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateUserType;
+
+---------------UserPerson------------------
+------- UserPerson Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertUserPerson
+BEFORE INSERT ON proj.UserPerson
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertUserPerson;
+
+------- UserPerson Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateUserPerson
+BEFORE UPDATE ON proj.UserPerson
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateUserPerson;
+
+---------------UserLog------------------
+------- UserLog Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertUserLog
+BEFORE INSERT ON proj.UserLog
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertUserLog;
+
+------- UserLog Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateUserLog
+BEFORE UPDATE ON proj.UserLog
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateUserLog;
+
+---------------UserComment------------------
+------- UserComment Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertUserComment
+BEFORE INSERT ON proj.UserComment
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertUserComment;
+
+------- UserComment Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateUserComment
+BEFORE UPDATE ON proj.UserComment
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateUserComment;
+
+---------------UserReview------------------
+------- UserReview Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertUserReview
+BEFORE INSERT ON proj.UserReview
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertUserReview;
+
+------- UserReview Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateUserReview
+BEFORE UPDATE ON proj.UserReview
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateUserReview;
+
+---------------UserSave------------------
+------- UserSave Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertUserSave
+BEFORE INSERT ON proj.UserSave
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertUserSave;
+
+------- UserSave Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateUserSave
+BEFORE UPDATE ON proj.UserSave
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateUserSave;
+
+---------------News------------------
+------- News Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertNews
+BEFORE INSERT ON proj.News
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertNews;
+
+------- News Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateNews
+BEFORE UPDATE ON proj.News
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateNews;
+
