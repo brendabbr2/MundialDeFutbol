@@ -5,6 +5,9 @@
 package Control;
 
 import Modelo.Autor;
+import com.sun.jdi.connect.spi.Connection;
+import java.beans.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -13,16 +16,45 @@ import java.util.ArrayList;
  */
 public class AdmAutores {
 
-    void agregarAutor(String nombre, String apellido1, String apellido2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ArrayList<Autor> obtenerLibros() throws SQLException {
+        Connection conn = (Connection) sysConexion.obtConexion();
+        Statement statement = conn.createStatement();
+        CallableStatement sql = conn.prepareCall("{call MOSTRAR_AUTORES(?)}");
+        sql.registerOutParameter(1, Types.REF_CURSOR);
+        sql.execute();
+        
+        ResultSet rs = (ResultSet) sql.getObject(1);
+        ArrayList<Autor> autores = new ArrayList<>();
+        while(rs.next())
+        {
+            Autor autor = new Autor();
+            autor.setId(rs.getInt(1));
+            autor.setNombre(rs.getString(2));
+            autor.setPrimerApellido(rs.getString(3));
+            autor.setSegundoApellido(rs.getString(4));
+            autor.setFechaNac(rs.getString(5));
+            
+            autores.add(autor);
+        }
+        return autores;
     }
-
-    void borrarAutor(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public void agregarAutor(String nombre, String primerApellido,
+            String segundoApellido, String fechaNac) throws SQLException{
+        Connection conn = (Connection) sysConexion.obtConexion();
+        CallableStatement sql = conn.prepareCall("{call AGREGAR_AUTOR(?,?,?,?)}");
+        sql.setString(1, nombre);
+        sql.setString(2, primerApellido);
+        sql.setString(3, segundoApellido);
+        sql.setString(3, fechaNac);
+        sql.execute(); 
     }
-
-    ArrayList<Autor> obtenerAutores() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public void borrarAutor(int id) throws SQLException{
+        Connection conn = (Connection) sysConexion.obtConexion();
+        CallableStatement sql = conn.prepareCall("{call BORRAR_AUTOR(?)}");
+        sql.setInt(1, id);
+        sql.execute();
     }
     
 }
