@@ -1,7 +1,7 @@
 package Control;
 
 import Modelo.Libro;
-import com.sun.jdi.connect.spi.Connection;
+//import com.sun.jdi.connect.spi.Connection;
 import java.beans.Statement;
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class AdmLibros {
     
     public ArrayList<Libro> obtenerLibros() throws SQLException {
         Connection conn = (Connection) sysConexion.obtConexion();
-        Statement statement = conn.createStatement();
+        Statement statement = (Statement) conn.createStatement();
         CallableStatement sql = conn.prepareCall("{call MOSTRAR_LIBROS(?)}");
         sql.registerOutParameter(1, Types.REF_CURSOR);
         sql.execute();

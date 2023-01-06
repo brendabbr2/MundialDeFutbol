@@ -4,6 +4,9 @@
  */
 package pruebasql;
 
+import Control.sysConexion;
+import Vista.*;
+
 /**
  *
  * @author david
@@ -14,7 +17,11 @@ public class PruebaSql {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        //FrmAutor frameAutor = new FrmAutor();
+        //FrmLibro frameLibro = new FrmLibro();
+        
+        //frameAutor.setVisible(true);
+        //frameLibro.setVisible(true);
     }
     
 }
