@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class AdmAutores {
 
     public ArrayList<Autor> obtenerAutores() throws SQLException {
-        System.out.println("entra a obtener libros bien");
         Connection conn = (Connection) sysConexion.obtConexion();
         //Statement statement = (Statement) conn.createStatement();
         CallableStatement sql = conn.prepareCall("{call MOSTRAR_AUTORES(?)}");
