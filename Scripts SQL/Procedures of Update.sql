@@ -14,51 +14,56 @@ END updateContinent;
 
 -- Update Country
 CREATE OR REPLACE PROCEDURE updateCountry
-    (VidCountry IN NUMBER, VnameCountry IN VARCHAR2, Vdemonym IN VARCHAR2)
+    (VidCountry IN NUMBER, VnameCountry IN VARCHAR2, Vdemonym IN VARCHAR2, VidContinent IN NUMBER)
     AS BEGIN
         UPDATE Country
         SET nameCountry = NVL(VnameCountry, nameCountry),
-        demonym = NVL(Vdemonym, demonym)
+        demonym = NVL(Vdemonym, demonym),
+        idContinent = NVL(VidContinent, idContinent)
         WHERE idCountry = VidCountry;
     --COMMIT; 
 END updateCountry;
 
 -- Update Province
 CREATE OR REPLACE PROCEDURE updateProvince
-    (VidProvince IN NUMBER, VnameProvince IN VARCHAR2)
+    (VidProvince IN NUMBER, VnameProvince IN VARCHAR2, VidCountry IN NUMBER)
     AS BEGIN
         UPDATE Province
-        SET nameProvince = NVL(VnameProvince, nameProvince)
+        SET nameProvince = NVL(VnameProvince, nameProvince),
+        idCountry = NVL(VidCountry, idCountry)
         WHERE idProvince = VidProvince;
     --COMMIT; 
 END updateProvince;
 
 -- Update District
 CREATE OR REPLACE PROCEDURE updateDistrict
-    (VidDistrict IN NUMBER, VnameDistrict IN VARCHAR2)
+    (VidDistrict IN NUMBER, VnameDistrict IN VARCHAR2, VidProvince IN NUMBER)
     AS BEGIN
         UPDATE District
-        SET nameDistrict = NVL(VnameDistrict, nameDistrict)
+        SET nameDistrict = NVL(VnameDistrict, nameDistrict),
+        idProvince = NVL(VidProvince, idProvince)
         WHERE idDistrict = VidDistrict;
     --COMMIT; 
 END updateDistrict;
 
 -- Update Address
 CREATE OR REPLACE PROCEDURE updateAddress
-    (VidAddress IN NUMBER, VnameAddress IN VARCHAR2)
+    (VidAddress IN NUMBER, VnameAddress IN VARCHAR2, VidDistrict IN NUMBER)
     AS BEGIN
         UPDATE Address
-        SET nameAddress = NVL(VnameAddress, nameAddress)
+        SET nameAddress = NVL(VnameAddress, nameAddress),
+        idDistrict = NVL(VidDistrict, idDistrict)
         WHERE idAddress = VidAddress;
     --COMMIT; 
 END updateAddress;
 
 -- Update Stadium
 CREATE OR REPLACE PROCEDURE updateStadium
-    (VidStadium IN NUMBER, VnameStadium IN VARCHAR2)
+    (VidStadium IN NUMBER, VnameStadium IN VARCHAR2, VidAddress IN NUMBER)
     AS BEGIN
         UPDATE Stadium
-        SET nameStadium = NVL(VnameStadium, nameStadium)
+        SET nameStadium = NVL(VnameStadium, nameStadium),
+        idAddress = NVL(VidAddress, idAddress)
         WHERE idStadium = VidStadium;
     --COMMIT; 
 END updateStadium;

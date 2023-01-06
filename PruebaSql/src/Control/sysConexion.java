@@ -12,15 +12,15 @@ import java.sql.*;
 public class sysConexion {
     public static Connection obtConexion(){
         try{
-            String myDB = "";
-            String user = "";
-            String password = "";
+            String myDB = "jdbc:oracle:thin:@//localhost:1521/DBPRUEBA";
+            String user = "ge";
+            String password = "ge";
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             System.out.println("Connecting to data base...");
             java.sql.Connection connection = DriverManager.getConnection(myDB, user, password);
             return connection;
         } catch(SQLException e){
-            System.out.println(e.toString());
+            System.out.println("No se pudo establecer la conexion");
         }
         return null;
     }

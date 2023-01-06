@@ -41,7 +41,7 @@ public class FrmAutor extends javax.swing.JFrame {
         {
             int row = table.getSelectedRow();
             user = table.getModel().getValueAt(row, 0);
-            return user;
+            //return user;
         }
         return user;
     }
@@ -178,8 +178,9 @@ public class FrmAutor extends javax.swing.JFrame {
         String nombre = txfNombre.getText();
         String apellido1 = txfApellido1.getText();
         String apellido2 = txfApellido2.getText();
+        String fechNac = "12/12/2020";
         try{
-            control.agregarAutor(nombre, apellido1, apellido2);
+            control.agregarAutor(nombre, apellido1, apellido2, fechNac);
         } catch(Exception e){
             System.out.println(e.toString());
         }

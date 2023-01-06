@@ -20,13 +20,13 @@ public class Controlador {
     public DefaultTableModel mostrarAutores() throws SQLException{
         return cargador.mostrarAutores(admA.obtenerAutores());
     }
-
-    public void agregarAutor(String nombre, String apellido1, String apellido2) throws SQLException{
-        admA.agregarAutor(nombre, apellido1, apellido2);
-    }
-
+    
     public void borrarAutor(int id) throws SQLException{
         admA.borrarAutor(id);
+    }
+
+    public void agregarAutor(String nombre, String apellido1, String apellido2, String fechNac) throws SQLException{
+        admA.agregarAutor(nombre, apellido1, apellido2, fechNac);
     }
 
     public DefaultTableModel mostrarLibros() throws SQLException {

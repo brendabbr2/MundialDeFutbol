@@ -5,7 +5,7 @@
 package Control;
 
 import Modelo.Autor;
-import com.sun.jdi.connect.spi.Connection;
+//import com.sun.jdi.connect.spi.Connection;
 import java.beans.Statement;
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class AdmAutores {
 
     public ArrayList<Autor> obtenerLibros() throws SQLException {
         Connection conn = (Connection) sysConexion.obtConexion();
-        Statement statement = conn.createStatement();
+        Statement statement = (Statement) conn.createStatement();
         CallableStatement sql = conn.prepareCall("{call MOSTRAR_AUTORES(?)}");
         sql.registerOutParameter(1, Types.REF_CURSOR);
         sql.execute();
@@ -55,6 +55,10 @@ public class AdmAutores {
         CallableStatement sql = conn.prepareCall("{call BORRAR_AUTOR(?)}");
         sql.setInt(1, id);
         sql.execute();
+    }
+
+    ArrayList<Autor> obtenerAutores() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
