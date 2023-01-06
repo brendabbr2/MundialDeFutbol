@@ -16,6 +16,8 @@ public class Login_Panel extends javax.swing.JPanel {
     public Login_Panel() {
         initComponents();
         lblWarning.setVisible(false);
+        
+        
     }
     
     /**
@@ -100,7 +102,7 @@ public class Login_Panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+        System.out.println(txtUser.getText());
     }//GEN-LAST:event_btnLoginActionPerformed
 
 

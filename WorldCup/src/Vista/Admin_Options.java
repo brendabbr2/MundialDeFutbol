@@ -229,24 +229,11 @@ public class Admin_Options extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUserOptions;
-    private javax.swing.JButton btnUserOptions10;
-    private javax.swing.JButton btnUserOptions11;
-    private javax.swing.JButton btnUserOptions12;
-    private javax.swing.JButton btnUserOptions13;
     private javax.swing.JButton btnUserOptions14;
     private javax.swing.JButton btnUserOptions3;
     private javax.swing.JButton btnUserOptions4;
     private javax.swing.JButton btnUserOptions5;
     private javax.swing.JButton btnUserOptions6;
-    private javax.swing.JButton btnUserOptions7;
-    private javax.swing.JButton btnUserOptions8;
-    private javax.swing.JButton btnUserOptions9;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
@@ -254,7 +241,6 @@ public class Admin_Options extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
