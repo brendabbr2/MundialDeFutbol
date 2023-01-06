@@ -178,9 +178,9 @@ public class FrmAutor extends javax.swing.JFrame {
         String nombre = txfNombre.getText();
         String apellido1 = txfApellido1.getText();
         String apellido2 = txfApellido2.getText();
-        String fechNac = "12/12/2020";
         try{
-            control.agregarAutor(nombre, apellido1, apellido2, fechNac);
+            control.agregarAutor(nombre, apellido1, apellido2);
+            mostrarAutores();
         } catch(Exception e){
             System.out.println(e.toString());
         }
@@ -190,6 +190,7 @@ public class FrmAutor extends javax.swing.JFrame {
         int id = (int) checkTableSelection(tblAutores);
         try{
             control.borrarAutor(id);
+            mostrarAutores();
         } catch(Exception e){
             System.out.println(e.toString());
             Logger.getLogger(FrmAutor.class.getName()).log(Level.SEVERE, null, e);

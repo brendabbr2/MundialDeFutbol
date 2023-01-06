@@ -16,9 +16,10 @@ import java.util.ArrayList;
  */
 public class AdmAutores {
 
-    public ArrayList<Autor> obtenerLibros() throws SQLException {
+    public ArrayList<Autor> obtenerAutores() throws SQLException {
+        System.out.println("entra a obtener libros bien");
         Connection conn = (Connection) sysConexion.obtConexion();
-        Statement statement = (Statement) conn.createStatement();
+        //Statement statement = (Statement) conn.createStatement();
         CallableStatement sql = conn.prepareCall("{call MOSTRAR_AUTORES(?)}");
         sql.registerOutParameter(1, Types.REF_CURSOR);
         sql.execute();
@@ -32,7 +33,6 @@ public class AdmAutores {
             autor.setNombre(rs.getString(2));
             autor.setPrimerApellido(rs.getString(3));
             autor.setSegundoApellido(rs.getString(4));
-            autor.setFechaNac(rs.getString(5));
             
             autores.add(autor);
         }
@@ -40,13 +40,12 @@ public class AdmAutores {
     }
     
     public void agregarAutor(String nombre, String primerApellido,
-            String segundoApellido, String fechaNac) throws SQLException{
+        String segundoApellido) throws SQLException{
         Connection conn = (Connection) sysConexion.obtConexion();
-        CallableStatement sql = conn.prepareCall("{call AGREGAR_AUTOR(?,?,?,?)}");
+        CallableStatement sql = conn.prepareCall("{call AGREGAR_AUTOR(?,?,?)}");
         sql.setString(1, nombre);
         sql.setString(2, primerApellido);
         sql.setString(3, segundoApellido);
-        sql.setString(3, fechaNac);
         sql.execute(); 
     }
     
@@ -55,10 +54,6 @@ public class AdmAutores {
         CallableStatement sql = conn.prepareCall("{call BORRAR_AUTOR(?)}");
         sql.setInt(1, id);
         sql.execute();
-    }
-
-    ArrayList<Autor> obtenerAutores() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

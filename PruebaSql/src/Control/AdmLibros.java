@@ -14,7 +14,7 @@ public class AdmLibros {
     
     public ArrayList<Libro> obtenerLibros() throws SQLException {
         Connection conn = (Connection) sysConexion.obtConexion();
-        Statement statement = (Statement) conn.createStatement();
+        //Statement statement = (Statement) conn.createStatement();
         CallableStatement sql = conn.prepareCall("{call MOSTRAR_LIBROS(?)}");
         sql.registerOutParameter(1, Types.REF_CURSOR);
         sql.execute();

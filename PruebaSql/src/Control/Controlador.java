@@ -25,8 +25,8 @@ public class Controlador {
         admA.borrarAutor(id);
     }
 
-    public void agregarAutor(String nombre, String apellido1, String apellido2, String fechNac) throws SQLException{
-        admA.agregarAutor(nombre, apellido1, apellido2, fechNac);
+    public void agregarAutor(String nombre, String apellido1, String apellido2) throws SQLException{
+        admA.agregarAutor(nombre, apellido1, apellido2);
     }
 
     public DefaultTableModel mostrarLibros() throws SQLException {

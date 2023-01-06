@@ -3,7 +3,6 @@ CREATE TABLE autor(
     nombre VARCHAR(50),
     primerApellido VARCHAR2(50),
     segundoApellido VARCHAR2(50),
-    fechaNac DATE
 );
 
 CREATE TABLE libro(
@@ -30,49 +29,62 @@ ADD CONSTRAINT fk_libro_autor
 FOREIGN KEY (idAutor)
 REFERENCES autor(id);
 
+-- creacion de secuencias
+CREATE SEQUENCE s_Autor
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0
+MAXVALUE 10000000
+NOCACHE
+NOCYCLE;
+
+CREATE SEQUENCE s_Libro
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0
+MAXVALUE 10000000
+NOCACHE
+NOCYCLE;
+
+-- insercion de datos
+
 INSERT INTO autor(
     id,
     nombre,
     primerApellido,
-    segundoApellido,
-    fechaNac
+    segundoApellido
     )
 VALUES (
-    1,
+    s_Autor.NEXTVAL,
     'Miguel',
     'De Cervantes',
-    'Saavedra',
-    '29-09-1547'
+    'Saavedra'
 );
 
 INSERT INTO autor(
     id,
     nombre,
     primerApellido,
-    segundoApellido,
-    fechaNac
+    segundoApellido
     )
 VALUES (
-    2,
+    s_Autor.NEXTVAL,
     'William',
     'Johannes',
-    'Shakespeare',
-    '23-04-1564'
+    'Shakespeare'
 );
 
 INSERT INTO autor(
     id,
     nombre,
     primerApellido,
-    segundoApellido,
-    fechaNac
+    segundoApellido
     )
 VALUES (
-    3,
+    s_Autor.NEXTVAL,
     'Gabriel José de la Concordia',
     'Garcia',
-    'Marquez',
-    '06-03-1927'
+    'Marquez'
 );
 
 -- libros
@@ -84,9 +96,9 @@ INSERT INTO libro(
     año
     )
 VALUES (
-    1,
+    s_Libro.NEXTVAL,
     'Don Quijote de la Mancha',
-    1,
+    0,
     1605
 );
 
@@ -97,9 +109,9 @@ INSERT INTO libro(
     año
     )
 VALUES (
-    2,
+    s_Libro.NEXTVAL,
     'Sueño de una noche de verano',
-    2,
+    1,
     1595
 );
 
@@ -110,9 +122,9 @@ INSERT INTO libro(
     año
     )
 VALUES (
-    3,
+    s_Libro.NEXTVAL,
     'Hamlet',
-    2,
+    1,
     1599
 );
 
@@ -123,9 +135,9 @@ INSERT INTO libro(
     año
     )
 VALUES (
-    4,
+    s_Libro.NEXTVAL,
     'Macbeth',
-    2,
+    1,
     1606
 );
 
@@ -136,8 +148,8 @@ INSERT INTO libro(
     año
     )
 VALUES (
-    5,
+    s_Libro.NEXTVAL,
     '100 años de soledad',
-    3,
+    2,
     1967
 );

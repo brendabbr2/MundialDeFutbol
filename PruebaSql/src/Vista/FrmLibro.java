@@ -27,6 +27,7 @@ public class FrmLibro extends javax.swing.JFrame {
     private void mostrarAutores() {
         try{
             tblAutores.setModel(control.mostrarAutores());
+            // elimina la primera columna
             TableColumnModel tblModelColumn = tblAutores.getColumnModel();
             tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
         } catch(Exception e){
@@ -36,11 +37,14 @@ public class FrmLibro extends javax.swing.JFrame {
 
     private void mostrarLibros() {
         try{
+            // aqui hay un error
             tblLibros.setModel(control.mostrarLibros());
-            TableColumnModel tblModelColumn = tblAutores.getColumnModel();
+            // elimina la primera columna
+            TableColumnModel tblModelColumn = tblLibros.getColumnModel();
             tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
         } catch(Exception e){
             System.out.println(e.toString());
+           JOptionPane.showMessageDialog(null, "Error mostrando Libros");
         }
     }
     
@@ -190,14 +194,11 @@ public class FrmLibro extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnVover)
-                                .addGap(278, 278, 278))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(23, 23, 23)
+                        .addComponent(btnVover)
+                        .addGap(183, 183, 183)
+                        .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(270, Short.MAX_VALUE))
         );
@@ -215,18 +216,18 @@ public class FrmLibro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVover))
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAgregar)
                             .addComponent(btnEliminar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVover)
-                        .addGap(6, 6, 6))
+                        .addGap(44, 44, 44))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(14, Short.MAX_VALUE))))
+                        .addContainerGap(26, Short.MAX_VALUE))))
         );
 
         pack();
@@ -234,10 +235,11 @@ public class FrmLibro extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         String nombre = txfNombre.getText();
-        int year = Integer.parseInt(listAnnos.getSelectedValue());
+        int Anno = Integer.parseInt(listAnnos.getSelectedValue());
         Object idAutor = checkTableSelection(tblAutores);
         try {
-            control.agregarLibro(nombre, (int) idAutor, year);
+            control.agregarLibro(nombre, (int) idAutor, Anno);
+            mostrarLibros();
         } catch (SQLException ex) {
             Logger.getLogger(FrmLibro.class.getName()).log(Level.SEVERE, null, ex);
         }

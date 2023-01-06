@@ -13,7 +13,6 @@ public class Autor {
     String nombre;
     String primerApellido;
     String segundoApellido;
-    String fechaNac;
     
     public Autor(){
         
@@ -24,7 +23,6 @@ public class Autor {
         this.nombre = nombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
-        this.fechaNac = fechaNac;
     }
 
     public int getId() {
@@ -59,17 +57,9 @@ public class Autor {
         this.segundoApellido = segundoApellido;
     }
 
-    public String getFechaNac() {
-        return fechaNac;
-    }
-
-    public void setFechaNac(String fechaNac) {
-        this.fechaNac = fechaNac;
-    }
-
     @Override
     public String toString() {
-        return "Autor{" + "id=" + id + ", nombre=" + nombre + ", primerApellido=" + primerApellido + ", segundoApellido=" + segundoApellido + ", fechaNac=" + fechaNac + '}';
+        return "Autor{" + "id=" + id + ", nombre=" + nombre + ", primerApellido=" + primerApellido + ", segundoApellido=" + segundoApellido + '}';
     }
     
     

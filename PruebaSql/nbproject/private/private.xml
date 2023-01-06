@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/david/Documents/Neatbeans%20project/MundialDeFutbol-main/PruebaSql/src/Modelo/Autor.java</file>
-            <file>file:/C:/Users/david/Documents/Neatbeans%20project/MundialDeFutbol-main/PruebaSql/src/Control/Controlador.java</file>
-            <file>file:/C:/Users/david/Documents/Neatbeans%20project/MundialDeFutbol-main/PruebaSql/src/Control/sysConexion.java</file>
-            <file>file:/C:/Users/david/Documents/Neatbeans%20project/MundialDeFutbol-main/PruebaSql/src/pruebasql/PruebaSql.java</file>
-            <file>file:/C:/Users/david/Documents/Neatbeans%20project/MundialDeFutbol-main/PruebaSql/src/Control/AdmLibros.java</file>
-            <file>file:/C:/Users/david/Documents/Neatbeans%20project/MundialDeFutbol-main/PruebaSql/src/Control/AdmAutores.java</file>
-            <file>file:/C:/Users/david/Documents/Neatbeans%20project/MundialDeFutbol-main/PruebaSql/src/Vista/FrmLibro.java</file>
-            <file>file:/C:/Users/david/Documents/Neatbeans%20project/MundialDeFutbol-main/PruebaSql/src/Vista/FrmAutor.java</file>
+            <file>file:/C:/Users/jox/Desktop/BD1/Proyecto%201/MundialDeFutbol/PruebaSql/src/Vista/FrmLibro.java</file>
+            <file>file:/C:/Users/jox/Desktop/BD1/Proyecto%201/MundialDeFutbol/PruebaSql/src/Control/Cargador.java</file>
+            <file>file:/C:/Users/jox/Desktop/BD1/Proyecto%201/MundialDeFutbol/PruebaSql/src/Vista/FrmAutor.java</file>
+            <file>file:/C:/Users/jox/Desktop/BD1/Proyecto%201/MundialDeFutbol/PruebaSql/src/Control/AdmAutores.java</file>
+            <file>file:/C:/Users/jox/Desktop/BD1/Proyecto%201/MundialDeFutbol/PruebaSql/src/Modelo/Autor.java</file>
+            <file>file:/C:/Users/jox/Desktop/BD1/Proyecto%201/MundialDeFutbol/PruebaSql/src/Control/Controlador.java</file>
+            <file>file:/C:/Users/jox/Desktop/BD1/Proyecto%201/MundialDeFutbol/PruebaSql/src/Control/sysConexion.java</file>
+            <file>file:/C:/Users/jox/Desktop/BD1/Proyecto%201/MundialDeFutbol/PruebaSql/src/Control/AdmLibros.java</file>
         </group>
     </open-files>
 </project-private>
