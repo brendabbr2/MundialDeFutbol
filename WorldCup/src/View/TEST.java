@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package View;
 
 import java.awt.BorderLayout;
 
@@ -21,10 +21,10 @@ public class TEST extends javax.swing.JFrame {
         panel.setSize(498, 254);
         panel.setLocation(0,0);
         
-        Content.removeAll();
-        Content.add(panel,BorderLayout.CENTER);
-        Content.revalidate();
-        Content.repaint();
+        //Content.removeAll();
+        //Content.add(panel,BorderLayout.CENTER);
+        //Content.revalidate();
+        //Content.repaint();
         
         
         
@@ -54,9 +54,7 @@ public class TEST extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -282,8 +280,6 @@ public class TEST extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
