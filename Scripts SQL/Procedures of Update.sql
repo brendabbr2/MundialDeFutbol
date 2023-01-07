@@ -9,7 +9,7 @@ CREATE OR REPLACE PROCEDURE updateContinent
         UPDATE Continent
         SET nameContinent = NVL(VnameContinent, nameContinent)
         WHERE idContinent = VidContinent;
-    --COMMIT; 
+    COMMIT; 
 END updateContinent;
 
 -- Update Country
@@ -21,7 +21,7 @@ CREATE OR REPLACE PROCEDURE updateCountry
         demonym = NVL(Vdemonym, demonym),
         idContinent = NVL(VidContinent, idContinent)
         WHERE idCountry = VidCountry;
-    --COMMIT; 
+    COMMIT; 
 END updateCountry;
 
 -- Update Province
@@ -32,7 +32,7 @@ CREATE OR REPLACE PROCEDURE updateProvince
         SET nameProvince = NVL(VnameProvince, nameProvince),
         idCountry = NVL(VidCountry, idCountry)
         WHERE idProvince = VidProvince;
-    --COMMIT; 
+    COMMIT; 
 END updateProvince;
 
 -- Update District
@@ -43,7 +43,7 @@ CREATE OR REPLACE PROCEDURE updateDistrict
         SET nameDistrict = NVL(VnameDistrict, nameDistrict),
         idProvince = NVL(VidProvince, idProvince)
         WHERE idDistrict = VidDistrict;
-    --COMMIT; 
+    COMMIT; 
 END updateDistrict;
 
 -- Update Address
@@ -54,7 +54,7 @@ CREATE OR REPLACE PROCEDURE updateAddress
         SET nameAddress = NVL(VnameAddress, nameAddress),
         idDistrict = NVL(VidDistrict, idDistrict)
         WHERE idAddress = VidAddress;
-    --COMMIT; 
+    COMMIT; 
 END updateAddress;
 
 -- Update Stadium
@@ -65,7 +65,7 @@ CREATE OR REPLACE PROCEDURE updateStadium
         SET nameStadium = NVL(VnameStadium, nameStadium),
         idAddress = NVL(VidAddress, idAddress)
         WHERE idStadium = VidStadium;
-    --COMMIT; 
+    COMMIT; 
 END updateStadium;
 
 -- SportMatch no tiene atributos editables
@@ -77,7 +77,7 @@ CREATE OR REPLACE PROCEDURE updateStadiumXSportMatch
         UPDATE StadiumXSportMatch
         SET dateStadiumXSportMatch = NVL(VdateStadiumXSportMatch, dateStadiumXSportMatch)
         WHERE idStadium = VidStadium AND idSportMatch = VidSportMatch;
-    --COMMIT; 
+    COMMIT; 
 END updateStadiumXSportMatch;
 
 -------------------------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ CREATE OR REPLACE PROCEDURE updateGender
         UPDATE Gender
         SET descriptionGender = NVL(V_descriptionGender, descriptionGender)
         WHERE idGender = V_idGender;
-    --COMMIT; 
+    COMMIT; 
 END updateGender;
 
 -- Update Worker
@@ -100,7 +100,7 @@ CREATE OR REPLACE PROCEDURE updateWorker
         UPDATE Worker
         SET hireDate = NVL(V_hireDate, hireDate)
         WHERE idWorker = V_idWorker;
-    --COMMIT; 
+    COMMIT; 
 END updateWorker;
 
 -- Update WorkerType
@@ -110,7 +110,7 @@ CREATE OR REPLACE PROCEDURE updateWorkerType
         UPDATE WorkerType
         SET nameWorkerType = NVL(V_nameWorkerType, nameWorkerType)
         WHERE idWorkerType = V_idWorkerType;
-    --COMMIT; 
+    COMMIT; 
 END updateWorkerType;
 
 -- Update PlayerPosition
@@ -120,7 +120,7 @@ CREATE OR REPLACE PROCEDURE updatePlayerPosition
         UPDATE PlayerPosition
         SET descriptionPos = NVL(V_descriptionPos, descriptionPos)
         WHERE idPosition = V_idPosition;
-    --COMMIT; 
+    COMMIT; 
 END updatePlayerPosition;
 
 -- Update PlayerXSportMatch
@@ -141,7 +141,7 @@ CREATE OR REPLACE PROCEDURE updatePlayerXSportMatch
             corners = NVL(V_corners, corners)
         WHERE idPlayer = v_idPlayer 
         AND idSportMatch = v_idsportmatch;
-    --COMMIT;
+    COMMIT;
 END updatePlayerXSportMatch;
 --------------------------------------------------------------------------------------------
 --By: David Salazar Rodriguez
@@ -153,7 +153,7 @@ CREATE OR REPLACE PROCEDURE updatePhone
         UPDATE Phone
         SET phone = NVL(V_newPhone, phone)
         WHERE phone = V_oldPhone;
-    --COMMIT; 
+    COMMIT; 
 END updatePhone;
 
 CREATE OR REPLACE PROCEDURE updateEmail
@@ -162,7 +162,7 @@ CREATE OR REPLACE PROCEDURE updateEmail
         UPDATE Email
         SET mail = NVL(V_newEmail, mail)
         WHERE mail = V_oldEmail;
-    --COMMIT; 
+    COMMIT; 
 END updateEmail;
 
 CREATE OR REPLACE PROCEDURE updateIdentification
@@ -171,7 +171,7 @@ CREATE OR REPLACE PROCEDURE updateIdentification
         UPDATE Identification
         SET valueIdentification = NVL(V_newIdentification, valueIdentification)
         WHERE valueIdentification = V_oldIdentification;
-    --COMMIT; 
+    COMMIT; 
 END updateIdentification;
 
 CREATE OR REPLACE PROCEDURE updateIdentificationType
@@ -181,7 +181,7 @@ CREATE OR REPLACE PROCEDURE updateIdentificationType
         SET idName = NVL(V_idName , idName),
         idMask = NVL(V_idMask , idMask)
         WHERE idType = V_idType;
-    --COMMIT; 
+    COMMIT; 
 END updateIdentificationType;
 
 CREATE OR REPLACE PROCEDURE updatePerson
@@ -195,7 +195,7 @@ CREATE OR REPLACE PROCEDURE updatePerson
         personName = NVL(V_personName, personName),
         photo = NVL(V_Photo, photo)
         WHERE valueIdentification = V_oldIdentification;
-    --COMMIT; 
+    COMMIT; 
 END updatePerson;
 
 CREATE OR REPLACE PROCEDURE updateUserType
@@ -204,7 +204,7 @@ CREATE OR REPLACE PROCEDURE updateUserType
         UPDATE userType
         SET nameUserType = NVL(V_nameUserType, nameUserType)
         WHERE idUserType = V_idUserType;
-    --COMMIT; 
+    COMMIT; 
 END updateUserType;
 
 CREATE OR REPLACE PROCEDURE updateUserPerson
@@ -215,7 +215,7 @@ CREATE OR REPLACE PROCEDURE updateUserPerson
         username = NVL(V_username, username),
         passwordUser = NVL(V_password, passwordUser)
         WHERE idUserType = V_idUserType;
-    --COMMIT; 
+    COMMIT; 
 END updateUserPerson;
 
 CREATE OR REPLACE PROCEDURE updateUserLog
@@ -227,7 +227,7 @@ CREATE OR REPLACE PROCEDURE updateUserLog
         logDate = NVL(V_logDate, logDate),
         logText = NVL(V_logText, logText)
         WHERE idLog = V_idLog;
-    --COMMIT; 
+    COMMIT; 
 END updateUserLog;
 
 CREATE OR REPLACE PROCEDURE updateUserComment
@@ -239,7 +239,7 @@ CREATE OR REPLACE PROCEDURE updateUserComment
         commentDate = NVL(V_commentDate, commentDate),
         commentText = NVL(V_commentText, commentText)
         WHERE idComment = V_idComment;
-    --COMMIT; 
+    COMMIT; 
 END updateUserComment;
 
 CREATE OR REPLACE PROCEDURE updateUserReview
@@ -250,7 +250,7 @@ CREATE OR REPLACE PROCEDURE updateUserReview
         idUser = NVL(V_idUser, idUser),
         score = NVL(V_score, score)
         WHERE idReview = V_idReview;
-    --COMMIT; 
+    COMMIT; 
 END updateUserReview;
 
 CREATE OR REPLACE PROCEDURE updateUserSave
@@ -260,7 +260,7 @@ CREATE OR REPLACE PROCEDURE updateUserSave
         SET idNews = NVL(V_idNews, idNews),
         idUser = NVL(V_idUser, idUser)
         WHERE idSave = V_idSave;
-    --COMMIT; 
+    COMMIT; 
 END updateUserSave;
 
 CREATE OR REPLACE PROCEDURE updateNews
@@ -276,6 +276,6 @@ CREATE OR REPLACE PROCEDURE updateNews
             newsDate = NVL(V_newsDate, newsDate),
             photo = NVL(V_Photo, photo)
         WHERE idNews = V_idNews;
-    --COMMIT; 
+    COMMIT; 
 END updateUserSave;
 
