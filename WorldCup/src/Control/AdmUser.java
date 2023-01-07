@@ -5,7 +5,6 @@
 package Control;
 
 import Model.User;
-import java.beans.Statement;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -15,10 +14,9 @@ import java.util.ArrayList;
  */
 public class AdmUser {
 
-//    public ArrayList<User> obtenerAutores() throws SQLException {
-//        Connection conn = (Connection) sysConexion.obtConexion();
-//        //Statement statement = (Statement) conn.createStatement();
-//        CallableStatement sql = conn.prepareCall("{call MOSTRAR_AUTORES(?)}");
+//    public ArrayList<User> showUsers() throws SQLException {
+//        Connection conn = (Connection) SysConnection.connect();
+//        CallableStatement sql = conn.prepareCall("{call (?)}");
 //        sql.registerOutParameter(1, Types.REF_CURSOR);
 //        sql.execute();
 //        

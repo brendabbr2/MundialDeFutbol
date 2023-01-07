@@ -11,7 +11,7 @@ import java.sql.*;
  * @author jox
  */
 public class SysConnection {
-    public static Connection obtConexion(){
+    public static Connection connect(){
         try{
             String myDB = "jdbc:oracle:thin:@//localhost:1521/DBPRUEBA";
             String user = "proj";
