@@ -6,7 +6,7 @@ CREATE OR REPLACE PROCEDURE insertWorker
     AS BEGIN 
     INSERT INTO Worker(idWorker, idWorkerType, hiredate)  
     VALUES(s_Person.NEXTVAL, v_idworkertype, v_hiredate);
-    --COMMIT; 
+    COMMIT; 
 END insertWorker;
 
 --This is an insertion for the table WorkerType
@@ -15,7 +15,7 @@ CREATE OR REPLACE PROCEDURE insertWorkerType
     AS BEGIN 
     INSERT INTO WorkerType(idWorkerType, nameWorkerType)  
     VALUES(s_WorkerType.NEXTVAL, v_nameworkertype);
-    --COMMIT; 
+    COMMIT; 
 END insertWorkerType;
 
 --This is an insertion for the table PlayerPosition
@@ -24,7 +24,7 @@ CREATE OR REPLACE PROCEDURE insertPlayerPosition
     AS BEGIN 
     INSERT INTO PlayerPosition(idPosition, positionName)  
     VALUES(s_PlayerPosition.NEXTVAL, v_descritionpos);
-    --COMMIT; 
+    COMMIT; 
 END insertPlayerPosition;
 
 --This is an insertion for the table PlayerXSportMatch
@@ -36,7 +36,7 @@ CREATE OR REPLACE PROCEDURE insertPlayerXSportMatch
         savers, offside, expulsion, goals, corners)  
     VALUES(V_idPlayer, V_idSportMatch, V_yellow_card, V_red_card, 
         V_savers, V_offside, V_expulsion, V_goals, V_corners);
-    --COMMIT; 
+    COMMIT; 
 END insertPlayerXSportMatch;
 
 --This is an insertion for the table insertPlayerXCountry
@@ -45,7 +45,7 @@ CREATE OR REPLACE PROCEDURE insertPlayerXCountry
     AS BEGIN 
     INSERT INTO PlayerXCountry(idPlayer, idCountry)  
     VALUES(V_idPlayer, V_idCountry);
-    --COMMIT; 
+    COMMIT; 
 END insertPlayerXCountry;
 
 --This is an insertion for the table WorkerXSportMatch
@@ -54,7 +54,7 @@ CREATE OR REPLACE PROCEDURE insertWorkerXSportMatch
     AS BEGIN 
     INSERT INTO WorkerXSportMatch(idWorker, idSportMatch)  
     VALUES(V_idWorker, V_idSportMatch);
-    --COMMIT; 
+    COMMIT; 
 END insertWorkerXSportMatch;
 
 --By: David Salazar Rodriguez
@@ -65,7 +65,7 @@ CREATE OR REPLACE PROCEDURE insertGender
     AS BEGIN 
     INSERT INTO Gender(idGender,genderdescription)  
     VALUES(s_gender.NEXTVAL, Vdescription);
-    --COMMIT; 
+    COMMIT; 
 END insertGender;
 
 CREATE OR REPLACE PROCEDURE insertPhone
@@ -73,7 +73,7 @@ CREATE OR REPLACE PROCEDURE insertPhone
     AS BEGIN 
     INSERT INTO Phone(phone,idPerson)  
     VALUES(Vphone, VidPerson);
-    --COMMIT; 
+    COMMIT; 
 END insertPhone;
 
 CREATE OR REPLACE PROCEDURE insertEmail
@@ -81,7 +81,7 @@ CREATE OR REPLACE PROCEDURE insertEmail
     AS BEGIN 
     INSERT INTO Email(idEmail,idPerson,mail) 
     VALUES(s_email.nextVal, VidPerson, Vmail);
-    --COMMIT; 
+    COMMIT; 
 END insertEmail;
 
 CREATE OR REPLACE PROCEDURE insertIdentificationType
@@ -89,7 +89,7 @@ CREATE OR REPLACE PROCEDURE insertIdentificationType
     AS BEGIN 
     INSERT INTO identificationType(idType,idName,idMask) 
     VALUES(s_identificationtype.nextval, VidName, idMask);
-    --COMMIT; 
+    COMMIT; 
 END insertIdentificationType;
 
 CREATE OR REPLACE PROCEDURE insertIdentification
@@ -97,7 +97,7 @@ CREATE OR REPLACE PROCEDURE insertIdentification
     AS BEGIN 
     INSERT INTO identification(idIdentification,idPerson,idType,valueIdentification) 
     VALUES(s_identification.nextval,VidPerson, VidType, VvalueIdentification);
-    --COMMIT; 
+    COMMIT; 
 END insertIdentification;
 
 CREATE OR REPLACE PROCEDURE insertPerson
@@ -108,7 +108,7 @@ CREATE OR REPLACE PROCEDURE insertPerson
         birthday, personName, photo)  
     VALUES(s_person.NEXTVAL, VidGender, Vadress,
         Vbirthdate, Vname, Vphoto);
-    --COMMIT; 
+    COMMIT; 
 END insertPerson;
 -----------------------------------------------------
 -------------------User procedures-----------------------
@@ -117,7 +117,7 @@ CREATE OR REPLACE PROCEDURE insertUserType
     AS BEGIN 
     INSERT INTO userType(idUserType, nameUserType)  
     VALUES(s_userType.NEXTVAL,VuserType);
-    --COMMIT; 
+    COMMIT; 
 END insertUserType;
 
 CREATE OR REPLACE PROCEDURE insertUserPerson
@@ -125,7 +125,7 @@ CREATE OR REPLACE PROCEDURE insertUserPerson
     AS BEGIN 
     INSERT INTO userPerson(idUser,idUserType, username, passwordUser)  
     VALUES(s_userPerson.NEXTVAL,VidUserType, VuserName, Vpasssword);
-    --COMMIT; 
+    COMMIT; 
 END insertUserPerson;
 
 -----------------------------------------------------
@@ -135,7 +135,7 @@ CREATE OR REPLACE PROCEDURE insertUserLog
     AS BEGIN 
     INSERT INTO userLog(idLog,idNews, idUser, logDate,logText)  
     VALUES(s_userLog.NEXTVAL,VidNews, VidUser, VlogDate,VlogText);
-    --COMMIT; 
+    COMMIT; 
 END insertUserLog;
 
 CREATE OR REPLACE PROCEDURE insertUserComment
@@ -143,7 +143,7 @@ CREATE OR REPLACE PROCEDURE insertUserComment
     AS BEGIN 
     INSERT INTO UserComment(idComment,idNews, idUser, commentDate,commentText)  
     VALUES(s_UserComment.NEXTVAL,VidNews, VidUser, VcommentDate,VlcommentText);
-    --COMMIT; 
+    COMMIT; 
 END insertUserComment;
 
 CREATE OR REPLACE PROCEDURE insertUserReview
@@ -151,7 +151,7 @@ CREATE OR REPLACE PROCEDURE insertUserReview
     AS BEGIN 
     INSERT INTO UserReview(idReview,idNews, idUser, score)  
     VALUES(s_UserReview.NEXTVAL,VidNews, VidUser, Vscore);
-    --COMMIT; 
+    COMMIT; 
 END insertUserReview;
 
 CREATE OR REPLACE PROCEDURE insertUserSave
@@ -159,7 +159,7 @@ CREATE OR REPLACE PROCEDURE insertUserSave
     AS BEGIN 
     INSERT INTO UserSave(idSave,idNews, idUser)  
     VALUES(s_UserSave.NEXTVAL,VidNews, VidUser);
-    --COMMIT; 
+    COMMIT; 
 END insertUserSave;
 -----------------------------------------------------
 ---------------------News Table----------------------
@@ -169,7 +169,7 @@ CREATE OR REPLACE PROCEDURE insertNews
     AS BEGIN 
     INSERT INTO News(idNews,idUser,idEvent,title,text,author,newsDate,photo)  
     VALUES(s_News.NEXTVAL,VidUser, VidEvent,Vtitle,Vtext,Vauthor, VnewsDate,Vphoto);
-    --COMMIT; 
+    COMMIT; 
 END insertNews;
 -----------------------------------------------------
 --By: Brenda Badilla Rodriguez
@@ -181,7 +181,7 @@ CREATE OR REPLACE PROCEDURE insertEvent
     AS BEGIN
     INSERT INTO Event(idEvent, idEventType, nameEvent)
     VALUES(s_event.nextval, VidEventType, VnameEvent);
-    --COMMIT; 
+    COMMIT; 
 END insertEvent;
 
 --Event Type
@@ -190,7 +190,7 @@ CREATE OR REPLACE PROCEDURE insertEventType
     AS BEGIN
     INSERT INTO EventType(idEventType, nameEventType)
     VALUES(s_eventtype.nextval, VnameEventType);
-    --COMMIT; 
+    COMMIT; 
 END insertEventType;
 
 --Group Event
@@ -199,7 +199,7 @@ CREATE OR REPLACE PROCEDURE insertGroupEvent
     AS BEGIN
     INSERT INTO groupEvent(idGroup, idEvent, nameGroup)
     VALUES(s_groupevent.nextval, VidEvent, VnameGroup);
-    --COMMIT; 
+    COMMIT; 
 END insertGroupEvent;
 
 --Helper
@@ -208,7 +208,7 @@ CREATE OR REPLACE PROCEDURE insertHelper
     AS BEGIN
     INSERT INTO helper(idHelper, idTeam, idHelperType, hireDate)
     VALUES(VidHelper, VidTeam, VidHelperType, VhireDate);
-    --COMMIT; 
+    COMMIT; 
 END insertHelper;
 
 --HelperType
@@ -217,7 +217,7 @@ CREATE OR REPLACE PROCEDURE insertHelper
     AS BEGIN
     INSERT INTO helper(idHelper, idTeam, idHelperType, hireDate)
     VALUES(s_person.nextval, VidTeam, VidHelperType, VhireDate);
-    --COMMIT; 
+    COMMIT; 
 END insertHelper;
 
 --Parameter
@@ -226,7 +226,7 @@ CREATE OR REPLACE PROCEDURE insertParameterEvent
     AS BEGIN
     INSERT INTO ParameterEvent(idParameter, nameParameter, valueParameter)
     VALUES(s_parameterEvent.nextval, VnameParameter,VvalueParameter);
-    --COMMIT; 
+    COMMIT; 
 END insertParameterEvent;
 
 --Player
@@ -235,7 +235,7 @@ CREATE OR REPLACE PROCEDURE insertPlayer
     AS BEGIN
     INSERT INTO Player(idPlayer, idTeam, idPosition, numberPlayer)
     VALUES(s_person.nextval, VidTeam, VidPosition, VnumberPlayer);
-    --COMMIT; 
+    COMMIT; 
 END insertPlayer;
 
 --Team
@@ -244,7 +244,7 @@ CREATE OR REPLACE PROCEDURE insertTeam
     AS BEGIN
     INSERT INTO Team(idteam, idgroup, idcountry, captainnumber, logophoto, lineup)
     VALUES(s_team.nextval, VidGroup, VidCountry, VcaptainNumber, VlogoPhoto, Vlineup);
-    --COMMIT; 
+    COMMIT; 
 END insertTeam;
 
 -----------------------------------------------------
@@ -257,7 +257,7 @@ CREATE OR REPLACE PROCEDURE insertContinent
     AS BEGIN
     INSERT INTO Continent(idContinent, nameContinent)
     VALUES(s_continent.nextval, VnameContinent);
-    --COMMIT; 
+    COMMIT; 
 END insertContinent;
 
 -- Insert Country
@@ -266,7 +266,7 @@ CREATE OR REPLACE PROCEDURE insertCountry
     AS BEGIN 
     INSERT INTO Country(idCountry, idContinent, nameCountry, demonym)  
     VALUES(s_Country.NEXTVAL, V_idContinent, V_nameCountry, V_demonym);
-    --COMMIT; 
+    COMMIT; 
 END insertCountry;
 
 -- Insert Province
@@ -275,7 +275,7 @@ CREATE OR REPLACE PROCEDURE insertProvince
     AS BEGIN 
     INSERT INTO Province(idProvince, idCountry, nameProvince)  
     VALUES(s_Province.NEXTVAL, V_idCountry, V_nameProvince);
-    --COMMIT; 
+    COMMIT; 
 END insertProvince;
 
 -- Insert District
