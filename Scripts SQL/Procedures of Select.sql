@@ -198,13 +198,15 @@ BEGIN
         WHERE idUserType = NVL(v_idUserType,idUserType); 
 END getUserType;
 
-CREATE OR REPLACE PROCEDURE getUserPerson(v_username IN NUMBER, UserPersonCursor OUT SYS_REFCURSOR) 
+CREATE OR REPLACE PROCEDURE getUserPerson(v_idUser IN NUMBER, UserPersonCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
     OPEN UserPersonCursor FOR  
-        SELECT idUser, idUserType,username,passwordUser
-        FROM userPerson
-        WHERE username = NVL(v_username,username); 
+        SELECT userP.idUser, userT.nameUserType, userP.username, userP.passwordUser
+        FROM userPerson userP
+        INNER JOIN userType userT
+        ON userP.idUserType = userT.idUserType
+        WHERE idUser = NVL(v_idUser, idUser); 
 END getUserPerson;
 
 CREATE OR REPLACE PROCEDURE getUserLog(v_idUser IN NUMBER, LogCursor OUT SYS_REFCURSOR) 
