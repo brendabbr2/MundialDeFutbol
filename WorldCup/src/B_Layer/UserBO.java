@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -72,7 +73,14 @@ public class UserBO {
         }
         return message;
     }
-    public void getUser(){
-
+    public DefaultTableModel getUser(){
+        Connection conn = SysConnection.connect();
+        DefaultTableModel model = userDao.getUser(conn);
+        try {
+            conn.close();
+        }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return model;
     }
 }

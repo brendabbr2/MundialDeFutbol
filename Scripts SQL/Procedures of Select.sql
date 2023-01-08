@@ -206,7 +206,7 @@ BEGIN
         FROM userPerson userP
         INNER JOIN userType userT
         ON userP.idUserType = userT.idUserType
-        WHERE idUser = NVL(v_idUser, idUser); 
+        WHERE userP.idUser = NVL(v_idUser, userP.idUser); 
 END getUserPerson;
 
 CREATE OR REPLACE PROCEDURE getUserLog(v_idUser IN NUMBER, LogCursor OUT SYS_REFCURSOR) 

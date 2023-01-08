@@ -6,11 +6,13 @@ package DA_Layer;
 
 import Connection.SysConnection;
 import Entities.User;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -77,27 +79,38 @@ public class UserDAO {
         }
         return message;
     }
+    // for the table to read the model, eliminate the default model of the table
+    // in view: table right click >> properties >> model >> delete all registes
     public DefaultTableModel getUser(Connection conn){
         String [] columns = {"idUser", "userType", "username", "password"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
-        String sql = "CALL getUser(?)";
+        CallableStatement statement = null;
         
-        String [] row = new String[5];
+        String sql = "CALL getUserPerson(?,?)";
+        
+        String [] row = new String[4];
         Statement st = null;
         ResultSet rs = null;
         
         try {
-            st = conn.createStatement();
-            rs = st.executeQuery(sql);
+            statement = conn.prepareCall(sql);
+            statement.setNull(1, Types.NUMERIC);
+            statement.registerOutParameter(2, Types.REF_CURSOR);
+            statement.execute();
+            rs = (ResultSet) statement.getObject(2);
+            
             while (rs.next()) {
-                for (int i = 0; i < 7; i++) {
+                for (int i = 0; i < 4; i++) {
                     row[i] = rs.getString(i+1);
                 }
+                model.addRow(row);
             }
+            System.out.println("Succesfully listed");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Unable to show table");
+            System.out.println(e.getMessage());
         }
         
         return model;

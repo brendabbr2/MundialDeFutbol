@@ -36,10 +36,13 @@ public class TestBO {
         message = userBO.deleteUser(idUser);  
         System.out.println(message);
     }
+    public void get(){
+        userBO.getUser();
+    }
     
     public static void main(String[] args) {
         TestBO test = new TestBO();
-        test.delete(2);
+        test.get();
     }
 }
 
