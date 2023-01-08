@@ -25,8 +25,6 @@ public class User extends Table{
         this.password = password;
     }
     
-    public User(){};
-
     public User(int idUser, int idUserType, String username, String password, String CreationUser, String CreationDate, String ModificationUser, String ModificationDate) {
         super(CreationUser, CreationDate, ModificationUser, ModificationDate);
         this.idUser = idUser;
