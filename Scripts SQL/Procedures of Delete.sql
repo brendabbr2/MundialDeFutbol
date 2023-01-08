@@ -172,6 +172,22 @@ AS BEGIN
     Commit;
 END deletePerson;
 
+--Delete UserType
+CREATE OR REPLACE PROCEDURE deleteUserType (VidUserType IN NUMBER) 
+AS BEGIN 
+    DELETE FROM UserType 
+    WHERE idUserType = VidUserType; 
+    Commit;
+END deleteUserType;
+
+--Delete UserPerson
+CREATE OR REPLACE PROCEDURE deleteUserPerson (VidUser IN NUMBER) 
+AS BEGIN 
+    DELETE FROM UserPerson 
+    WHERE idUser = VidUser; 
+    Commit;
+END deleteUserPerson;
+
 -----------------------------------------------------
 ----------------User/News Relations------------------
 --Delete Log

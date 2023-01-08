@@ -208,13 +208,13 @@ CREATE OR REPLACE PROCEDURE updateUserType
 END updateUserType;
 
 CREATE OR REPLACE PROCEDURE updateUserPerson
-    (V_idUserType IN NUMBER, V_username IN VARCHAR2, V_password VARCHAR2)
+    (V_idUser IN NUMBER, V_idUserType IN NUMBER, V_username IN VARCHAR2, V_password VARCHAR2)
     AS BEGIN
         UPDATE userPerson
         SET idUserType = NVL(V_idUserType, idUserType),
         username = NVL(V_username, username),
         passwordUser = NVL(V_password, passwordUser)
-        WHERE idUserType = V_idUserType;
+        WHERE idUser = V_idUser;
     COMMIT; 
 END updateUserPerson;
 

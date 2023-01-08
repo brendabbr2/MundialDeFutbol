@@ -13,6 +13,10 @@ public class User extends Table{
     private int idUserType;
     private String username;
     private String password;
+    
+    public User() {
+        
+    }
 
     public User(int idUser, int idUserType, String username, String password) {
         this.idUser = idUser;
