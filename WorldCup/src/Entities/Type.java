@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package Entities;
 
 /**
  *
  * @author Datos
  */
 public class Type extends Table{
-    public int idType;
-    public String nameType;
-    public int mask;
+    private int idType;
+    private String nameType;
+    private int mask;
 
     public Type(int idType, String nameType) {
         this.idType = idType;

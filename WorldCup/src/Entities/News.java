@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package Entities;
 
 /**
  *
  * @author Datos
  */
 public class News extends Table{
-    public String title;
-    public String text;
-    public String author;
-    public String date;
-    public String photo;
+    private String title;
+    private String text;
+    private String author;
+    private String date;
+    private String photo;
 
     public News(String title, String text, String author, String date, String photo) {
         this.title = title;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package Entities;
 
 /**
  *
@@ -10,18 +10,18 @@ package Model;
  */
 public class User extends Table{
     private int idUser;
-    private Type idUserType;
+    private int idUserType;
     private String username;
     private String password;
 
-    public User(int idUser, Type idUserType, String username, String password) {
+    public User(int idUser, int idUserType, String username, String password) {
         this.idUser = idUser;
         this.idUserType = idUserType;
         this.username = username;
         this.password = password;
     }
 
-    public User(int idUser, Type idUserType, String username, String password, String CreationUser, String CreationDate, String ModificationUser, String ModificationDate) {
+    public User(int idUser, int idUserType, String username, String password, String CreationUser, String CreationDate, String ModificationUser, String ModificationDate) {
         super(CreationUser, CreationDate, ModificationUser, ModificationDate);
         this.idUser = idUser;
         this.idUserType = idUserType;
@@ -37,7 +37,7 @@ public class User extends Table{
         return idUser;
     }
 
-    public Type getIdUserType() {
+    public int getIdUserType() {
         return idUserType;
     }
 
@@ -49,7 +49,7 @@ public class User extends Table{
         this.idUser = idUser;
     }
 
-    public void setIdUserType(Type idUserType) {
+    public void setIdUserType(int idUserType) {
         this.idUserType = idUserType;
     }
 
