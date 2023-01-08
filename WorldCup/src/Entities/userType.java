@@ -8,7 +8,7 @@ package Entities;
  *
  * @author david
  */
-public class userType extends Table{
+public class userType{
     private int idUserType;
     private String nameUserType;
 
@@ -37,6 +37,4 @@ public class userType extends Table{
     public String toString() {
         return "userType{" + "idUserType=" + idUserType + ", nameUserType=" + nameUserType + '}';
     }
-    
-    
 }

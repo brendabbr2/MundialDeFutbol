@@ -8,7 +8,7 @@ package Entities;
  *
  * @author david
  */
-public class UserPerson extends Table{
+public class UserPerson {
     private int idUser;
     private int idUserType;
     private String userName;

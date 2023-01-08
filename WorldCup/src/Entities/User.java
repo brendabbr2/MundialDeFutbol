@@ -8,7 +8,7 @@ package Entities;
  *
  * @author Datos
  */
-public class User extends Table{
+public class User {
     private int idUser;
     private int idUserType;
     private String username;
@@ -19,14 +19,6 @@ public class User extends Table{
     }
 
     public User(int idUser, int idUserType, String username, String password) {
-        this.idUser = idUser;
-        this.idUserType = idUserType;
-        this.username = username;
-        this.password = password;
-    }
-    
-    public User(int idUser, int idUserType, String username, String password, String CreationUser, String CreationDate, String ModificationUser, String ModificationDate) {
-        super(CreationUser, CreationDate, ModificationUser, ModificationDate);
         this.idUser = idUser;
         this.idUserType = idUserType;
         this.username = username;

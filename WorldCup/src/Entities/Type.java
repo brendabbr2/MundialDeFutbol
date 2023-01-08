@@ -8,7 +8,7 @@ package Entities;
  *
  * @author Datos
  */
-public class Type extends Table{
+public class Type {
     private int idType;
     private String nameType;
     private int mask;
@@ -19,13 +19,6 @@ public class Type extends Table{
     }
 
     public Type(int idType, String nameType, int mask) {
-        this.idType = idType;
-        this.nameType = nameType;
-        this.mask = mask;
-    }
-
-    public Type(int idType, String nameType, int mask, String CreationUser, String CreationDate, String ModificationUser, String ModificationDate) {
-        super(CreationUser, CreationDate, ModificationUser, ModificationDate);
         this.idType = idType;
         this.nameType = nameType;
         this.mask = mask;
