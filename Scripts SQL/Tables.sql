@@ -58,7 +58,7 @@ CREATE TABLE Identification(
 
 CREATE TABLE identificationType(
     --------------PK------------------
-    idType number(6),
+    idIdentificationType number(6),
     --------------Attribute------------
     idName varchar2(50),
     idMask number(10),
