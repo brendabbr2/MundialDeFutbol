@@ -8,7 +8,7 @@ package Entities;
  *
  * @author Datos
  */
-public abstract class Table {
+public class Table {
     private String CreationUser;
     private String CreationDate;
     private String ModificationUser;
@@ -27,8 +27,6 @@ public abstract class Table {
     public String getCreationUser() {
         return CreationUser;
     }
-
-    public abstract void getxxx();
     
     public String getCreationDate() {
         return CreationDate;
