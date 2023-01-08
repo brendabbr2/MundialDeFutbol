@@ -8,7 +8,11 @@ import Connection.SysConnection;
 import Entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -73,7 +77,29 @@ public class UserDAO {
         }
         return message;
     }
-    public void getUser(){
+    public DefaultTableModel getUser(Connection conn){
+        String [] columns = {"idUser", "userType", "username", "password"};
+        DefaultTableModel model = new DefaultTableModel(null, columns);
+        
+        String sql = "CALL getUser(?)";
+        
+        String [] row = new String[5];
+        Statement st = null;
+        ResultSet rs = null;
+        
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                for (int i = 0; i < 7; i++) {
+                    row[i] = rs.getString(i+1);
+                }
+            }
 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unable to show table");
+        }
+        
+        return model;
     }
 }

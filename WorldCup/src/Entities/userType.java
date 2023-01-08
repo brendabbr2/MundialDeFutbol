@@ -8,11 +8,15 @@ package Entities;
  *
  * @author david
  */
+<<<<<<< HEAD
 public class userType{
+=======
+public class UserType extends Table{
+>>>>>>> 7edd5ab4f575910959087495a76fd996b9e8f866
     private int idUserType;
     private String nameUserType;
 
-    public userType(int idUserType, String nameUserType) {
+    public UserType(int idUserType, String nameUserType) {
         this.idUserType = idUserType;
         this.nameUserType = nameUserType;
     }
