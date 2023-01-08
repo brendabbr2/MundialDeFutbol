@@ -60,7 +60,4 @@ public class User extends Table{
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
-    
 }
