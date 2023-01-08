@@ -8,7 +8,7 @@ package Entities;
  *
  * @author david
  */
-public class Gender extends Table{
+public class Gender {
     private int idGender;
     private String genderDescription;
 

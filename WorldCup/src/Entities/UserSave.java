@@ -8,25 +8,23 @@ package Entities;
  *
  * @author david
  */
-public class UserReview {
-    private int idReview;
+public class UserSave {
+    private int idSave;
     private int idNews;
     private int idUser;
-    private int Score;
 
-    public UserReview(int idReview, int idNews, int idUser, int Score) {
-        this.idReview = idReview;
+    public UserSave(int idSave, int idNews, int idUser) {
+        this.idSave = idSave;
         this.idNews = idNews;
         this.idUser = idUser;
-        this.Score = Score;
     }
 
-    public int getIdReview() {
-        return idReview;
+    public int getIdSave() {
+        return idSave;
     }
 
-    public void setIdReview(int idReview) {
-        this.idReview = idReview;
+    public void setIdSave(int idSave) {
+        this.idSave = idSave;
     }
 
     public int getIdNews() {
@@ -45,16 +43,10 @@ public class UserReview {
         this.idUser = idUser;
     }
 
-    public int getScore() {
-        return Score;
-    }
-
-    public void setScore(int Score) {
-        this.Score = Score;
-    }
-
     @Override
     public String toString() {
-        return "UserReview{" + "idReview=" + idReview + ", idNews=" + idNews + ", idUser=" + idUser + ", Score=" + Score + '}';
+        return "UserSave{" + "idSave=" + idSave + ", idNews=" + idNews + ", idUser=" + idUser + '}';
     }
+    
+    
 }

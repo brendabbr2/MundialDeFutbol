@@ -8,15 +8,15 @@ package Entities;
  *
  * @author david
  */
-public class Group {
+public class GroupEvent {
     private int idGroup;
     private int idEvent;
-    private String name;
+    private String nameGroup;
 
-    public Group(int idGroup, int idEvent, String name) {
+    public GroupEvent(int idGroup, int idEvent, String nameGroup) {
         this.idGroup = idGroup;
         this.idEvent = idEvent;
-        this.name = name;
+        this.nameGroup = nameGroup;
     }
 
     public int getIdGroup() {
@@ -35,16 +35,16 @@ public class Group {
         this.idEvent = idEvent;
     }
 
-    public String getName() {
-        return name;
+    public String getNameGroup() {
+        return nameGroup;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameGroup(String nameGroup) {
+        this.nameGroup = nameGroup;
     }
 
     @Override
     public String toString() {
-        return "Group{" + "idGroup=" + idGroup + ", idEvent=" + idEvent + ", name=" + name + '}';
+        return "GroupEvent{" + "idGroup=" + idGroup + ", idEvent=" + idEvent + ", nameGroup=" + nameGroup + '}';
     }
 }

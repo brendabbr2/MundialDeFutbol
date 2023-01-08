@@ -52,16 +52,14 @@
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="lblNewsTitle" pref="740" max="32767" attributes="0"/>
                   <Component id="btnReaddNews2" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnPrevious" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnNext" min="-2" pref="75" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="btnReadNews1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="pnlNewsTab1" alignment="1" max="32767" attributes="0"/>
-                      <Component id="pnlNewsTab" alignment="1" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="btnPrevious" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnNext" min="-2" pref="75" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="btnReadNews1" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlNewsTab1" alignment="1" max="32767" attributes="0"/>
+                  <Component id="pnlNewsTab" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
@@ -80,7 +78,7 @@
               <Component id="pnlNewsTab" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnReaddNews2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnNext" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPrevious" alignment="3" min="-2" max="-2" attributes="0"/>

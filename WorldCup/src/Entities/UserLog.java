@@ -8,7 +8,7 @@ package Entities;
  *
  * @author david
  */
-public class UserLog extends Table{
+public class UserLog {
     private int idLog;
     private int idNews;
     private int idUser;

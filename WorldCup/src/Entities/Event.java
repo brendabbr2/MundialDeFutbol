@@ -8,7 +8,7 @@ package Entities;
  *
  * @author david
  */
-public class Event extends Table{
+public class Event {
     private int idEvent;
     private int idEvenType;
     private String name;

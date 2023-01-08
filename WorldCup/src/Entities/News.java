@@ -8,7 +8,7 @@ package Entities;
  *
  * @author Datos
  */
-public class News extends Table{
+public class News {
     private String title;
     private String text;
     private String author;
@@ -21,17 +21,8 @@ public class News extends Table{
         this.author = author;
         this.date = date;
         this.photo = photo;
-    }
-
-    public News(String title, String text, String author, String date, String photo, String CreationUser, String CreationDate, String ModificationUser, String ModificationDate) {
-        super(CreationUser, CreationDate, ModificationUser, ModificationDate);
-        this.title = title;
-        this.text = text;
-        this.author = author;
-        this.date = date;
-        this.photo = photo;
-    }
-
+    } 
+    
     public String getTitle() {
         return title;
     }

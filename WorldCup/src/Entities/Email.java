@@ -8,7 +8,7 @@ package Entities;
  *
  * @author david
  */
-public class Email extends Table{
+public class Email {
     private int idEmail;
     private int idPerson;
     private String mail;

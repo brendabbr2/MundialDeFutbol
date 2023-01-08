@@ -8,7 +8,7 @@ package Entities;
  *
  * @author david
  */
-public class Identification extends Table{
+public class Identification {
     private int idIdentification;
     private int idPerson;
     private int idType;
