@@ -49,6 +49,11 @@ public class Admin_Options extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(834, 578));
 
         btnConsultData.setText("Consult Data");
+        btnConsultData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultDataActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlConsultDataLayout = new javax.swing.GroupLayout(pnlConsultData);
         pnlConsultData.setLayout(pnlConsultDataLayout);
@@ -240,26 +245,25 @@ public class Admin_Options extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnConsultData6ActionPerformed
 
+    private void btnConsultDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultDataActionPerformed
+    
+        
+    }//GEN-LAST:event_btnConsultDataActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultData;
     private javax.swing.JButton btnConsultData1;
     private javax.swing.JButton btnConsultData2;
     private javax.swing.JButton btnConsultData3;
-    private javax.swing.JButton btnConsultData4;
-    private javax.swing.JButton btnConsultData5;
     private javax.swing.JButton btnConsultData6;
     private javax.swing.JButton btnConsultData7;
     private javax.swing.JButton btnConsultData8;
     private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel pnlConsultData;
     private javax.swing.JPanel pnlConsultData1;
     private javax.swing.JPanel pnlConsultData2;
     private javax.swing.JPanel pnlConsultData3;
-    private javax.swing.JPanel pnlConsultData4;
-    private javax.swing.JPanel pnlConsultData5;
     private javax.swing.JPanel pnlConsultData6;
     private javax.swing.JPanel pnlConsultData7;
     private javax.swing.JPanel pnlConsultData8;
