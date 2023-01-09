@@ -3,7 +3,7 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="9f" green="53" red="0" type="rgb"/>
+      <Color blue="20" green="4" red="5e" type="rgb"/>
     </Property>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[834, 578]"/>
@@ -33,22 +33,6 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnConsultData7" min="-2" pref="230" max="-2" attributes="0"/>
-                          <Component id="pnlConsultData7" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnConsultData8" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                          <Component id="pnlConsultData8" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="pnlConsultData3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="pnlConsultData6" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnlConsultData1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -56,8 +40,19 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="pnlConsultData" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="141" max="32767" attributes="0"/>
+                      <EmptySpace pref="139" max="32767" attributes="0"/>
                       <Component id="pnlManageUsers" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pnlConsultData3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlConsultData7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="141" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="pnlConsultData8" max="32767" attributes="0"/>
+                          <Component id="pnlConsultData6" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
@@ -89,14 +84,8 @@
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="pnlConsultData7" max="32767" attributes="0"/>
-                      <Component id="btnConsultData7" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="pnlConsultData8" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnConsultData8" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="pnlConsultData7" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlConsultData8" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="163" max="32767" attributes="0"/>
           </Group>
@@ -105,6 +94,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pnlConsultData">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="c" red="98" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -130,6 +124,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlManageUsers">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="c" red="98" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -158,6 +157,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlConsultData1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="c" red="98" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -180,6 +184,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlConsultData2">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="c" red="98" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -205,6 +214,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlConsultData3">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="c" red="98" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -227,6 +241,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlConsultData6">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="c" red="98" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -252,44 +271,64 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlConsultData7">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="c" red="98" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="230" max="32767" attributes="0"/>
+              <Component id="jButton1" alignment="0" pref="230" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
+              <Component id="jButton1" alignment="0" pref="57" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jButton1"/>
+          </Properties>
+        </Component>
+      </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnConsultData7">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Manage Players"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnConsultData8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Manage Players"/>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JPanel" name="pnlConsultData8">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="c" red="98" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="230" max="32767" attributes="0"/>
+              <Component id="btnConsultData8" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="btnConsultData8" min="-2" pref="57" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="btnConsultData8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Manage Players"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultData8ActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
     </Container>
   </SubComponents>
 </Form>
