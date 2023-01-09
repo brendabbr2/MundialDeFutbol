@@ -34,7 +34,6 @@ public class TEST extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton1 = new javax.swing.JRadioButton();
         pnlBackground = new javax.swing.JPanel();
         pnlSidebar = new javax.swing.JPanel();
         pnlLogo = new javax.swing.JPanel();
@@ -42,19 +41,17 @@ public class TEST extends javax.swing.JFrame {
         btnNews = new javax.swing.JButton();
         pnlLikes = new javax.swing.JPanel();
         btnLikes = new javax.swing.JButton();
-        pnlComments = new javax.swing.JPanel();
-        btnComments = new javax.swing.JButton();
         pnlMatches = new javax.swing.JPanel();
         btnMatches = new javax.swing.JButton();
         pnlLogin = new javax.swing.JPanel();
-        btnAdminOptions = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         pnlContent = new javax.swing.JPanel();
-        btnComments1 = new javax.swing.JButton();
-
-        jRadioButton1.setText("jRadioButton1");
+        pnlAdminOps = new javax.swing.JPanel();
+        btnAdminOptions = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1280, 590));
+        setMaximumSize(new java.awt.Dimension(1048, 580));
+        setMinimumSize(new java.awt.Dimension(1048, 580));
 
         pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
         pnlBackground.setMaximumSize(new java.awt.Dimension(33601, 580));
@@ -63,7 +60,7 @@ public class TEST extends javax.swing.JFrame {
         pnlBackground.setPreferredSize(new java.awt.Dimension(1048, 580));
         pnlBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlSidebar.setBackground(new java.awt.Color(0, 83, 159));
+        pnlSidebar.setBackground(new java.awt.Color(94, 4, 32));
 
         javax.swing.GroupLayout pnlLogoLayout = new javax.swing.GroupLayout(pnlLogo);
         pnlLogo.setLayout(pnlLogoLayout);
@@ -76,13 +73,17 @@ public class TEST extends javax.swing.JFrame {
             .addGap(0, 153, Short.MAX_VALUE)
         );
 
-        pnlNews.setBackground(new java.awt.Color(0, 83, 159));
+        pnlNews.setBackground(new java.awt.Color(152, 12, 51));
+        pnlNews.setPreferredSize(new java.awt.Dimension(220, 50));
 
-        btnNews.setBackground(new java.awt.Color(0, 83, 159));
+        btnNews.setBackground(new java.awt.Color(152, 12, 51));
         btnNews.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnNews.setForeground(new java.awt.Color(255, 255, 255));
         btnNews.setText("News");
         btnNews.setBorder(null);
+        btnNews.setMaximumSize(new java.awt.Dimension(220, 50));
+        btnNews.setMinimumSize(new java.awt.Dimension(220, 50));
+        btnNews.setPreferredSize(new java.awt.Dimension(220, 50));
         btnNews.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewsActionPerformed(evt);
@@ -93,92 +94,78 @@ public class TEST extends javax.swing.JFrame {
         pnlNews.setLayout(pnlNewsLayout);
         pnlNewsLayout.setHorizontalGroup(
             pnlNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlNewsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnNews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(btnNews, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
         );
         pnlNewsLayout.setVerticalGroup(
             pnlNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnNews, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(btnNews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnlLikes.setBackground(new java.awt.Color(0, 83, 159));
+        pnlLikes.setMaximumSize(new java.awt.Dimension(220, 50));
+        pnlLikes.setMinimumSize(new java.awt.Dimension(220, 50));
+        pnlLikes.setPreferredSize(new java.awt.Dimension(220, 50));
 
-        btnLikes.setBackground(new java.awt.Color(0, 83, 159));
+        btnLikes.setBackground(new java.awt.Color(152, 12, 51));
         btnLikes.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnLikes.setForeground(new java.awt.Color(255, 255, 255));
         btnLikes.setText("Likes");
         btnLikes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnLikes.setMaximumSize(new java.awt.Dimension(220, 50));
+        btnLikes.setMinimumSize(new java.awt.Dimension(220, 50));
+        btnLikes.setPreferredSize(new java.awt.Dimension(220, 50));
 
         javax.swing.GroupLayout pnlLikesLayout = new javax.swing.GroupLayout(pnlLikes);
         pnlLikes.setLayout(pnlLikesLayout);
         pnlLikesLayout.setHorizontalGroup(
             pnlLikesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLikesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnLikes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(btnLikes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlLikesLayout.setVerticalGroup(
             pnlLikesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnLikes, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        pnlComments.setBackground(new java.awt.Color(0, 83, 159));
-
-        btnComments.setBackground(new java.awt.Color(0, 83, 159));
-        btnComments.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnComments.setForeground(new java.awt.Color(255, 255, 255));
-        btnComments.setText("Comments");
-        btnComments.setBorder(null);
-
-        javax.swing.GroupLayout pnlCommentsLayout = new javax.swing.GroupLayout(pnlComments);
-        pnlComments.setLayout(pnlCommentsLayout);
-        pnlCommentsLayout.setHorizontalGroup(
-            pnlCommentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCommentsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnComments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnlCommentsLayout.setVerticalGroup(
-            pnlCommentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnComments, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(btnLikes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnlMatches.setBackground(new java.awt.Color(0, 83, 159));
 
-        btnMatches.setBackground(new java.awt.Color(0, 83, 159));
+        btnMatches.setBackground(new java.awt.Color(152, 12, 51));
         btnMatches.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnMatches.setForeground(new java.awt.Color(255, 255, 255));
         btnMatches.setText("Matches");
         btnMatches.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnMatches.setMaximumSize(new java.awt.Dimension(45, 18));
+        btnMatches.setMinimumSize(new java.awt.Dimension(45, 18));
+        btnMatches.setPreferredSize(new java.awt.Dimension(45, 18));
+        btnMatches.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMatchesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMatchesLayout = new javax.swing.GroupLayout(pnlMatches);
         pnlMatches.setLayout(pnlMatchesLayout);
         pnlMatchesLayout.setHorizontalGroup(
             pnlMatchesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMatchesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(btnMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlMatchesLayout.setVerticalGroup(
             pnlMatchesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMatches, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+            .addComponent(btnMatches, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
         );
 
-        pnlLogin.setBackground(new java.awt.Color(0, 83, 159));
+        pnlLogin.setBackground(new java.awt.Color(255, 255, 255));
+        pnlLogin.setMaximumSize(new java.awt.Dimension(220, 50));
+        pnlLogin.setMinimumSize(new java.awt.Dimension(220, 50));
+        pnlLogin.setPreferredSize(new java.awt.Dimension(220, 50));
 
-        btnAdminOptions.setBackground(new java.awt.Color(0, 83, 159));
-        btnAdminOptions.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnAdminOptions.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdminOptions.setText("Administrator Options");
-        btnAdminOptions.setBorder(null);
-        btnAdminOptions.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setBackground(new java.awt.Color(152, 12, 51));
+        btnLogin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("Log in");
+        btnLogin.setBorder(null);
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdminOptionsActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -186,20 +173,14 @@ public class TEST extends javax.swing.JFrame {
         pnlLogin.setLayout(pnlLoginLayout);
         pnlLoginLayout.setHorizontalGroup(
             pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLoginLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlLoginLayout.setVerticalGroup(
             pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        pnlContent.setBackground(new java.awt.Color(0, 83, 159));
+        pnlContent.setBackground(new java.awt.Color(94, 4, 32));
         pnlContent.setMaximumSize(new java.awt.Dimension(834, 578));
         pnlContent.setMinimumSize(new java.awt.Dimension(834, 578));
         pnlContent.setPreferredSize(new java.awt.Dimension(834, 578));
@@ -215,16 +196,31 @@ public class TEST extends javax.swing.JFrame {
             .addGap(0, 578, Short.MAX_VALUE)
         );
 
-        btnComments1.setBackground(new java.awt.Color(0, 83, 159));
-        btnComments1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnComments1.setForeground(new java.awt.Color(255, 255, 255));
-        btnComments1.setText("Log in");
-        btnComments1.setBorder(null);
-        btnComments1.addActionListener(new java.awt.event.ActionListener() {
+        pnlAdminOps.setBackground(new java.awt.Color(255, 255, 255));
+        pnlAdminOps.setMaximumSize(new java.awt.Dimension(220, 50));
+        pnlAdminOps.setMinimumSize(new java.awt.Dimension(220, 50));
+
+        btnAdminOptions.setBackground(new java.awt.Color(152, 12, 51));
+        btnAdminOptions.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnAdminOptions.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdminOptions.setText("Administrator Options");
+        btnAdminOptions.setBorder(null);
+        btnAdminOptions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComments1ActionPerformed(evt);
+                btnAdminOptionsActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout pnlAdminOpsLayout = new javax.swing.GroupLayout(pnlAdminOps);
+        pnlAdminOps.setLayout(pnlAdminOpsLayout);
+        pnlAdminOpsLayout.setHorizontalGroup(
+            pnlAdminOpsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlAdminOpsLayout.setVerticalGroup(
+            pnlAdminOpsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
         pnlSidebar.setLayout(pnlSidebarLayout);
@@ -232,41 +228,38 @@ public class TEST extends javax.swing.JFrame {
             pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSidebarLayout.createSequentialGroup()
                 .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlNews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlLikes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlComments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlNews, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                    .addComponent(pnlLikes, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                     .addComponent(pnlMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSidebarLayout.createSequentialGroup()
+                    .addGroup(pnlSidebarLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnComments1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlAdminOps, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlContent, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addComponent(pnlContent, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         pnlSidebarLayout.setVerticalGroup(
             pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSidebarLayout.createSequentialGroup()
-                .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlSidebarLayout.createSequentialGroup()
-                        .addComponent(pnlLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlNews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlLikes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlComments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlMatches, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnComments1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlSidebarLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pnlContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(pnlContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(pnlSidebarLayout.createSequentialGroup()
+                .addComponent(pnlLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlNews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlLikes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlMatches, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlAdminOps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
 
         pnlBackground.add(pnlSidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 580));
@@ -275,11 +268,11 @@ public class TEST extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -294,14 +287,14 @@ public class TEST extends javax.swing.JFrame {
         pnlContent.repaint();
     }//GEN-LAST:event_btnNewsActionPerformed
 
-    private void btnComments1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComments1ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         panelLog.setSize(834, 567);
         panelLog.setLocation(0,0);
         pnlContent.removeAll();
         pnlContent.add(panelLog,BorderLayout.CENTER);
         pnlContent.revalidate();
         pnlContent.repaint();
-    }//GEN-LAST:event_btnComments1ActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnAdminOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminOptionsActionPerformed
         adminOpsPanel.setSize(834, 567);
@@ -311,6 +304,10 @@ public class TEST extends javax.swing.JFrame {
         pnlContent.revalidate();
         pnlContent.repaint();
     }//GEN-LAST:event_btnAdminOptionsActionPerformed
+
+    private void btnMatchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatchesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMatchesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,14 +346,12 @@ public class TEST extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdminOptions;
-    private javax.swing.JButton btnComments;
-    private javax.swing.JButton btnComments1;
     private javax.swing.JButton btnLikes;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnMatches;
     private javax.swing.JButton btnNews;
-    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JPanel pnlAdminOps;
     private javax.swing.JPanel pnlBackground;
-    private javax.swing.JPanel pnlComments;
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlLikes;
     private javax.swing.JPanel pnlLogin;
