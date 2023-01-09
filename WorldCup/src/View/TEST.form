@@ -77,8 +77,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlNews" pref="226" max="32767" attributes="0"/>
-                          <Component id="pnlLikes" pref="226" max="32767" attributes="0"/>
+                          <Component id="pnlNews" pref="232" max="32767" attributes="0"/>
+                          <Component id="pnlLikes" pref="232" max="32767" attributes="0"/>
                           <Component id="pnlMatches" max="32767" attributes="0"/>
                           <Component id="pnlLogo" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
