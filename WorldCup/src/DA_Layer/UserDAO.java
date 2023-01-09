@@ -33,8 +33,9 @@ public class UserDAO {
             pst.setInt(1, user.getIdUserType());
             pst.setString(2, user.getUsername());
             pst.setString(3, user.getPassword());
-            message = "Succesfully saved";
+     
             pst.execute();
+            message = "Succesfully saved";
             pst.close();
             
         } catch (SQLException e){
@@ -53,8 +54,8 @@ public class UserDAO {
             pst.setString(3, user.getUsername());
             pst.setString(4, user.getPassword());
             
-            message = "Succesfully updated";
             pst.execute();
+            message = "Succesfully updated";
             pst.close();
             
         } catch (SQLException e){
@@ -70,8 +71,8 @@ public class UserDAO {
             pst = conn.prepareStatement(sql);
             pst.setInt(1, idUser);
             
-            message = "Succesfully deleted";
             pst.execute();
+            message = "Succesfully deleted";
             pst.close();
             
         } catch (SQLException e){
@@ -81,7 +82,7 @@ public class UserDAO {
     }
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
-    public DefaultTableModel getUser(Connection conn){
+    public DefaultTableModel getUsers(Connection conn){
         String [] columns = {"idUser", "userType", "username", "password"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
@@ -114,5 +115,37 @@ public class UserDAO {
         }
         
         return model;
+    }
+    
+    public int verifyUser(Connection conn, User user){
+        
+        CallableStatement statement = null;
+        
+        String sql = "CALL verifyUserPerson(?,?,?)";
+        
+        Statement st = null;
+        ResultSet rs = null;
+        int idUserType = -1;
+        
+        try {
+            statement = conn.prepareCall(sql);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getPassword());
+            statement.registerOutParameter(3, Types.REF_CURSOR);
+            statement.execute();
+            rs = (ResultSet) statement.getObject(3);
+            
+            if (rs.next()){
+                if (rs.getString(1) != null)
+                    idUserType = rs.getInt(1);
+            }
+            
+            System.out.println("Succesfully verified");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return idUserType;
     }
 }

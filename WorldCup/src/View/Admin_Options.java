@@ -4,17 +4,22 @@
  */
 package View;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Datos
  */
 public class Admin_Options extends javax.swing.JPanel {
-
+    private TableUsers tableUsersPanel = new TableUsers();
+    private JPanel pnlContent;
     /**
      * Creates new form Admin_Options
      */
-    public Admin_Options() {
+    public Admin_Options(JPanel pnlContent) {
         initComponents();
+        this.pnlContent = pnlContent;
     }
 
     /**
@@ -29,7 +34,7 @@ public class Admin_Options extends javax.swing.JPanel {
         pnlConsultData = new javax.swing.JPanel();
         btnConsultData = new javax.swing.JButton();
         pnlManageUsers = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnManageUsers = new javax.swing.JButton();
         pnlConsultData1 = new javax.swing.JPanel();
         btnConsultData1 = new javax.swing.JButton();
         pnlConsultData2 = new javax.swing.JPanel();
@@ -42,13 +47,12 @@ public class Admin_Options extends javax.swing.JPanel {
         btnAdress = new javax.swing.JButton();
         pnlConsultData8 = new javax.swing.JPanel();
         btnConsultData8 = new javax.swing.JButton();
+        pnlConsultData8 = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(94, 4, 32));
+        setBackground(new java.awt.Color(0, 83, 159));
         setMaximumSize(new java.awt.Dimension(834, 578));
         setMinimumSize(new java.awt.Dimension(834, 578));
         setPreferredSize(new java.awt.Dimension(834, 578));
-
-        pnlConsultData.setBackground(new java.awt.Color(152, 12, 51));
 
         btnConsultData.setText("Consult Data");
         btnConsultData.addActionListener(new java.awt.event.ActionListener() {
@@ -68,12 +72,10 @@ public class Admin_Options extends javax.swing.JPanel {
             .addComponent(btnConsultData, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        pnlManageUsers.setBackground(new java.awt.Color(152, 12, 51));
-
-        jButton2.setText("Manage Users");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnManageUsers.setText("Manage Users");
+        btnManageUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnManageUsersActionPerformed(evt);
             }
         });
 
@@ -81,16 +83,14 @@ public class Admin_Options extends javax.swing.JPanel {
         pnlManageUsers.setLayout(pnlManageUsersLayout);
         pnlManageUsersLayout.setHorizontalGroup(
             pnlManageUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+            .addComponent(btnManageUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
         );
         pnlManageUsersLayout.setVerticalGroup(
             pnlManageUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlManageUsersLayout.createSequentialGroup()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 1, Short.MAX_VALUE))
         );
-
-        pnlConsultData1.setBackground(new java.awt.Color(152, 12, 51));
 
         btnConsultData1.setText("Manage Players");
 
@@ -104,8 +104,6 @@ public class Admin_Options extends javax.swing.JPanel {
             pnlConsultData1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnConsultData1, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
         );
-
-        pnlConsultData2.setBackground(new java.awt.Color(152, 12, 51));
 
         btnConsultData2.setText("Manage Events");
         btnConsultData2.addActionListener(new java.awt.event.ActionListener() {
@@ -125,8 +123,6 @@ public class Admin_Options extends javax.swing.JPanel {
             .addComponent(btnConsultData2, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
         );
 
-        pnlConsultData3.setBackground(new java.awt.Color(152, 12, 51));
-
         btnConsultData3.setText("Manage Players");
 
         javax.swing.GroupLayout pnlConsultData3Layout = new javax.swing.GroupLayout(pnlConsultData3);
@@ -139,8 +135,6 @@ public class Admin_Options extends javax.swing.JPanel {
             pnlConsultData3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnConsultData3, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
         );
-
-        pnlConsultData6.setBackground(new java.awt.Color(152, 12, 51));
 
         btnConsultData6.setText("Manage Matches");
         btnConsultData6.addActionListener(new java.awt.event.ActionListener() {
@@ -175,26 +169,19 @@ public class Admin_Options extends javax.swing.JPanel {
             .addComponent(btnAdress, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
         );
 
-        pnlConsultData8.setBackground(new java.awt.Color(152, 12, 51));
+        btnConsultData7.setText("Manage Players");
 
         btnConsultData8.setText("Manage Players");
-        btnConsultData8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultData8ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlConsultData8Layout = new javax.swing.GroupLayout(pnlConsultData8);
         pnlConsultData8.setLayout(pnlConsultData8Layout);
         pnlConsultData8Layout.setHorizontalGroup(
             pnlConsultData8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnConsultData8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 230, Short.MAX_VALUE)
         );
         pnlConsultData8Layout.setVerticalGroup(
             pnlConsultData8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConsultData8Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnConsultData8, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -205,21 +192,25 @@ public class Admin_Options extends javax.swing.JPanel {
                 .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnConsultData7, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlConsultData7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnConsultData8, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlConsultData8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlConsultData3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlConsultData6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlConsultData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pnlConsultData2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(pnlConsultData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
-                        .addComponent(pnlManageUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlConsultData3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlConsultData7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlConsultData8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlConsultData6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                        .addComponent(pnlManageUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(124, 124, 124))
         );
         layout.setVerticalGroup(
@@ -242,15 +233,24 @@ public class Admin_Options extends javax.swing.JPanel {
                     .addComponent(pnlConsultData6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlConsultData7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlConsultData8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(pnlConsultData7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnConsultData7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(pnlConsultData8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnConsultData8, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(163, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnManageUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUsersActionPerformed
+        tableUsersPanel.setSize(834, 567);
+        tableUsersPanel.setLocation(0,0);
+        pnlContent.removeAll();
+        pnlContent.add(tableUsersPanel,BorderLayout.CENTER);
+        pnlContent.revalidate();
+        pnlContent.repaint();
+    }//GEN-LAST:event_btnManageUsersActionPerformed
 
     private void btnConsultData2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultData2ActionPerformed
         // TODO add your handling code here:
@@ -265,10 +265,6 @@ public class Admin_Options extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnConsultDataActionPerformed
 
-    private void btnConsultData8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultData8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultData8ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdress;
@@ -277,6 +273,7 @@ public class Admin_Options extends javax.swing.JPanel {
     private javax.swing.JButton btnConsultData2;
     private javax.swing.JButton btnConsultData3;
     private javax.swing.JButton btnConsultData6;
+    private javax.swing.JButton btnConsultData7;
     private javax.swing.JButton btnConsultData8;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel pnlConsultData;

@@ -37,12 +37,18 @@ public class TestBO {
         System.out.println(message);
     }
     public void get(){
-        userBO.getUser();
+        userBO.getUsers();
+    }
+    
+    public int verify(){
+        user.setUsername("brenda");
+        user.setPassword("28");
+        return userBO.verifyUser(user);
     }
     
     public static void main(String[] args) {
         TestBO test = new TestBO();
-        test.get();
+        System.out.println(test.verify());
     }
 }
 

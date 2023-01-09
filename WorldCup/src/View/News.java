@@ -25,7 +25,6 @@ public class News extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         pnlNews = new javax.swing.JPanel();
         pnlNewsImage = new javax.swing.JPanel();
         lblNewsImage = new javax.swing.JLabel();
@@ -217,26 +216,6 @@ public class News extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnFavoriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavoriteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFavoriteActionPerformed
-
-    private void btnFavorite1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavorite1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFavorite1ActionPerformed
-
-    private void btnLogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLogsActionPerformed
-
-    private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPreviousActionPerformed
-
-    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReturnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -78,14 +78,24 @@ public class UserBO {
         }
         return message;
     }
-    public DefaultTableModel getUser(){
+    public DefaultTableModel getUsers(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = userDao.getUser(conn);
+        DefaultTableModel model = userDao.getUsers(conn);
         try {
             conn.close();
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return model;
+    }
+    public int verifyUser(User user){
+        Connection conn = SysConnection.connect();
+        int idUserType = userDao.verifyUser(conn, user);
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return idUserType;
     }
 }
