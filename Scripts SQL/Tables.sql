@@ -317,9 +317,9 @@ CREATE TABLE Player(
 );
 CREATE TABLE PlayerPosition(
     --------------PK------------------
-    idPosition NUMBER(6),
+    idPlayerPosition NUMBER(6),
     --------------FK------------------
-    positionName VARCHAR2(100)NOT NULL,
+    playerPositionName VARCHAR2(100)NOT NULL,
     --------------Audit---------------
     creationUser VARCHAR(20),
     creationDate DATE,
@@ -387,11 +387,23 @@ CREATE TABLE District(
     modificationDate DATE
 );
 
+CREATE TABLE Canton(
+    idCanton NUMBER(6),
+    idDistrict NUMBER(6),
+    nameCanton VARCHAR2(20),
+    --------------Audit---------------
+    creationUser VARCHAR2(20),
+    creationDate DATE,
+    modificationUser VARCHAR2(20),
+    modificationDate DATE
+);
+    
+
 CREATE TABLE Address( 
     --------------PK------------------
     idAddress NUMBER(6),
     --------------FK------------------
-    idDistrict NUMBER(6),
+    idCantonNUMBER(6),
     --------------Attribute-----------
     nameAddress VARCHAR2(20) NOT NULL,
     --------------Audit---------------

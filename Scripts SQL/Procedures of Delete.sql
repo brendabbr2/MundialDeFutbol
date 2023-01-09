@@ -25,10 +25,10 @@ AS BEGIN
 END deleteWorkerType;
 
 --This procedure delete an element in the table PlayerPoition
-CREATE OR REPLACE PROCEDURE deletePlayerPosition (v_idPosition IN NUMBER) 
+CREATE OR REPLACE PROCEDURE deletePlayerPosition (v_idPlayerPosition IN NUMBER) 
 AS BEGIN 
     DELETE FROM PlayerPosition 
-    WHERE idPosition = v_idposition; 
+    WHERE idPlayerPosition = v_idPlayerPosition; 
     Commit;  
 END deletePlayerPosition;
 
@@ -91,6 +91,14 @@ AS BEGIN
     WHERE idAddress = v_idAddress; 
     Commit;  
 END deleteAddress;
+
+--Delete Canton
+CREATE OR REPLACE PROCEDURE deleteCanton (v_idCanton IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Canton
+    WHERE idCanton = v_idCanton; 
+    Commit;  
+END deleteCanton;
 
 --Delete District
 CREATE OR REPLACE PROCEDURE deleteDistrict (v_idDistrict IN NUMBER) 
