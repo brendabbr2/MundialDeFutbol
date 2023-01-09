@@ -52,10 +52,10 @@ CREATE OR REPLACE PROCEDURE updateCanton
     AS BEGIN
         UPDATE Canton
         SET nameCanton = NVL(VnameCanton, nameCanton),
-        idProvince = NVL(VidProvince, idProvince)
-        WHERE idDistrict = VidDistrict;
+        idDistrict = VidDistrict
+        WHERE idCanton = VidCanton;
     COMMIT; 
-END updateCanton
+END updateCanton;
 
 -- Update Address
 CREATE OR REPLACE PROCEDURE updateAddress
@@ -99,7 +99,7 @@ CREATE OR REPLACE PROCEDURE updateGender
     (V_idGender IN NUMBER, V_descriptionGender IN VARCHAR2)
     AS BEGIN
         UPDATE Gender
-        SET descriptionGender = NVL(V_descriptionGender, descriptionGender)
+        SET genderDescription = NVL(V_descriptionGender, genderDescription)
         WHERE idGender = V_idGender;
     COMMIT; 
 END updateGender;
@@ -126,10 +126,10 @@ END updateWorkerType;
 
 -- Update PlayerPosition
 CREATE OR REPLACE PROCEDURE updatePlayerPosition 
-    (V_idPlayerPosition IN NUMBER, V_descriptionPos IN VARCHAR2)
+    (V_idPlayerPosition IN NUMBER, V_playerPositionName IN VARCHAR2)
     AS BEGIN
         UPDATE PlayerPosition
-        SET descriptionPos = NVL(V_descriptionPos, descriptionPos)
+        SET playerPositionName = NVL(V_playerPositionName, playerPositionName)
         WHERE idPlayerPosition = V_idPlayerPosition;
     COMMIT; 
 END updatePlayerPosition;
@@ -191,13 +191,13 @@ CREATE OR REPLACE PROCEDURE updateIdentificationType
         UPDATE identificationType
         SET idName = NVL(V_idName , idName),
         idMask = NVL(V_idMask , idMask)
-        WHERE idType = V_idType;
+        WHERE idIdentificationType = V_idType;
     COMMIT; 
 END updateIdentificationType;
 
 CREATE OR REPLACE PROCEDURE updatePerson
     (V_idPerson IN NUMBER, V_idGender IN NUMBER, V_idAddress IN NUMBER, V_BirthDate IN Date,
-        V_personName IN VARCHAR2, V_Photo IN blob)
+        V_personName IN VARCHAR2, V_Photo IN VARCHAR2)
     AS BEGIN
         UPDATE person
         SET idGender = NVL(V_idGender, idGender),
@@ -205,7 +205,7 @@ CREATE OR REPLACE PROCEDURE updatePerson
         birthday = NVL(V_BirthDate, birthday),
         personName = NVL(V_personName, personName),
         photo = NVL(V_Photo, photo)
-        WHERE valueIdentification = V_oldIdentification;
+        WHERE idPerson = V_idPerson;
     COMMIT; 
 END updatePerson;
 
@@ -276,7 +276,7 @@ END updateUserSave;
 
 CREATE OR REPLACE PROCEDURE updateNews
     (V_idNews IN NUMBER, V_idUser IN NUMBER, V_idEvent NUMBER, V_title IN VARCHAR2, V_text IN VARCHAR2,
-        V_author IN VARCHAR2, V_newsDate IN DATE,V_Photo IN BLOB)
+        V_author IN VARCHAR2, V_newsDate IN DATE,V_Photo IN VARCHAR2)
     AS BEGIN
         UPDATE News
         SET idUser = NVL(V_idUser, idUser),
@@ -288,5 +288,5 @@ CREATE OR REPLACE PROCEDURE updateNews
             photo = NVL(V_Photo, photo)
         WHERE idNews = V_idNews;
     COMMIT; 
-END updateUserSave;
+END updateNews;
 

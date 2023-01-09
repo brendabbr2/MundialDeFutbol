@@ -190,6 +190,23 @@ BEGIN
 :new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
 END beforeUpdateDistrict;
 
+---------------Canton------------------
+------- CantonCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertCanton
+BEFORE INSERT ON proj.Canton
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertCanton;
+
+------- CantonModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateCanton
+BEFORE UPDATE ON proj.Canton
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateCanton;
+
 ---------------Address------------------
 ------- AddressCreation
 CREATE OR REPLACE TRIGGER proj.beforeInsertAddress

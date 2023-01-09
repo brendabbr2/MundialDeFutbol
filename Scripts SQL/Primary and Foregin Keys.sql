@@ -283,7 +283,7 @@ ADD CONSTRAINT fk_player_team FOREIGN KEY
 
 ALTER TABLE Player
 ADD CONSTRAINT fk_player_position FOREIGN KEY
-(idPosition) REFERENCES PlayerPosition(idPosition);
+(idPosition) REFERENCES PlayerPosition(idPlayerPosition);
 
 ALTER TABLE Team
 ADD CONSTRAINT fk_team_group FOREIGN KEY

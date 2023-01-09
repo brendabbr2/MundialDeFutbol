@@ -20,10 +20,10 @@ END insertWorkerType;
 
 --This is an insertion for the table PlayerPosition
 CREATE OR REPLACE PROCEDURE insertPlayerPosition
-    (V_descritionPos IN VARCHAR2)
+    (V_playerPositionName IN VARCHAR2)
     AS BEGIN 
-    INSERT INTO PlayerPosition(idPlayerPosition, positionName)  
-    VALUES(s_PlayerPosition.NEXTVAL, v_descritionPos);
+    INSERT INTO PlayerPosition(idPlayerPosition, playerPositionName)  
+    VALUES(s_PlayerPosition.NEXTVAL, V_playerPositionName);
     COMMIT; 
 END insertPlayerPosition;
 
@@ -87,7 +87,7 @@ END insertEmail;
 CREATE OR REPLACE PROCEDURE insertIdentificationType
     (VidName IN VARCHAR2, idMask IN NUMBER)
     AS BEGIN 
-    INSERT INTO identificationType(idType,idName,idMask) 
+    INSERT INTO identificationType(idIdentificationType,idName,idMask) 
     VALUES(s_identificationtype.nextval, VidName, idMask);
     COMMIT; 
 END insertIdentificationType;
@@ -102,7 +102,7 @@ END insertIdentification;
 
 CREATE OR REPLACE PROCEDURE insertPerson
     (VidGender IN NUMBER, Vadress IN NUMBER,
-        Vbirthdate IN DATE, Vname IN VARCHAR2, Vphoto IN BLOB)
+        Vbirthdate IN DATE, Vname IN VARCHAR2, Vphoto IN VARCHAR2)
     AS BEGIN 
     INSERT INTO Person(idPerson, idGender, idAddress,
         birthday, personName, photo)  
@@ -165,7 +165,7 @@ END insertUserSave;
 ---------------------News Table----------------------
 CREATE OR REPLACE PROCEDURE insertNews
     (VidUser IN NUMBER,VidEvent IN NUMBER,Vtitle IN VARCHAR2,Vtext IN VARCHAR2,
-    Vauthor IN VARCHAR2,VnewsDate IN DATE,Vphoto IN blob)
+    Vauthor IN VARCHAR2,VnewsDate IN DATE,Vphoto IN VARCHAR2)
     AS BEGIN 
     INSERT INTO News(idNews,idUser,idEvent,title,text,author,newsDate,photo)  
     VALUES(s_News.NEXTVAL,VidUser, VidEvent,Vtitle,Vtext,Vauthor, VnewsDate,Vphoto);
@@ -240,7 +240,7 @@ END insertPlayer;
 
 --Team
 CREATE OR REPLACE PROCEDURE insertTeam 
-    (VidGroup IN NUMBER, VidCountry IN NUMBER, VcaptainNumber IN NUMBER, VlogoPhoto IN BLOB, Vlineup IN NUMBER)
+    (VidGroup IN NUMBER, VidCountry IN NUMBER, VcaptainNumber IN NUMBER, VlogoPhoto IN VARCHAR, Vlineup IN NUMBER)
     AS BEGIN
     INSERT INTO Team(idteam, idgroup, idcountry, captainnumber, logophoto, lineup)
     VALUES(s_team.nextval, VidGroup, VidCountry, VcaptainNumber, VlogoPhoto, Vlineup);
