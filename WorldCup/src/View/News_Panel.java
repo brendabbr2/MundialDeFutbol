@@ -61,13 +61,13 @@ public class News_Panel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
-        lblNewsPhot2.setBackground(new java.awt.Color(0, 255, 255));
+        lblNewsPhoto2.setBackground(new java.awt.Color(0, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNewsPhot2, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+            .addComponent(lblNewsPhoto2, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

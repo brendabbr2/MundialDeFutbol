@@ -44,8 +44,7 @@ public class Admin_Options extends javax.swing.JPanel {
         pnlConsultData6 = new javax.swing.JPanel();
         btnConsultData6 = new javax.swing.JButton();
         pnlConsultData7 = new javax.swing.JPanel();
-        btnAdress = new javax.swing.JButton();
-        pnlConsultData8 = new javax.swing.JPanel();
+        btnConsultData7 = new javax.swing.JButton();
         btnConsultData8 = new javax.swing.JButton();
         pnlConsultData8 = new javax.swing.JPanel();
 
@@ -154,19 +153,15 @@ public class Admin_Options extends javax.swing.JPanel {
             .addComponent(btnConsultData6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
         );
 
-        pnlConsultData7.setBackground(new java.awt.Color(152, 12, 51));
-
-        btnAdress.setText("Manage Adress");
-
         javax.swing.GroupLayout pnlConsultData7Layout = new javax.swing.GroupLayout(pnlConsultData7);
         pnlConsultData7.setLayout(pnlConsultData7Layout);
         pnlConsultData7Layout.setHorizontalGroup(
             pnlConsultData7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnAdress, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+            .addGap(0, 230, Short.MAX_VALUE)
         );
         pnlConsultData7Layout.setVerticalGroup(
             pnlConsultData7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnAdress, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+            .addGap(0, 57, Short.MAX_VALUE)
         );
 
         btnConsultData7.setText("Manage Players");
@@ -267,7 +262,6 @@ public class Admin_Options extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdress;
     private javax.swing.JButton btnConsultData;
     private javax.swing.JButton btnConsultData1;
     private javax.swing.JButton btnConsultData2;
@@ -275,7 +269,7 @@ public class Admin_Options extends javax.swing.JPanel {
     private javax.swing.JButton btnConsultData6;
     private javax.swing.JButton btnConsultData7;
     private javax.swing.JButton btnConsultData8;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnManageUsers;
     private javax.swing.JPanel pnlConsultData;
     private javax.swing.JPanel pnlConsultData1;
     private javax.swing.JPanel pnlConsultData2;

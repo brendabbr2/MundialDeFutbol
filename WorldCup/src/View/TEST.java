@@ -42,6 +42,8 @@ public class TEST extends javax.swing.JFrame {
         btnNews = new javax.swing.JButton();
         pnlLikes = new javax.swing.JPanel();
         btnLikes = new javax.swing.JButton();
+        pnlComments = new javax.swing.JPanel();
+        btnComments = new javax.swing.JButton();
         pnlMatches = new javax.swing.JPanel();
         btnMatches = new javax.swing.JButton();
         pnlLogin = new javax.swing.JPanel();
@@ -123,8 +125,29 @@ public class TEST extends javax.swing.JFrame {
             .addComponent(btnLikes, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        pnlMatches.setBackground(new java.awt.Color(152, 12, 51));
-        pnlMatches.setPreferredSize(new java.awt.Dimension(220, 50));
+        pnlComments.setBackground(new java.awt.Color(0, 83, 159));
+
+        btnComments.setBackground(new java.awt.Color(0, 83, 159));
+        btnComments.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnComments.setForeground(new java.awt.Color(255, 255, 255));
+        btnComments.setText("Comments");
+        btnComments.setBorder(null);
+
+        javax.swing.GroupLayout pnlCommentsLayout = new javax.swing.GroupLayout(pnlComments);
+        pnlComments.setLayout(pnlCommentsLayout);
+        pnlCommentsLayout.setHorizontalGroup(
+            pnlCommentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCommentsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnComments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlCommentsLayout.setVerticalGroup(
+            pnlCommentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnComments, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        pnlMatches.setBackground(new java.awt.Color(0, 83, 159));
 
         btnMatches.setBackground(new java.awt.Color(0, 83, 159));
         btnMatches.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -136,11 +159,14 @@ public class TEST extends javax.swing.JFrame {
         pnlMatches.setLayout(pnlMatchesLayout);
         pnlMatchesLayout.setHorizontalGroup(
             pnlMatchesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMatchesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlMatchesLayout.setVerticalGroup(
             pnlMatchesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMatches, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(btnMatches, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
         );
 
         pnlLogin.setBackground(new java.awt.Color(0, 83, 159));
@@ -208,6 +234,7 @@ public class TEST extends javax.swing.JFrame {
                 .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlNews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlLikes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlComments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -229,8 +256,10 @@ public class TEST extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlLikes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlComments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlMatches, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addComponent(btnComments1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -320,11 +349,14 @@ public class TEST extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdminOptions;
+    private javax.swing.JButton btnComments;
+    private javax.swing.JButton btnComments1;
     private javax.swing.JButton btnLikes;
     private javax.swing.JButton btnMatches;
     private javax.swing.JButton btnNews;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JPanel pnlBackground;
+    private javax.swing.JPanel pnlComments;
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlLikes;
     private javax.swing.JPanel pnlLogin;
