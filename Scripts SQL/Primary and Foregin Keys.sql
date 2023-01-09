@@ -191,7 +191,7 @@ TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 
 ALTER TABLE identificationType
-ADD CONSTRAINT pk_IdType PRIMARY KEY (idType) 
+ADD CONSTRAINT pk_IdIdentificationType PRIMARY KEY (idIdentificationType) 
 USING INDEX
 TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
@@ -376,8 +376,8 @@ ADD CONSTRAINT fk_id_person FOREIGN KEY
 (idPerson) REFERENCES Person(idPerson);
 
 ALTER TABLE Identification
-ADD CONSTRAINT fk_id_idType FOREIGN KEY
-(idType) REFERENCES identificationType(idType);
+ADD CONSTRAINT fk_id_idIdentificationType FOREIGN KEY
+(idType) REFERENCES identificationType(idIdentificationType);
 
 ALTER TABLE person
 ADD CONSTRAINT fk_person_Gender FOREIGN KEY
