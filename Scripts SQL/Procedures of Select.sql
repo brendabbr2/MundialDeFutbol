@@ -35,7 +35,7 @@ PlayerPositionCursor OUT SYS_REFCURSOR)
 AS
 BEGIN 
     OPEN PlayerPositionCursor FOR  
-    SELECT idPlayerPosition, positionName 
+    SELECT idPlayerPosition, playerPositionName 
     FROM PlayerPosition  
     WHERE idPlayerPosition = NVL(v_idPlayerPosition, idPlayerPosition); 
 END getPlayerPosition;
@@ -104,7 +104,8 @@ BEGIN
         SELECT idCanton, nameCanton
         FROM Canton
         WHERE idCanton = NVL(v_idCanton, idCanton); 
-END getCanton
+    COMMIT;
+END getCanton;
 
 --return a cursor of Address
 CREATE OR REPLACE PROCEDURE getAddress(v_idAddress IN NUMBER, AddressCursor OUT SYS_REFCURSOR) 
@@ -184,9 +185,9 @@ IdentificationTypeCursor OUT SYS_REFCURSOR)
 AS 
 BEGIN 
     OPEN IdentificationTypeCursor FOR  
-        SELECT idType,idName,idMask
+        SELECT idIdentificationType,idName,idMask
         FROM identificationType
-        WHERE idType = NVL(v_idType,idType);
+        WHERE idIdentificationType = NVL(v_idType,idIdentificationType);
 END getIdentificationType;
 
 CREATE OR REPLACE PROCEDURE getPerson(v_idPerson IN NUMBER, PersonCursor OUT SYS_REFCURSOR) 

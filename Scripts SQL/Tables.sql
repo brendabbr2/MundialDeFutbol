@@ -403,7 +403,7 @@ CREATE TABLE Address(
     --------------PK------------------
     idAddress NUMBER(6),
     --------------FK------------------
-    idCantonNUMBER(6),
+    idCanton NUMBER(6),
     --------------Attribute-----------
     nameAddress VARCHAR2(20) NOT NULL,
     --------------Audit---------------

@@ -44,7 +44,7 @@ END deletePlayerXSportMatch;
 CREATE OR REPLACE PROCEDURE deletePlayerXCountry (v_idPlayer IN NUMBER, v_idCountry IN NUMBER) 
 AS BEGIN 
     DELETE FROM PlayerXCountry 
-    WHERE idPlayer = v_idposition AND idCountry = v_idCountry; 
+    WHERE idPlayer = v_idPlayer AND idCountry = v_idCountry; 
     Commit;  
 END deletePlayerXCountry;
 
@@ -144,7 +144,7 @@ END;
 CREATE OR REPLACE PROCEDURE deletePhone (vPhoneNum IN NUMBER) 
 AS BEGIN 
     DELETE FROM Phone 
-    WHERE phone = PhoneNum; 
+    WHERE phone = vPhoneNum; 
     Commit;
 END deletePhone;
 
@@ -165,10 +165,10 @@ AS BEGIN
 END deleteIdentification;
 
 --Delete Identification type
-CREATE OR REPLACE PROCEDURE deleteIdentificationType (vidType IN NUMBER) 
+CREATE OR REPLACE PROCEDURE deleteIdentificationType (vidIdenticationType IN NUMBER) 
 AS BEGIN 
-    DELETE FROM identificationType 
-    WHERE idType = vidType; 
+    DELETE FROM IdentificationType 
+    WHERE idIdentificationType = vidIdenticationType; 
     Commit;
 END deleteIdentificationType;
 
@@ -231,10 +231,10 @@ AS BEGIN
 END deleteUserSave;
 
 --Delete News
-CREATE OR REPLACE PROCEDURE deleteUserNews (VidNews IN NUMBER) 
+CREATE OR REPLACE PROCEDURE deleteNews (VidNews IN NUMBER) 
 AS BEGIN 
-    DELETE FROM UserNews
+    DELETE FROM News
     WHERE idNews = VidNews; 
     Commit;
-END deleteUserNews;
+END deleteNews;
 -----------------------------------------------------
