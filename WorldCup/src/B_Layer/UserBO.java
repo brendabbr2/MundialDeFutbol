@@ -19,8 +19,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class UserBO {
     
-    private UserDAO userDao = new UserDAO();
-    private String message = "";
+    private UserDAO userDao;
+    private String message;
+
+    public UserBO() {
+        this.userDao = new UserDAO();
+        this.message = "";
+    }
     
     public String insertUser(User user){
         Connection conn = SysConnection.connect();
