@@ -39,7 +39,7 @@ public class Admin_Options extends javax.swing.JPanel {
         pnlConsultData6 = new javax.swing.JPanel();
         btnConsultData6 = new javax.swing.JButton();
         pnlConsultData7 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnAdress = new javax.swing.JButton();
         pnlConsultData8 = new javax.swing.JPanel();
         btnConsultData8 = new javax.swing.JButton();
 
@@ -162,17 +162,17 @@ public class Admin_Options extends javax.swing.JPanel {
 
         pnlConsultData7.setBackground(new java.awt.Color(152, 12, 51));
 
-        jButton1.setText("jButton1");
+        btnAdress.setText("Manage Adress");
 
         javax.swing.GroupLayout pnlConsultData7Layout = new javax.swing.GroupLayout(pnlConsultData7);
         pnlConsultData7.setLayout(pnlConsultData7Layout);
         pnlConsultData7Layout.setHorizontalGroup(
             pnlConsultData7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+            .addComponent(btnAdress, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
         );
         pnlConsultData7Layout.setVerticalGroup(
             pnlConsultData7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+            .addComponent(btnAdress, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
         );
 
         pnlConsultData8.setBackground(new java.awt.Color(152, 12, 51));
@@ -271,13 +271,13 @@ public class Admin_Options extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdress;
     private javax.swing.JButton btnConsultData;
     private javax.swing.JButton btnConsultData1;
     private javax.swing.JButton btnConsultData2;
     private javax.swing.JButton btnConsultData3;
     private javax.swing.JButton btnConsultData6;
     private javax.swing.JButton btnConsultData8;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel pnlConsultData;
     private javax.swing.JPanel pnlConsultData1;

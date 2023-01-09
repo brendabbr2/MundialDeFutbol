@@ -29,7 +29,7 @@ public class News_Panel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         pnlNewsTab = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lblNewsPhoto2 = new javax.swing.JLabel();
+        lblNewsPhot2 = new javax.swing.JLabel();
         pnlNewsTab1 = new javax.swing.JPanel();
         pnlNewsImg1 = new javax.swing.JPanel();
         lblNoticiaImagen1 = new javax.swing.JLabel();
@@ -61,17 +61,17 @@ public class News_Panel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
-        lblNewsPhoto2.setBackground(new java.awt.Color(0, 255, 255));
+        lblNewsPhot2.setBackground(new java.awt.Color(0, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNewsPhoto2, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+            .addComponent(lblNewsPhot2, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNewsPhoto2, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+            .addComponent(lblNewsPhot2, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlNewsTabLayout = new javax.swing.GroupLayout(pnlNewsTab);
@@ -204,7 +204,7 @@ public class News_Panel extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnReaddNews2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblNewsPhoto2;
+    private javax.swing.JLabel lblNewsPhot2;
     private javax.swing.JLabel lblNewsTitle;
     private javax.swing.JLabel lblNoticiaImagen1;
     private javax.swing.JPanel pnlNewsImg1;
