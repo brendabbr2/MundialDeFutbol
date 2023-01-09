@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Entities;
 
 /**
@@ -9,32 +6,32 @@ package Entities;
  * @author david
  */
 public class PlayerPosition {
-    private int idPosition;
-    private String positionName;
+    private int idPlayerPosition;
+    private String playerPositionName;
 
     public PlayerPosition(int idPosition, String positionName) {
-        this.idPosition = idPosition;
-        this.positionName = positionName;
+        this.idPlayerPosition = idPosition;
+        this.playerPositionName = positionName;
     }
 
     public int getIdPosition() {
-        return idPosition;
+        return idPlayerPosition;
     }
 
     public void setIdPosition(int idPosition) {
-        this.idPosition = idPosition;
+        this.idPlayerPosition = idPosition;
     }
 
     public String getPositionName() {
-        return positionName;
+        return playerPositionName;
     }
 
     public void setPositionName(String positionName) {
-        this.positionName = positionName;
+        this.playerPositionName = positionName;
     }
 
     @Override
     public String toString() {
-        return "PlayerPosition{" + "idPosition=" + idPosition + ", positionName=" + positionName + '}';
+        return "PlayerPosition{" + "idPosition=" + idPlayerPosition + ", positionName=" + playerPositionName + '}';
     }
 }

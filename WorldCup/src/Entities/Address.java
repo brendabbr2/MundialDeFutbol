@@ -10,12 +10,12 @@ package Entities;
  */
 public class Address {
     private int idAddress;
-    private int idDistrict;
+    private int idCanton;
     private String nameAddress;
 
     public Address(int idAddress, int idDistrict, String nameAddress) {
         this.idAddress = idAddress;
-        this.idDistrict = idDistrict;
+        this.idCanton = idDistrict;
         this.nameAddress = nameAddress;
     }
 
@@ -28,11 +28,11 @@ public class Address {
     }
 
     public int getIdDistrict() {
-        return idDistrict;
+        return idCanton;
     }
 
     public void setIdDistrict(int idDistrict) {
-        this.idDistrict = idDistrict;
+        this.idCanton = idDistrict;
     }
 
     public String getNameAddress() {
@@ -45,6 +45,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" + "idAddress=" + idAddress + ", idDistrict=" + idDistrict + ", nameAddress=" + nameAddress + '}';
+        return "Address{" + "idAddress=" + idAddress + ", idDistrict=" + idCanton + ", nameAddress=" + nameAddress + '}';
     }
 }
