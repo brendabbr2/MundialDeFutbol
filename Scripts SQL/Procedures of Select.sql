@@ -35,9 +35,9 @@ PlayerPositionCursor OUT SYS_REFCURSOR)
 AS
 BEGIN 
     OPEN PlayerPositionCursor FOR  
-    SELECT idPosition, positionName 
+    SELECT idPlayerPosition, positionName 
     FROM PlayerPosition  
-    WHERE idPosition = NVL(v_idPlayerPosition, idPosition); 
+    WHERE idPlayerPosition = NVL(v_idPlayerPosition, idPlayerPosition); 
 END getPlayerPosition;
 
 --This is a procedure that return a cursor of the table PlayerXSportMatch
@@ -95,6 +95,16 @@ BEGIN
         FROM District 
         WHERE idDistrict = NVL(v_idDistrict, idDistrict); 
 END getDistrict;
+
+--return a cursor of Canton
+CREATE OR REPLACE PROCEDURE getCanton(v_idCanton IN NUMBER, CantonCursor OUT SYS_REFCURSOR) 
+AS 
+BEGIN 
+    OPEN CantonCursor FOR  
+        SELECT idCanton, nameCanton
+        FROM Canton
+        WHERE idCanton = NVL(v_idCanton, idCanton); 
+END getCanton
 
 --return a cursor of Address
 CREATE OR REPLACE PROCEDURE getAddress(v_idAddress IN NUMBER, AddressCursor OUT SYS_REFCURSOR) 

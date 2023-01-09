@@ -46,13 +46,24 @@ CREATE OR REPLACE PROCEDURE updateDistrict
     COMMIT; 
 END updateDistrict;
 
+-- Update Canton
+CREATE OR REPLACE PROCEDURE updateCanton
+    (VidCanton IN NUMBER, VnameCanton IN VARCHAR2, VidDistrict IN NUMBER)
+    AS BEGIN
+        UPDATE Canton
+        SET nameCanton = NVL(VnameCanton, nameCanton),
+        idProvince = NVL(VidProvince, idProvince)
+        WHERE idDistrict = VidDistrict;
+    COMMIT; 
+END updateCanton
+
 -- Update Address
 CREATE OR REPLACE PROCEDURE updateAddress
-    (VidAddress IN NUMBER, VnameAddress IN VARCHAR2, VidDistrict IN NUMBER)
+    (VidAddress IN NUMBER, VnameAddress IN VARCHAR2, VidCanton IN NUMBER)
     AS BEGIN
         UPDATE Address
         SET nameAddress = NVL(VnameAddress, nameAddress),
-        idDistrict = NVL(VidDistrict, idDistrict)
+        idCanton = NVL(VidCanton, idCanton)
         WHERE idAddress = VidAddress;
     COMMIT; 
 END updateAddress;
@@ -115,11 +126,11 @@ END updateWorkerType;
 
 -- Update PlayerPosition
 CREATE OR REPLACE PROCEDURE updatePlayerPosition 
-    (V_idPosition IN NUMBER, V_descriptionPos IN VARCHAR2)
+    (V_idPlayerPosition IN NUMBER, V_descriptionPos IN VARCHAR2)
     AS BEGIN
         UPDATE PlayerPosition
         SET descriptionPos = NVL(V_descriptionPos, descriptionPos)
-        WHERE idPosition = V_idPosition;
+        WHERE idPlayerPosition = V_idPlayerPosition;
     COMMIT; 
 END updatePlayerPosition;
 

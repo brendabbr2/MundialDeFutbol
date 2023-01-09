@@ -22,8 +22,8 @@ END insertWorkerType;
 CREATE OR REPLACE PROCEDURE insertPlayerPosition
     (V_descritionPos IN VARCHAR2)
     AS BEGIN 
-    INSERT INTO PlayerPosition(idPosition, positionName)  
-    VALUES(s_PlayerPosition.NEXTVAL, v_descritionpos);
+    INSERT INTO PlayerPosition(idPlayerPosition, positionName)  
+    VALUES(s_PlayerPosition.NEXTVAL, v_descritionPos);
     COMMIT; 
 END insertPlayerPosition;
 
@@ -286,12 +286,20 @@ CREATE OR REPLACE PROCEDURE insertDistrict
     VALUES(s_District.NEXTVAL, V_idProvince, V_nameDistrict);
 END insertDistrict;
 
+-- Insert Canton
+CREATE OR REPLACE PROCEDURE insertCanton
+    (V_idDistrict IN NUMBER, V_nameCanton IN VARCHAR2) 
+    AS BEGIN
+    INSERT INTO Canton(idCanton, idDistrict, nameCanton)
+    VALUES(s_Canton.NEXTVAL, V_idDistrict, V_nameCanton);
+END insertCanton;
+
 -- Insert Address
 CREATE OR REPLACE PROCEDURE insertAddress
-    (V_idDistrict IN NUMBER, V_nameAddress IN VARCHAR2) 
+    (V_idCanton IN NUMBER, V_nameAddress IN VARCHAR2) 
     AS BEGIN
-    INSERT INTO Address(idAddress, idDistrict, nameAddress)
-    VALUES(s_Address.NEXTVAL, V_idDistrict, V_nameAddress);
+    INSERT INTO Address(idAddress, idCanton, nameAddress)
+    VALUES(s_Address.NEXTVAL, V_idCanton, V_nameAddress);
 END insertAddress;
 
 -- Insert Stadium
