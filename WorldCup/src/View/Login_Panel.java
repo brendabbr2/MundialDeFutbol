@@ -38,7 +38,7 @@ public class Login_Panel extends javax.swing.JPanel {
         lblWarning = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 83, 159));
+        setBackground(new java.awt.Color(94, 4, 32));
         setAlignmentX(834.0F);
         setMaximumSize(new java.awt.Dimension(834, 578));
         setMinimumSize(new java.awt.Dimension(834, 578));
@@ -61,14 +61,14 @@ public class Login_Panel extends javax.swing.JPanel {
         txtPassword.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         btnLogin.setText("login");
-        btnLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnLogin.setBorder(null);
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));

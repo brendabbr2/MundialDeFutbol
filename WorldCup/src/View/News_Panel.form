@@ -20,7 +20,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="9f" green="53" red="0" type="rgb"/>
+      <Color blue="20" green="4" red="5e" type="rgb"/>
     </Property>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[834, 578]"/>
@@ -268,7 +268,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="News"/>
+        <Property name="text" type="java.lang.String" value="Dashboard"/>
       </Properties>
     </Component>
   </SubComponents>

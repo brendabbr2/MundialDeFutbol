@@ -48,7 +48,7 @@ public class Admin_Options extends javax.swing.JPanel {
         btnConsultData8 = new javax.swing.JButton();
         pnlConsultData8 = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(0, 83, 159));
+        setBackground(new java.awt.Color(94, 4, 32));
         setMaximumSize(new java.awt.Dimension(834, 578));
         setMinimumSize(new java.awt.Dimension(834, 578));
         setPreferredSize(new java.awt.Dimension(834, 578));
