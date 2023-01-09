@@ -78,7 +78,7 @@ CREATE TABLE person(
     --------------Attribute------------
     birthday date NOT NULL,
     personName varchar2(20) NOT NULL,
-    photo blob,
+    photo VARCHAR2(100),
     --------------Audit---------------
     creationUser varchar(20),
     creationDate date,
@@ -187,7 +187,7 @@ CREATE TABLE News(
     text varchar2(200) NOT NULL,
     author varchar2(50) NOT NULL,
     newsDate date NOT NULL,
-    photo blob,
+    photo VARCHAR2(100),
     --------------Audit---------------
     creationUser varchar(20),
     creationDate date,
@@ -263,7 +263,7 @@ CREATE TABLE Team(
     idCountry NUMBER(6),
     --------------Attribute-----------
     captainNumber NUMBER(6) NOT NULL,
-    logoPhoto BLOB,
+    logoPhoto VARCHAR2(100),
     lineup NUMBER(6) NOT NULL,
     --------------Audit---------------
     creationUser VARCHAR(20),
