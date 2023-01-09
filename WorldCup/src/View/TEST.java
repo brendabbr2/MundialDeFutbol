@@ -12,15 +12,17 @@ import java.awt.BorderLayout;
  */
 public class TEST extends javax.swing.JFrame {
 
-    public Login_Panel panelLog = new Login_Panel();
-    public News_Panel newsPanel = new News_Panel();
-    public Admin_Options adminOpsPanel = new Admin_Options();
+    private Login_Panel panelLog = null;
+    private News_Panel newsPanel = null;
+    private Admin_Options adminOpsPanel =null;
     /**
      * Creates new form TEST
      */
     public TEST() {
         initComponents();
-        
+        this.panelLog = new Login_Panel();
+        this.newsPanel = new News_Panel();
+        this.adminOpsPanel = new Admin_Options(this.pnlContent);
     }
 
     /**
@@ -52,9 +54,7 @@ public class TEST extends javax.swing.JFrame {
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(900, 590));
         setMinimumSize(new java.awt.Dimension(1280, 590));
-        setPreferredSize(new java.awt.Dimension(1280, 50));
 
         pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
         pnlBackground.setMaximumSize(new java.awt.Dimension(33601, 580));

@@ -4,17 +4,22 @@
  */
 package View;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Datos
  */
 public class Admin_Options extends javax.swing.JPanel {
-
+    private TableUsers tableUsersPanel = new TableUsers();
+    private JPanel pnlContent;
     /**
      * Creates new form Admin_Options
      */
-    public Admin_Options() {
+    public Admin_Options(JPanel pnlContent) {
         initComponents();
+        this.pnlContent = pnlContent;
     }
 
     /**
@@ -29,7 +34,7 @@ public class Admin_Options extends javax.swing.JPanel {
         pnlConsultData = new javax.swing.JPanel();
         btnConsultData = new javax.swing.JButton();
         pnlManageUsers = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnManageUsers = new javax.swing.JButton();
         pnlConsultData1 = new javax.swing.JPanel();
         btnConsultData1 = new javax.swing.JButton();
         pnlConsultData2 = new javax.swing.JPanel();
@@ -66,10 +71,10 @@ public class Admin_Options extends javax.swing.JPanel {
             .addComponent(btnConsultData, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jButton2.setText("Manage Users");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnManageUsers.setText("Manage Users");
+        btnManageUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnManageUsersActionPerformed(evt);
             }
         });
 
@@ -77,12 +82,12 @@ public class Admin_Options extends javax.swing.JPanel {
         pnlManageUsers.setLayout(pnlManageUsersLayout);
         pnlManageUsersLayout.setHorizontalGroup(
             pnlManageUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+            .addComponent(btnManageUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
         );
         pnlManageUsersLayout.setVerticalGroup(
             pnlManageUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlManageUsersLayout.createSequentialGroup()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
@@ -233,9 +238,14 @@ public class Admin_Options extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnManageUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUsersActionPerformed
+        tableUsersPanel.setSize(834, 567);
+        tableUsersPanel.setLocation(0,0);
+        pnlContent.removeAll();
+        pnlContent.add(tableUsersPanel,BorderLayout.CENTER);
+        pnlContent.revalidate();
+        pnlContent.repaint();
+    }//GEN-LAST:event_btnManageUsersActionPerformed
 
     private void btnConsultData2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultData2ActionPerformed
         // TODO add your handling code here:
@@ -259,7 +269,7 @@ public class Admin_Options extends javax.swing.JPanel {
     private javax.swing.JButton btnConsultData6;
     private javax.swing.JButton btnConsultData7;
     private javax.swing.JButton btnConsultData8;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnManageUsers;
     private javax.swing.JPanel pnlConsultData;
     private javax.swing.JPanel pnlConsultData1;
     private javax.swing.JPanel pnlConsultData2;
