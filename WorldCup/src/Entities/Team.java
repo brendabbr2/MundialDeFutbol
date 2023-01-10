@@ -12,22 +12,25 @@ public class Team {
     private int idTeam;
     private int idGroup;
     private int idCountry;
+    private int idEvent;
     private int captainNumber;
     private String logoPhoto;
     private int lineup;
 
-    public Team(int idTeam, int idGroup, int idCountry, int captainNumber, int lineup) {
+    public Team(int idTeam, int idGroup, int idCountry, int idEvent, int captainNumber, int lineup) {
         this.idTeam = idTeam;
         this.idGroup = idGroup;
         this.idCountry = idCountry;
+        this.idEvent = idEvent;
         this.captainNumber = captainNumber;
         this.lineup = lineup;
     }
 
-    public Team(int idTeam, int idGroup, int idCountry, int captainNumber, String logoPhoto, int lineup) {
+    public Team(int idTeam, int idGroup, int idCountry, int idEvent, int captainNumber, String logoPhoto, int lineup) {
         this.idTeam = idTeam;
         this.idGroup = idGroup;
         this.idCountry = idCountry;
+        this.idEvent = idEvent;
         this.captainNumber = captainNumber;
         this.logoPhoto = logoPhoto;
         this.lineup = lineup;
@@ -81,11 +84,21 @@ public class Team {
         this.lineup = lineup;
     }
 
+    public int getIdEvent() {
+        return idEvent;
+    }
+
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
+    }
+
     @Override
     public String toString() {
-        return "Team{" + "idTeam=" + idTeam + ", idGroup=" + idGroup 
-                + ", idCountry=" + idCountry + ", captainNumber=" + captainNumber + ", logoPhoto=" + logoPhoto + ", lineup=" + lineup + '}';
+        return "Team{" + "idTeam=" + idTeam + ", idGroup=" + idGroup + ", idCountry=" + idCountry 
+                + ", idEvent=" + idEvent + ", captainNumber=" + captainNumber + ", logoPhoto=" + logoPhoto + ", lineup=" + lineup + '}';
     }
+    
+    
     
     
 }

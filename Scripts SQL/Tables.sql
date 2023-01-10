@@ -262,6 +262,7 @@ CREATE TABLE Team(
     --------------FK------------------
     idGroup NUMBER(6),
     idCountry NUMBER(6),
+    idEvent NUMBER(6),
     --------------Attribute-----------
     captainNumber NUMBER(6) NOT NULL,
     logoPhoto VARCHAR2(100),
@@ -462,6 +463,8 @@ CREATE TABLE StadiumXSportMatch(
 CREATE TABLE SportMatch(
     --------------PK-----------------
     idSportMatch NUMBER(6),
+    --------------FK------------------
+    idEvent NUMBER(6),
     --------------Audit---------------
     creationUser VARCHAR2(20),
     creationDate DATE,
