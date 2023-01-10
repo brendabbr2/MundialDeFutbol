@@ -12,23 +12,26 @@ public class Person {
     private int idPerson;
     private int idGender;
     private int idAddress;
+    private int idEvent;
     private String date;
     private String personName;
     private String photo;
 
-    public Person(int idPerson, int idGender, int idAddress, String date, String personName) {
+    public Person(int idPerson, int idGender, int idAddress, int idEvent, String date, String personName) {
         this.idPerson = idPerson;
         this.idGender = idGender;
         this.idAddress = idAddress;
+        this.idEvent = idEvent;
         this.date = date;
         this.personName = personName;
         this.photo = "";
     }
     
-    public Person(int idPerson, int idGender, int idAddress, String date, String personName, String photo) {
+    public Person(int idPerson, int idGender, int idAddress, int idEvent, String date, String personName, String photo) {
         this.idPerson = idPerson;
         this.idGender = idGender;
         this.idAddress = idAddress;
+        this.idEvent = idEvent;
         this.date = date;
         this.personName = personName;
         this.photo = photo;
@@ -82,12 +85,21 @@ public class Person {
         this.photo = photo;
     }
 
+    public int getIdEvent() {
+        return idEvent;
+    }
+
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
+    }
+
     @Override
     public String toString() {
-        return "Person{" + "idPerson=" + idPerson + ", idGender=" 
-                + idGender + ", idAddress=" + idAddress + ", date=" 
-                + date + ", personName=" + personName + ", photo=" + photo + '}';
+        return "Person{" + "idPerson=" + idPerson + ", idGender=" + idGender + ", idAddress=" + idAddress 
+                + ", idEvent=" + idEvent + ", date=" + date + ", personName=" + personName + ", photo=" + photo + '}';
     }
+    
+    
     
     
 }

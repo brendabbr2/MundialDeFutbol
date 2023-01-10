@@ -11,10 +11,12 @@ package Entities;
 public class Continent {
     private int idContinent;
     private String nameContinent;
+    private int idEvent;
 
-    public Continent(int idContinent, String nameContinent) {
+    public Continent(int idContinent, int idEvent, String nameContinent) {
         this.idContinent = idContinent;
         this.nameContinent = nameContinent;
+        this.idEvent = idEvent;
     }
 
     public int getIdContinent() {
@@ -33,8 +35,18 @@ public class Continent {
         this.nameContinent = nameContinent;
     }
 
+    public int getIdEvent() {
+        return idEvent;
+    }
+
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
+    }
+
     @Override
     public String toString() {
-        return "Continent{" + "idContinent=" + idContinent + ", nameContinent=" + nameContinent + '}';
+        return "Continent{" + "idContinent=" + idContinent + ", nameContinent=" + nameContinent + ", idEvent=" + idEvent + '}';
     }
+
+    
 }

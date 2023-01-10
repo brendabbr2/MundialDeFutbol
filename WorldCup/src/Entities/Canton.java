@@ -10,12 +10,12 @@ package Entities;
  */
 public class Canton {
     private int idCanton;
-    private int idDistrict;
+    private int idProvince;
     private String nameCanton;
 
-    public Canton(int idCanton, int idDistrict, String nameCanton) {
+    public Canton(int idCanton, int idProvince, String nameCanton) {
         this.idCanton = idCanton;
-        this.idDistrict = idDistrict;
+        this.idProvince = idProvince;
         this.nameCanton = nameCanton;
     }
     
@@ -27,12 +27,12 @@ public class Canton {
         this.idCanton = idCanton;
     }
 
-    public int getIdDistrict() {
-        return idDistrict;
+    public int getIdProvince() {
+        return idProvince;
     }
 
-    public void setIdDistrict(int idDistrict) {
-        this.idDistrict = idDistrict;
+    public void setIdProvince(int idProvince) {
+        this.idProvince = idProvince;
     }
 
     public String getNameCanton() {
@@ -45,6 +45,6 @@ public class Canton {
 
     @Override
     public String toString() {
-        return "Canton{" + "idCanton=" + idCanton + ", idDistrict=" + idDistrict + ", nameCanton=" + nameCanton + '}';
+        return "Canton{" + "idCanton=" + idCanton + ", idProvince=" + idProvince + ", nameCanton=" + nameCanton + '}';
     }
 }
