@@ -12,8 +12,9 @@ public class SportMatch {
     private int idSportMatch;
     private int idEvent;
 
-    public SportMatch(int idSportMatch) {
+    public SportMatch(int idSportMatch, int idEvent) {
         this.idSportMatch = idSportMatch;
+        this.idEvent = idEvent;
     }
 
     public int getIdSportMatch() {
