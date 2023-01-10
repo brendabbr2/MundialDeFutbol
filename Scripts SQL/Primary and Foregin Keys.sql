@@ -82,6 +82,12 @@ USING INDEX
 TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 
+ALTER TABLE Demonym
+ADD CONSTRAINT pk_Demonym PRIMARY KEY (idDemonym)
+USING INDEX
+TABLESPACE proj_Ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
 ALTER TABLE Province
 ADD CONSTRAINT pk_Province PRIMARY KEY (idProvince)
 USING INDEX
@@ -120,6 +126,10 @@ ADD CONSTRAINT pk_SportMatch PRIMARY KEY (idSportMatch)
 USING INDEX
 TABLESPACE proj_Ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+
+ALTER TABLE SportMatch
+ADD CONSTRAINT fk_SportMatch_Event FOREIGN KEY
+(idEvent) REFERENCES Event(idEvent);
 
 -----------------------------------------------------
 ------------------Stadium/Match Relation-------------
@@ -293,38 +303,55 @@ ALTER TABLE Team
 ADD CONSTRAINT fk_team_country FOREIGN KEY
 (idCountry) REFERENCES Country(idCountry);
 
+ALTER TABLE Team
+ADD CONSTRAINT fk_Team_Event FOREIGN KEY
+(idEvent) REFERENCES Event(idEvent);
+
 --By: Joxan Andrey Fuertes Villegas
 --Date: 26/Dic/2022 08:05 p.m
+
+-- Continent
+ALTER TABLE Continent
+ADD CONSTRAINT fk_Continent_Event FOREIGN KEY
+(idEvent) REFERENCES Event(idEvent);
 
 -- country
 ALTER TABLE Country
 ADD CONSTRAINT fk_Country_Continent FOREIGN KEY
 (idContinent) REFERENCES Continent(idContinent);
 
+ALTER TABLE Country
+ADD CONSTRAINT fk_Country_Demonym FOREIGN KEY
+(idDemonym) REFERENCES Demonym(idDemonym);
+
 -- province
 ALTER TABLE Province
 ADD CONSTRAINT fk_Province_Country FOREIGN KEY
 (idCountry) REFERENCES Country(idCountry);
 
--- district
-ALTER TABLE District
-ADD CONSTRAINT fk_District_Province FOREIGN KEY
-(idProvince) REFERENCES Province(idProvince);
-
 -- canton
  ALTER TABLE Canton
-ADD CONSTRAINT fk_Canton_District FOREIGN KEY
-(idDistrict) REFERENCES District(idDistrict);
+ADD CONSTRAINT fk_Canton_Province FOREIGN KEY
+(idProvince) REFERENCES Province(idProvince);
+
+-- district
+ALTER TABLE District
+ADD CONSTRAINT fk_District_Canton FOREIGN KEY
+(idCanton) REFERENCES Canton(idCanton);
 
 -- address
  ALTER TABLE Address
-ADD CONSTRAINT fk_Address_Canton FOREIGN KEY
-(idCanton) REFERENCES Canton(idCanton);
+ADD CONSTRAINT fk_Address_District FOREIGN KEY
+(idDistrict) REFERENCES District(idDistrict);
 
 -- stadium
 ALTER TABLE Stadium
 ADD CONSTRAINT fk_Stadium_Address FOREIGN KEY
 (idAddress) REFERENCES Address(idAddress);
+
+ALTER TABLE Stadium
+ADD CONSTRAINT fk_Stadium_Event FOREIGN KEY
+(idEvent) REFERENCES Event(idEvent);
 
 -- stadiumXsportMatch
 ALTER TABLE StadiumXSportMatch
@@ -397,6 +424,14 @@ ADD CONSTRAINT fk_person_Gender FOREIGN KEY
 ALTER TABLE person
 ADD CONSTRAINT fk_person_Adress FOREIGN KEY
 (idAddress) REFERENCES Address(idAddress);
+
+ALTER TABLE Person
+ADD CONSTRAINT fk_Person_Event FOREIGN KEY
+(idEvent) REFERENCES Event(idEvent);
+
+ALTER TABLE Person
+ADD CONSTRAINT fk_Person_UserPerson FOREIGN KEY
+(idUser) REFERENCES UserPerson(idUser);
 -----------------------------------------------------
 -------------------User Tables-----------------------
 ALTER TABLE userPerson

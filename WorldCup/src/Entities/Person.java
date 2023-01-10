@@ -13,24 +13,27 @@ public class Person {
     private int idGender;
     private int idAddress;
     private int idEvent;
+    private int idUser;
     private String date;
     private String personName;
     private String photo;
 
-    public Person(int idPerson, int idGender, int idAddress, int idEvent, String date, String personName) {
+    public Person(int idPerson, int idGender, int idAddress, int idUser, int idEvent, String date, String personName) {
         this.idPerson = idPerson;
         this.idGender = idGender;
         this.idAddress = idAddress;
+        this.idUser = idUser;
         this.idEvent = idEvent;
         this.date = date;
         this.personName = personName;
         this.photo = "";
     }
     
-    public Person(int idPerson, int idGender, int idAddress, int idEvent, String date, String personName, String photo) {
+    public Person(int idPerson, int idGender, int idAddress, int idUser, int idEvent, String date, String personName, String photo) {
         this.idPerson = idPerson;
         this.idGender = idGender;
         this.idAddress = idAddress;
+        this.idUser = idUser;
         this.idEvent = idEvent;
         this.date = date;
         this.personName = personName;
@@ -93,13 +96,18 @@ public class Person {
         this.idEvent = idEvent;
     }
 
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
     @Override
     public String toString() {
-        return "Person{" + "idPerson=" + idPerson + ", idGender=" + idGender + ", idAddress=" + idAddress 
-                + ", idEvent=" + idEvent + ", date=" + date + ", personName=" + personName + ", photo=" + photo + '}';
-    }
-    
-    
-    
-    
+        return "Person{" + "idPerson=" + idPerson + ", idGender=" + idGender 
+                + ", idAddress=" + idAddress + ", idEvent=" + idEvent + ", idUser=" 
+                + idUser + ", date=" + date + ", personName=" + personName + ", photo=" + photo + '}';
+    }    
 }
