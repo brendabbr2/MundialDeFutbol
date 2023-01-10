@@ -139,6 +139,23 @@ BEGIN
 :new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
 END beforeUpdateContinent;
 
+---------------Demonym------------------
+------- DemonymCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertDemonym
+BEFORE INSERT ON proj.Demonym
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertDemonym;
+
+------- DemonymModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateDemonym
+BEFORE UPDATE ON proj.Demonym
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateDemonym;
+
 ---------------Country------------------
 ------- CountryCreation
 CREATE OR REPLACE TRIGGER proj.beforeInsertCountry
@@ -173,23 +190,6 @@ BEGIN
 :new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
 END beforeUpdateProvince;
 
----------------District------------------
-------- DistrictCreation
-CREATE OR REPLACE TRIGGER proj.beforeInsertDistrict
-BEFORE INSERT ON proj.District
-FOR EACH ROW 
-BEGIN
-:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
-END beforeInsertDistrict;
-
-------- DistrictModification
-CREATE OR REPLACE TRIGGER proj.beforeUpdateDistrict
-BEFORE UPDATE ON proj.District
-FOR EACH ROW 
-BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
-END beforeUpdateDistrict;
-
 ---------------Canton------------------
 ------- CantonCreation
 CREATE OR REPLACE TRIGGER proj.beforeInsertCanton
@@ -206,6 +206,23 @@ FOR EACH ROW
 BEGIN 
 :new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
 END beforeUpdateCanton;
+
+---------------District------------------
+------- DistrictCreation
+CREATE OR REPLACE TRIGGER proj.beforeInsertDistrict
+BEFORE INSERT ON proj.District
+FOR EACH ROW 
+BEGIN
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertDistrict;
+
+------- DistrictModification
+CREATE OR REPLACE TRIGGER proj.beforeUpdateDistrict
+BEFORE UPDATE ON proj.District
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateDistrict;
 
 ---------------Address------------------
 ------- AddressCreation

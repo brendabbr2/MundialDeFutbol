@@ -124,6 +124,14 @@ AS BEGIN
     Commit;  
 END deleteCountry;
 
+--Delete Demonym
+CREATE OR REPLACE PROCEDURE deleteDemonym (v_idDemonym IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Demonym
+    WHERE idDemonym = v_idDemonym; 
+    Commit;  
+END deleteDemonym;
+
 --Delete Continent
 CREATE OR REPLACE PROCEDURE deleteContinent (v_idContinent IN NUMBER) 
 AS BEGIN 
@@ -131,10 +139,6 @@ AS BEGIN
     WHERE idContinent = v_idContinent; 
     Commit;  
 END deleteContinent;
-
-BEGIN
-    deleteContinent(3);
-END;
 
 -----------------------------------------------------
 --By: David Salazar Rodriguez

@@ -10,9 +10,11 @@ package Entities;
  */
 public class SportMatch {
     private int idSportMatch;
+    private int idEvent;
 
-    public SportMatch(int idSportMatch) {
+    public SportMatch(int idSportMatch, int idEvent) {
         this.idSportMatch = idSportMatch;
+        this.idEvent = idEvent;
     }
 
     public int getIdSportMatch() {
@@ -23,8 +25,16 @@ public class SportMatch {
         this.idSportMatch = idSportMatch;
     }
 
+    public int getIdEvent() {
+        return idEvent;
+    }
+
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
+    }
+
     @Override
     public String toString() {
-        return "SportMatch{" + "idSportMatch=" + idSportMatch + '}';
+        return "SportMatch{" + "idSportMatch=" + idSportMatch + ", idEvent=" + idEvent + '}';
     }
 }

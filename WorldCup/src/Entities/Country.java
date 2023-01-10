@@ -11,14 +11,14 @@ package Entities;
 public class Country {
     private int idCountry;
     private int idContinent;
+    private int idDemonym;
     private String nameCountry;
-    private String demonym;
 
-    public Country(int idCountry, int idContinent, String nameCountry, String demonym) {
+    public Country(int idCountry, int idContinent, int idDemonym, String nameCountry) {
         this.idCountry = idCountry;
         this.idContinent = idContinent;
+        this.idDemonym = idDemonym;
         this.nameCountry = nameCountry;
-        this.demonym = demonym;
     }
 
     public int getIdCountry() {
@@ -45,16 +45,16 @@ public class Country {
         this.nameCountry = nameCountry;
     }
 
-    public String getDemonym() {
-        return demonym;
+    public int getIdDemonym() {
+        return idDemonym;
     }
 
-    public void setDemonym(String demonym) {
-        this.demonym = demonym;
+    public void setIdDemonym(int idDemonym) {
+        this.idDemonym = idDemonym;
     }
 
     @Override
     public String toString() {
-        return "Country{" + "idCountry=" + idCountry + ", idContinent=" + idContinent + ", nameCountry=" + nameCountry + ", demonym=" + demonym + '}';
+        return "Country{" + "idCountry=" + idCountry + ", idContinent=" + idContinent + ", idDemonym=" + idDemonym + ", nameCountry=" + nameCountry + '}';
     }
 }

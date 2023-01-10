@@ -3,7 +3,7 @@ CREATE OR REPLACE PROCEDURE getGender(v_idGender IN NUMBER, GenderCursor OUT SYS
 AS 
 BEGIN 
     OPEN GenderCursor FOR  
-    SELECT idGender, genderDescription 
+    SELECT idGender, genderDescription, creationUser, creationDate, modificationUser, modificationDate
     FROM Gender  
     WHERE idGender = NVL(v_idGender, idGender); 
 END getGender;
@@ -13,7 +13,7 @@ CREATE OR REPLACE PROCEDURE getWorker(v_idWorker IN NUMBER, WorkerCursor OUT SYS
 AS 
 BEGIN 
     OPEN WorkerCursor FOR  
-    SELECT idWorker, idWorkerType, hireDate 
+    SELECT idWorker, idWorkerType, hireDate , creationUser, creationDate, modificationUser, modificationDate
     FROM Worker  
     WHERE idWorker = NVL(v_idWorker, idWorker);  
 END getWorker;
@@ -24,7 +24,7 @@ WorkerTypeCursor OUT SYS_REFCURSOR)
 AS
 BEGIN 
     OPEN WorkerTypeCursor FOR  
-    SELECT idWorkerType, nameWorkerType 
+    SELECT idWorkerType, nameWorkerType , creationUser, creationDate, modificationUser, modificationDate
     FROM WorkerType  
     WHERE idWorkerType = NVL(v_idWorkerType, idWorkerType);  
 END getWorkerType;
@@ -35,7 +35,7 @@ PlayerPositionCursor OUT SYS_REFCURSOR)
 AS
 BEGIN 
     OPEN PlayerPositionCursor FOR  
-    SELECT idPlayerPosition, playerPositionName 
+    SELECT idPlayerPosition, playerPositionName , creationUser, creationDate, modificationUser, modificationDate
     FROM PlayerPosition  
     WHERE idPlayerPosition = NVL(v_idPlayerPosition, idPlayerPosition); 
 END getPlayerPosition;
@@ -46,7 +46,7 @@ CREATE OR REPLACE PROCEDURE getPlayerXSportMatch(v_idPlayer IN NUMBER,
 AS 
 BEGIN 
     OPEN PlayerXSportMatchCursor FOR  
-    SELECT idPlayer, idSportMatch, yellow_card, red_card, savers, offside, expulsion, goals, corners 
+    SELECT idPlayer, idSportMatch, yellow_card, red_card, savers, offside, expulsion, goals, corners , creationUser, creationDate, modificationUser, modificationDate
     FROM PlayerXSportMatch  
     WHERE idPlayer = NVL(v_idPlayer, idPlayer)
     AND idSportMatch = NVL(v_idSportMatch, idSportMatch);  
@@ -61,7 +61,7 @@ CREATE OR REPLACE PROCEDURE getContinent(v_idContinent IN NUMBER, ContinentCurso
 AS
 BEGIN 
     OPEN ContinentCursor FOR  
-        SELECT idContinent, nameContinent
+        SELECT idContinent, idEvent, nameContinent, creationUser, creationDate, modificationUser, modificationDate
         FROM Continent  
         WHERE idContinent = NVL(v_idContinent, idContinent); 
 END getContinent;
@@ -71,17 +71,27 @@ CREATE OR REPLACE PROCEDURE getCountry(v_idCountry IN NUMBER, CountryCursor OUT 
 AS
 BEGIN 
     OPEN CountryCursor FOR  
-        SELECT idCountry, nameCountry, demonym
+        SELECT idCountry, nameCountry, creationUser, creationDate, modificationUser, modificationDate
         FROM Country  
         WHERE idCountry = NVL(v_idCountry, idCountry); 
 END getCountry;
+
+--return a cursor of Demonym
+CREATE OR REPLACE PROCEDURE getDemonym(v_idDemonym IN NUMBER, DemonymCursor OUT SYS_REFCURSOR) 
+AS
+BEGIN 
+    OPEN DemonymCursor FOR  
+        SELECT idDemonym, nameDemonym, creationUser, creationDate, modificationUser, modificationDate
+        FROM Demonym  
+        WHERE idDemonym = NVL(v_idDemonym, idDemonym); 
+END getDemonym;
 
 --return a cursor of Province
 CREATE OR REPLACE PROCEDURE getProvince(v_idProvince IN NUMBER, ProvinceCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
     OPEN ProvinceCursor FOR  
-        SELECT idProvince, nameProvince
+        SELECT idProvince, nameProvince, creationUser, creationDate, modificationUser, modificationDate
         FROM Province 
         WHERE idProvince = NVL(v_idProvince, idProvince);  
 END getProvince;
@@ -91,7 +101,7 @@ CREATE OR REPLACE PROCEDURE getDistrict(v_idDistrict IN NUMBER, DistrictCursor O
 AS
 BEGIN 
     OPEN DistrictCursor FOR  
-        SELECT idDistrict, nameDistrict
+        SELECT idDistrict, nameDistrict, creationUser, creationDate, modificationUser, modificationDate
         FROM District 
         WHERE idDistrict = NVL(v_idDistrict, idDistrict); 
 END getDistrict;
@@ -101,7 +111,7 @@ CREATE OR REPLACE PROCEDURE getCanton(v_idCanton IN NUMBER, CantonCursor OUT SYS
 AS 
 BEGIN 
     OPEN CantonCursor FOR  
-        SELECT idCanton, nameCanton
+        SELECT idCanton, nameCanton, creationUser, creationDate, modificationUser, modificationDate
         FROM Canton
         WHERE idCanton = NVL(v_idCanton, idCanton); 
     COMMIT;
@@ -112,7 +122,7 @@ CREATE OR REPLACE PROCEDURE getAddress(v_idAddress IN NUMBER, AddressCursor OUT 
 AS 
 BEGIN 
     OPEN AddressCursor FOR  
-        SELECT idAddress, nameAddress
+        SELECT idAddress, nameAddress, creationUser, creationDate, modificationUser, modificationDate
         FROM Address 
         WHERE idAddress = NVL(v_idAddress, idAddress); 
 END getAddress;
@@ -122,7 +132,7 @@ CREATE OR REPLACE PROCEDURE getStadium(v_idStadium IN NUMBER, StadiumCursor OUT 
 AS
 BEGIN 
     OPEN StadiumCursor FOR  
-        SELECT idStadium, nameStadium
+        SELECT idStadium, idEvent, nameStadium, creationUser, creationDate, modificationUser, modificationDate
         FROM Stadium 
         WHERE idStadium = NVL(v_idStadium, idStadium);  
 END getStadium;
@@ -132,10 +142,20 @@ CREATE OR REPLACE PROCEDURE getSportMatch(v_idSportMatch IN NUMBER, SportMatchCu
 AS
 BEGIN 
     OPEN SportMatchCursor FOR  
-        SELECT idSportMatch
+        SELECT idSportMatch, idEvent, creationUser, creationDate, modificationUser, modificationDate
         FROM SportMatch
         WHERE idSportMatch = NVL(v_idSportMatch, idSportMatch); 
 END getSportMatch;
+
+--return a cursor of Team
+CREATE OR REPLACE PROCEDURE getTeam(v_idTeam IN NUMBER, TeamCursor OUT SYS_REFCURSOR) 
+AS
+BEGIN 
+    OPEN TeamCursor FOR  
+        SELECT idTeam, idGroup, idCountry, idEvent, captainNumber, logoPhoto, lineup, creationUser, creationDate, modificationUser, modificationDate
+        FROM Team
+        WHERE idTeam = NVL(v_idTeam, idTeam); 
+END getTeam;
 
 --return a cursor of StadiumXSportMatch
 CREATE OR REPLACE PROCEDURE getStadiumXSportMatch(v_idStadium IN NUMBER,
@@ -143,7 +163,7 @@ v_idSportMatch IN NUMBER, StadiumXSportMatchCursor OUT SYS_REFCURSOR)
 AS 
 BEGIN 
     OPEN StadiumXSportMatchCursor FOR  
-        SELECT idStadium, idSportMatch, dateStadiumXSportMatch
+        SELECT idStadium, idSportMatch, dateStadiumXSportMatch, creationUser, creationDate, modificationUser, modificationDate
         FROM StadiumXSportMatch
         WHERE idStadium = NVL(v_idStadium, idStadium) AND 
         idSportMatch = NVL(v_idSportMatch, idSportMatch);  
@@ -156,7 +176,7 @@ CREATE OR REPLACE PROCEDURE getPhone(v_Phone IN NUMBER, phoneCursor OUT SYS_REFC
 AS
 BEGIN 
     OPEN phoneCursor FOR  
-        SELECT phone, idPerson
+        SELECT phone, idPerson, creationUser, creationDate, modificationUser, modificationDate
         FROM Phone
         WHERE phone = NVL(v_Phone,phone); 
 END getPhone;
@@ -165,7 +185,7 @@ CREATE OR REPLACE PROCEDURE getEmail(v_idPerson IN NUMBER, emailCursor OUT SYS_R
 AS 
 BEGIN 
     OPEN emailCursor FOR  
-        SELECT idEmail, mail
+        SELECT idEmail, mail, creationUser, creationDate, modificationUser, modificationDate
         FROM Email
         WHERE idPerson = NVL(v_idPerson,idPerson);  
 END getEmail;
@@ -175,7 +195,7 @@ IdentificationCursor OUT SYS_REFCURSOR)
 AS 
 BEGIN 
     OPEN IdentificationCursor FOR  
-        SELECT idIdentification,idType,valueIdentification
+        SELECT idIdentification,idType,valueIdentification, creationUser, creationDate, modificationUser, modificationDate
         FROM Identification
         WHERE idPerson = NVL(v_idPerson,idPerson);  
 END getIdentification;
@@ -185,7 +205,7 @@ IdentificationTypeCursor OUT SYS_REFCURSOR)
 AS 
 BEGIN 
     OPEN IdentificationTypeCursor FOR  
-        SELECT idIdentificationType,idName,idMask
+        SELECT idIdentificationType,idName,idMask, creationUser, creationDate, modificationUser, modificationDate
         FROM identificationType
         WHERE idIdentificationType = NVL(v_idType,idIdentificationType);
 END getIdentificationType;
@@ -194,7 +214,7 @@ CREATE OR REPLACE PROCEDURE getPerson(v_idPerson IN NUMBER, PersonCursor OUT SYS
 AS 
 BEGIN 
     OPEN PersonCursor FOR  
-        SELECT idPerson,idGender,idAddress,birthday,personName,photo
+        SELECT idPerson,idGender,idAddress, idEvent, idUser,birthday,personName,photo, creationUser, creationDate, modificationUser, modificationDate
         FROM person
         WHERE idPerson = NVL(v_idPerson,idPerson); 
 END getPerson;
@@ -204,7 +224,7 @@ UserTypeCursor OUT SYS_REFCURSOR)
 AS 
 BEGIN 
     OPEN UserTypeCursor FOR  
-        SELECT idUserType, nameUserType
+        SELECT idUserType, nameUserType, creationUser, creationDate, modificationUser, modificationDate
         FROM userType
         WHERE idUserType = NVL(v_idUserType,idUserType); 
 END getUserType;
@@ -213,7 +233,8 @@ CREATE OR REPLACE PROCEDURE getUserPerson(v_idUser IN NUMBER, UserPersonCursor O
 AS 
 BEGIN 
     OPEN UserPersonCursor FOR  
-        SELECT userP.idUser, userT.nameUserType, userP.username, userP.passwordUser
+        SELECT userP.idUser, userT.nameUserType, userP.username, userP.passwordUser, 
+            userT.creationUser, userT.creationDate, userT.modificationUser, userT.modificationDate
         FROM userPerson userP
         INNER JOIN userType userT
         ON userP.idUserType = userT.idUserType
@@ -224,7 +245,7 @@ CREATE OR REPLACE PROCEDURE getUserLog(v_idUser IN NUMBER, LogCursor OUT SYS_REF
 AS
 BEGIN 
     OPEN LogCursor FOR  
-        SELECT idLog, idNews,idUser,logDate,logText
+        SELECT idLog, idNews,idUser,logDate,logText, creationUser, creationDate, modificationUser, modificationDate
         FROM userLog
         WHERE idUser = NVL(v_idUser,idUser);
 END getUserLog;
@@ -233,7 +254,7 @@ CREATE OR REPLACE PROCEDURE getUserComment(v_idUser IN NUMBER, CommentCursor OUT
 AS 
 BEGIN 
     OPEN CommentCursor FOR  
-        SELECT idComment, idNews,idUser,CommentDate,CommentText
+        SELECT idComment, idNews,idUser,CommentDate,CommentText, creationUser, creationDate, modificationUser, modificationDate
         FROM userComment
         WHERE idUser = NVL(v_idUser,idUser);
 END getUserComment;
@@ -242,7 +263,7 @@ CREATE OR REPLACE PROCEDURE getUserReview(v_idUser IN NUMBER, ReviewCursor OUT S
 AS 
 BEGIN 
     OPEN ReviewCursor FOR  
-        SELECT idReview, idNews,idUser,score
+        SELECT idReview, idNews,idUser,score, creationUser, creationDate, modificationUser, modificationDate
         FROM userReview
         WHERE idUser = NVL(v_idUser,idUser); 
 END getUserReview;
@@ -251,7 +272,7 @@ CREATE OR REPLACE PROCEDURE getUserSave(v_idUser IN NUMBER, SaveCursor OUT SYS_R
 AS 
 BEGIN 
     OPEN SaveCursor FOR  
-        SELECT idSave, idNews,idUser
+        SELECT idSave, idNews,idUser, creationUser, creationDate, modificationUser, modificationDate
         FROM userSave
         WHERE idUser = NVL(v_idUser,idUser);  
 END getUserSave;
@@ -260,7 +281,7 @@ CREATE OR REPLACE PROCEDURE getNews(v_idEvent IN NUMBER, NewsCursor OUT SYS_REFC
 AS 
 BEGIN 
     OPEN NewsCursor FOR  
-        SELECT idNews,idUser,idEvent,title,text,author,newsDate,photo
+        SELECT idNews,idEvent,title,text,author,newsDate,photo, creationUser, creationDate, modificationUser, modificationDate
         FROM News
         WHERE idEvent = NVL(v_idEvent,idEvent); 
 END getNews;

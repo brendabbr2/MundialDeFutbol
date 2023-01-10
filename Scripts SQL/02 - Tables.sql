@@ -75,6 +75,8 @@ CREATE TABLE person(
     --------------FK------------------
     idGender number(6),
     idAddress number(6),
+    idEvent NUMBER(6),
+    idUser NUMBER(6),
     --------------Attribute------------
     birthday date NOT NULL,
     personName varchar2(20) NOT NULL,
@@ -261,6 +263,7 @@ CREATE TABLE Team(
     --------------FK------------------
     idGroup NUMBER(6),
     idCountry NUMBER(6),
+    idEvent NUMBER(6),
     --------------Attribute-----------
     captainNumber NUMBER(6) NOT NULL,
     logoPhoto VARCHAR2(100),
@@ -331,10 +334,24 @@ CREATE TABLE PlayerPosition(
 --                SportMatch, StadiumXSportMatch
 --By: Joxan Andrey Fuertes Villegas
 --Date: 23/Dic/2022 1:22 a.m
+CREATE TABLE Demonym( 
+    --------------PK------------------
+    idDemonym NUMBER(6),
+    --------------Attribute-----------
+    nameDemonym VARCHAR2(20) NOT NULL,
+    --------------Audit---------------
+    creationUser VARCHAR2(20),
+    creationDate DATE,
+    modificationUser VARCHAR2(20),
+    modificationDate DATE
+);
+
 --------------------Adress Tables--------------------
 CREATE TABLE Continent( 
     --------------PK------------------
     idContinent NUMBER(6),
+    --------------FK------------------
+    idEvent NUMBER(6),
     --------------Attribute-----------
     nameContinent VARCHAR2(20) NOT NULL,
     --------------Audit---------------
@@ -349,6 +366,7 @@ CREATE TABLE Country(
     idCountry NUMBER(6),
     --------------FK------------------
     idContinent NUMBER(6),
+    idDemonym NUMBER(6),
     --------------Attribute-----------
     nameCountry VARCHAR2(20) NOT NULL,
     demonym VARCHAR2(20) NOT NULL,
@@ -373,23 +391,9 @@ CREATE TABLE Province(
     modificationDate DATE
 );
 
-CREATE TABLE District( 
-    --------------PK------------------
-    idDistrict NUMBER(6),
-    --------------FK------------------
-    idProvince NUMBER(6),
-    --------------Attribute-----------
-    nameDistrict VARCHAR2(20) NOT NULL,
-    --------------Audit---------------
-    creationUser VARCHAR2(20),
-    creationDate DATE,
-    modificationUser VARCHAR2(20),
-    modificationDate DATE
-);
-
 CREATE TABLE Canton(
     idCanton NUMBER(6),
-    idDistrict NUMBER(6),
+    idProvince NUMBER(6),
     nameCanton VARCHAR2(20),
     --------------Audit---------------
     creationUser VARCHAR2(20),
@@ -397,13 +401,26 @@ CREATE TABLE Canton(
     modificationUser VARCHAR2(20),
     modificationDate DATE
 );
-    
+
+CREATE TABLE District( 
+    --------------PK------------------
+    idDistrict NUMBER(6),
+    --------------FK------------------
+    idCanton NUMBER(6),
+    --------------Attribute-----------
+    nameDistrict VARCHAR2(20) NOT NULL,
+    --------------Audit---------------
+    creationUser VARCHAR2(20),
+    creationDate DATE,
+    modificationUser VARCHAR2(20),
+    modificationDate DATE
+);    
 
 CREATE TABLE Address( 
     --------------PK------------------
     idAddress NUMBER(6),
     --------------FK------------------
-    idCanton NUMBER(6),
+    idDistrict NUMBER(6),
     --------------Attribute-----------
     nameAddress VARCHAR2(20) NOT NULL,
     --------------Audit---------------
@@ -419,6 +436,7 @@ CREATE TABLE Stadium(
     idStadium NUMBER(6),
     --------------FK------------------
     idAddress NUMBER(6),
+    idEvent NUMBER(6),
     --------------Attribute-----------
     nameStadium VARCHAR2(20) NOT NULL,
     --------------Audit---------------
@@ -446,6 +464,8 @@ CREATE TABLE StadiumXSportMatch(
 CREATE TABLE SportMatch(
     --------------PK-----------------
     idSportMatch NUMBER(6),
+    --------------FK------------------
+    idEvent NUMBER(6),
     --------------Audit---------------
     creationUser VARCHAR2(20),
     creationDate DATE,
