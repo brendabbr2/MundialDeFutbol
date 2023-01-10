@@ -81,7 +81,7 @@ CREATE OR REPLACE PROCEDURE getDemonym(v_idDemonym IN NUMBER, DemonymCursor OUT 
 AS
 BEGIN 
     OPEN DemonymCursor FOR  
-        SELECT idDemonym, nameCountry, creationUser, creationDate, modificationUser, modificationDate
+        SELECT idDemonym, nameDemonym, creationUser, creationDate, modificationUser, modificationDate
         FROM Demonym  
         WHERE idDemonym = NVL(v_idDemonym, idDemonym); 
 END getDemonym;
@@ -233,7 +233,8 @@ CREATE OR REPLACE PROCEDURE getUserPerson(v_idUser IN NUMBER, UserPersonCursor O
 AS 
 BEGIN 
     OPEN UserPersonCursor FOR  
-        SELECT userP.idUser, userT.nameUserType, userP.username, userP.passwordUser, creationUser, creationDate, modificationUser, modificationDate
+        SELECT userP.idUser, userT.nameUserType, userP.username, userP.passwordUser, 
+            userT.creationUser, userT.creationDate, userT.modificationUser, userT.modificationDate
         FROM userPerson userP
         INNER JOIN userType userT
         ON userP.idUserType = userT.idUserType
