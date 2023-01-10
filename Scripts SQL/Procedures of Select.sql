@@ -280,7 +280,7 @@ CREATE OR REPLACE PROCEDURE getNews(v_idEvent IN NUMBER, NewsCursor OUT SYS_REFC
 AS 
 BEGIN 
     OPEN NewsCursor FOR  
-        SELECT idNews,idUser,idEvent,title,text,author,newsDate,photo
+        SELECT idNews,idEvent,title,text,author,newsDate,photo
         FROM News
         WHERE idEvent = NVL(v_idEvent,idEvent); 
 END getNews;

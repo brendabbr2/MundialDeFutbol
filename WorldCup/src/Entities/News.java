@@ -9,19 +9,23 @@ package Entities;
  * @author Datos
  */
 public class News {
+    private int idNews;
+    private int idEvent;
     private String title;
     private String text;
     private String author;
     private String date;
     private String photo;
 
-    public News(String title, String text, String author, String date, String photo) {
+    public News(int idNews, int idEvent, String title, String text, String author, String date, String photo) {
+        this.idNews = idNews;
+        this.idEvent = idEvent;
         this.title = title;
         this.text = text;
         this.author = author;
         this.date = date;
         this.photo = photo;
-    } 
+    }
     
     public String getTitle() {
         return title;
@@ -62,6 +66,28 @@ public class News {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-    
+
+    public int getIdNews() {
+        return idNews;
+    }
+
+    public void setIdNews(int idNews) {
+        this.idNews = idNews;
+    }
+
+    public int getIdEvent() {
+        return idEvent;
+    }
+
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
+    }
+
+    @Override
+    public String toString() {
+        return "News{" + "idNews=" + idNews + ", idEvent=" + idEvent 
+                + ", title=" + title + ", text=" + text + ", author=" 
+                + author + ", date=" + date + ", photo=" + photo + '}';
+    }
     
 }

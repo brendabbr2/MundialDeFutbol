@@ -164,11 +164,11 @@ END insertUserSave;
 -----------------------------------------------------
 ---------------------News Table----------------------
 CREATE OR REPLACE PROCEDURE insertNews
-    (VidUser IN NUMBER,VidEvent IN NUMBER,Vtitle IN VARCHAR2,Vtext IN VARCHAR2,
+    (VidEvent IN NUMBER,Vtitle IN VARCHAR2,Vtext IN VARCHAR2,
     Vauthor IN VARCHAR2,VnewsDate IN DATE,Vphoto IN VARCHAR2)
     AS BEGIN 
-    INSERT INTO News(idNews,idUser,idEvent,title,text,author,newsDate,photo)  
-    VALUES(s_News.NEXTVAL,VidUser, VidEvent,Vtitle,Vtext,Vauthor, VnewsDate,Vphoto);
+    INSERT INTO News(idNews,idEvent,title,text,author,newsDate,photo)  
+    VALUES(s_News.NEXTVAL, VidEvent,Vtitle,Vtext,Vauthor, VnewsDate,Vphoto);
     COMMIT; 
 END insertNews;
 -----------------------------------------------------
