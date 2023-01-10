@@ -279,12 +279,11 @@ CREATE OR REPLACE PROCEDURE updateUserSave
 END updateUserSave;
 
 CREATE OR REPLACE PROCEDURE updateNews
-    (V_idNews IN NUMBER, V_idUser IN NUMBER, V_idEvent NUMBER, V_title IN VARCHAR2, V_text IN VARCHAR2,
+    (V_idNews IN NUMBER, V_idEvent NUMBER, V_title IN VARCHAR2, V_text IN VARCHAR2,
         V_author IN VARCHAR2, V_newsDate IN DATE,V_Photo IN VARCHAR2)
     AS BEGIN
         UPDATE News
-        SET idUser = NVL(V_idUser, idUser),
-            idEvent = NVL(V_idEvent, idEvent),
+        SET idEvent = NVL(V_idEvent, idEvent),
             title = NVL(V_title, title),
             text = NVL(V_text, text),
             author = NVL(V_author, author),
