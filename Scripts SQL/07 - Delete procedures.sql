@@ -140,10 +140,6 @@ AS BEGIN
     Commit;  
 END deleteContinent;
 
-BEGIN
-    deleteContinent(3);
-END;
-
 -----------------------------------------------------
 --By: David Salazar Rodriguez
 --Date: 26/Dic/2022 6:32 p.m
