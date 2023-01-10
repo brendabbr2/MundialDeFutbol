@@ -101,12 +101,12 @@ CREATE OR REPLACE PROCEDURE insertIdentification
 END insertIdentification;
 
 CREATE OR REPLACE PROCEDURE insertPerson
-    (VidGender IN NUMBER, Vadress IN NUMBER, v_idEvent IN NUMBER,
+    (VidGender IN NUMBER, Vadress IN NUMBER, v_idUser IN NUMBER, v_idEvent IN NUMBER, 
         Vbirthdate IN DATE, Vname IN VARCHAR2, Vphoto IN VARCHAR2)
     AS BEGIN 
-    INSERT INTO Person(idPerson, idGender, idAddress, idEvent,
-        birthday, personName, photo)  
-    VALUES(s_person.NEXTVAL, VidGender, Vadress, v_idEvent,
+    INSERT INTO Person(idPerson, idGender, idAddress, idUser, 
+        idEvent, birthday, personName, photo)  
+    VALUES(s_person.NEXTVAL, VidGender, Vadress, v_idUser, v_idEvent,
         Vbirthdate, Vname, Vphoto);
     COMMIT; 
 END insertPerson;

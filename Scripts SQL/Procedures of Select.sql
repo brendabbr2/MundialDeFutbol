@@ -61,7 +61,7 @@ CREATE OR REPLACE PROCEDURE getContinent(v_idContinent IN NUMBER, ContinentCurso
 AS
 BEGIN 
     OPEN ContinentCursor FOR  
-        SELECT idContinent, nameContinent
+        SELECT idContinent, idEvent, nameContinent
         FROM Continent  
         WHERE idContinent = NVL(v_idContinent, idContinent); 
 END getContinent;
@@ -71,10 +71,20 @@ CREATE OR REPLACE PROCEDURE getCountry(v_idCountry IN NUMBER, CountryCursor OUT 
 AS
 BEGIN 
     OPEN CountryCursor FOR  
-        SELECT idCountry, nameCountry, demonym
+        SELECT idCountry, nameCountry
         FROM Country  
         WHERE idCountry = NVL(v_idCountry, idCountry); 
 END getCountry;
+
+--return a cursor of Demonym
+CREATE OR REPLACE PROCEDURE getDemonym(v_idDemonym IN NUMBER, DemonymCursor OUT SYS_REFCURSOR) 
+AS
+BEGIN 
+    OPEN DemonymCursor FOR  
+        SELECT idDemonym, nameCountr
+        FROM Demonym  
+        WHERE idDemonym = NVL(v_idDemonym, idDemonym); 
+END getDemonym;
 
 --return a cursor of Province
 CREATE OR REPLACE PROCEDURE getProvince(v_idProvince IN NUMBER, ProvinceCursor OUT SYS_REFCURSOR) 
@@ -122,7 +132,7 @@ CREATE OR REPLACE PROCEDURE getStadium(v_idStadium IN NUMBER, StadiumCursor OUT 
 AS
 BEGIN 
     OPEN StadiumCursor FOR  
-        SELECT idStadium, nameStadium
+        SELECT idStadium, idEvent, nameStadium
         FROM Stadium 
         WHERE idStadium = NVL(v_idStadium, idStadium);  
 END getStadium;
@@ -132,10 +142,20 @@ CREATE OR REPLACE PROCEDURE getSportMatch(v_idSportMatch IN NUMBER, SportMatchCu
 AS
 BEGIN 
     OPEN SportMatchCursor FOR  
-        SELECT idSportMatch
+        SELECT idSportMatch, idEvent
         FROM SportMatch
         WHERE idSportMatch = NVL(v_idSportMatch, idSportMatch); 
 END getSportMatch;
+
+--return a cursor of Team
+CREATE OR REPLACE PROCEDURE getTeam(v_idTeam IN NUMBER, TeamCursor OUT SYS_REFCURSOR) 
+AS
+BEGIN 
+    OPEN TeamCursor FOR  
+        SELECT idTeam, idGroup, idCountry, idEvent, captainNumber, logoPhoto, lineup
+        FROM Team
+        WHERE idTeam = NVL(v_idTeam, idTeam); 
+END getTeam;
 
 --return a cursor of StadiumXSportMatch
 CREATE OR REPLACE PROCEDURE getStadiumXSportMatch(v_idStadium IN NUMBER,
@@ -194,7 +214,7 @@ CREATE OR REPLACE PROCEDURE getPerson(v_idPerson IN NUMBER, PersonCursor OUT SYS
 AS 
 BEGIN 
     OPEN PersonCursor FOR  
-        SELECT idPerson,idGender,idAddress,birthday,personName,photo
+        SELECT idPerson,idGender,idAddress, idEvent, idUser,birthday,personName,photo
         FROM person
         WHERE idPerson = NVL(v_idPerson,idPerson); 
 END getPerson;
