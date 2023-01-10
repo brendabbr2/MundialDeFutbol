@@ -101,12 +101,12 @@ CREATE OR REPLACE PROCEDURE insertIdentification
 END insertIdentification;
 
 CREATE OR REPLACE PROCEDURE insertPerson
-    (VidGender IN NUMBER, Vadress IN NUMBER,
+    (VidGender IN NUMBER, Vadress IN NUMBER, v_idEvent IN NUMBER,
         Vbirthdate IN DATE, Vname IN VARCHAR2, Vphoto IN VARCHAR2)
     AS BEGIN 
-    INSERT INTO Person(idPerson, idGender, idAddress,
+    INSERT INTO Person(idPerson, idGender, idAddress, idEvent,
         birthday, personName, photo)  
-    VALUES(s_person.NEXTVAL, VidGender, Vadress,
+    VALUES(s_person.NEXTVAL, VidGender, Vadress, v_idEvent,
         Vbirthdate, Vname, Vphoto);
     COMMIT; 
 END insertPerson;
@@ -240,10 +240,11 @@ END insertPlayer;
 
 --Team
 CREATE OR REPLACE PROCEDURE insertTeam 
-    (VidGroup IN NUMBER, VidCountry IN NUMBER, VcaptainNumber IN NUMBER, VlogoPhoto IN VARCHAR, Vlineup IN NUMBER)
+    (VidGroup IN NUMBER, VidCountry IN NUMBER, v_idEvent IN NUMBER,
+    VcaptainNumber IN NUMBER, VlogoPhoto IN VARCHAR, Vlineup IN NUMBER)
     AS BEGIN
-    INSERT INTO Team(idteam, idgroup, idcountry, captainnumber, logophoto, lineup)
-    VALUES(s_team.nextval, VidGroup, VidCountry, VcaptainNumber, VlogoPhoto, Vlineup);
+    INSERT INTO Team(idteam, idgroup, idcountry, idEvent, captainnumber, logophoto, lineup)
+    VALUES(s_team.nextval, VidGroup, VidCountry, v_idEvent, VcaptainNumber, VlogoPhoto, Vlineup);
     COMMIT; 
 END insertTeam;
 
@@ -253,21 +254,30 @@ END insertTeam;
 
 --Continent
 CREATE OR REPLACE PROCEDURE insertContinent 
-    (VnameContinent IN VARCHAR2)
+    (v_idEvent IN NUMBER, VnameContinent IN VARCHAR2)
     AS BEGIN
-    INSERT INTO Continent(idContinent, nameContinent)
-    VALUES(s_continent.nextval, VnameContinent);
+    INSERT INTO Continent(idContinent, idEvent, nameContinent)
+    VALUES(s_continent.nextval, v_idEvent, VnameContinent);
     COMMIT; 
 END insertContinent;
 
 -- Insert Country
 CREATE OR REPLACE PROCEDURE insertCountry
-    (V_idContinent IN NUMBER, V_nameCountry IN VARCHAR2, V_demonym IN VARCHAR2)
+    (V_idContinent IN NUMBER, v_idDemonym IN NUMBER, V_nameCountry IN VARCHAR2)
     AS BEGIN 
-    INSERT INTO Country(idCountry, idContinent, nameCountry, demonym)  
-    VALUES(s_Country.NEXTVAL, V_idContinent, V_nameCountry, V_demonym);
+    INSERT INTO Country(idCountry, idContinent, idDemonym, nameCountry)  
+    VALUES(s_Country.NEXTVAL, V_idContinent, v_idDemonym, V_nameCountry);
     COMMIT; 
 END insertCountry;
+
+-- Insert Demonym
+CREATE OR REPLACE PROCEDURE insertDemonym
+    (V_nameDemonym IN VARCHAR2)
+    AS BEGIN 
+    INSERT INTO Demonym(idDemonym, nameDemonym)  
+    VALUES(s_demonym.NEXTVAL, v_nameDemonym);
+    COMMIT; 
+END insertDemonym;
 
 -- Insert Province
 CREATE OR REPLACE PROCEDURE insertProvince
@@ -278,43 +288,43 @@ CREATE OR REPLACE PROCEDURE insertProvince
     COMMIT; 
 END insertProvince;
 
--- Insert District
-CREATE OR REPLACE PROCEDURE insertDistrict
-    (V_idProvince IN NUMBER, V_nameDistrict IN VARCHAR2) 
-    AS BEGIN
-    INSERT INTO District(idDistrict, idProvince, nameDistrict)
-    VALUES(s_District.NEXTVAL, V_idProvince, V_nameDistrict);
-END insertDistrict;
-
 -- Insert Canton
 CREATE OR REPLACE PROCEDURE insertCanton
-    (V_idDistrict IN NUMBER, V_nameCanton IN VARCHAR2) 
+    (V_idProvince IN NUMBER, V_nameCanton IN VARCHAR2) 
     AS BEGIN
-    INSERT INTO Canton(idCanton, idDistrict, nameCanton)
-    VALUES(s_Canton.NEXTVAL, V_idDistrict, V_nameCanton);
+    INSERT INTO Canton(idCanton, idProvince, nameCanton)
+    VALUES(s_Canton.NEXTVAL, V_idProvince, V_nameCanton);
 END insertCanton;
+
+-- Insert District
+CREATE OR REPLACE PROCEDURE insertDistrict
+    (V_idCanton IN NUMBER, V_nameDistrict IN VARCHAR2) 
+    AS BEGIN
+    INSERT INTO District(idDistrict, idCanton, nameDistrict)
+    VALUES(s_District.NEXTVAL, V_idCanton, V_nameDistrict);
+END insertDistrict;
 
 -- Insert Address
 CREATE OR REPLACE PROCEDURE insertAddress
-    (V_idCanton IN NUMBER, V_nameAddress IN VARCHAR2) 
+    (V_idDistrict IN NUMBER, V_nameAddress IN VARCHAR2) 
     AS BEGIN
-    INSERT INTO Address(idAddress, idCanton, nameAddress)
-    VALUES(s_Address.NEXTVAL, V_idCanton, V_nameAddress);
+    INSERT INTO Address(idAddress, idDistrict, nameAddress)
+    VALUES(s_Address.NEXTVAL, V_idDistrict, V_nameAddress);
 END insertAddress;
 
 -- Insert Stadium
 CREATE OR REPLACE PROCEDURE insertStadium
-    (V_idAddress IN NUMBER, V_nameStadium IN VARCHAR2) 
+    (V_idAddress IN NUMBER, v_idEvent IN NUMBER, V_nameStadium IN VARCHAR2) 
     AS BEGIN
-    INSERT INTO Stadium(idStadium, idAddress, nameStadium)
-    VALUES(s_Stadium.NEXTVAL, V_idAddress, V_nameStadium);
+    INSERT INTO Stadium(idStadium, idAddress, idEvent, nameStadium)
+    VALUES(s_Stadium.NEXTVAL, V_idAddress, v_idEvent, V_nameStadium);
 END insertStadium;
 
 -- Insert SportMatch
-CREATE OR REPLACE PROCEDURE insertSportMatch 
+CREATE OR REPLACE PROCEDURE insertSportMatch(v_idEvent IN NUMBER) 
     AS BEGIN
-    INSERT INTO SportMatch(idSportMatch)
-    VALUES(s_SportMatch.NEXTVAL);
+    INSERT INTO SportMatch(idSportMatch, idEvent)
+    VALUES(s_SportMatch.NEXTVAL, v_idEvent);
 END insertSportMatch;
 
 -- Insert StadiumXSportMatch
