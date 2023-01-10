@@ -4,21 +4,22 @@
 
 -- Update Continent
 CREATE OR REPLACE PROCEDURE updateContinent 
-    (VidContinent IN NUMBER, VnameContinent IN VARCHAR2)
+    (VidContinent IN NUMBER,v_idEvent IN NUMBER, VnameContinent IN VARCHAR2)
     AS BEGIN
         UPDATE Continent
-        SET nameContinent = NVL(VnameContinent, nameContinent)
+        SET nameContinent = NVL(VnameContinent, nameContinent), 
+        idEvent = NVL(v_idEvent, idEvent)
         WHERE idContinent = VidContinent;
     COMMIT; 
 END updateContinent;
 
 -- Update Country
 CREATE OR REPLACE PROCEDURE updateCountry
-    (VidCountry IN NUMBER, VnameCountry IN VARCHAR2, Vdemonym IN VARCHAR2, VidContinent IN NUMBER)
+    (VidCountry IN NUMBER, VnameCountry IN VARCHAR2, V_idDemonym IN NUMBER, VidContinent IN NUMBER)
     AS BEGIN
         UPDATE Country
         SET nameCountry = NVL(VnameCountry, nameCountry),
-        demonym = NVL(Vdemonym, demonym),
+        idDemonym = NVL(V_idDemonym, idDemonym),
         idContinent = NVL(VidContinent, idContinent)
         WHERE idCountry = VidCountry;
     COMMIT; 
@@ -35,46 +36,47 @@ CREATE OR REPLACE PROCEDURE updateProvince
     COMMIT; 
 END updateProvince;
 
--- Update District
-CREATE OR REPLACE PROCEDURE updateDistrict
-    (VidDistrict IN NUMBER, VnameDistrict IN VARCHAR2, VidProvince IN NUMBER)
-    AS BEGIN
-        UPDATE District
-        SET nameDistrict = NVL(VnameDistrict, nameDistrict),
-        idProvince = NVL(VidProvince, idProvince)
-        WHERE idDistrict = VidDistrict;
-    COMMIT; 
-END updateDistrict;
-
 -- Update Canton
 CREATE OR REPLACE PROCEDURE updateCanton
-    (VidCanton IN NUMBER, VnameCanton IN VARCHAR2, VidDistrict IN NUMBER)
+    (VidCanton IN NUMBER, VnameCanton IN VARCHAR2, VidProvince IN NUMBER)
     AS BEGIN
         UPDATE Canton
         SET nameCanton = NVL(VnameCanton, nameCanton),
-        idDistrict = VidDistrict
+        idProvince = VidProvince
         WHERE idCanton = VidCanton;
     COMMIT; 
 END updateCanton;
 
+-- Update District
+CREATE OR REPLACE PROCEDURE updateDistrict
+    (VidDistrict IN NUMBER, VnameDistrict IN VARCHAR2, VidCanton IN NUMBER)
+    AS BEGIN
+        UPDATE District
+        SET nameDistrict = NVL(VnameDistrict, nameDistrict),
+        idCanton = NVL(VidCanton, idCanton)
+        WHERE idDistrict = VidDistrict;
+    COMMIT; 
+END updateDistrict;
+
 -- Update Address
 CREATE OR REPLACE PROCEDURE updateAddress
-    (VidAddress IN NUMBER, VnameAddress IN VARCHAR2, VidCanton IN NUMBER)
+    (VidAddress IN NUMBER, VnameAddress IN VARCHAR2, VidDistrict IN NUMBER)
     AS BEGIN
         UPDATE Address
         SET nameAddress = NVL(VnameAddress, nameAddress),
-        idCanton = NVL(VidCanton, idCanton)
+        idDistrict = NVL(VidDistrict, idDistrict)
         WHERE idAddress = VidAddress;
     COMMIT; 
 END updateAddress;
 
 -- Update Stadium
 CREATE OR REPLACE PROCEDURE updateStadium
-    (VidStadium IN NUMBER, VnameStadium IN VARCHAR2, VidAddress IN NUMBER)
+    (VidStadium IN NUMBER, VnameStadium IN VARCHAR2, VidAddress IN NUMBER, v_idEvent IN NUMBER)
     AS BEGIN
         UPDATE Stadium
         SET nameStadium = NVL(VnameStadium, nameStadium),
-        idAddress = NVL(VidAddress, idAddress)
+        idAddress = NVL(VidAddress, idAddress),
+        idEvent = NVL(v_idEvent ,idEvent)
         WHERE idStadium = VidStadium;
     COMMIT; 
 END updateStadium;
@@ -196,12 +198,14 @@ CREATE OR REPLACE PROCEDURE updateIdentificationType
 END updateIdentificationType;
 
 CREATE OR REPLACE PROCEDURE updatePerson
-    (V_idPerson IN NUMBER, V_idGender IN NUMBER, V_idAddress IN NUMBER, V_BirthDate IN Date,
-        V_personName IN VARCHAR2, V_Photo IN VARCHAR2)
+    (V_idPerson IN NUMBER, V_idGender IN NUMBER, V_idAddress IN NUMBER, v_idEvent IN NUMBER, 
+        v_idUser IN NUMBER, V_BirthDate IN Date, V_personName IN VARCHAR2, V_Photo IN VARCHAR2)
     AS BEGIN
         UPDATE person
         SET idGender = NVL(V_idGender, idGender),
         idAddress = NVL(V_idAddress, idAddress),
+        idEvent = NVL(v_idEvent, idEvent),
+        idUser = NVL(v_idUser, idUser),
         birthday = NVL(V_BirthDate, birthday),
         personName = NVL(V_personName, personName),
         photo = NVL(V_Photo, photo)
