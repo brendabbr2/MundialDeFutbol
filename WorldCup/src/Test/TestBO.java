@@ -4,8 +4,8 @@
  */
 package Test;
 
-import B_Layer.UserBO;
-import Entities.User;
+import B_Layer.*;
+import Entities.*;
 
 /**
  *
@@ -16,11 +16,12 @@ public class TestBO {
     User user = new User();
     String message = "";
     
+    DemonymBO demoBO = new DemonymBO();
+    Demonym demo = new Demonym();
+    
     public void insert(){
-        user.setIdUserType(1);
-        user.setUsername("joxan");
-        user.setPassword("123");
-        message = userBO.insertUser(user);  
+        demo.setNameDemonym("Prueba");
+        message = demoBO.insertDemonym(demo);  
         System.out.println(message);
     }
     
@@ -33,11 +34,11 @@ public class TestBO {
         System.out.println(message);
     }
     public void delete(int idUser){
-        message = userBO.deleteUser(idUser);  
+        message = demoBO.deleteDemonym(idUser);  
         System.out.println(message);
     }
     public void get(){
-        userBO.getUsers();
+        demoBO.getDemonym();
     }
     
     public int verify(){
@@ -48,7 +49,7 @@ public class TestBO {
     
     public static void main(String[] args) {
         TestBO test = new TestBO();
-        System.out.println(test.verify());
+        test.get();
     }
 }
 

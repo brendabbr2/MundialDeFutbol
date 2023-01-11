@@ -4,10 +4,71 @@
  */
 package B_Layer;
 
+import Connection.SysConnection;
+import DA_Layer.DemonymDAO;
+import Entities.Demonym;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author david
  */
 public class DemonymBO {
+    private DemonymDAO DemonymDao;
+    private String message;
+
+    public DemonymBO() {
+        this.DemonymDao = new DemonymDAO();
+        message = "";
+    }
+    
+    public String insertDemonym(Demonym user){
+        Connection conn = SysConnection.connect();
+        try{
+            message = DemonymDao.insertDemonym(conn, user);
+        }catch (Exception e){
+            message = message + " " + e.getMessage();
+        }finally{
+            try {
+                if (conn != null){
+                    conn.close(); 
+                }
+            } catch (Exception e) {
+                message = message + " " + e.getMessage();
+            }
+        }
+        return message;
+    }
+        
+    public String deleteDemonym(int id){
+        Connection conn = SysConnection.connect();
+        try{
+            message = DemonymDao.deleteDemonym(conn, id);
+        }catch (Exception e){
+            message = message + " " + e.getMessage();
+        }finally{
+            try {
+                if (conn != null){
+                    conn.close(); 
+                }
+            } catch (Exception e) {
+                message = message + " " + e.getMessage();
+            }
+        }
+        return message;
+    }
+    
+    public DefaultTableModel getDemonym(){
+        Connection conn = SysConnection.connect();
+        DefaultTableModel model = DemonymDao.getDemonym(conn);
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return model;
+    }
+    
     
 }

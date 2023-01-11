@@ -4,19 +4,45 @@
  */
 package View.CatalogsPK;
 
+import B_Layer.DemonymBO;
+import Entities.Demonym;
+import Entities.User;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableDemonyms extends javax.swing.JPanel {
-
+    
+    private final DemonymBO demoBO = new DemonymBO();
+    private final Demonym demo = new Demonym();
     /**
      * Creates new form TableDemonyms
      */
     public TableDemonyms() {
         initComponents();
+        getDemonym();
     }
 
+    public void getDemonym(){
+        tblEventDemonym.setModel(demoBO.getDemonym());
+        TableColumnModel tblModelColumn = tblEventDemonym.getColumnModel();
+        tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object selection = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            selection = table.getModel().getValueAt(row, column);
+        }
+        return selection;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,21 +119,19 @@ public class TableDemonyms extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(44, 44, 44)
+                .addComponent(lblNameDemonym)
+                .addGap(27, 27, 27)
+                .addComponent(txtNameDemonym, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(296, 296, 296)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblNameDemonym)
-                        .addGap(59, 59, 59)
-                        .addComponent(txtNameDemonym, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(296, 296, 296)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdateDemonym, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDeleteDemonym, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(18, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnInsertDemonym, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                    .addComponent(btnUpdateDemonym, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteDemonym, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInsertDemonym, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,8 +141,9 @@ public class TableDemonyms extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnUpdateDemonym, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNameDemonym, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNameDemonym, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtNameDemonym, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNameDemonym)))
                 .addGap(36, 36, 36)
                 .addComponent(btnDeleteDemonym, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
@@ -132,7 +157,7 @@ public class TableDemonyms extends javax.swing.JPanel {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,21 +174,19 @@ public class TableDemonyms extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
+            .addGap(0, 836, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGap(0, 523, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -172,15 +195,30 @@ public class TableDemonyms extends javax.swing.JPanel {
     }//GEN-LAST:event_tblEventDemonymMouseClicked
 
     private void btnDeleteDemonymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDemonymActionPerformed
-
+        if(this.checkTableSelection(tblEventDemonym, 0) != null){
+            int idDemonym = Integer.parseInt((String) checkTableSelection(tblEventDemonym, 0));
+            this.demo.setIdDemonym(idDemonym);
+            System.out.println(this.demoBO.deleteDemonym(demo.getIdDemonym()));
+            this.getDemonym();
+        }
     }//GEN-LAST:event_btnDeleteDemonymActionPerformed
 
     private void btnUpdateDemonymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDemonymActionPerformed
-
+        if(this.checkTableSelection(tblEventDemonym,0) != null && 
+                !(this.txtNameDemonym.getText().isEmpty())){
+            this.demo.setNameDemonym(this.txtNameDemonym.getText());
+            
+            System.out.println(demoBO.insertDemonym(demo));
+            this.getDemonym();
+        }
     }//GEN-LAST:event_btnUpdateDemonymActionPerformed
 
     private void btnInsertDemonymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertDemonymActionPerformed
-
+        if(!(this.txtNameDemonym.getText().isEmpty())){
+            this.demo.setNameDemonym(this.txtNameDemonym.getText());
+            System.out.println(demoBO.insertDemonym(demo));
+            this.getDemonym();
+        }
     }//GEN-LAST:event_btnInsertDemonymActionPerformed
 
 
