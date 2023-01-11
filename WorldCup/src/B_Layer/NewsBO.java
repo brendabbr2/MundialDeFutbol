@@ -5,32 +5,29 @@
 package B_Layer;
 
 import Connection.SysConnection;
-import DA_Layer.UserDAO;
-import Entities.User;
+import DA_Layer.NewsDAO;
+import Entities.News;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author jox
  */
-public class UserBO {
-    
-    private UserDAO userDao;
+public class NewsBO {
+    private NewsDAO newsDao;
     private String message;
 
-    public UserBO() {
-        this.userDao = new UserDAO();
+    public NewsBO() {
+        this.newsDao = new NewsDAO();
         this.message = "";
     }
     
-    public String insertUser(User user){
+    public String insertNews(News news){
         Connection conn = SysConnection.connect();
         try{
-            message = userDao.insertUser(conn, user);
+            message = newsDao.insertNews(conn, news);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -44,10 +41,10 @@ public class UserBO {
         }
         return message;
     }
-    public String updateUser(User user){
+    public String updateUser(News news){
         Connection conn = SysConnection.connect();
         try{
-            message = userDao.updateUser(conn, user);
+            message = newsDao.updateNews(conn, news);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -61,10 +58,10 @@ public class UserBO {
         }
         return message;
     }
-    public String deleteUser(int id){
+    public String deleteNews(int id){
         Connection conn = SysConnection.connect();
         try{
-            message = userDao.deleteUser(conn, id);
+            message = newsDao.deleteNews(conn, id);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -78,26 +75,14 @@ public class UserBO {
         }
         return message;
     }
-    public DefaultTableModel getUsers(){
+    public DefaultTableModel getNews(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = userDao.getUsers(conn);
+        DefaultTableModel model = newsDao.getNews(conn);
         try {
             conn.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return model;
-    }
-    public User verifyUser(User user){
-        Connection conn = SysConnection.connect();
-        // in [0] we set the idUser
-        // in [1] we set the idUserType
-        User userVerified = userDao.verifyUser(conn, user);
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return userVerified;
     }
 }

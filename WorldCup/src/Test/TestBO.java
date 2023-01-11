@@ -41,7 +41,7 @@ public class TestBO {
         demoBO.getDemonym();
     }
     
-    public int verify(){
+    public User verify(){
         user.setUsername("brenda");
         user.setPassword("28");
         return userBO.verifyUser(user);
