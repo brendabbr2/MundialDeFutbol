@@ -4,25 +4,25 @@
  */
 package DA_Layer;
 
-import Entities.Demonym;
+import Entities.EventType;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author david
+ * @author Datos
  */
-public class DemonymDAO {
+public class EventTypeDAO {
     private String message = "";
     
-    public String insertDemonym(Connection conn, Demonym demonym){
+        public String insertEventType(Connection conn, EventType etype){
         PreparedStatement pst = null;
-        String sql = "CALL insertDemonym(?)";
+        String sql = "CALL insertEventType(?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setString(1, demonym.getNameDemonym());
+            pst.setString(1, etype.getName());
      
             pst.execute();
             message = "Succesfully saved";
@@ -33,16 +33,16 @@ public class DemonymDAO {
         }
         return message;
     }
-    
-    public String updateUser(Connection conn, Demonym demo){
+        
+    public String updateEventType(Connection conn, EventType etype){
         PreparedStatement pst = null;
-        String sql = "CALL updateDemonym(?,?)";
+        String sql = "CALL updateEventType(?,?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, demo.getIdDemonym());
-            pst.setString(2, demo.getNameDemonym());
-            System.out.println(demo.toString());
+            pst.setInt(1, etype.getIdEvenType());
+            pst.setString(2, etype.getName());
+            
             pst.execute();
             message = "Succesfully updated";
             pst.close();
@@ -53,13 +53,13 @@ public class DemonymDAO {
         return message;
     }
     
-        public String deleteDemonym(Connection conn, int idDemonym){
+        public String deleteEventType(Connection conn, int idEtype){
         PreparedStatement pst = null;
-        String sql = "CALL deleteDemonym(?)";
+        String sql = "CALL deleteEventType(?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, idDemonym);
+            pst.setInt(1, idEtype);
             
             pst.execute();
             message = "Succesfully deleted";
@@ -71,13 +71,13 @@ public class DemonymDAO {
         return message;
     }
         
-     public DefaultTableModel getDemonym(Connection conn){
-        String [] columns = {"idDemonym", "Demonym Name", "Creation User", "Creation Date","Modification User","Modification Date"};
+        public DefaultTableModel getEventType(Connection conn){
+        String [] columns = {"idEventType", "nameEventType", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
-        String sql = "CALL getDemonym(?,?)";
+        String sql = "CALL getEventType(?,?)";
         
         String [] row = new String[6];
         Statement st = null;
@@ -104,5 +104,5 @@ public class DemonymDAO {
         }
         
         return model;
-    }   
- }
+    }
+}

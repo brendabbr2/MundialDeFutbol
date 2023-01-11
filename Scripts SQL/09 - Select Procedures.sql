@@ -277,13 +277,16 @@ BEGIN
         WHERE idUser = NVL(v_idUser,idUser);  
 END getUserSave;
 
-CREATE OR REPLACE PROCEDURE getNews(v_idEvent IN NUMBER, NewsCursor OUT SYS_REFCURSOR) 
+CREATE OR REPLACE PROCEDURE getNews(v_idNews IN NUMBER, NewsCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
     OPEN NewsCursor FOR  
-        SELECT idNews,idEvent,title,text,author,newsDate,photo, creationUser, creationDate, modificationUser, modificationDate
-        FROM News
-        WHERE idEvent = NVL(v_idEvent,idEvent); 
+        SELECT n.idNews,n.idEvent,e.nameEvent,n.title,n.text,n.author,n.newsDate,
+        n.photo, n.creationUser, n.creationDate, n.modificationUser, n.modificationDate
+        FROM News n
+        INNER JOIN Event e
+        ON n.idEvent = e.idEvent
+        WHERE n.idNews = NVL(v_idNews,n.idNews); 
 END getNews;
 
 CREATE OR REPLACE PROCEDURE getParameterEvent(v_idParameter IN NUMBER, ParameterEventCursor OUT SYS_REFCURSOR) 
@@ -295,6 +298,14 @@ BEGIN
         WHERE idParameter = NVL(v_idParameter,idParameter); 
 END getParameterEvent;
 
+CREATE OR REPLACE PROCEDURE getEventType(v_idEventType IN NUMBER, EventTypeCursor OUT SYS_REFCURSOR) 
+AS 
+BEGIN 
+    OPEN EventTypeCursor FOR  
+        SELECT idEventType, nameEventType, creationUser, creationDate, modificationUser, modificationDate
+        FROM EventType
+        WHERE idEventType = NVL(v_idEventType,idEventType); 
+END getEventType;
 --- code for making tests ------
 DECLARE 
     pStadiumXSportMatch SYS_REFCURSOR := getStadiumXSportMatch(NULL, NULL);

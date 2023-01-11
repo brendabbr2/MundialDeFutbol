@@ -4,19 +4,44 @@
  */
 package View.CatalogsPK;
 
+import B_Layer.EventTypeBO;
+import Entities.EventType;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableEventTypes extends javax.swing.JPanel {
 
+    private final EventTypeBO EtypeBO = new EventTypeBO();
+    private final EventType Etype = new EventType();
     /**
      * Creates new form TableEventType
      */
     public TableEventTypes() {
         initComponents();
+        getEventTypes();
+    }
+    
+    public void getEventTypes(){
+        tblEventType.setModel(EtypeBO.getEventTypes());
+        TableColumnModel tblModelColumn = tblEventType.getColumnModel();
+        tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
     }
 
+    private Object checkTableSelection(JTable table, int column){
+        Object user = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            user = table.getModel().getValueAt(row, column);
+            //return user;
+        }
+        return user;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,7 +157,7 @@ public class TableEventTypes extends javax.swing.JPanel {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,21 +174,19 @@ public class TableEventTypes extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
+            .addGap(0, 836, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGap(0, 523, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -172,15 +195,30 @@ public class TableEventTypes extends javax.swing.JPanel {
     }//GEN-LAST:event_tblEventTypeMouseClicked
 
     private void btnDeleteEventTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEventTypeActionPerformed
-
+        if(this.checkTableSelection(tblEventType, 0) != null){
+            this.Etype.setIdEvenType(Integer.parseInt((String) checkTableSelection(tblEventType, 0)));
+            System.out.println(this.EtypeBO.deleteEventType(Etype.getIdEvenType()));
+            this.getEventTypes();
+        }
     }//GEN-LAST:event_btnDeleteEventTypeActionPerformed
 
     private void btnUpdateEventTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventTypeActionPerformed
-
+        if(this.checkTableSelection(tblEventType, 0) != null && 
+                !(this.txtNameEventType.getText().isEmpty())){
+            int idEventType = Integer.parseInt((String) checkTableSelection(tblEventType, 0));
+            this.Etype.setIdEvenType(idEventType);
+            this.Etype.setName(this.txtNameEventType.getText());
+            System.out.println(this.EtypeBO.updateEventType(Etype));
+            this.getEventTypes();
+        }
     }//GEN-LAST:event_btnUpdateEventTypeActionPerformed
 
     private void btnInsertEventTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertEventTypeActionPerformed
-
+        if(!(this.txtNameEventType.getText().isEmpty())) {
+            this.Etype.setName(this.txtNameEventType.getText());
+            System.out.println(this.EtypeBO.insertEventType(Etype));
+            this.getEventTypes();
+        }
     }//GEN-LAST:event_btnInsertEventTypeActionPerformed
 
 

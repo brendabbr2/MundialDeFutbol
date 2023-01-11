@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class SysConnection {
     private static Connection conn = null;
-    private static String url = "jdbc:oracle:thin:@//localhost:1521/DBPRUEBA";
+    private static String url = "jdbc:oracle:thin:@//localhost:1521/DBVERANO";
     private static String user = "proj";
     private static String password = "proj";
     

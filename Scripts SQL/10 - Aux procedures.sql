@@ -3,7 +3,7 @@ create or replace PROCEDURE verifyUserPerson(v_username IN VARCHAR2,
 AS 
 BEGIN   
         OPEN cUser FOR
-        SELECT idUserType
+        SELECT idUser, idUserType, username
         FROM userPerson
         WHERE username = v_username AND passwordUser = v_password; 
 END verifyUserPerson;

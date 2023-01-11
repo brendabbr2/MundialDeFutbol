@@ -5,28 +5,29 @@
 package B_Layer;
 
 import Connection.SysConnection;
-import DA_Layer.DemonymDAO;
-import Entities.Demonym;
-import java.sql.*;
+import DA_Layer.NewsDAO;
+import Entities.News;
+import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author david
+ * @author jox
  */
-public class DemonymBO {
-    private DemonymDAO DemonymDao;
+public class NewsBO {
+    private NewsDAO newsDao;
     private String message;
 
-    public DemonymBO() {
-        this.DemonymDao = new DemonymDAO();
-        message = "";
+    public NewsBO() {
+        this.newsDao = new NewsDAO();
+        this.message = "";
     }
     
-    public String insertDemonym(Demonym demo){
+    public String insertNews(News news){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.insertDemonym(conn, demo);
+            message = newsDao.insertNews(conn, news);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -40,11 +41,10 @@ public class DemonymBO {
         }
         return message;
     }
-    
-    public String updateDemonym(Demonym demo){
+    public String updateUser(News news){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.updateUser(conn, demo);
+            message = newsDao.updateNews(conn, news);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -58,11 +58,10 @@ public class DemonymBO {
         }
         return message;
     }
-    
-    public String deleteDemonym(int id){
+    public String deleteNews(int id){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.deleteDemonym(conn, id);
+            message = newsDao.deleteNews(conn, id);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -76,10 +75,9 @@ public class DemonymBO {
         }
         return message;
     }
-    
-    public DefaultTableModel getDemonym(){
+    public DefaultTableModel getNews(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = DemonymDao.getDemonym(conn);
+        DefaultTableModel model = newsDao.getNews(conn);
         try {
             conn.close();
         } catch (SQLException ex) {
@@ -87,6 +85,4 @@ public class DemonymBO {
         }
         return model;
     }
-    
-    
 }

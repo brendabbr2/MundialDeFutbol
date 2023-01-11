@@ -5,28 +5,30 @@
 package B_Layer;
 
 import Connection.SysConnection;
-import DA_Layer.DemonymDAO;
-import Entities.Demonym;
-import java.sql.*;
+import DA_Layer.EventTypeDAO;
+import Entities.EventType;
+import Entities.User;
+import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author david
+ * @author Datos
  */
-public class DemonymBO {
-    private DemonymDAO DemonymDao;
+public class EventTypeBO {
+    private EventTypeDAO EtypeDao;
     private String message;
 
-    public DemonymBO() {
-        this.DemonymDao = new DemonymDAO();
-        message = "";
+    public EventTypeBO() {
+        this.EtypeDao = new EventTypeDAO();
+        this.message = "";
     }
     
-    public String insertDemonym(Demonym demo){
+        public String insertEventType(EventType Etype){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.insertDemonym(conn, demo);
+            message = EtypeDao.insertEventType(conn, Etype);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -40,11 +42,11 @@ public class DemonymBO {
         }
         return message;
     }
-    
-    public String updateDemonym(Demonym demo){
+        
+        public String updateEventType(EventType Etype){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.updateUser(conn, demo);
+            message = EtypeDao.updateEventType(conn, Etype);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -58,11 +60,10 @@ public class DemonymBO {
         }
         return message;
     }
-    
-    public String deleteDemonym(int id){
+    public String deleteEventType(int id){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.deleteDemonym(conn, id);
+            message = EtypeDao.deleteEventType(conn, id);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -76,10 +77,9 @@ public class DemonymBO {
         }
         return message;
     }
-    
-    public DefaultTableModel getDemonym(){
+    public DefaultTableModel getEventTypes(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = DemonymDao.getDemonym(conn);
+        DefaultTableModel model = EtypeDao.getEventType(conn);
         try {
             conn.close();
         } catch (SQLException ex) {
@@ -87,6 +87,5 @@ public class DemonymBO {
         }
         return model;
     }
-    
     
 }

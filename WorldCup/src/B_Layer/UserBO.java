@@ -88,14 +88,16 @@ public class UserBO {
         }
         return model;
     }
-    public int verifyUser(User user){
+    public User verifyUser(User user){
         Connection conn = SysConnection.connect();
-        int idUserType = userDao.verifyUser(conn, user);
+        // in [0] we set the idUser
+        // in [1] we set the idUserType
+        User userVerified = userDao.verifyUser(conn, user);
         try {
             conn.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return idUserType;
+        return userVerified;
     }
 }
