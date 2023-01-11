@@ -188,7 +188,7 @@ public class TableGenders extends javax.swing.JPanel {
 
     private void tblGenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGenderMouseClicked
         int selection = this.tblGender.rowAtPoint(evt.getPoint());
-        this.txtNameGender.setText(this.tblGender.getValueAt(selection, 1)+"");
+        this.txtNameGender.setText(this.tblGender.getValueAt(selection, 0)+"");
     }//GEN-LAST:event_tblGenderMouseClicked
 
     private void btnDeleteGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteGenderActionPerformed
