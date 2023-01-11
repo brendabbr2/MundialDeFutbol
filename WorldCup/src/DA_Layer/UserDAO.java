@@ -108,16 +108,16 @@ public class UserDAO {
                 }
                 model.addRow(row);
             }
-            System.out.println("Succesfully listed");
+            System.out.println("Succesfully listed table users");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table");
+            JOptionPane.showMessageDialog(null, "Unable to show table Users");
             System.out.println(e.getMessage());
         }
         return model;
     }
     
-    public int verifyUser(Connection conn, User user){
+    public User verifyUser(Connection conn, User user){
         
         CallableStatement statement = null;
         
@@ -125,7 +125,6 @@ public class UserDAO {
         
         Statement st = null;
         ResultSet rs = null;
-        int idUserType = -1;
         
         try {
             statement = conn.prepareCall(sql);
@@ -136,8 +135,11 @@ public class UserDAO {
             rs = (ResultSet) statement.getObject(3);
             
             if (rs.next()){
-                if (rs.getString(1) != null)
-                    idUserType = rs.getInt(1);
+                if (rs.getString(1) != null){
+                    user.setIdUser(rs.getInt(1));
+                    user.setIdUserType(rs.getInt(2));
+                }
+                
             }
             
             System.out.println("Succesfully verified");
@@ -146,6 +148,6 @@ public class UserDAO {
             System.out.println(e.getMessage());
         }
 
-        return idUserType;
+        return user;
     }
 }
