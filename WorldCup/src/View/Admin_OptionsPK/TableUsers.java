@@ -18,6 +18,7 @@ public class TableUsers extends javax.swing.JPanel {
     public TableUsers() {
         initComponents();
         getUsers();
+        this.btnInsert.setVisible(false);
     }
     
     public void getUsers(){

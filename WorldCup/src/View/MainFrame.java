@@ -4,26 +4,80 @@
  */
 package View;
 
+import Entities.User;
 import java.awt.BorderLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Datos
  */
-public class TEST extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame {
 
     private Login_Panel panelLog = null;
     private News_Panel newsPanel = null;
-    private Admin_Options adminOpsPanel =null;
+    private Admin_Options adminOpsPanel = null;
+    private User user = new User();
     /**
      * Creates new form TEST
      */
-    public TEST() {
+    public MainFrame() {
         initComponents();
-        this.panelLog = new Login_Panel();
+        setGuestUser();
+        this.panelLog = new Login_Panel(this);
         this.newsPanel = new News_Panel();
         this.adminOpsPanel = new Admin_Options(this.pnlContent);
+        this.btnLogout.setVisible(false);
+        this.btnAdminOptions.setVisible(false);
     }
+    
+    public void setGuestUser(){
+        this.user.setIdUser(-1);
+        this.user.setIdUserType(-1);
+        this.user.setUsername(null);
+        this.user.setPassword(null);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public JPanel getPnlContent() {
+        return pnlContent;
+    }
+
+    public void setPnlContent(JPanel pnlContent) {
+        this.pnlContent = pnlContent;
+    }
+
+    public JButton getBtnLogin() {
+        return btnLogin;
+    }
+
+    public void setBtnLogin(JButton btnLogin) {
+        this.btnLogin = btnLogin;
+    }
+
+    public JButton getBtnLogout() {
+        return btnLogout;
+    }
+
+    public void setBtnLogout(JButton btnLogout) {
+        this.btnLogout = btnLogout;
+    }
+    
+    public void checkUserPrivileges(int userType){
+        if (userType == 2)
+            this.btnAdminOptions.setVisible(true);
+        else
+            this.btnAdminOptions.setVisible(false);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,11 +97,13 @@ public class TEST extends javax.swing.JFrame {
         btnLikes = new javax.swing.JButton();
         pnlMatches = new javax.swing.JPanel();
         btnMatches = new javax.swing.JButton();
-        pnlLogin = new javax.swing.JPanel();
-        btnLogin = new javax.swing.JButton();
         pnlContent = new javax.swing.JPanel();
         pnlAdminOps = new javax.swing.JPanel();
         btnAdminOptions = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btnLogout = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1048, 580));
@@ -66,7 +122,7 @@ public class TEST extends javax.swing.JFrame {
         pnlLogo.setLayout(pnlLogoLayout);
         pnlLogoLayout.setHorizontalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 247, Short.MAX_VALUE)
         );
         pnlLogoLayout.setVerticalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +150,7 @@ public class TEST extends javax.swing.JFrame {
         pnlNews.setLayout(pnlNewsLayout);
         pnlNewsLayout.setHorizontalGroup(
             pnlNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnNews, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+            .addComponent(btnNews, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
         );
         pnlNewsLayout.setVerticalGroup(
             pnlNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,33 +209,6 @@ public class TEST extends javax.swing.JFrame {
             .addComponent(btnMatches, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
         );
 
-        pnlLogin.setBackground(new java.awt.Color(255, 255, 255));
-        pnlLogin.setMaximumSize(new java.awt.Dimension(220, 50));
-        pnlLogin.setMinimumSize(new java.awt.Dimension(220, 50));
-        pnlLogin.setPreferredSize(new java.awt.Dimension(220, 50));
-
-        btnLogin.setBackground(new java.awt.Color(152, 12, 51));
-        btnLogin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogin.setText("Log in");
-        btnLogin.setBorder(null);
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
-        pnlLogin.setLayout(pnlLoginLayout);
-        pnlLoginLayout.setHorizontalGroup(
-            pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        pnlLoginLayout.setVerticalGroup(
-            pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
         pnlContent.setBackground(new java.awt.Color(94, 4, 32));
         pnlContent.setMaximumSize(new java.awt.Dimension(834, 578));
         pnlContent.setMinimumSize(new java.awt.Dimension(834, 578));
@@ -196,7 +225,7 @@ public class TEST extends javax.swing.JFrame {
             .addGap(0, 578, Short.MAX_VALUE)
         );
 
-        pnlAdminOps.setBackground(new java.awt.Color(255, 255, 255));
+        pnlAdminOps.setBackground(new java.awt.Color(94, 4, 32));
         pnlAdminOps.setMaximumSize(new java.awt.Dimension(220, 50));
         pnlAdminOps.setMinimumSize(new java.awt.Dimension(220, 50));
 
@@ -215,11 +244,61 @@ public class TEST extends javax.swing.JFrame {
         pnlAdminOps.setLayout(pnlAdminOpsLayout);
         pnlAdminOpsLayout.setHorizontalGroup(
             pnlAdminOpsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         pnlAdminOpsLayout.setVerticalGroup(
             pnlAdminOpsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBackground(new java.awt.Color(94, 4, 32));
+        jPanel1.setPreferredSize(new java.awt.Dimension(73, 54));
+
+        btnLogout.setBackground(new java.awt.Color(152, 12, 51));
+        btnLogout.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogout.setText("Log Out");
+        btnLogout.setBorder(null);
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+        );
+
+        jPanel2.setBackground(new java.awt.Color(94, 4, 32));
+        jPanel2.setPreferredSize(new java.awt.Dimension(73, 54));
+
+        btnLogin.setBackground(new java.awt.Color(152, 12, 51));
+        btnLogin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("Log in");
+        btnLogin.setBorder(null);
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
@@ -228,16 +307,23 @@ public class TEST extends javax.swing.JFrame {
             pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSidebarLayout.createSequentialGroup()
                 .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlNews, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                    .addComponent(pnlLikes, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                    .addComponent(pnlMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlSidebarLayout.createSequentialGroup()
+                        .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlNews, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(pnlLikes, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(pnlMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnlSidebarLayout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(pnlSidebarLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                            .addComponent(pnlAdminOps, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlAdminOps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(pnlContent, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -251,11 +337,13 @@ public class TEST extends javax.swing.JFrame {
                 .addComponent(pnlLikes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlMatches, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlAdminOps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(43, 43, 43)
+                .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
             .addGroup(pnlSidebarLayout.createSequentialGroup()
                 .addComponent(pnlContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -286,15 +374,6 @@ public class TEST extends javax.swing.JFrame {
         pnlContent.repaint();
     }//GEN-LAST:event_btnNewsActionPerformed
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        panelLog.setSize(834, 567);
-        panelLog.setLocation(0,0);
-        pnlContent.removeAll();
-        pnlContent.add(panelLog,BorderLayout.CENTER);
-        pnlContent.revalidate();
-        pnlContent.repaint();
-    }//GEN-LAST:event_btnLoginActionPerformed
-
     private void btnAdminOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminOptionsActionPerformed
         adminOpsPanel.setSize(834, 567);
         adminOpsPanel.setLocation(0,0);
@@ -307,6 +386,22 @@ public class TEST extends javax.swing.JFrame {
     private void btnMatchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatchesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMatchesActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        this.setGuestUser();
+        this.btnLogout.setVisible(false);
+        this.btnLogin.setVisible(true);
+        this.btnAdminOptions.setVisible(false);
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        panelLog.setSize(834, 567);
+        panelLog.setLocation(0,0);
+        pnlContent.removeAll();
+        pnlContent.add(panelLog,BorderLayout.CENTER);
+        pnlContent.revalidate();
+        pnlContent.repaint();
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,20 +420,21 @@ public class TEST extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TEST.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TEST.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TEST.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TEST.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TEST().setVisible(true);
+                new MainFrame().setVisible(true);
             }
         });
     }
@@ -347,13 +443,15 @@ public class TEST extends javax.swing.JFrame {
     private javax.swing.JButton btnAdminOptions;
     private javax.swing.JButton btnLikes;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMatches;
     private javax.swing.JButton btnNews;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pnlAdminOps;
     private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlLikes;
-    private javax.swing.JPanel pnlLogin;
     private javax.swing.JPanel pnlLogo;
     private javax.swing.JPanel pnlMatches;
     private javax.swing.JPanel pnlNews;

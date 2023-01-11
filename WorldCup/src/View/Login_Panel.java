@@ -4,20 +4,47 @@
  */
 package View;
 
+import B_Layer.UserBO;
+import Entities.User;
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Datos
  */
 public class Login_Panel extends javax.swing.JPanel {
-
+    private UserBO userBO = new UserBO();
+    private User user = new User();
+    private MainFrame mainFrame;
     /**
      * Creates new form Login_Panel
      */
-    public Login_Panel() {
+    public Login_Panel(MainFrame mainFrame) {
         initComponents();
-        lblWarning.setVisible(false);
+        this.mainFrame = mainFrame;
     }
     
+    public void login(User userVerified){
+        this.mainFrame.setUser(userVerified);
+        JPanel pnlContent = this.mainFrame.getPnlContent();
+        JButton btnLogin = this.mainFrame.getBtnLogin();
+        JButton btnLogout = this.mainFrame.getBtnLogout();
+        
+        this.txtUser.setText("");
+        this.txtPassword.setText("");
+        
+        pnlContent.removeAll();
+        pnlContent.revalidate();
+        pnlContent.repaint();
+        btnLogin.setVisible(false);
+        btnLogout.setVisible(true);
+        
+        this.mainFrame.checkUserPrivileges(userVerified.getIdUserType());
+    }
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +62,6 @@ public class Login_Panel extends javax.swing.JPanel {
         btnLogin = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblWarning = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnRegister = new javax.swing.JButton();
 
@@ -89,12 +115,6 @@ public class Login_Panel extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
         );
 
-        lblWarning.setBackground(new java.awt.Color(255, 255, 255));
-        lblWarning.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        lblWarning.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWarning.setText("¡WARNING INVALID CREDENTIALS!");
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LoginIcon.png"))); // NOI18N
 
         btnRegister.setText("Register");
@@ -112,14 +132,10 @@ public class Login_Panel extends javax.swing.JPanel {
                 .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlBackgroundLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtUser))
+                        .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
                     .addGroup(pnlBackgroundLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPassword))
-                    .addGroup(pnlBackgroundLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(lblWarning)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(txtPassword)))
                 .addGap(185, 185, 185))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBackgroundLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -147,9 +163,7 @@ public class Login_Panel extends javax.swing.JPanel {
                 .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(lblWarning, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(68, 68, 68)
                 .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegister))
@@ -160,7 +174,14 @@ public class Login_Panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        lblWarning.setVisible(true);
+        this.user.setUsername(this.txtUser.getText());
+        this.user.setPassword(this.txtPassword.getText());
+        User userVerified = userBO.verifyUser(this.user); 
+        if (userVerified.getIdUser() != -1){
+            login(userVerified);
+        }else{
+            JOptionPane.showMessageDialog(this, "Invalid Credentials", "", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
 
@@ -172,7 +193,6 @@ public class Login_Panel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUser;
-    private javax.swing.JLabel lblWarning;
     private javax.swing.JPanel pnlBackground;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
