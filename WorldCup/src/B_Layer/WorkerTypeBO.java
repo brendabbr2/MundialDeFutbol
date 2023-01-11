@@ -5,28 +5,30 @@
 package B_Layer;
 
 import Connection.SysConnection;
-import DA_Layer.DemonymDAO;
-import Entities.Demonym;
-import java.sql.*;
+import DA_Layer.WorkerTypeDAO;
+import Entities.WorkerType;
+import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author david
+ * @author Datos
  */
-public class DemonymBO {
-    private DemonymDAO DemonymDao;
+public class WorkerTypeBO {
+    private WorkerTypeDAO workerDAO;
     private String message;
 
-    public DemonymBO() {
-        this.DemonymDao = new DemonymDAO();
-        message = "";
+    public WorkerTypeBO() {
+        this.workerDAO = new WorkerTypeDAO();
+        this.message = "";
     }
     
-    public String insertDemonym(Demonym demo){
+    
+    public String insertWorkerType(WorkerType worker){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.insertDemonym(conn, demo);
+            message = workerDAO.insertWorkerType(conn, worker);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -41,10 +43,10 @@ public class DemonymBO {
         return message;
     }
     
-    public String updateDemonym(Demonym demo){
+    public String updateWorkerType(WorkerType user){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.updateUser(conn, demo);
+            message = workerDAO.updateWorkerType(conn, user);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -58,11 +60,10 @@ public class DemonymBO {
         }
         return message;
     }
-    
-    public String deleteDemonym(int id){
+    public String deleteWorkerType(int id){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.deleteDemonym(conn, id);
+            message = workerDAO.deleteWorkerType(conn, id);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -76,10 +77,9 @@ public class DemonymBO {
         }
         return message;
     }
-    
-    public DefaultTableModel getDemonym(){
+    public DefaultTableModel getWorkerType(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = DemonymDao.getDemonym(conn);
+        DefaultTableModel model = workerDAO.getWorkerTypes(conn);
         try {
             conn.close();
         } catch (SQLException ex) {
@@ -87,6 +87,4 @@ public class DemonymBO {
         }
         return model;
     }
-    
-    
 }

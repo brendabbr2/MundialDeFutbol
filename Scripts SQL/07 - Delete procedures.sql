@@ -250,3 +250,12 @@ AS BEGIN
     WHERE idParameter = VidParameter; 
     Commit;
 END deleteParameterEvent;
+
+--Delete EventType
+CREATE OR REPLACE PROCEDURE deleteEventType(VidEventType IN NUMBER)
+AS BEGIN
+    DELETE FROM EventType
+    WHERE idEventType = VidEventType;
+    Commit;
+END deleteEventType;
+

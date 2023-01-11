@@ -289,6 +289,23 @@ BEGIN
         WHERE n.idNews = NVL(v_idNews,n.idNews); 
 END getNews;
 
+CREATE OR REPLACE PROCEDURE getParameterEvent(v_idParameter IN NUMBER, ParameterEventCursor OUT SYS_REFCURSOR) 
+AS 
+BEGIN 
+    OPEN ParameterEventCursor FOR  
+        SELECT idParameter, nameParameter, valueParameter
+        FROM News
+        WHERE idParameter = NVL(v_idParameter,idParameter); 
+END getParameterEvent;
+
+CREATE OR REPLACE PROCEDURE getEventType(v_idEventType IN NUMBER, EventTypeCursor OUT SYS_REFCURSOR) 
+AS 
+BEGIN 
+    OPEN EventTypeCursor FOR  
+        SELECT idEventType, nameEventType, creationUser, creationDate, modificationUser, modificationDate
+        FROM EventType
+        WHERE idEventType = NVL(v_idEventType,idEventType); 
+END getEventType;
 --- code for making tests ------
 DECLARE 
     pStadiumXSportMatch SYS_REFCURSOR := getStadiumXSportMatch(NULL, NULL);

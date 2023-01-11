@@ -4,19 +4,43 @@
  */
 package View.CatalogsPK;
 
+import B_Layer.WorkerTypeBO;
+import Entities.WorkerType;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableWorkerTypes extends javax.swing.JPanel {
-
+    private final WorkerTypeBO workerBO = new WorkerTypeBO();
+    private final WorkerType worker = new WorkerType();
+    
     /**
      * Creates new form WorkerType
      */
     public TableWorkerTypes() {
         initComponents();
+        getWorkerTypes();
     }
 
+    public void getWorkerTypes(){
+        tblWorkerType.setModel(workerBO.getWorkerType());
+        TableColumnModel tblModelColumn = tblWorkerType.getColumnModel();
+        tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object user = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            user = table.getModel().getValueAt(row, column);
+            //return user;
+        }
+        return user;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,15 +196,31 @@ public class TableWorkerTypes extends javax.swing.JPanel {
     }//GEN-LAST:event_tblWorkerTypeMouseClicked
 
     private void btnDeleteWorkerTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteWorkerTypeActionPerformed
-
+        if (this.checkTableSelection(tblWorkerType,0) != null){
+            int idWorkerType = Integer.parseInt((String) checkTableSelection(tblWorkerType, 0));
+            this.worker.setIdWorkerType(idWorkerType);
+            System.out.println(this.workerBO.deleteWorkerType(idWorkerType));
+            this.getWorkerTypes();
+        }
     }//GEN-LAST:event_btnDeleteWorkerTypeActionPerformed
 
     private void btnUpdateWorkerTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateWorkerTypeActionPerformed
-
+        if (this.checkTableSelection(tblWorkerType,0) != null &&
+           !(this.txtNameWorkerType.getText().isEmpty())){
+            int idWorkerType = Integer.parseInt((String) checkTableSelection(tblWorkerType, 0));
+            this.worker.setIdWorkerType(idWorkerType);
+            this.worker.setNameWorkerType(this.txtNameWorkerType.getText());
+            System.out.println(this.workerBO.updateWorkerType(worker));
+            this.getWorkerTypes();
+        }
     }//GEN-LAST:event_btnUpdateWorkerTypeActionPerformed
 
     private void btnInsertWorkerTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertWorkerTypeActionPerformed
-
+        if(!(this.txtNameWorkerType.getText().isEmpty())){
+            this.worker.setNameWorkerType(this.txtNameWorkerType.getText());
+            System.out.println(workerBO.insertWorkerType(worker));
+            this.getWorkerTypes();
+        }
     }//GEN-LAST:event_btnInsertWorkerTypeActionPerformed
 
 

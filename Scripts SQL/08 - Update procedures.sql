@@ -311,3 +311,12 @@ CREATE OR REPLACE PROCEDURE updateDemonym
         WHERE idDemonym = V_idDemonym;
     COMMIT; 
 END updateDemonym;
+
+CREATE OR REPLACE PROCEDURE updateEventType
+    (V_idEventType IN NUMBER, v_nameEventType IN VARCHAR2)
+    AS BEGIN
+        UPDATE EventType
+        SET nameEventType = NVL(v_nameEventType, nameEventType)
+        WHERE V_idEventType = V_idEventType;
+    COMMIT; 
+END updateEventType;

@@ -12,6 +12,9 @@ public class WorkerType {
     private int idWorkerType;
     private String nameWorkerType;
 
+    public WorkerType() {
+    }
+    
     public WorkerType(int idWorkerType, String nameWorkerType) {
         this.idWorkerType = idWorkerType;
         this.nameWorkerType = nameWorkerType;

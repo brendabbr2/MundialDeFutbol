@@ -4,25 +4,26 @@
  */
 package DA_Layer;
 
-import Entities.Demonym;
+
+import Entities.WorkerType;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author david
+ * @author Datos
  */
-public class DemonymDAO {
+public class WorkerTypeDAO {
     private String message = "";
     
-    public String insertDemonym(Connection conn, Demonym demonym){
+    public String insertWorkerType(Connection conn, WorkerType worker){
         PreparedStatement pst = null;
-        String sql = "CALL insertDemonym(?)";
+        String sql = "CALL insertWorkerType(?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setString(1, demonym.getNameDemonym());
+            pst.setString(1, worker.getNameWorkerType());
      
             pst.execute();
             message = "Succesfully saved";
@@ -34,15 +35,15 @@ public class DemonymDAO {
         return message;
     }
     
-    public String updateUser(Connection conn, Demonym demo){
+        public String updateWorkerType(Connection conn, WorkerType worker){
         PreparedStatement pst = null;
-        String sql = "CALL updateDemonym(?,?)";
+        String sql = "CALL updateWorkerType(?,?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, demo.getIdDemonym());
-            pst.setString(2, demo.getNameDemonym());
-            System.out.println(demo.toString());
+            pst.setInt(1, worker.getIdWorkerType());
+            pst.setString(2, worker.getNameWorkerType());
+            
             pst.execute();
             message = "Succesfully updated";
             pst.close();
@@ -52,14 +53,13 @@ public class DemonymDAO {
         }
         return message;
     }
-    
-        public String deleteDemonym(Connection conn, int idDemonym){
+    public String deleteWorkerType(Connection conn, int idWorker){
         PreparedStatement pst = null;
-        String sql = "CALL deleteDemonym(?)";
+        String sql = "CALL deleteWorkerType(?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, idDemonym);
+            pst.setInt(1, idWorker);
             
             pst.execute();
             message = "Succesfully deleted";
@@ -70,14 +70,16 @@ public class DemonymDAO {
         }
         return message;
     }
-        
-     public DefaultTableModel getDemonym(Connection conn){
-        String [] columns = {"idDemonym", "Demonym Name", "Creation User", "Creation Date","Modification User","Modification Date"};
+    
+    // for the table to read the model, eliminate the default model of the table
+    // in view: table right click >> properties >> model >> delete all registes
+    public DefaultTableModel getWorkerTypes(Connection conn){
+        String [] columns = {"idWorkertype", "Name", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
-        String sql = "CALL getDemonym(?,?)";
+        String sql = "CALL getWorkerType(?,?)";
         
         String [] row = new String[6];
         Statement st = null;
@@ -102,7 +104,7 @@ public class DemonymDAO {
             JOptionPane.showMessageDialog(null, "Unable to show table");
             System.out.println(e.getMessage());
         }
-        
         return model;
-    }   
- }
+    }
+    
+}

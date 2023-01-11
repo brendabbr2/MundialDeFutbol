@@ -206,9 +206,10 @@ public class TableDemonyms extends javax.swing.JPanel {
     private void btnUpdateDemonymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDemonymActionPerformed
         if(this.checkTableSelection(tblEventDemonym,0) != null && 
                 !(this.txtNameDemonym.getText().isEmpty())){
+            int idDemonym = Integer.parseInt((String) checkTableSelection(tblEventDemonym, 0));
+            this.demo.setIdDemonym(idDemonym);
             this.demo.setNameDemonym(this.txtNameDemonym.getText());
-            
-            System.out.println(demoBO.insertDemonym(demo));
+            System.out.println(demoBO.updateDemonym(demo));
             this.getDemonym();
         }
     }//GEN-LAST:event_btnUpdateDemonymActionPerformed
