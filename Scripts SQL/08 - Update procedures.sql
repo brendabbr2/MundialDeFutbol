@@ -1,4 +1,3 @@
-<<<<<<< HEAD:Scripts SQL/Procedures of Update.sql
 -----------------------------------------------------
 --By: Joxan Andrey Fuertes Villegas
 --Date: 29/Dic/2022 11:13 a.m
