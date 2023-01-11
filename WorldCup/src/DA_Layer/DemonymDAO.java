@@ -99,7 +99,7 @@ public class DemonymDAO {
             System.out.println("Succesfully listed");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table");
+            JOptionPane.showMessageDialog(null, "Unable to show table Demonym");
             System.out.println(e.getMessage());
         }
         
