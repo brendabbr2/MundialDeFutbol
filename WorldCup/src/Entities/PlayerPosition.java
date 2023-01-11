@@ -14,19 +14,19 @@ public class PlayerPosition {
         this.playerPositionName = positionName;
     }
 
-    public int getIdPosition() {
+    public int getIdPlayerPosition() {
         return idPlayerPosition;
     }
 
-    public void setIdPosition(int idPosition) {
+    public void setIdPlayerPosition(int idPosition) {
         this.idPlayerPosition = idPosition;
     }
 
-    public String getPositionName() {
+    public String getPlayerPositionName() {
         return playerPositionName;
     }
 
-    public void setPositionName(String positionName) {
+    public void setPlayerPositionName(String positionName) {
         this.playerPositionName = positionName;
     }
 
