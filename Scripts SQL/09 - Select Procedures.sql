@@ -152,7 +152,8 @@ CREATE OR REPLACE PROCEDURE getTeam(v_idTeam IN NUMBER, TeamCursor OUT SYS_REFCU
 AS
 BEGIN 
     OPEN TeamCursor FOR  
-        SELECT idTeam, idGroup, idCountry, idEvent, captainNumber, logoPhoto, lineup, creationUser, creationDate, modificationUser, modificationDate
+        SELECT idTeam, idGroup, idCountry, idEvent, idLineup,
+        captainNumber, logoPhoto, creationUser, creationDate, modificationUser, modificationDate
         FROM Team
         WHERE idTeam = NVL(v_idTeam, idTeam); 
 END getTeam;
@@ -306,6 +307,15 @@ BEGIN
         FROM EventType
         WHERE idEventType = NVL(v_idEventType,idEventType); 
 END getEventType;
+
+CREATE OR REPLACE PROCEDURE getLineup(v_idLineup IN NUMBER, LineupCursor OUT SYS_REFCURSOR) 
+AS 
+BEGIN 
+    OPEN LineupCursor FOR  
+        SELECT idLineup, nameLineup, creationUser, creationDate, modificationUser, modificationDate
+        FROM Lineup
+        WHERE idLineup = NVL(v_idLineup,idLineup); 
+END getLineup;
 --- code for making tests ------
 DECLARE 
     pStadiumXSportMatch SYS_REFCURSOR := getStadiumXSportMatch(NULL, NULL);

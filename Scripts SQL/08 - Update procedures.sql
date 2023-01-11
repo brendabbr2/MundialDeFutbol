@@ -320,3 +320,19 @@ CREATE OR REPLACE PROCEDURE updateEventType
         WHERE V_idEventType = V_idEventType;
     COMMIT; 
 END updateEventType;
+
+CREATE OR REPLACE PROCEDURE updateTeam
+    (V_idTeam IN NUMBER, v_idGroup IN NUMBERE, v_idCountry IN NUMBER,
+     v_captainNumber IN NUMBER, v_logoPhoto IN VARCHAR2)
+    AS BEGIN
+        UPDATE Team
+        SET idGroup = NVL(v_idGroup, idGroup),
+        idCountry = NVL(v_idCountry, idCountry),
+        captainNumber = NVL(v_captainNumber, captainNumber),
+        logoPhoto = NVL(v_logoPhoto, logoPhoto)
+        WHERE idGroup = V_idGroup;
+    COMMIT; 
+END updateTeam;
+
+DESCRIBE TEAM;
+
