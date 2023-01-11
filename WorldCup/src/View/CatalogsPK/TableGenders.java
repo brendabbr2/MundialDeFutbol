@@ -4,19 +4,41 @@
  */
 package View.CatalogsPK;
 
+import B_Layer.GenderBO;
+import Entities.Gender;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableGenders extends javax.swing.JPanel {
-
-    /**
-     * Creates new form TableGenders
-     */
+    private final GenderBO genderBO = new GenderBO();
+    private final Gender gender = new Gender();
+    
     public TableGenders() {
         initComponents();
+        getGenders();
     }
 
+    public void getGenders(){
+            tblGender.setModel(genderBO.getGenders());
+            TableColumnModel tblModelColumn = tblGender.getColumnModel();
+            tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object user = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            user = table.getModel().getValueAt(row, column);
+            //return user;
+        }
+        return user;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,10 +64,7 @@ public class TableGenders extends javax.swing.JPanel {
 
         tblGender.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
 
@@ -168,19 +187,38 @@ public class TableGenders extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblGenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGenderMouseClicked
-
+        int selection = this.tblGender.rowAtPoint(evt.getPoint());
+        this.txtNameGender.setText(this.tblGender.getValueAt(selection, 1)+"");
     }//GEN-LAST:event_tblGenderMouseClicked
 
     private void btnDeleteGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteGenderActionPerformed
-
+        if (this.checkTableSelection(tblGender,0) != null){
+            int idGender = Integer.parseInt((String) checkTableSelection(tblGender, 0));
+            this.gender.setIdGender(idGender);
+            
+            System.out.println(this.genderBO.deleteGender(idGender));
+            this.getGenders();
+        }
     }//GEN-LAST:event_btnDeleteGenderActionPerformed
 
     private void btnUpdateGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGenderActionPerformed
-
+        if (this.checkTableSelection(tblGender,0) != null && !(this.txtNameGender.getText().isEmpty())){
+            int idGender = Integer.parseInt((String) checkTableSelection(tblGender, 0));
+            this.gender.setIdGender(idGender);
+            
+            this.gender.setGenderDescription(this.txtNameGender.getText());
+            
+            System.out.println(this.genderBO.updateGender(gender));
+            this.getGenders();
+        }
     }//GEN-LAST:event_btnUpdateGenderActionPerformed
 
     private void btnInsertGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertGenderActionPerformed
-
+        if (!(this.txtNameGender.getText().isEmpty())){
+            this.gender.setGenderDescription(this.txtNameGender.getText());
+            System.out.println(genderBO.insertGender(gender));
+            this.getGenders();
+        }
     }//GEN-LAST:event_btnInsertGenderActionPerformed
 
 

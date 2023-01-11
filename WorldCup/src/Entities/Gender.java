@@ -17,6 +17,10 @@ public class Gender {
         this.genderDescription = genderDescription;
     }
 
+    public Gender() {
+        
+    }
+
     public int getIdGender() {
         return idGender;
     }

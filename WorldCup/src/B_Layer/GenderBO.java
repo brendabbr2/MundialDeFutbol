@@ -29,6 +29,7 @@ public class GenderBO {
         Connection conn = SysConnection.connect();
         try{
             message = genderDao.insertGender(conn, gender);
+            System.out.println("Todo bien mi pana");
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{

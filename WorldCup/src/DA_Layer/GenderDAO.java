@@ -29,7 +29,7 @@ public class GenderDAO {
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setString(2, gender.getGenderDescription());
+            pst.setString(1, gender.getGenderDescription());
             pst.execute();
             message = "Succesfully saved";
             pst.close();
