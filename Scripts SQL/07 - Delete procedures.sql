@@ -259,3 +259,19 @@ AS BEGIN
     Commit;
 END deleteEventType;
 
+--Delete Team
+CREATE OR REPLACE PROCEDURE deleteTeam(VidTeam IN NUMBER)
+AS BEGIN
+    DELETE FROM Team
+    WHERE idTeam = VidTeam;
+    Commit;
+END deleteTeam;
+
+--Delete Lineup
+CREATE OR REPLACE PROCEDURE deleteLineup(VidLineup IN NUMBER)
+AS BEGIN
+    DELETE FROM Lineup
+    WHERE idLineup = VidLineup;
+    Commit;
+END deleteLineup;
+

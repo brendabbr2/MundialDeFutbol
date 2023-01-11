@@ -497,3 +497,20 @@ BEGIN
 :new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
 END beforeUpdateNews;
 
+---------------Lineup------------------
+------- Lineup Creation
+CREATE OR REPLACE TRIGGER proj.beforeInsertLineup
+BEFORE INSERT ON proj.Lineup
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertLineup;
+
+------- Lineup Update
+CREATE OR REPLACE TRIGGER proj.beforeUpdateLineup
+BEFORE UPDATE ON proj.Lineup
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeUpdateLineup;
+

@@ -241,12 +241,21 @@ END insertPlayer;
 --Team
 CREATE OR REPLACE PROCEDURE insertTeam 
     (VidGroup IN NUMBER, VidCountry IN NUMBER, v_idEvent IN NUMBER,
-    VcaptainNumber IN NUMBER, VlogoPhoto IN VARCHAR, Vlineup IN NUMBER)
+    v_idLineup IN NUMBER, VcaptainNumber IN NUMBER, VlogoPhoto IN VARCHAR)
     AS BEGIN
-    INSERT INTO Team(idteam, idgroup, idcountry, idEvent, captainnumber, logophoto, lineup)
-    VALUES(s_team.nextval, VidGroup, VidCountry, v_idEvent, VcaptainNumber, VlogoPhoto, Vlineup);
+    INSERT INTO Team(idteam, idgroup, idcountry, idEvent, idLineup, captainnumber, logophoto)
+    VALUES(s_team.nextval, VidGroup, VidCountry, v_idEvent, v_idLineup, VcaptainNumber, VlogoPhoto);
     COMMIT; 
 END insertTeam;
+
+--Lineup
+CREATE OR REPLACE PROCEDURE insertLineup 
+    (VnameLineup IN VARCHAR2)
+    AS BEGIN
+    INSERT INTO Lineup(idLineup, nameLineup)
+    VALUES(s_lineup.nextval, VnameLineup);
+    COMMIT; 
+END insertLineup;
 
 -----------------------------------------------------
 --By: Joxan Andrey Fuertes Villegas

@@ -264,16 +264,29 @@ CREATE TABLE Team(
     idGroup NUMBER(6),
     idCountry NUMBER(6),
     idEvent NUMBER(6),
+    idLineup NUMBER(6),
     --------------Attribute-----------
     captainNumber NUMBER(6) NOT NULL,
     logoPhoto VARCHAR2(100),
-    lineup NUMBER(6) NOT NULL,
     --------------Audit---------------
     creationUser VARCHAR(20),
     creationDate DATE,
     modificationUser VARCHAR2(20),
     modificationDate DATE
 );
+
+CREATE TABLE Lineup( 
+    --------------PK------------------
+    idLineup NUMBER(6),
+    --------------Attribute-----------
+    nameLineup VARCHAR(20) NOT NULL,
+    --------------Audit---------------
+    creationUser VARCHAR(20),
+    creationDate DATE,
+    modificationUser VARCHAR2(20),
+    modificationDate DATE
+);
+
 -----------------------------------------------------
 --------------------Helper Tables--------------------
 CREATE TABLE Helper( 

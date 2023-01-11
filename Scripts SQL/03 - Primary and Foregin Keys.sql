@@ -39,6 +39,13 @@ USING INDEX
 TABLESPACE proj_ind PCTFREE 20
 STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
 -----------------------------------------------------
+---------------------Lineup Table----------------------
+ALTER TABLE Lineup
+ADD CONSTRAINT pk_idLineup PRIMARY KEY (idLineup)
+USING INDEX
+TABLESPACE proj_ind PCTFREE 20
+STORAGE (INITIAL 10K NEXT 10K PCTINCREASE 0);
+-----------------------------------------------------
 --------------------Helper Tables--------------------
 ALTER TABLE Helper
 ADD CONSTRAINT pk_idHelper PRIMARY KEY (idHelper)
@@ -307,6 +314,9 @@ ALTER TABLE Team
 ADD CONSTRAINT fk_Team_Event FOREIGN KEY
 (idEvent) REFERENCES Event(idEvent);
 
+ALTER TABLE Team
+ADD CONSTRAINT fk_Team_Lineup FOREIGN KEY
+(idLineup) REFERENCES Lineup(idLineup);
 --By: Joxan Andrey Fuertes Villegas
 --Date: 26/Dic/2022 08:05 p.m
 
