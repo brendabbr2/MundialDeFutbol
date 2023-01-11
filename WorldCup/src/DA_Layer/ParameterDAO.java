@@ -22,14 +22,14 @@ import javax.swing.table.DefaultTableModel;
 public class ParameterDAO {
         private String message = "";
     
-    public String insertParameter(Connection conn, ParameterEvent lineup){
+    public String insertParameter(Connection conn, ParameterEvent parameter){
         PreparedStatement pst = null;
-        String sql = "CALL insertParameterEvent(?)";
+        String sql = "CALL insertParameterEvent(?,?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, lineup.getIdParameter());
-            pst.setString(2, lineup.getNameParameter());
+            pst.setString(1, parameter.getNameParameter());
+            pst.setInt(2, parameter.getValueParameter());
             pst.execute();
             message = "Succesfully saved";
             pst.close();
@@ -39,14 +39,15 @@ public class ParameterDAO {
         }
         return message;
     }
-    public String updateParameter(Connection conn, ParameterEvent lineup){
+    public String updateParameter(Connection conn, ParameterEvent parameter){
         PreparedStatement pst = null;
-        String sql = "CALL updateParameterEvent(?,?)";
+        String sql = "CALL updateParameterEvent(?,?,?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, lineup.getIdParameter());
-            pst.setString(2, lineup.getNameParameter());
+            pst.setInt(1, parameter.getIdParameter());
+            pst.setString(2, parameter.getNameParameter());
+            pst.setInt(3, parameter.getValueParameter());
             pst.execute();
             message = "Succesfully updated";
             pst.close();
@@ -76,14 +77,14 @@ public class ParameterDAO {
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
     public DefaultTableModel getParameters(Connection conn){
-        String [] columns = {"idParameter", "nameParameter", "creationUser", "creationDate", "modificationUser", "modificationDate"};
+        String [] columns = {"idParameter", "nameParameter", "valueParameter", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
         String sql = "CALL getParameterEvent(?,?)";
         
-        String [] row = new String[6];
+        String [] row = new String[7];
         Statement st = null;
         ResultSet rs = null;
         
@@ -94,7 +95,7 @@ public class ParameterDAO {
             statement.execute();
             rs = (ResultSet) statement.getObject(2);
             while (rs.next()) {
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < 7; i++) {
                     row[i] = rs.getString(i+1);
                 }
                 model.addRow(row);

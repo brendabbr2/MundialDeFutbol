@@ -290,7 +290,7 @@ CREATE OR REPLACE PROCEDURE getParameterEvent(v_idParameter IN NUMBER, Parameter
 AS 
 BEGIN 
     OPEN ParameterEventCursor FOR  
-        SELECT idParameter, nameParameter
+        SELECT idParameter, nameParameter, valueParameter
         FROM News
         WHERE idParameter = NVL(v_idParameter,idParameter); 
 END getParameterEvent;
