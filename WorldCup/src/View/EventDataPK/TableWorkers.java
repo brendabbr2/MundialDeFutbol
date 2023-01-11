@@ -35,7 +35,6 @@ public class TableWorkers extends javax.swing.JPanel {
         btnInsertWorker = new javax.swing.JButton();
         lblWorkerType = new javax.swing.JLabel();
         cmbWorkerType = new javax.swing.JComboBox<>();
-        dtHireDate = new com.toedter.calendar.JDateChooser();
         lblHireDate = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(94, 4, 32));
@@ -114,8 +113,7 @@ public class TableWorkers extends javax.swing.JPanel {
                 .addGap(59, 59, 59)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(dtHireDate, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnDeleteWorker, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -125,7 +123,7 @@ public class TableWorkers extends javax.swing.JPanel {
                                 .addComponent(btnInsertWorker, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(cmbWorkerType, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
                                 .addComponent(btnUpdateWorker, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18))))
         );
@@ -142,7 +140,6 @@ public class TableWorkers extends javax.swing.JPanel {
                 .addGap(44, 44, 44)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDeleteWorker, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dtHireDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblHireDate))
                 .addGap(22, 22, 22))
         );
@@ -216,7 +213,6 @@ public class TableWorkers extends javax.swing.JPanel {
     private javax.swing.JButton btnInsertWorker;
     private javax.swing.JButton btnUpdateWorker;
     private javax.swing.JComboBox<String> cmbWorkerType;
-    private com.toedter.calendar.JDateChooser dtHireDate;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

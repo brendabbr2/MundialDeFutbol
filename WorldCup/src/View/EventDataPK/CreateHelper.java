@@ -35,7 +35,6 @@ public class CreateHelper extends javax.swing.JPanel {
         btnInsertHelper = new javax.swing.JButton();
         lblHelperType = new javax.swing.JLabel();
         cmbHelperType = new javax.swing.JComboBox<>();
-        dtHireDate = new com.toedter.calendar.JDateChooser();
         lblHireDate = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(94, 4, 32));
@@ -109,17 +108,12 @@ public class CreateHelper extends javax.swing.JPanel {
                     .addComponent(lblHelperType)
                     .addComponent(lblHireDate))
                 .addGap(59, 59, 59)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(dtHireDate, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cmbHelperType, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbTeam, 0, 227, Short.MAX_VALUE))
-                        .addGap(247, 247, 247)
-                        .addComponent(btnInsertHelper, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cmbHelperType, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbTeam, 0, 233, Short.MAX_VALUE))
+                .addGap(247, 247, 247)
+                .addComponent(btnInsertHelper, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,10 +129,8 @@ public class CreateHelper extends javax.swing.JPanel {
                     .addComponent(lblHelperType)
                     .addComponent(cmbHelperType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dtHireDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHireDate))
-                .addGap(26, 26, 26))
+                .addComponent(lblHireDate)
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -205,7 +197,6 @@ public class CreateHelper extends javax.swing.JPanel {
     private javax.swing.JButton btnInsertHelper;
     private javax.swing.JComboBox<String> cmbHelperType;
     private javax.swing.JComboBox<String> cmbTeam;
-    private com.toedter.calendar.JDateChooser dtHireDate;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
