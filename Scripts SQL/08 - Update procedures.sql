@@ -302,3 +302,12 @@ CREATE OR REPLACE PROCEDURE updateParameterEvent
         WHERE idParameter = V_idParameter;
     COMMIT; 
 END updateParameterEvent;
+
+CREATE OR REPLACE PROCEDURE updateDemonym
+    (V_idDemonym IN NUMBER, v_nameDemonym IN VARCHAR2)
+    AS BEGIN
+        UPDATE Demonym
+        SET nameDemonym = NVL(v_nameDemonym, nameDemonym)
+        WHERE idDemonym = V_idDemonym;
+    COMMIT; 
+END updateDemonym;
