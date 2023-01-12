@@ -16,9 +16,9 @@ import javax.swing.table.TableColumnModel;
 public class TableUserTypes extends javax.swing.JPanel {
     private final UserTypeBO usertypeBO = new UserTypeBO();
     private final UserType usertype = new UserType();
-    /**
-     * Creates new form TableUserTypeType
-     */
+    
+    
+    
     public TableUserTypes() {
         initComponents();
     }
@@ -197,10 +197,10 @@ public class TableUserTypes extends javax.swing.JPanel {
 
     private void btnDeleteUserTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserTypeActionPerformed
         if (this.checkTableSelection(tblUserType,0) != null){
-            int idUser = Integer.parseInt((String) checkTableSelection(tblUserType, 0));
-            this.usertype.setIdUser(idUser);
+            int idUserType = Integer.parseInt((String) checkTableSelection(tblUserType, 0));
+            this.usertype.setIdUserType(idUserType);
             
-            System.out.println(this.usertypeBO.deleteUser(idUser));
+            System.out.println(this.usertypeBO.deleteUserType(idUserType));
             this.getUserType();
         }
     }//GEN-LAST:event_btnDeleteUserTypeActionPerformed
