@@ -8,12 +8,12 @@ package View.CatalogsPK;
  *
  * @author jox
  */
-public class TablePositions extends javax.swing.JPanel {
+public class TablePlayerPositions extends javax.swing.JPanel {
 
     /**
      * Creates new form TablePosition
      */
-    public TablePositions() {
+    public TablePlayerPositions() {
         initComponents();
     }
 

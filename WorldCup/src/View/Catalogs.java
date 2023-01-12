@@ -11,7 +11,7 @@ import View.CatalogsPK.TableHelperType;
 import View.CatalogsPK.TableIdentificationTypes;
 import View.CatalogsPK.TableLineups;
 import View.CatalogsPK.TableParameters;
-import View.CatalogsPK.TablePositions;
+import View.CatalogsPK.TablePlayerPositions;
 import View.CatalogsPK.TableUserTypes;
 import View.CatalogsPK.TableWorkerTypes;
 import java.awt.BorderLayout;
@@ -29,7 +29,7 @@ public class Catalogs extends javax.swing.JPanel {
     private TableIdentificationTypes tableIdentificationType = new TableIdentificationTypes();
     private TableLineups tableLineups = new TableLineups();
     private TableParameters tableParameters = new TableParameters();
-    private TablePositions tablePostions = new TablePositions();
+    private TablePlayerPositions tablePostions = new TablePlayerPositions();
     private TableUserTypes tableUserTypes = new TableUserTypes();
     private TableWorkerTypes tableWorkerTypes = new TableWorkerTypes();
     
