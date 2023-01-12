@@ -29,8 +29,7 @@ public class LineupDAO {
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, lineup.getIdLineup());
-            pst.setString(2, lineup.getNameLineup());
+            pst.setString(1, lineup.getNameLineup());
             pst.execute();
             message = "Succesfully saved";
             pst.close();

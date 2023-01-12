@@ -322,17 +322,26 @@ CREATE OR REPLACE PROCEDURE updateEventType
 END updateEventType;
 
 CREATE OR REPLACE PROCEDURE updateTeam
-    (V_idTeam IN NUMBER, v_idGroup IN NUMBERE, v_idCountry IN NUMBER,
-     v_captainNumber IN NUMBER, v_logoPhoto IN VARCHAR2)
+    (V_idTeam IN NUMBER, v_idGroup IN NUMBER, v_idCountry IN NUMBER,v_idEvent IN NUMBER,
+     v_idLineup IN NUMBER, v_captainNumber IN NUMBER, v_logoPhoto IN VARCHAR2)
     AS BEGIN
         UPDATE Team
         SET idGroup = NVL(v_idGroup, idGroup),
         idCountry = NVL(v_idCountry, idCountry),
+        idEvent = NVL(v_idEvent, idEvent),
+        idLineup = NVL(v_idLineup, idLineup),
         captainNumber = NVL(v_captainNumber, captainNumber),
         logoPhoto = NVL(v_logoPhoto, logoPhoto)
         WHERE idGroup = V_idGroup;
     COMMIT; 
 END updateTeam;
 
-DESCRIBE TEAM;
+CREATE OR REPLACE PROCEDURE updateLineup
+    (V_idLineup IN NUMBER, v_nameLineup IN VARCHAR2)
+    AS BEGIN
+        UPDATE Lineup
+        SET nameLineup = NVL(v_nameLineup, nameLineup)
+        WHERE V_idLineup = V_idLineup;
+    COMMIT; 
+END updateLineup;
 

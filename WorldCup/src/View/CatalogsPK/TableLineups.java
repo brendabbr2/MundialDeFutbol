@@ -4,18 +4,42 @@
  */
 package View.CatalogsPK;
 
+import B_Layer.LineupBO;
+import Entities.Lineup;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableLineups extends javax.swing.JPanel {
-
+    private final LineupBO lineupBO = new LineupBO();
+    private final Lineup lineup = new Lineup();
     /**
      * Creates new form TableLineups
      */
     public TableLineups() {
         initComponents();
     }
+    
+    public void getLineup(){
+            tblLineup.setModel(lineupBO.getLineups());
+            TableColumnModel tblModelColumn = tblLineup.getColumnModel();
+            tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object lineup = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            lineup = table.getModel().getValueAt(row, column);
+            //return lineup;
+        }
+        return lineup;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -168,19 +192,37 @@ public class TableLineups extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblLineupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLineupMouseClicked
-
+        int selection = this.tblLineup.rowAtPoint(evt.getPoint());
+        this.txtNameLineup.setText(this.tblLineup.getValueAt(selection, 1)+"");
     }//GEN-LAST:event_tblLineupMouseClicked
 
     private void btnDeleteLineupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteLineupActionPerformed
-
+        if (this.checkTableSelection(tblLineup,0) != null){
+            int idLineup = Integer.parseInt((String) checkTableSelection(tblLineup, 0));
+            this.lineup.setIdLineup(idLineup);
+            
+            System.out.println(this.lineupBO.deleteLineup(idLineup));
+            this.getLineup();
+        }
     }//GEN-LAST:event_btnDeleteLineupActionPerformed
 
     private void btnUpdateLineupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateLineupActionPerformed
-
+        if (this.checkTableSelection(tblLineup,0) != null && !(this.txtNameLineup.getText().isEmpty())){
+            int idLineup = Integer.parseInt((String) checkTableSelection(tblLineup, 0));
+            this.lineup.setIdLineup(idLineup);
+            this.lineup.setNameLineup(this.txtNameLineup.getText());
+            
+            System.out.println(this.lineupBO.updateLineup(lineup));
+            this.getLineup();
+        }
     }//GEN-LAST:event_btnUpdateLineupActionPerformed
 
     private void btnInsertLineupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertLineupActionPerformed
-
+        if (!(this.txtNameLineup.getText().isEmpty())){
+            this.lineup.setNameLineup(this.txtNameLineup.getText());
+            System.out.println(lineupBO.insertLineup(lineup));
+            this.getLineup();
+        }
     }//GEN-LAST:event_btnInsertLineupActionPerformed
 
 

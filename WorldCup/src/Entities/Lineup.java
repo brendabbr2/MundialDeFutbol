@@ -17,6 +17,10 @@ public class Lineup {
         this.nameLineup = nameLineup;
     }
 
+    public Lineup() {
+        
+    }
+
     public int getIdLineup() {
         return idLineup;
     }

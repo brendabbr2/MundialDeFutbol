@@ -3,18 +3,41 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package View.CatalogsPK;
+import B_Layer.PlayerPositionBO;
+import Entities.PlayerPosition;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author jox
  */
 public class TablePlayerPositions extends javax.swing.JPanel {
-
+    private final PlayerPositionBO playerpositionBO = new PlayerPositionBO();
+    private final PlayerPosition playerposition = new PlayerPosition();
     /**
      * Creates new form TablePosition
      */
     public TablePlayerPositions() {
         initComponents();
+        getPlayerPosition();
+    }
+    
+    public void getPlayerPosition(){
+        tblPlayerPosition.setModel(playerpositionBO.getPlayerPositions());
+        TableColumnModel tblModelColumn = tblPlayerPosition.getColumnModel();
+        tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object playerposition = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            playerposition = table.getModel().getValueAt(row, column);
+            //return playerposition;
+        }
+        return playerposition;
     }
 
     /**
@@ -28,19 +51,19 @@ public class TablePlayerPositions extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPosition = new javax.swing.JTable();
+        tblPlayerPosition = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        btnDeletePosition = new javax.swing.JButton();
-        btnUpdatePosition = new javax.swing.JButton();
+        btnDeletePlayerPosition = new javax.swing.JButton();
+        btnUpdatePlayerPosition = new javax.swing.JButton();
         lblNamePosition = new javax.swing.JLabel();
-        txtNamePosition = new javax.swing.JTextField();
-        btnInsertPosition = new javax.swing.JButton();
+        txtNamePlayerPosition = new javax.swing.JTextField();
+        btnInsertPlayerPosition = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(94, 4, 32));
         jPanel1.setMaximumSize(new java.awt.Dimension(834, 578));
         jPanel1.setMinimumSize(new java.awt.Dimension(834, 578));
 
-        tblPosition.setModel(new javax.swing.table.DefaultTableModel(
+        tblPlayerPosition.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -51,28 +74,28 @@ public class TablePlayerPositions extends javax.swing.JPanel {
 
             }
         ));
-        tblPosition.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblPlayerPosition.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPositionMouseClicked(evt);
+                tblPlayerPositionMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblPosition);
+        jScrollPane1.setViewportView(tblPlayerPosition);
 
         jPanel2.setBackground(new java.awt.Color(152, 12, 51));
 
-        btnDeletePosition.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnDeletePosition.setText("DELETE");
-        btnDeletePosition.addActionListener(new java.awt.event.ActionListener() {
+        btnDeletePlayerPosition.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        btnDeletePlayerPosition.setText("DELETE");
+        btnDeletePlayerPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeletePositionActionPerformed(evt);
+                btnDeletePlayerPositionActionPerformed(evt);
             }
         });
 
-        btnUpdatePosition.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnUpdatePosition.setText("UPDATE");
-        btnUpdatePosition.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdatePlayerPosition.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        btnUpdatePlayerPosition.setText("UPDATE");
+        btnUpdatePlayerPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdatePositionActionPerformed(evt);
+                btnUpdatePlayerPositionActionPerformed(evt);
             }
         });
 
@@ -80,11 +103,11 @@ public class TablePlayerPositions extends javax.swing.JPanel {
         lblNamePosition.setForeground(new java.awt.Color(255, 255, 255));
         lblNamePosition.setText("Name");
 
-        btnInsertPosition.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnInsertPosition.setText("INSERT");
-        btnInsertPosition.addActionListener(new java.awt.event.ActionListener() {
+        btnInsertPlayerPosition.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        btnInsertPlayerPosition.setText("INSERT");
+        btnInsertPlayerPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsertPositionActionPerformed(evt);
+                btnInsertPlayerPositionActionPerformed(evt);
             }
         });
 
@@ -98,29 +121,29 @@ public class TablePlayerPositions extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblNamePosition)
                         .addGap(59, 59, 59)
-                        .addComponent(txtNamePosition, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNamePlayerPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(296, 296, 296)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdatePosition, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDeletePosition, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnUpdatePlayerPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDeletePlayerPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(18, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnInsertPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInsertPlayerPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(btnInsertPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnInsertPlayerPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUpdatePosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdatePlayerPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNamePosition, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNamePosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNamePlayerPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(btnDeletePosition, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDeletePlayerPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
@@ -167,32 +190,52 @@ public class TablePlayerPositions extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblPositionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPositionMouseClicked
+    private void tblPlayerPositionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlayerPositionMouseClicked
+        int selection = this.tblPlayerPosition.rowAtPoint(evt.getPoint());
+        this.txtNamePlayerPosition.setText(this.tblPlayerPosition.getValueAt(selection, 0)+"");
+    }//GEN-LAST:event_tblPlayerPositionMouseClicked
 
-    }//GEN-LAST:event_tblPositionMouseClicked
+    private void btnDeletePlayerPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePlayerPositionActionPerformed
+        if (this.checkTableSelection(tblPlayerPosition,0) != null){
+            int idPlayerPosition = Integer.parseInt((String) checkTableSelection(tblPlayerPosition, 0));
+            this.playerposition.setIdPlayerPosition(idPlayerPosition);
+            
+            System.out.println(this.playerpositionBO.deletePlayerPosition(idPlayerPosition));
+            this.getPlayerPosition();
+        }
+    }//GEN-LAST:event_btnDeletePlayerPositionActionPerformed
 
-    private void btnDeletePositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePositionActionPerformed
+    private void btnUpdatePlayerPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePlayerPositionActionPerformed
+        if (this.checkTableSelection(tblPlayerPosition,0) != null && !(this.txtNamePlayerPosition.getText().isEmpty())){
+            int idPlayerPosition = Integer.parseInt((String) checkTableSelection(tblPlayerPosition, 0));
+            this.playerposition.setIdPlayerPosition(idPlayerPosition);
+            this.playerposition.setPlayerPositionName(this.txtNamePlayerPosition.getText());
+            
+            System.out.println(this.playerpositionBO.updatePlayerPosition(playerposition));
+            this.getPlayerPosition();
+        }
+    }//GEN-LAST:event_btnUpdatePlayerPositionActionPerformed
 
-    }//GEN-LAST:event_btnDeletePositionActionPerformed
+    private void btnInsertPlayerPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertPlayerPositionActionPerformed
+        if (!(this.txtNamePlayerPosition.getText().isEmpty())){
 
-    private void btnUpdatePositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePositionActionPerformed
-
-    }//GEN-LAST:event_btnUpdatePositionActionPerformed
-
-    private void btnInsertPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertPositionActionPerformed
-
-    }//GEN-LAST:event_btnInsertPositionActionPerformed
+            this.playerposition.setPlayerPositionName(this.txtNamePlayerPosition.getText());
+            
+            System.out.println(playerpositionBO.insertPlayerPosition(playerposition));
+            this.getPlayerPosition();
+        }
+    }//GEN-LAST:event_btnInsertPlayerPositionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDeletePosition;
-    private javax.swing.JButton btnInsertPosition;
-    private javax.swing.JButton btnUpdatePosition;
+    private javax.swing.JButton btnDeletePlayerPosition;
+    private javax.swing.JButton btnInsertPlayerPosition;
+    private javax.swing.JButton btnUpdatePlayerPosition;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNamePosition;
-    private javax.swing.JTable tblPosition;
-    private javax.swing.JTextField txtNamePosition;
+    private javax.swing.JTable tblPlayerPosition;
+    private javax.swing.JTextField txtNamePlayerPosition;
     // End of variables declaration//GEN-END:variables
 }

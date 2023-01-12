@@ -86,14 +86,14 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tblPosition">
+            <Component class="javax.swing.JTable" name="tblPlayerPosition">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="0" rowCount="4"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPositionMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPlayerPositionMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -114,17 +114,17 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblNamePosition" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                              <Component id="txtNamePosition" min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="txtNamePlayerPosition" min="-2" pref="216" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnUpdatePosition" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
-                                  <Component id="btnDeletePosition" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <Component id="btnUpdatePlayerPosition" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <Component id="btnDeletePlayerPosition" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="18" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btnInsertPosition" min="-2" pref="128" max="-2" attributes="0"/>
+                              <Component id="btnInsertPlayerPosition" min="-2" pref="128" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -135,22 +135,22 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Component id="btnInsertPosition" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnInsertPlayerPosition" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace pref="38" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnUpdatePosition" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnUpdatePlayerPosition" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="lblNamePosition" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNamePosition" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="txtNamePlayerPosition" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="btnDeletePosition" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnDeletePlayerPosition" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnDeletePosition">
+            <Component class="javax.swing.JButton" name="btnDeletePlayerPosition">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="18" style="1"/>
@@ -158,10 +158,10 @@
                 <Property name="text" type="java.lang.String" value="DELETE"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeletePositionActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeletePlayerPositionActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnUpdatePosition">
+            <Component class="javax.swing.JButton" name="btnUpdatePlayerPosition">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="18" style="1"/>
@@ -169,7 +169,7 @@
                 <Property name="text" type="java.lang.String" value="UPDATE"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdatePositionActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdatePlayerPositionActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNamePosition">
@@ -183,9 +183,9 @@
                 <Property name="text" type="java.lang.String" value="Name"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNamePosition">
+            <Component class="javax.swing.JTextField" name="txtNamePlayerPosition">
             </Component>
-            <Component class="javax.swing.JButton" name="btnInsertPosition">
+            <Component class="javax.swing.JButton" name="btnInsertPlayerPosition">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="18" style="1"/>
@@ -193,7 +193,7 @@
                 <Property name="text" type="java.lang.String" value="INSERT"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertPositionActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertPlayerPositionActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

@@ -14,6 +14,10 @@ public class PlayerPosition {
         this.playerPositionName = positionName;
     }
 
+    public PlayerPosition() {
+    
+    }
+
     public int getIdPlayerPosition() {
         return idPlayerPosition;
     }

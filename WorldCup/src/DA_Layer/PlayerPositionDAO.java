@@ -28,8 +28,7 @@ public class PlayerPositionDAO {
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, playerposition.getIdPlayerPosition());
-            pst.setString(2, playerposition.getPlayerPositionName());
+            pst.setString(1, playerposition.getPlayerPositionName());
             pst.execute();
             message = "Succesfully saved";
             pst.close();
@@ -39,6 +38,7 @@ public class PlayerPositionDAO {
         }
         return message;
     }
+    
     public String updatePlayerPosition(Connection conn, PlayerPosition playerposition){
         PreparedStatement pst = null;
         String sql = "CALL updatePlayerPosition(?,?)";

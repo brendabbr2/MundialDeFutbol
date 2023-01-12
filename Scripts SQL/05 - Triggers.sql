@@ -299,7 +299,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertPhone
 BEFORE INSERT ON proj.Phone
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertPhone;
 
 ------- Phone Update
@@ -316,7 +316,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertEmail
 BEFORE INSERT ON proj.Email
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertEmail;
 
 ------- Email Update
@@ -333,7 +333,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertIdentification
 BEFORE INSERT ON proj.Identification
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertIdentification;
 
 ------- Identification Update
@@ -350,7 +350,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertIdentificationType
 BEFORE INSERT ON proj.IdentificationType
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE;  
 END beforeInsertIdentificationType;
 
 ------- identificationType Update
@@ -367,7 +367,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertPerson
 BEFORE INSERT ON proj.Person
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertPerson;
 
 ------- Person Update
@@ -384,7 +384,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertUserType
 BEFORE INSERT ON proj.UserType
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertUserType;
 
 ------- UserType Update
@@ -401,7 +401,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertUserPerson
 BEFORE INSERT ON proj.UserPerson
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertUserPerson;
 
 ------- UserPerson Update
@@ -418,7 +418,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertUserLog
 BEFORE INSERT ON proj.UserLog
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE;  
 END beforeInsertUserLog;
 
 ------- UserLog Update
@@ -435,7 +435,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertUserComment
 BEFORE INSERT ON proj.UserComment
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertUserComment;
 
 ------- UserComment Update
@@ -452,7 +452,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertUserReview
 BEFORE INSERT ON proj.UserReview
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertUserReview;
 
 ------- UserReview Update
@@ -469,7 +469,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertUserSave
 BEFORE INSERT ON proj.UserSave
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertUserSave;
 
 ------- UserSave Update
@@ -486,7 +486,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertNews
 BEFORE INSERT ON proj.News
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertNews;
 
 ------- News Update
@@ -503,7 +503,7 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertLineup
 BEFORE INSERT ON proj.Lineup
 FOR EACH ROW 
 BEGIN 
-:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
 END beforeInsertLineup;
 
 ------- Lineup Update
