@@ -514,3 +514,62 @@ BEGIN
 :new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
 END beforeUpdateLineup;
 
+
+--By: Brenda Badilla Rodriguez
+--Date: 31/Dec/2022 9:00 a.m
+--Event, EventType, GroupEvent, Helper, HelperType, ParameterEvent, Player, Team
+CREATE OR REPLACE TRIGGER proj.beforeInsertEventType
+BEFORE INSERT ON proj.EventType
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertEventType;
+
+CREATE OR REPLACE TRIGGER proj.beforeInsertEvent
+BEFORE INSERT ON proj.Event
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertEvent;
+
+CREATE OR REPLACE TRIGGER proj.beforeInsertGroupEvent
+BEFORE INSERT ON proj.GroupEvent
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertGroupEvent;
+
+CREATE OR REPLACE TRIGGER proj.beforeInsertHelper
+BEFORE INSERT ON proj.Helper
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertHelper;
+
+CREATE OR REPLACE TRIGGER proj.beforeInsertHelperType
+BEFORE INSERT ON proj.HelperType
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertHelperType;
+
+CREATE OR REPLACE TRIGGER proj.beforeInsertParameterEvent
+BEFORE INSERT ON proj.ParameterEvent
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertParameterEvent;
+
+CREATE OR REPLACE TRIGGER proj.beforeInsertPlayer
+BEFORE INSERT ON proj.Player
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertPlayer;
+
+CREATE OR REPLACE TRIGGER proj.beforeInsertTeam
+BEFORE INSERT ON proj.Team
+FOR EACH ROW 
+BEGIN 
+:new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
+END beforeInsertTeam;
