@@ -193,7 +193,7 @@ public class TableLineups extends javax.swing.JPanel {
 
     private void tblLineupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLineupMouseClicked
         int selection = this.tblLineup.rowAtPoint(evt.getPoint());
-        this.txtNameLineup.setText(this.tblLineup.getValueAt(selection, 1)+"");
+        this.txtNameLineup.setText(this.tblLineup.getValueAt(selection, 0)+"");
     }//GEN-LAST:event_tblLineupMouseClicked
 
     private void btnDeleteLineupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteLineupActionPerformed

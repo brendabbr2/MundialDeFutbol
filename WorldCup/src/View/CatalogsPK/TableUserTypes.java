@@ -4,17 +4,40 @@
  */
 package View.CatalogsPK;
 
+import B_Layer.UserTypeBO;
+import Entities.UserType;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableUserTypes extends javax.swing.JPanel {
-
+    private final UserTypeBO usertypeBO = new UserTypeBO();
+    private final UserType usertype = new UserType();
     /**
-     * Creates new form TableUserType
+     * Creates new form TableUserTypeType
      */
     public TableUserTypes() {
         initComponents();
+    }
+    
+    public void getUserType(){
+            tblUserType.setModel(usertypeBO.getUserTypes());
+            TableColumnModel tblModelColumn = tblUserType.getColumnModel();
+            tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object user = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            user = table.getModel().getValueAt(row, column);
+            //return user;
+        }
+        return user;
     }
 
     /**
@@ -168,19 +191,39 @@ public class TableUserTypes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblUserTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserTypeMouseClicked
-
+        int selection = this.tblUserType.rowAtPoint(evt.getPoint());
+        this.txtNameUserType.setText(this.tblUserType.getValueAt(selection, 0)+"");
     }//GEN-LAST:event_tblUserTypeMouseClicked
 
     private void btnDeleteUserTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserTypeActionPerformed
-
+        if (this.checkTableSelection(tblUserType,0) != null){
+            int idUser = Integer.parseInt((String) checkTableSelection(tblUserType, 0));
+            this.usertype.setIdUser(idUser);
+            
+            System.out.println(this.usertypeBO.deleteUser(idUser));
+            this.getUserType();
+        }
     }//GEN-LAST:event_btnDeleteUserTypeActionPerformed
 
     private void btnUpdateUserTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserTypeActionPerformed
-
+        if (this.checkTableSelection(tblUserType,0) != null &&
+           !(this.txtNameUserType.getText().isEmpty())){
+            int idUserType = Integer.parseInt((String) checkTableSelection(tblUserType, 0));
+            this.usertype.setIdUserType(idUserType);
+            this.usertype.setNameUserType(this.txtNameUserType.getText());
+            
+            System.out.println(this.usertypeBO.updateUserType(usertype));
+            this.getUserType();
+        }
     }//GEN-LAST:event_btnUpdateUserTypeActionPerformed
 
     private void btnInsertUserTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertUserTypeActionPerformed
-
+        if (!(this.txtNameUserType.getText().isEmpty())){
+            this.usertype.setNameUserType(this.txtNameUserType.getText());
+            
+            System.out.println(usertypeBO.insertUserType(usertype));
+            this.getUserType();
+        }
     }//GEN-LAST:event_btnInsertUserTypeActionPerformed
 
 

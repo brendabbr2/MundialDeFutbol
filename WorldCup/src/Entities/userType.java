@@ -17,6 +17,9 @@ public class UserType{
         this.nameUserType = nameUserType;
     }
 
+    public UserType() {
+    }
+
     public int getIdUserType() {
         return idUserType;
     }
