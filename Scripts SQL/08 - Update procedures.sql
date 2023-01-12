@@ -345,3 +345,89 @@ CREATE OR REPLACE PROCEDURE updateLineup
     COMMIT; 
 END updateLineup;
 
+--By: Brenda Badilla Rodriguez
+--Date: 31/Dic/2022 3:00 p.m
+--Event, EventType, GroupEvent, Helper, HelperType, ParameterEvent, Player, Team
+CREATE OR REPLACE PROCEDURE updateEvent
+    (V_idEvent IN NUMBER, V_idEventType IN NUMBER, V_nameEvent IN VARCHAR2)
+    AS BEGIN
+        UPDATE Event
+        SET idEventType = NVL(V_idEventType, idEventType),
+            nameEvent = NVL(V_nameEvent, nameEvent)
+        WHERE idEvent = V_idEvent;
+    COMMIT; 
+END updateEvent;
+
+CREATE OR REPLACE PROCEDURE updateEventType
+    (V_idEventType IN NUMBER, V_nameEventType IN VARCHAR2)
+    AS BEGIN
+        UPDATE EventType
+        SET nameEventType = NVL(V_nameEventType, nameEventType)
+        WHERE idEventType = V_idEventType;
+    COMMIT; 
+END updateEventType;
+
+CREATE OR REPLACE PROCEDURE updateGroupEvent
+    (V_idGroup IN NUMBER, V_idEvent IN NUMBER, V_nameGroup IN VARCHAR2)
+    AS BEGIN
+        UPDATE GroupEvent
+        SET idEvent = NVL(V_idEvent, idEvent),
+            nameGroup = NVL(V_nameGroup, nameGroup)
+        WHERE idGroup = V_idGroup;
+    COMMIT; 
+END updateGroupEvent;
+
+CREATE OR REPLACE PROCEDURE updateHelper
+    (V_idHelper IN NUMBER, V_idTeam IN NUMBER, V_idHelperType IN NUMBER, V_hireDate IN DATE)
+    AS BEGIN
+        UPDATE Helper
+        SET idTeam = NVL(V_idTeam, idTeam),
+            idHelperType = NVL(V_idHelperType, idHelperType),
+            hireDate = NVL(V_hireDate, hireDate)
+        WHERE idHelper = V_idHelper;
+    COMMIT; 
+END updateHelper;
+
+CREATE OR REPLACE PROCEDURE updateHelperType
+    (V_idHelperType IN NUMBER, nameHelperType IN VARCHAR2)
+    AS BEGIN
+        UPDATE HelperType
+        SET nameHelperType = NVL(V_nameHelperType, nameHelperType)
+        WHERE idHelperType = V_idHelperType;
+    COMMIT; 
+END updateHelperType;
+
+CREATE OR REPLACE PROCEDURE updateParameterEvent
+    (V_iduParameterEvent IN NUMBER, V_nameParameter IN VARCHAR2, V_valueParameter IN NUMBER)
+    AS BEGIN
+        UPDATE ParameterEvent
+        SET nameParameter = NVL(V_nameParameter, nameParameter),
+            valueParameter = NVL(V_valueParameter, valueParameter)
+        WHERE idParameter = V_idParameter;
+    COMMIT; 
+END updateParameterEvent;
+
+CREATE OR REPLACE PROCEDURE updatePlayer
+    (V_idPlayer IN NUMBER, V_idTeam IN NUMBER, V_idPosition NUMBER, V_numberPlayer IN NUMBER)
+    AS BEGIN
+        UPDATE Player
+        SET idTeam = NVL(V_idTeam, idTeam),
+            idPosition = NVL(V_idPosition, idPosition),
+            numberPlayer = NVL(V_numberPlayer, numberPlayer)
+        WHERE idPlayer = V_idPlayer;
+    COMMIT; 
+END updatePlayer;
+
+CREATE OR REPLACE PROCEDURE updateTeam
+    (V_idTeam IN NUMBER, V_idGroup IN NUMBER, V_idCountry IN NUMBER, V_captainNumber IN NUMBER, V_logoPhoto IN VARCHAR2,
+        V_lineup IN NUMBER)
+    AS BEGIN
+        UPDATE Team
+        SET idGroup = NVL(V_idGroup, idGroup),
+            idCountry = NVL(V_idCountry, idCountry),
+            captainNumber = NVL(V_captainNumber, captainNumber),
+            logoPhoto = NVL(V_logoPhoto, logoPhoto),
+            lineup = NVL(V_lineup, lineup)
+        WHERE idTeam = V_idTeam;
+    COMMIT; 
+END updateTeam;
