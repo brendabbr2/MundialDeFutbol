@@ -21,6 +21,7 @@ public class TableUserTypes extends javax.swing.JPanel {
     
     public TableUserTypes() {
         initComponents();
+        getUserType();
     }
     
     public void getUserType(){
@@ -214,7 +215,9 @@ public class TableUserTypes extends javax.swing.JPanel {
             
             System.out.println(this.usertypeBO.updateUserType(usertype));
             this.getUserType();
+            System.out.println("Cumplimos con todo papa");
         }
+        
     }//GEN-LAST:event_btnUpdateUserTypeActionPerformed
 
     private void btnInsertUserTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertUserTypeActionPerformed

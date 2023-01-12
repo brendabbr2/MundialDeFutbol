@@ -217,7 +217,7 @@ CREATE OR REPLACE PROCEDURE updateUserType
     (V_idUserType IN NUMBER, V_nameUserType IN NUMBER)
     AS BEGIN
         UPDATE userType
-        SET nameUserType = NVL(V_nameUserType, nameUserType)
+        SET nameUserType = V_nameUserType
         WHERE idUserType = V_idUserType;
     COMMIT; 
 END updateUserType;

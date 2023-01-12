@@ -26,11 +26,14 @@ public class UserTypeBO {
     
     public String insertUserType(UserType usertype){
         Connection conn = SysConnection.connect();
+        System.out.println("primero");
         try{
+            System.out.println("Pasamos aca");
             message = usertypeDao.insertUserType(conn, usertype);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
+            System.out.println("Segundo");
             try {
                 if (conn != null){
                     conn.close(); 
