@@ -19,6 +19,10 @@ public class ParameterEvent {
         this.valueParameter = valueParameter;
     }
 
+    public ParameterEvent() {
+    
+    }
+
     public int getIdParameter() {
         return idParameter;
     }

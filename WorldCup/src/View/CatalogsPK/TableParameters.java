@@ -4,17 +4,41 @@
  */
 package View.CatalogsPK;
 
+import B_Layer.ParameterBO;
+import Entities.ParameterEvent;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableParameters extends javax.swing.JPanel {
-
+    private final ParameterBO parameterBO = new ParameterBO();
+    private final ParameterEvent parameter = new ParameterEvent();
     /**
      * Creates new form TableParameters
      */
     public TableParameters() {
         initComponents();
+        this.getParameters();
+    }
+    
+    public void getParameters(){
+            tblParameter.setModel(parameterBO.getParameters());
+            TableColumnModel tblModelColumn = tblParameter.getColumnModel();
+            tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object parameter = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            parameter = table.getModel().getValueAt(row, column);
+            //return parameter;
+        }
+        return parameter;
     }
 
     /**
@@ -190,19 +214,54 @@ public class TableParameters extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblParameterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblParameterMouseClicked
-
+        int selection = this.tblParameter.rowAtPoint(evt.getPoint());
+        String type = this.tblParameter.getValueAt(selection, 0)+"";
+        if (type.toLowerCase().equals("normal"))
+            this.cmbValueParameter.setSelectedIndex(0);
+        else
+            this.cmbValueParameter.setSelectedIndex(1);
+        this.txtNameParameter.setText(this.tblParameter.getValueAt(selection, 0)+"");
     }//GEN-LAST:event_tblParameterMouseClicked
 
     private void btnDeleteParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteParameterActionPerformed
-
+        if (this.checkTableSelection(tblParameter,0) != null){
+            int idParameter = Integer.parseInt((String) checkTableSelection(tblParameter, 0));
+            this.parameter.setIdParameter(idParameter);
+            
+            System.out.println(this.parameterBO.deleteParameter(idParameter));
+            this.getParameters();
+        }
     }//GEN-LAST:event_btnDeleteParameterActionPerformed
 
     private void btnUpdateParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateParameterActionPerformed
-
+        if (this.checkTableSelection(tblParameter,0) != null && !(this.txtNameParameter.getText().isEmpty() )){
+            int idParameter = Integer.parseInt((String)checkTableSelection(tblParameter, 0));
+            this.parameter.setIdParameter(idParameter);
+            
+            String type = this.cmbValueParameter.getSelectedItem().toString().toLowerCase();
+            if (type.toLowerCase().equals("normal"))
+                this.parameter.setValueParameter(1);
+            else
+                this.parameter.setValueParameter(2);
+            this.parameter.setNameParameter(this.txtNameParameter.getText());
+            
+            System.out.println(this.parameterBO.updateParameter(parameter));
+            this.getParameters();
+        }
     }//GEN-LAST:event_btnUpdateParameterActionPerformed
 
     private void btnInsertParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertParameterActionPerformed
+        if (!(this.txtNameParameter.getText().isEmpty())){
+            
+            if (this.cmbValueParameter.getSelectedItem().toString().toLowerCase().equals("normal"))
+                this.parameter.setValueParameter(1);
+            else
+                this.parameter.setValueParameter(2);
 
+            this.parameter.setNameParameter(this.txtNameParameter.getText());
+            System.out.println(parameterBO.insertParameter(parameter));
+            this.getParameters();
+        }
     }//GEN-LAST:event_btnInsertParameterActionPerformed
 
     private void cmbValueParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbValueParameterActionPerformed

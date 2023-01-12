@@ -246,7 +246,7 @@ END deleteNews;
 --Delete parameter
 CREATE OR REPLACE PROCEDURE deleteParameterEvent (VidParameter IN NUMBER) 
 AS BEGIN 
-    DELETE FROM Parameter
+    DELETE FROM ParameterEvent
     WHERE idParameter = VidParameter; 
     Commit;
 END deleteParameterEvent;
