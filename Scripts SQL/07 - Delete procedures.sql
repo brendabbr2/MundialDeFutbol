@@ -275,3 +275,56 @@ AS BEGIN
     Commit;
 END deleteLineup;
 
+-----------------------------------------------------
+--By: Brenda Badilla Rodriguez
+--Date: 31/Dic/2022 3:00 p.m
+--Event, EventType, GroupEvent, Helper, HelperType, ParameterEvent, Player, Team
+
+CREATE OR REPLACE PROCEDURE deleteEvent (VidEvent IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Event
+    WHERE idEvent = VidEvent; 
+    Commit;
+END deleteEvent;
+
+CREATE OR REPLACE PROCEDURE deleteEventType (VidEventType IN NUMBER) 
+AS BEGIN 
+    DELETE FROM EventType
+    WHERE idEventType = VidEventType; 
+    Commit;
+END deleteEventType;
+
+CREATE OR REPLACE PROCEDURE deleteGroupEvent (VidGroupEvent IN NUMBER) 
+AS BEGIN 
+    DELETE FROM GroupEvent
+    WHERE idGroupEvent = VidGroupEvent; 
+    Commit;
+END deleteGroupEvent;
+
+CREATE OR REPLACE PROCEDURE deleteHelperType (VidHelperType IN NUMBER) 
+AS BEGIN 
+    DELETE FROM HelperType
+    WHERE idHelperType = VidHelperType; 
+    Commit;
+END deleteHelperType;
+
+CREATE OR REPLACE PROCEDURE deleteParameterEvent (VidParameterEvent IN NUMBER) 
+AS BEGIN 
+    DELETE FROM ParameterEvent
+    WHERE idParameterEvent = VidParameterEvent; 
+    Commit;
+END deleteParameterEvent;
+
+CREATE OR REPLACE PROCEDURE deletePlayer (VidPlayer IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Player
+    WHERE idPlayer = VidPlayer; 
+    Commit;
+END deletePlayer;
+
+CREATE OR REPLACE PROCEDURE deleteTeam (VidTeam IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Team
+    WHERE idTeam = VidTeam; 
+    Commit;
+END deleteTeam;
