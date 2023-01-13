@@ -38,6 +38,7 @@ public class UserTypeDAO {
         }
         return message;
     }
+    
     public String updateUserType(Connection conn, UserType usertype){
         PreparedStatement pst = null;
         String sql = "CALL updateUserType(?,?)";
@@ -55,6 +56,7 @@ public class UserTypeDAO {
         }
         return message;
     }
+    
     public String deleteUserType(Connection conn, int idUserType){
         PreparedStatement pst = null;
         String sql = "CALL deleteUserType(?)";
