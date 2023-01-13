@@ -214,11 +214,11 @@ CREATE OR REPLACE PROCEDURE updatePerson
 END updatePerson;
 
 CREATE OR REPLACE PROCEDURE updateUserType
-    (V_idUserType IN NUMBER, V_nameUserType IN NUMBER)
+    (V_idUserType IN NUMBER, V_nameUserType IN VARCHAR2)
     AS BEGIN
         UPDATE userType
         SET nameUserType = V_nameUserType
-        WHERE idUserType = V_idUserType;
+        WHERE idUserType = V_idUserType;+
     COMMIT; 
 END updateUserType;
 
