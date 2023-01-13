@@ -212,13 +212,13 @@ CREATE OR REPLACE PROCEDURE insertHelper
 END insertHelper;
 
 --HelperType
-CREATE OR REPLACE PROCEDURE insertHelper 
-    (VidTeam IN NUMBER, VidHelperType IN NUMBER, VhireDate IN DATE)
+CREATE OR REPLACE PROCEDURE insertHelperType 
+    (VHelperTypeName IN VARCHAR2)
     AS BEGIN
-    INSERT INTO helper(idHelper, idTeam, idHelperType, hireDate)
-    VALUES(s_person.nextval, VidTeam, VidHelperType, VhireDate);
+    INSERT INTO helperType(idHelperType,NameHelperType)
+    VALUES(s_helperType.nextval, VHelperTypeName);
     COMMIT; 
-END insertHelper;
+END insertHelperType;
 
 --Parameter
 CREATE OR REPLACE PROCEDURE insertParameterEvent 

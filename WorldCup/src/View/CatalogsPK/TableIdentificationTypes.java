@@ -4,17 +4,41 @@
  */
 package View.CatalogsPK;
 
+
+import B_Layer.IdentificationTypeBO;
+import Entities.IdentificationType;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableIdentificationTypes extends javax.swing.JPanel {
-
+    
+    private final IdentificationTypeBO idTypeBO = new IdentificationTypeBO();
+    private final IdentificationType idType = new IdentificationType();
     /**
      * Creates new form IdentificationType
      */
     public TableIdentificationTypes() {
         initComponents();
+    }
+    
+    public void getIdentificationType(){
+        tblIdentificationType.setModel(idTypeBO.getIdentificationType());
+        TableColumnModel tblModelColumn = tblIdentificationType.getColumnModel();
+        tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object selection = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            selection = table.getModel().getValueAt(row, column);
+        }
+        return selection;
     }
 
     /**
@@ -188,15 +212,35 @@ public class TableIdentificationTypes extends javax.swing.JPanel {
     }//GEN-LAST:event_tblIdentificationTypeMouseClicked
 
     private void btnDeleteIdentificationTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteIdentificationTypeActionPerformed
-
+        if(this.checkTableSelection(tblIdentificationType, 0) != null){
+            int IdentificationTypeID = Integer.parseInt((String) checkTableSelection(tblIdentificationType, 0));
+            this.idType.setIdIdentificationType(IdentificationTypeID);
+            System.out.println(this.idTypeBO.deleteIdentificationType(idType.getIdIdentificationType()));
+            this.getIdentificationType();
+        }
     }//GEN-LAST:event_btnDeleteIdentificationTypeActionPerformed
 
     private void btnUpdateIdentificationTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateIdentificationTypeActionPerformed
-
+        if(this.checkTableSelection(tblIdentificationType, 0) != null &&
+                !(this.txtMaskIdentificationType.getText().isEmpty()) && 
+                !(this.txtNameIdentificationType.getText().isEmpty())){
+            int IdentificationTypeID = Integer.parseInt((String) checkTableSelection(tblIdentificationType, 0));
+            this.idType.setIdIdentificationType(IdentificationTypeID);
+            this.idType.setIdName(this.txtNameIdentificationType.getText());
+            this.idType.setIdMask(Integer.parseInt(this.txtMaskIdentificationType.getText()));
+            System.out.println(this.idTypeBO.updateIdentificationType(idType));
+            this.getIdentificationType();
+        }
     }//GEN-LAST:event_btnUpdateIdentificationTypeActionPerformed
 
     private void btnInsertIdentificationTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertIdentificationTypeActionPerformed
-
+        if(!(this.txtMaskIdentificationType.getText().isEmpty()) && 
+                !(this.txtNameIdentificationType.getText().isEmpty()) ){
+            this.idType.setIdName(this.txtNameIdentificationType.getText());
+            this.idType.setIdMask(Integer.parseInt(this.txtMaskIdentificationType.getText()));
+            System.out.println(idTypeBO.insertIdentificationType(idType));
+            this.getIdentificationType();
+        }
     }//GEN-LAST:event_btnInsertIdentificationTypeActionPerformed
 
 

@@ -4,19 +4,42 @@
  */
 package View.CatalogsPK;
 
+import B_Layer.HelperTypeBO;
+import Entities.HelperType;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableHelperType extends javax.swing.JPanel {
-
+    private final HelperTypeBO HelperBO = new HelperTypeBO();
+    private final HelperType Helper = new HelperType();
     /**
      * Creates new form TableHelperType
      */
     public TableHelperType() {
         initComponents();
+        getHelperType();
     }
+     
+    public void getHelperType(){
+            tblHelperType.setModel(HelperBO.getHelperType());
+            TableColumnModel tblModelColumn = tblHelperType.getColumnModel();
+            tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }    
 
+    private Object checkTableSelection(JTable table, int column){
+        Object user = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            user = table.getModel().getValueAt(row, column);
+            //return user;
+        }
+        return user;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,15 +195,31 @@ public class TableHelperType extends javax.swing.JPanel {
     }//GEN-LAST:event_tblHelperTypeMouseClicked
 
     private void btnDeleteHelperTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHelperTypeActionPerformed
-
+        if(this.checkTableSelection(tblHelperType,0) != null){
+            int idHelperType= Integer.parseInt((String) checkTableSelection(tblHelperType, 0));
+            System.out.println(HelperBO.deleteHelperType(idHelperType));
+            this.getHelperType();
+        }
     }//GEN-LAST:event_btnDeleteHelperTypeActionPerformed
 
     private void btnUpdateHelperTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateHelperTypeActionPerformed
-
+        if(this.checkTableSelection(tblHelperType,0) != null &&
+                !(this.txtNameHelperType.getText().isEmpty())){
+            int idHelperType= Integer.parseInt((String) checkTableSelection(tblHelperType, 0));
+            this.Helper.setIdHelperType(idHelperType);
+            this.Helper.setNameHelperType(this.txtNameHelperType.getText());
+            System.out.println(HelperBO.updateHelperType(Helper));
+            this.getHelperType();
+        }
     }//GEN-LAST:event_btnUpdateHelperTypeActionPerformed
 
     private void btnInsertHelperTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertHelperTypeActionPerformed
-
+        if (this.checkTableSelection(tblHelperType,0) != null){
+            int idUser = Integer.parseInt((String) checkTableSelection(tblHelperType, 0));
+            this.Helper.setNameHelperType(this.txtNameHelperType.getText());
+            System.out.println(HelperBO.getHelperType());
+            this.getHelperType();
+        }
     }//GEN-LAST:event_btnInsertHelperTypeActionPerformed
 
 

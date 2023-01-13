@@ -5,28 +5,30 @@
 package B_Layer;
 
 import Connection.SysConnection;
-import DA_Layer.DemonymDAO;
+import DA_Layer.IdentificationTypeDAO;
 import Entities.Demonym;
-import java.sql.*;
+import Entities.IdentificationType;
+import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author david
+ * @author Datos
  */
-public class DemonymBO {
-    private DemonymDAO DemonymDao;
+public class IdentificationTypeBO {
+    private IdentificationTypeDAO idTypeDAO;
     private String message;
-
-    public DemonymBO() {
-        this.DemonymDao = new DemonymDAO();
+    
+    public IdentificationTypeBO() {
+        this.idTypeDAO = new IdentificationTypeDAO();
         message = "";
     }
     
-    public String insertDemonym(Demonym demo){
+    public String insertIdentificationType(IdentificationType idType){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.insertDemonym(conn, demo);
+            message = idTypeDAO.insertDemonym(conn, idType);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -41,10 +43,10 @@ public class DemonymBO {
         return message;
     }
     
-    public String updateDemonym(Demonym demo){
+    public String updateIdentificationType(IdentificationType idType){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.updateDemonym(conn, demo);
+            message = idTypeDAO.updateIdentificationType(conn, idType);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -59,10 +61,10 @@ public class DemonymBO {
         return message;
     }
     
-    public String deleteDemonym(int id){
+    public String deleteIdentificationType(int id){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.deleteDemonym(conn, id);
+            message = idTypeDAO.deleteIdentificationType(conn, id);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -77,9 +79,9 @@ public class DemonymBO {
         return message;
     }
     
-    public DefaultTableModel getDemonym(){
+    public DefaultTableModel getIdentificationType(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = DemonymDao.getDemonym(conn);
+        DefaultTableModel model = idTypeDAO.getIdentificationType(conn);
         try {
             conn.close();
         } catch (SQLException ex) {
@@ -87,6 +89,5 @@ public class DemonymBO {
         }
         return model;
     }
-    
     
 }

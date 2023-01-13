@@ -19,6 +19,9 @@ public class IdentificationType {
         this.idMask = idMask;
     }
 
+    public IdentificationType() {
+    }
+
     public int getIdIdentificationType() {
         return idIdentificationType;
     }
