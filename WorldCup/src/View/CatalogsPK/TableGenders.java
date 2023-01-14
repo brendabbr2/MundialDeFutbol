@@ -6,6 +6,7 @@ package View.CatalogsPK;
 
 import B_Layer.GenderBO;
 import Entities.Gender;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -199,6 +200,9 @@ public class TableGenders extends javax.swing.JPanel {
             System.out.println(this.genderBO.deleteGender(idGender));
             this.getGenders();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteGenderActionPerformed
 
     private void btnUpdateGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateGenderActionPerformed
@@ -211,6 +215,9 @@ public class TableGenders extends javax.swing.JPanel {
             System.out.println(this.genderBO.updateGender(gender));
             this.getGenders();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateGenderActionPerformed
 
     private void btnInsertGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertGenderActionPerformed
@@ -218,6 +225,9 @@ public class TableGenders extends javax.swing.JPanel {
             this.gender.setGenderDescription(this.txtNameGender.getText());
             System.out.println(genderBO.insertGender(gender));
             this.getGenders();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
         }
     }//GEN-LAST:event_btnInsertGenderActionPerformed
 

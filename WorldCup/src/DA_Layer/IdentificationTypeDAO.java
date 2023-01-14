@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class IdentificationTypeDAO {
     private String message = "";
-    public String insertDemonym(Connection conn, IdentificationType idType){
+    public String insertIdentificationType(Connection conn, IdentificationType idType){
         PreparedStatement pst = null;
         String sql = "CALL insertIdentificationType(?,?)";
         try
@@ -32,10 +32,14 @@ public class IdentificationTypeDAO {
      
             pst.execute();
             message = "Succesfully saved";
+            JOptionPane.showMessageDialog(null, "Identification Type"
+                    + " inserted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully saved\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Identification Type not inserted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -51,10 +55,14 @@ public class IdentificationTypeDAO {
             pst.setInt(3, idType.getIdMask());
             pst.execute();
             message = "Succesfully updated";
+            JOptionPane.showMessageDialog(null, "Identification Type"
+                    + " updated correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully updated\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Identification Type not updated"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -69,10 +77,14 @@ public class IdentificationTypeDAO {
             
             pst.execute();
             message = "Succesfully deleted";
+            JOptionPane.showMessageDialog(null, "Identification Type"
+                    + " deleted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully deleted\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Identification Type not deleted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -106,6 +118,7 @@ public class IdentificationTypeDAO {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Unable to show table idType");
+
             System.out.println(e.getMessage());
         }
         

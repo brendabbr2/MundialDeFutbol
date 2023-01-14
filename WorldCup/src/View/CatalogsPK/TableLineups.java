@@ -6,6 +6,7 @@ package View.CatalogsPK;
 
 import B_Layer.LineupBO;
 import Entities.Lineup;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -204,6 +205,9 @@ public class TableLineups extends javax.swing.JPanel {
             System.out.println(this.lineupBO.deleteLineup(idLineup));
             this.getLineup();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteLineupActionPerformed
 
     private void btnUpdateLineupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateLineupActionPerformed
@@ -215,6 +219,9 @@ public class TableLineups extends javax.swing.JPanel {
             System.out.println(this.lineupBO.updateLineup(lineup));
             this.getLineup();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateLineupActionPerformed
 
     private void btnInsertLineupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertLineupActionPerformed
@@ -222,6 +229,9 @@ public class TableLineups extends javax.swing.JPanel {
             this.lineup.setNameLineup(this.txtNameLineup.getText());
             System.out.println(lineupBO.insertLineup(lineup));
             this.getLineup();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
         }
     }//GEN-LAST:event_btnInsertLineupActionPerformed
 

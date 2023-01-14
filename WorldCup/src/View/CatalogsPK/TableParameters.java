@@ -6,6 +6,7 @@ package View.CatalogsPK;
 
 import B_Layer.ParameterBO;
 import Entities.ParameterEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -231,6 +232,9 @@ public class TableParameters extends javax.swing.JPanel {
             System.out.println(this.parameterBO.deleteParameter(idParameter));
             this.getParameters();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteParameterActionPerformed
 
     private void btnUpdateParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateParameterActionPerformed
@@ -248,6 +252,9 @@ public class TableParameters extends javax.swing.JPanel {
             System.out.println(this.parameterBO.updateParameter(parameter));
             this.getParameters();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateParameterActionPerformed
 
     private void btnInsertParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertParameterActionPerformed
@@ -261,6 +268,9 @@ public class TableParameters extends javax.swing.JPanel {
             this.parameter.setNameParameter(this.txtNameParameter.getText());
             System.out.println(parameterBO.insertParameter(parameter));
             this.getParameters();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
         }
     }//GEN-LAST:event_btnInsertParameterActionPerformed
 

@@ -6,6 +6,7 @@ package View.CatalogsPK;
 
 import B_Layer.WorkerTypeBO;
 import Entities.WorkerType;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -202,6 +203,9 @@ public class TableWorkerTypes extends javax.swing.JPanel {
             System.out.println(this.workerBO.deleteWorkerType(idWorkerType));
             this.getWorkerTypes();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteWorkerTypeActionPerformed
 
     private void btnUpdateWorkerTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateWorkerTypeActionPerformed
@@ -213,6 +217,9 @@ public class TableWorkerTypes extends javax.swing.JPanel {
             System.out.println(this.workerBO.updateWorkerType(worker));
             this.getWorkerTypes();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateWorkerTypeActionPerformed
 
     private void btnInsertWorkerTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertWorkerTypeActionPerformed
@@ -220,6 +227,9 @@ public class TableWorkerTypes extends javax.swing.JPanel {
             this.worker.setNameWorkerType(this.txtNameWorkerType.getText());
             System.out.println(workerBO.insertWorkerType(worker));
             this.getWorkerTypes();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
         }
     }//GEN-LAST:event_btnInsertWorkerTypeActionPerformed
 

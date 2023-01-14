@@ -28,7 +28,7 @@ public class IdentificationTypeBO {
     public String insertIdentificationType(IdentificationType idType){
         Connection conn = SysConnection.connect();
         try{
-            message = idTypeDAO.insertDemonym(conn, idType);
+            message = idTypeDAO.insertIdentificationType(conn, idType);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
