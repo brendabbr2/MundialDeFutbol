@@ -36,10 +36,13 @@ public class UserDAO {
      
             pst.execute();
             message = "Succesfully saved";
+            JOptionPane.showMessageDialog(null, "User inserted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully saved\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "User not inserted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -57,10 +60,13 @@ public class UserDAO {
             
             pst.execute();
             message = "Succesfully updated";
+            JOptionPane.showMessageDialog(null, "User updated correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully updated\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "User not updated"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -74,10 +80,13 @@ public class UserDAO {
             
             pst.execute();
             message = "Succesfully deleted";
+            JOptionPane.showMessageDialog(null, "User deleted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully deleted\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "User not deleted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -111,7 +120,8 @@ public class UserDAO {
             System.out.println("Succesfully listed table users");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table User");
+            JOptionPane.showMessageDialog(null, "Unable to show table User"
+                    , null, JOptionPane.ERROR_MESSAGE);
             System.out.println(e.getMessage());
         }
         return model;

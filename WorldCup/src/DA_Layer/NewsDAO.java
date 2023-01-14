@@ -37,10 +37,13 @@ public class NewsDAO {
      
             pst.execute();
             message = "Succesfully saved";
+            JOptionPane.showMessageDialog(null, "News inserted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully saved\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "News not inserted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -60,10 +63,13 @@ public class NewsDAO {
             
             pst.execute();
             message = "Succesfully updated";
+            JOptionPane.showMessageDialog(null, "News updated correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully updated\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "News not updated"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -77,10 +83,13 @@ public class NewsDAO {
             
             pst.execute();
             message = "Succesfully deleted";
+            JOptionPane.showMessageDialog(null, "News deleted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully deleted\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "News not deleted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }

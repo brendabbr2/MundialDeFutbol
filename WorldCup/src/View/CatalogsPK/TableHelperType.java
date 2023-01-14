@@ -6,6 +6,7 @@ package View.CatalogsPK;
 
 import B_Layer.HelperTypeBO;
 import Entities.HelperType;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -200,6 +201,9 @@ public class TableHelperType extends javax.swing.JPanel {
             System.out.println(HelperBO.deleteHelperType(idHelperType));
             this.getHelperType();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteHelperTypeActionPerformed
 
     private void btnUpdateHelperTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateHelperTypeActionPerformed
@@ -211,6 +215,9 @@ public class TableHelperType extends javax.swing.JPanel {
             System.out.println(HelperBO.updateHelperType(Helper));
             this.getHelperType();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateHelperTypeActionPerformed
 
     private void btnInsertHelperTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertHelperTypeActionPerformed
@@ -219,6 +226,9 @@ public class TableHelperType extends javax.swing.JPanel {
             this.Helper.setNameHelperType(this.txtNameHelperType.getText());
             System.out.println(HelperBO.getHelperType());
             this.getHelperType();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
         }
     }//GEN-LAST:event_btnInsertHelperTypeActionPerformed
 

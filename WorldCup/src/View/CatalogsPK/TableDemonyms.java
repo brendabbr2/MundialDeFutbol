@@ -7,6 +7,7 @@ package View.CatalogsPK;
 import B_Layer.DemonymBO;
 import Entities.Demonym;
 import Entities.User;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -201,6 +202,9 @@ public class TableDemonyms extends javax.swing.JPanel {
             System.out.println(this.demoBO.deleteDemonym(demo.getIdDemonym()));
             this.getDemonym();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteDemonymActionPerformed
 
     private void btnUpdateDemonymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDemonymActionPerformed
@@ -212,6 +216,9 @@ public class TableDemonyms extends javax.swing.JPanel {
             System.out.println(demoBO.updateDemonym(demo));
             this.getDemonym();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateDemonymActionPerformed
 
     private void btnInsertDemonymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertDemonymActionPerformed
@@ -219,6 +226,9 @@ public class TableDemonyms extends javax.swing.JPanel {
             this.demo.setNameDemonym(this.txtNameDemonym.getText());
             System.out.println(demoBO.insertDemonym(demo));
             this.getDemonym();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
         }
     }//GEN-LAST:event_btnInsertDemonymActionPerformed
 

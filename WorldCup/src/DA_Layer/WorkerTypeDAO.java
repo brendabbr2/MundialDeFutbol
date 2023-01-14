@@ -27,10 +27,13 @@ public class WorkerTypeDAO {
      
             pst.execute();
             message = "Succesfully saved";
+            JOptionPane.showMessageDialog(null, "Worker Type inserted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully saved\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Worker Type not inserted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -46,10 +49,13 @@ public class WorkerTypeDAO {
             
             pst.execute();
             message = "Succesfully updated";
+            JOptionPane.showMessageDialog(null, "Worker Type updated correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully updated\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Worker Type not updated"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -63,10 +69,13 @@ public class WorkerTypeDAO {
             
             pst.execute();
             message = "Succesfully deleted";
+            JOptionPane.showMessageDialog(null, "Worker Type deleted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully deleted\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Worker Type not deleted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }

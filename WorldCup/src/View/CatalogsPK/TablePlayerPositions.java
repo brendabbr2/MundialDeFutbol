@@ -5,6 +5,7 @@
 package View.CatalogsPK;
 import B_Layer.PlayerPositionBO;
 import Entities.PlayerPosition;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -203,6 +204,9 @@ public class TablePlayerPositions extends javax.swing.JPanel {
             System.out.println(this.playerpositionBO.deletePlayerPosition(idPlayerPosition));
             this.getPlayerPosition();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeletePlayerPositionActionPerformed
 
     private void btnUpdatePlayerPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePlayerPositionActionPerformed
@@ -214,6 +218,9 @@ public class TablePlayerPositions extends javax.swing.JPanel {
             System.out.println(this.playerpositionBO.updatePlayerPosition(playerposition));
             this.getPlayerPosition();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdatePlayerPositionActionPerformed
 
     private void btnInsertPlayerPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertPlayerPositionActionPerformed
@@ -223,6 +230,9 @@ public class TablePlayerPositions extends javax.swing.JPanel {
             
             System.out.println(playerpositionBO.insertPlayerPosition(playerposition));
             this.getPlayerPosition();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
         }
     }//GEN-LAST:event_btnInsertPlayerPositionActionPerformed
 

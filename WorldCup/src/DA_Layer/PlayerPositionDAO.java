@@ -31,10 +31,13 @@ public class PlayerPositionDAO {
             pst.setString(1, playerposition.getPlayerPositionName());
             pst.execute();
             message = "Succesfully saved";
+            JOptionPane.showMessageDialog(null, "Player Position inserted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully saved\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Player Postion not inserted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -49,10 +52,13 @@ public class PlayerPositionDAO {
             pst.setString(2, playerposition.getPlayerPositionName());
             pst.execute();
             message = "Succesfully updated";
+            JOptionPane.showMessageDialog(null, "Player Position updated correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully updated\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Player Postion not updated"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -66,10 +72,13 @@ public class PlayerPositionDAO {
             
             pst.execute();
             message = "Succesfully deleted";
+            JOptionPane.showMessageDialog(null, "Player Position deleted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully deleted\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Player Postion not deleted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
