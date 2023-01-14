@@ -316,6 +316,24 @@ BEGIN
         FROM Lineup
         WHERE idLineup = NVL(v_idLineup,idLineup); 
 END getLineup;
+
+CREATE OR REPLACE PROCEDURE getHelper(v_idHelper IN NUMBER, HelperCursor OUT SYS_REFCURSOR) 
+AS 
+BEGIN 
+    OPEN HelperCursor FOR  
+        SELECT idHelper, idTeam, idhelperType, hiredate, creationUser, creationDate, modificationUser, modificationDate
+        FROM Helper
+        WHERE idHelper = NVL(v_idHelper,idHelper); 
+END getHelper;
+
+CREATE OR REPLACE PROCEDURE getHelperType(v_idHelperType IN NUMBER, HelperTypeCursor OUT SYS_REFCURSOR) 
+AS 
+BEGIN 
+    OPEN HelperTypeCursor FOR  
+        SELECT idHelperType, nameHelperType, creationUser, creationDate, modificationUser, modificationDate
+        FROM HelperType
+        WHERE idHelperType = NVL(v_idHelperType,idHelperType); 
+END getHelperType;
 --- code for making tests ------
 DECLARE 
     pStadiumXSportMatch SYS_REFCURSOR := getStadiumXSportMatch(NULL, NULL);
