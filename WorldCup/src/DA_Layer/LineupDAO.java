@@ -32,10 +32,13 @@ public class LineupDAO {
             pst.setString(1, lineup.getNameLineup());
             pst.execute();
             message = "Succesfully saved";
+            JOptionPane.showMessageDialog(null, "Lineup inserted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully saved\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Lineup not inserted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -49,10 +52,13 @@ public class LineupDAO {
             pst.setString(2, lineup.getNameLineup());
             pst.execute();
             message = "Succesfully updated";
+            JOptionPane.showMessageDialog(null, "Lineup updated correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully updated\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Lineup not updated"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -66,10 +72,13 @@ public class LineupDAO {
             
             pst.execute();
             message = "Succesfully deleted";
+            JOptionPane.showMessageDialog(null, "Lineup deleted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully deleted\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Lineup not deleted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -101,7 +110,7 @@ public class LineupDAO {
             }
             System.out.println("Succesfully listed");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table");
+            JOptionPane.showMessageDialog(null, "Unable to show Lineup");
             System.out.println(e.getMessage());
         }
         return model;

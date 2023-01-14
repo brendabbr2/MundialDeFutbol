@@ -32,9 +32,12 @@ public class GenderDAO {
             pst.setString(1, gender.getGenderDescription());
             pst.execute();
             message = "Succesfully saved";
+            JOptionPane.showMessageDialog(null, "Gender inserted correctly");
             pst.close();
         } catch (SQLException e){
             message = "Unsuccessfully saved\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Gender not inserted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -49,9 +52,12 @@ public class GenderDAO {
             pst.setString(2, gender.getGenderDescription());
             pst.execute();
             message = "Succesfully updated";
+            JOptionPane.showMessageDialog(null, "Gender updated correctly");
             pst.close();
         } catch (SQLException e){
             message = "Unsuccessfully updated\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Gender not updated"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -64,10 +70,13 @@ public class GenderDAO {
             pst.setInt(1, idGender);
             pst.execute();
             message = "Succesfully deleted";
+            JOptionPane.showMessageDialog(null, "Gender deleted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully deleted\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "Gender not deleted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -102,7 +111,7 @@ public class GenderDAO {
             System.out.println("Succesfully listed");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table");
+            JOptionPane.showMessageDialog(null, "Unable to show table Gender");
             System.out.println(e.getMessage());
         }
         return model;

@@ -6,6 +6,7 @@ package View.CatalogsPK;
 
 import B_Layer.EventTypeBO;
 import Entities.EventType;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -144,8 +145,8 @@ public class TableEventTypes extends javax.swing.JPanel {
                     .addComponent(btnUpdateEventType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNameEventType, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNameEventType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(btnDeleteEventType, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnDeleteEventType)
                 .addGap(30, 30, 30))
         );
 
@@ -200,6 +201,9 @@ public class TableEventTypes extends javax.swing.JPanel {
             System.out.println(this.EtypeBO.deleteEventType(Etype.getIdEvenType()));
             this.getEventTypes();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteEventTypeActionPerformed
 
     private void btnUpdateEventTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventTypeActionPerformed
@@ -211,6 +215,9 @@ public class TableEventTypes extends javax.swing.JPanel {
             System.out.println(this.EtypeBO.updateEventType(Etype));
             this.getEventTypes();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateEventTypeActionPerformed
 
     private void btnInsertEventTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertEventTypeActionPerformed
@@ -218,6 +225,9 @@ public class TableEventTypes extends javax.swing.JPanel {
             this.Etype.setName(this.txtNameEventType.getText());
             System.out.println(this.EtypeBO.insertEventType(Etype));
             this.getEventTypes();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
         }
     }//GEN-LAST:event_btnInsertEventTypeActionPerformed
 

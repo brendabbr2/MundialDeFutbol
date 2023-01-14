@@ -31,10 +31,13 @@ public class UserTypeDAO {
             pst.setString(1, usertype.getNameUserType());
             pst.execute();
             message = "Succesfully saved";
+            JOptionPane.showMessageDialog(null, "User Type inserted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully saved\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "User Type not inserted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -49,10 +52,13 @@ public class UserTypeDAO {
             pst.setString(2, usertype.getNameUserType());
             pst.execute();
             message = "Succesfully updated";
+            JOptionPane.showMessageDialog(null, "User Type updated correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully updated\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "User Type not updated"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -67,10 +73,13 @@ public class UserTypeDAO {
             
             pst.execute();
             message = "Succesfully deleted";
+            JOptionPane.showMessageDialog(null, "User Type deleted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully deleted\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "User Type not deleted"
+                    , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
@@ -102,7 +111,9 @@ public class UserTypeDAO {
             }
             System.out.println("Succesfully listed");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table");
+
+            JOptionPane.showMessageDialog(null, "Unable to show table User Type");
+
             System.out.println(e.getMessage());
         }
         return model;

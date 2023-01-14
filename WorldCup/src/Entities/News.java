@@ -26,6 +26,9 @@ public class News {
         this.date = date;
         this.photo = photo;
     }
+
+    public News() {
+    }
     
     public String getTitle() {
         return title;

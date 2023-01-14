@@ -6,6 +6,7 @@ package View.CatalogsPK;
 
 import B_Layer.HelperTypeBO;
 import Entities.HelperType;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -31,14 +32,13 @@ public class TableHelperType extends javax.swing.JPanel {
     }    
 
     private Object checkTableSelection(JTable table, int column){
-        Object user = null;
+        Object selection = null;
         if(!table.getSelectionModel().isSelectionEmpty())
         {
             int row = table.getSelectedRow();
-            user = table.getModel().getValueAt(row, column);
-            //return user;
+            selection = table.getModel().getValueAt(row, column);
         }
-        return user;
+        return selection;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -200,6 +200,9 @@ public class TableHelperType extends javax.swing.JPanel {
             System.out.println(HelperBO.deleteHelperType(idHelperType));
             this.getHelperType();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteHelperTypeActionPerformed
 
     private void btnUpdateHelperTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateHelperTypeActionPerformed
@@ -211,14 +214,20 @@ public class TableHelperType extends javax.swing.JPanel {
             System.out.println(HelperBO.updateHelperType(Helper));
             this.getHelperType();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateHelperTypeActionPerformed
 
     private void btnInsertHelperTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertHelperTypeActionPerformed
         if (this.checkTableSelection(tblHelperType,0) != null){
             int idUser = Integer.parseInt((String) checkTableSelection(tblHelperType, 0));
             this.Helper.setNameHelperType(this.txtNameHelperType.getText());
-            System.out.println(HelperBO.getHelperType());
+            System.out.println(HelperBO.insertHelperType(Helper));
             this.getHelperType();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
         }
     }//GEN-LAST:event_btnInsertHelperTypeActionPerformed
 

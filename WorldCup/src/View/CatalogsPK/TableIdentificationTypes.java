@@ -7,6 +7,7 @@ package View.CatalogsPK;
 
 import B_Layer.IdentificationTypeBO;
 import Entities.IdentificationType;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -218,6 +219,9 @@ public class TableIdentificationTypes extends javax.swing.JPanel {
             System.out.println(this.idTypeBO.deleteIdentificationType(idType.getIdIdentificationType()));
             this.getIdentificationType();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteIdentificationTypeActionPerformed
 
     private void btnUpdateIdentificationTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateIdentificationTypeActionPerformed
@@ -231,6 +235,9 @@ public class TableIdentificationTypes extends javax.swing.JPanel {
             System.out.println(this.idTypeBO.updateIdentificationType(idType));
             this.getIdentificationType();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateIdentificationTypeActionPerformed
 
     private void btnInsertIdentificationTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertIdentificationTypeActionPerformed
@@ -240,6 +247,9 @@ public class TableIdentificationTypes extends javax.swing.JPanel {
             this.idType.setIdMask(Integer.parseInt(this.txtMaskIdentificationType.getText()));
             System.out.println(idTypeBO.insertIdentificationType(idType));
             this.getIdentificationType();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name or mask, null value encountered");
         }
     }//GEN-LAST:event_btnInsertIdentificationTypeActionPerformed
 

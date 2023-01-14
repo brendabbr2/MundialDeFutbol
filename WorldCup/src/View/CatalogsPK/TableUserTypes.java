@@ -6,6 +6,7 @@ package View.CatalogsPK;
 
 import B_Layer.UserTypeBO;
 import Entities.UserType;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
@@ -204,6 +205,9 @@ public class TableUserTypes extends javax.swing.JPanel {
             System.out.println(this.usertypeBO.deleteUserType(idUserType));
             this.getUserType();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteUserTypeActionPerformed
 
     private void btnUpdateUserTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserTypeActionPerformed
@@ -217,7 +221,9 @@ public class TableUserTypes extends javax.swing.JPanel {
             this.getUserType();
             System.out.println("Cumplimos con todo papa");
         }
-        
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateUserTypeActionPerformed
 
     private void btnInsertUserTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertUserTypeActionPerformed
@@ -226,6 +232,9 @@ public class TableUserTypes extends javax.swing.JPanel {
             
             System.out.println(usertypeBO.insertUserType(usertype));
             this.getUserType();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
         }
     }//GEN-LAST:event_btnInsertUserTypeActionPerformed
 
