@@ -20,7 +20,7 @@ COMMENT ON TABLE Usertype
 IS 'This table is for save a type of user in a resgister.';
 
 COMMENT ON TABLE UserPerson
-IS '';---------------------
+IS 'This table is for save all the users that are register in the system.';
 
 COMMENT ON TABLE UserLog
 IS 'This is a table that is the result of the tables News and User. Here are saved the log of users.';
@@ -44,7 +44,7 @@ COMMENT ON TABLE EventType
 IS 'This table is for save a type of event of the world cup.';
 
 COMMENT ON TABLE ParameterEvent
-IS '';
+IS 'This table is for save general parameters of the data base like the path of images or top of results.';
 
 COMMENT ON TABLE GroupEvent
 IS 'This table is to save the groups that are going to be registered in the event.';
