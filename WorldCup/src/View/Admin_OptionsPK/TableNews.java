@@ -41,7 +41,7 @@ public class TableNews extends javax.swing.JPanel {
     }
     
     public void updateUser(){
-        newsBO.updateUser(news);
+        newsBO.updateNews(news);
     }
     
     private Object checkTableSelection(JTable table, int column){
