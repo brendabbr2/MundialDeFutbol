@@ -101,7 +101,7 @@ public class PlayerPositionDAO {
             }
             System.out.println("Succesfully listed");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table");
+            JOptionPane.showMessageDialog(null, "Unable to show table playerPosition");
             System.out.println(e.getMessage());
         }
         return model;

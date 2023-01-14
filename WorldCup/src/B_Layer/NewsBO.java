@@ -41,7 +41,7 @@ public class NewsBO {
         }
         return message;
     }
-    public String updateUser(News news){
+    public String updateNews(News news){
         Connection conn = SysConnection.connect();
         try{
             message = newsDao.updateNews(conn, news);
