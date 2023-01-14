@@ -12,6 +12,9 @@ public class HelperType {
     private int idHelperType;
     private String nameHelperType;
 
+    public HelperType() {
+    }
+    
     public HelperType(int idHelperType, String nameHelperType) {
         this.idHelperType = idHelperType;
         this.nameHelperType = nameHelperType;

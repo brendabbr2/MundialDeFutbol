@@ -4,25 +4,31 @@
  */
 package DA_Layer;
 
-import Entities.Demonym;
-import java.sql.*;
+import Entities.IdentificationType;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author david
+ * @author Datos
  */
-public class DemonymDAO {
+public class IdentificationTypeDAO {
     private String message = "";
-    
-    public String insertDemonym(Connection conn, Demonym demonym){
+    public String insertDemonym(Connection conn, IdentificationType idType){
         PreparedStatement pst = null;
-        String sql = "CALL insertDemonym(?)";
+        String sql = "CALL insertIdentificationType(?,?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setString(1, demonym.getNameDemonym());
+            pst.setString(1, idType.getIdName());
+            pst.setInt(1, idType.getIdMask());
      
             pst.execute();
             message = "Succesfully saved";
@@ -34,15 +40,15 @@ public class DemonymDAO {
         return message;
     }
     
-    public String updateDemonym(Connection conn, Demonym demo){
+    public String updateIdentificationType(Connection conn, IdentificationType idType){
         PreparedStatement pst = null;
-        String sql = "CALL updateDemonym(?,?)";
+        String sql = "CALL updateIdentificationType(?,?,?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, demo.getIdDemonym());
-            pst.setString(2, demo.getNameDemonym());
-            System.out.println(demo.toString());
+            pst.setInt(1, idType.getIdIdentificationType());
+            pst.setString(2, idType.getIdName());
+            pst.setInt(3, idType.getIdMask());
             pst.execute();
             message = "Succesfully updated";
             pst.close();
@@ -53,9 +59,9 @@ public class DemonymDAO {
         return message;
     }
     
-        public String deleteDemonym(Connection conn, int idDemonym){
+        public String deleteIdentificationType(Connection conn, int idDemonym){
         PreparedStatement pst = null;
-        String sql = "CALL deleteDemonym(?)";
+        String sql = "CALL deleteIdentificationType(?)";
         try
         {
             pst = conn.prepareStatement(sql);
@@ -71,13 +77,13 @@ public class DemonymDAO {
         return message;
     }
         
-     public DefaultTableModel getDemonym(Connection conn){
-        String [] columns = {"idDemonym", "Demonym Name", "Creation User", "Creation Date","Modification User","Modification Date"};
+     public DefaultTableModel getIdentificationType(Connection conn){
+        String [] columns = {"idIdentificationType", "IdentificationType Name", "Mask", "Creation User", "Creation Date","Modification User","Modification Date"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
-        String sql = "CALL getDemonym(?,?)";
+        String sql = "CALL getIdentificationType(?,?)";
         
         String [] row = new String[6];
         Statement st = null;
@@ -105,4 +111,5 @@ public class DemonymDAO {
         
         return model;
     }   
- }
+    
+}

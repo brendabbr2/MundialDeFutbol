@@ -4,25 +4,25 @@
  */
 package DA_Layer;
 
-import Entities.Demonym;
+import Entities.HelperType;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author david
+ * @author Datos
  */
-public class DemonymDAO {
+public class HelperTypeDAO {
     private String message = "";
     
-    public String insertDemonym(Connection conn, Demonym demonym){
+    public String insertHelperType(Connection conn, HelperType helper){
         PreparedStatement pst = null;
-        String sql = "CALL insertDemonym(?)";
+        String sql = "CALL insertHelperType(?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setString(1, demonym.getNameDemonym());
+            pst.setString(1, helper.getNameHelperType());
      
             pst.execute();
             message = "Succesfully saved";
@@ -34,15 +34,15 @@ public class DemonymDAO {
         return message;
     }
     
-    public String updateDemonym(Connection conn, Demonym demo){
+    public String updateHelperType(Connection conn, HelperType helper){
         PreparedStatement pst = null;
-        String sql = "CALL updateDemonym(?,?)";
+        String sql = "CALL updateHelperType(?,?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, demo.getIdDemonym());
-            pst.setString(2, demo.getNameDemonym());
-            System.out.println(demo.toString());
+            pst.setInt(1, helper.getIdHelperType());
+            pst.setString(2, helper.getNameHelperType());
+            
             pst.execute();
             message = "Succesfully updated";
             pst.close();
@@ -53,13 +53,13 @@ public class DemonymDAO {
         return message;
     }
     
-        public String deleteDemonym(Connection conn, int idDemonym){
+    public String deleteHelperType(Connection conn, int idHelper){
         PreparedStatement pst = null;
-        String sql = "CALL deleteDemonym(?)";
+        String sql = "CALL deleteHelperType(?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, idDemonym);
+            pst.setInt(1, idHelper);
             
             pst.execute();
             message = "Succesfully deleted";
@@ -70,14 +70,15 @@ public class DemonymDAO {
         }
         return message;
     }
-        
-     public DefaultTableModel getDemonym(Connection conn){
-        String [] columns = {"idDemonym", "Demonym Name", "Creation User", "Creation Date","Modification User","Modification Date"};
+    // for the table to read the model, eliminate the default model of the table
+    // in view: table right click >> properties >> model >> delete all registes
+    public DefaultTableModel getHelperType(Connection conn){
+        String [] columns = {"idHelperType", "Name HelperType", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
-        String sql = "CALL getDemonym(?,?)";
+        String sql = "CALL getHelperType(?,?)";
         
         String [] row = new String[6];
         Statement st = null;
@@ -96,13 +97,12 @@ public class DemonymDAO {
                 }
                 model.addRow(row);
             }
-            System.out.println("Succesfully listed");
+            System.out.println("Succesfully listed table users");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table Demonym");
+            JOptionPane.showMessageDialog(null, "Unable to show table Users");
             System.out.println(e.getMessage());
         }
-        
         return model;
-    }   
- }
+    }
+}
