@@ -328,3 +328,17 @@ AS BEGIN
     WHERE idTeam = VidTeam; 
     Commit;
 END deleteTeam;
+
+CREATE OR REPLACE PROCEDURE deleteHelper (VidHelper IN NUMBER) 
+AS BEGIN 
+    DELETE FROM Helper
+    WHERE idHelper = VidHelper; 
+    Commit;
+END deleteHelper;
+
+CREATE OR REPLACE PROCEDURE deleteHelperType (VidHelperType IN NUMBER) 
+AS BEGIN 
+    DELETE FROM HelperType
+    WHERE idHelperType = VidHelperType; 
+    Commit;
+END deleteHelperType;

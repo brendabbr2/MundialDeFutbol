@@ -124,7 +124,9 @@ public class NewsDAO {
             System.out.println("Succesfully listed");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table News");
+
+            JOptionPane.showMessageDialog(null, "Unable to show table NEWS");
+
             System.out.println(e.getMessage());
         }
         

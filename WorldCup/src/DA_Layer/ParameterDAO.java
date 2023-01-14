@@ -111,7 +111,9 @@ public class ParameterDAO {
             }
             System.out.println("Succesfully listed");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table Parameter");
+
+            JOptionPane.showMessageDialog(null, "Unable to show table parameter");
+
             System.out.println(e.getMessage());
         }
         return model;

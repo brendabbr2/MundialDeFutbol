@@ -32,14 +32,13 @@ public class TableHelperType extends javax.swing.JPanel {
     }    
 
     private Object checkTableSelection(JTable table, int column){
-        Object user = null;
+        Object selection = null;
         if(!table.getSelectionModel().isSelectionEmpty())
         {
             int row = table.getSelectedRow();
-            user = table.getModel().getValueAt(row, column);
-            //return user;
+            selection = table.getModel().getValueAt(row, column);
         }
-        return user;
+        return selection;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -224,7 +223,7 @@ public class TableHelperType extends javax.swing.JPanel {
         if (this.checkTableSelection(tblHelperType,0) != null){
             int idUser = Integer.parseInt((String) checkTableSelection(tblHelperType, 0));
             this.Helper.setNameHelperType(this.txtNameHelperType.getText());
-            System.out.println(HelperBO.getHelperType());
+            System.out.println(HelperBO.insertHelperType(Helper));
             this.getHelperType();
         }
         else {
