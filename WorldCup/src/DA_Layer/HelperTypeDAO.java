@@ -100,7 +100,7 @@ public class HelperTypeDAO {
             System.out.println("Succesfully listed table users");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table Users");
+            JOptionPane.showMessageDialog(null, "Unable to show table Helper Type");
             System.out.println(e.getMessage());
         }
         return model;

@@ -111,7 +111,7 @@ public class UserDAO {
             System.out.println("Succesfully listed table users");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table Users");
+            JOptionPane.showMessageDialog(null, "Unable to show table User");
             System.out.println(e.getMessage());
         }
         return model;
