@@ -9,6 +9,7 @@ import DA_Layer.UserTypeDAO;
 import Entities.UserType;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -87,5 +88,12 @@ public class UserTypeBO {
             System.out.println(ex.getMessage());
         }
         return model;
+    }
+    
+    public ArrayList getUserTypeList() throws SQLException{
+        Connection conn = SysConnection.connect();
+        ArrayList list = usertypeDao.getList(conn);
+        conn.close();
+        return list;
     }
 }

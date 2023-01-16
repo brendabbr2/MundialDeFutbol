@@ -7,6 +7,7 @@ package DA_Layer;
 
 import Entities.WorkerType;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -116,4 +117,33 @@ public class WorkerTypeDAO {
         return model;
     }
     
+    public ArrayList getList(Connection conn){
+        CallableStatement statement = null;
+        String sql = "CALL getParameterEvent(?,?)";
+        Statement st = null;
+        ResultSet rs = null; 
+        ArrayList<WorkerType> ObjectList = new ArrayList<>();
+        try {
+            statement = conn.prepareCall(sql);
+            statement.setNull(1, Types.NUMERIC);
+            statement.registerOutParameter(2, Types.REF_CURSOR);
+            statement.execute();
+            rs = (ResultSet) statement.getObject(2);
+            
+            while (rs.next()) {
+                WorkerType worker = new WorkerType();
+                worker.setIdWorkerType(rs.getInt(1));
+                worker.setNameWorkerType(rs.getString(2));
+                
+                ObjectList.add(worker);
+            }
+            System.out.println("Succesfully listed Worker");
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Unable to get Worker list");
+            System.out.println(e.getMessage());
+        }
+        return ObjectList;
+    }   
 }

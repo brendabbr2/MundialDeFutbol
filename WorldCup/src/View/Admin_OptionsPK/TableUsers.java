@@ -1,8 +1,12 @@
 package View.Admin_OptionsPK;
 
 import B_Layer.UserBO;
+import B_Layer.UserTypeBO;
 import Entities.User;
+import Entities.UserType;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -15,16 +19,26 @@ import javax.swing.table.TableColumnModel;
  */
 public class TableUsers extends javax.swing.JPanel {
     private final UserBO userBO = new UserBO();
+    private final UserTypeBO userType = new UserTypeBO();
     private final User user = new User();
     /**
      * Creates new form TableConsults
      */
-    public TableUsers() {
+    public TableUsers() throws SQLException {
         initComponents();
+        fillCombobox();
         getUsers();
         //this.btnInsert.setVisible(false);
     }
     
+    public void fillCombobox() throws SQLException{
+        ArrayList<UserType> list = userType.getUserTypeList();
+        System.out.println("Antes de agregar");
+        for(int i =0; i < list.size();i++){
+            cmbUserType.addItem(list.get(i).getNameUserType());
+            System.out.println("Se agrego " + list.get(i).getNameUserType()+" al combobox ");
+        }
+    }
     public void getUsers(){
             tblUsers.setModel(userBO.getUsers());
             TableColumnModel tblModelColumn = tblUsers.getColumnModel();
@@ -116,7 +130,6 @@ public class TableUsers extends javax.swing.JPanel {
         lblUserType.setText("User Type");
 
         cmbUserType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cmbUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Admin" }));
         cmbUserType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbUserTypeActionPerformed(evt);

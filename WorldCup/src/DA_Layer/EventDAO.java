@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -86,6 +87,7 @@ private String message = "";
         }
         return message;
     }
+    
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
     public DefaultTableModel getEvents(Connection conn){
@@ -121,5 +123,36 @@ private String message = "";
             System.out.println(e.getMessage());
         }
         return model;
+    }
+    
+    public ArrayList getList(Connection conn){
+        CallableStatement statement = null;
+        String sql = "CALL getEvent(?,?)";
+        Statement st = null;
+        ResultSet rs = null; 
+        ArrayList<Event> ObjectList = new ArrayList<>();
+        try {
+            statement = conn.prepareCall(sql);
+            statement.setNull(1, Types.NUMERIC);
+            statement.registerOutParameter(2, Types.REF_CURSOR);
+            statement.execute();
+            rs = (ResultSet) statement.getObject(2);
+            
+            while (rs.next()) {
+                Event event = new Event();
+                event.setIdEvenType(rs.getInt(1));
+                event.setIdEvent(rs.getInt(2));
+                event.setName(rs.getString(3));
+                
+                ObjectList.add(event);
+            }
+            System.out.println("Succesfully listed Event");
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Unable to get Event list");
+            System.out.println(e.getMessage());
+        }
+        return ObjectList;
     }
 }

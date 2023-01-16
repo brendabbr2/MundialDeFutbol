@@ -6,6 +6,7 @@ package DA_Layer;
 
 import Entities.EventType;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -53,7 +54,7 @@ public class EventTypeDAO {
         return message;
     }
     
-        public String deleteEventType(Connection conn, int idEtype){
+    public String deleteEventType(Connection conn, int idEtype){
         PreparedStatement pst = null;
         String sql = "CALL deleteEventType(?)";
         try
@@ -71,7 +72,7 @@ public class EventTypeDAO {
         return message;
     }
         
-        public DefaultTableModel getEventType(Connection conn){
+    public DefaultTableModel getEventType(Connection conn){
         String [] columns = {"idEventType", "nameEventType", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
@@ -104,5 +105,35 @@ public class EventTypeDAO {
         }
         
         return model;
+    }
+        
+    public ArrayList getList(Connection conn){
+        CallableStatement statement = null;
+        String sql = "CALL getEventType(?,?)";
+        Statement st = null;
+        ResultSet rs = null; 
+        ArrayList<EventType> ObjectList = new ArrayList<>();
+        try {
+            statement = conn.prepareCall(sql);
+            statement.setNull(1, Types.NUMERIC);
+            statement.registerOutParameter(2, Types.REF_CURSOR);
+            statement.execute();
+            rs = (ResultSet) statement.getObject(2);
+            
+            while (rs.next()) {
+                EventType eType = new EventType();
+                eType.setIdEvenType(rs.getInt(1));
+                eType.setName(rs.getString(2));
+                
+                ObjectList.add(eType);
+            }
+            System.out.println("Succesfully listed EventType");
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Unable to get Demonym list");
+            System.out.println(e.getMessage());
+        }
+        return ObjectList;
     }
 }
