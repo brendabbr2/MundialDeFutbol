@@ -382,7 +382,6 @@ CREATE TABLE Country(
     idDemonym NUMBER(6),
     --------------Attribute-----------
     nameCountry VARCHAR2(20) NOT NULL,
-    demonym VARCHAR2(20) NOT NULL,
     --------------Audit---------------
     creationUser VARCHAR2(20),
     creationDate DATE,
