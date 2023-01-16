@@ -15,7 +15,7 @@ public class User {
     private String password;
     
     public User() {
-        
+        idUser = -1;
     }
 
     public User(int idUser, int idUserType, String username, String password) {
