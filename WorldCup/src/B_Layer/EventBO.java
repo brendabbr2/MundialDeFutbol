@@ -9,6 +9,7 @@ import DA_Layer.EventDAO;
 import Entities.Event;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -85,5 +86,12 @@ public class EventBO {
             System.out.println(ex.getMessage());
         }
         return model;
+    }
+
+    public ArrayList getUserTypeList() throws SQLException{
+        Connection conn = SysConnection.connect();
+        ArrayList list = eventDAO.getList(conn);
+        conn.close();
+        return list;
     }
 }

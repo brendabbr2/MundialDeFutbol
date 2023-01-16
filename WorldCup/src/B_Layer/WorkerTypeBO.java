@@ -9,6 +9,7 @@ import DA_Layer.WorkerTypeDAO;
 import Entities.WorkerType;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -86,5 +87,12 @@ public class WorkerTypeBO {
             System.out.println(ex.getMessage());
         }
         return model;
+    }
+
+    public ArrayList getUserTypeList() throws SQLException{
+        Connection conn = SysConnection.connect();
+        ArrayList list = workerDAO.getList(conn);
+        conn.close();
+        return list;
     }
 }

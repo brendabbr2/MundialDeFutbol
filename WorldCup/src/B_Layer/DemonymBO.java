@@ -8,6 +8,7 @@ import Connection.SysConnection;
 import DA_Layer.DemonymDAO;
 import Entities.Demonym;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -88,5 +89,11 @@ public class DemonymBO {
         return model;
     }
     
+    public ArrayList getUserTypeList() throws SQLException{
+        Connection conn = SysConnection.connect();
+        ArrayList list = DemonymDao.getList(conn);
+        conn.close();
+        return list;
+    }
     
 }

@@ -9,6 +9,7 @@ import DA_Layer.LineupDAO;
 import Entities.Lineup;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -84,5 +85,12 @@ public class LineupBO {
             System.out.println(ex.getMessage());
         }
         return model;
+    }
+    
+    public ArrayList getUserTypeList() throws SQLException{
+        Connection conn = SysConnection.connect();
+        ArrayList list = lineupDao.getList(conn);
+        conn.close();
+        return list;
     }
 }

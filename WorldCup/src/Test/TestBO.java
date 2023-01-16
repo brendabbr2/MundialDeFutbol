@@ -5,10 +5,15 @@
 package Test;
 
 import B_Layer.*;
+import Connection.SysConnection;
+import DA_Layer.EventTypeDAO;
 import Entities.*;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +22,8 @@ import java.security.NoSuchAlgorithmException;
 public class TestBO {
     UserBO userBO = new UserBO();
     User user = new User();
+    
+    static UserTypeBO userTypeBO= new UserTypeBO();
     String message = "";
     
     DemonymBO demoBO = new DemonymBO();
@@ -74,8 +81,9 @@ public class TestBO {
         return hexString.toString();
     }
     
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        byteToHex("ds");
+    public static void main(String[] args) throws NoSuchAlgorithmException, SQLException {
+        ArrayList<UserType> list = userTypeBO.getUserTypeList();
+        list.toString();
     }
 }
 

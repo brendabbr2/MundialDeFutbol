@@ -10,6 +10,7 @@ import Entities.Demonym;
 import Entities.IdentificationType;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -88,6 +89,13 @@ public class IdentificationTypeBO {
             System.out.println(ex.getMessage());
         }
         return model;
+    }
+
+    public ArrayList getUserTypeList() throws SQLException{
+        Connection conn = SysConnection.connect();
+        ArrayList list = idTypeDAO.getList(conn);
+        conn.close();
+        return list;
     }
     
 }
