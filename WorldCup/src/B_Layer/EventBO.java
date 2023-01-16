@@ -5,8 +5,8 @@
 package B_Layer;
 
 import Connection.SysConnection;
-import DA_Layer.NewsDAO;
-import Entities.News;
+import DA_Layer.EventDAO;
+import Entities.Event;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
@@ -15,20 +15,20 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author jox
  */
-public class NewsBO {
-    private NewsDAO newsDao;
+public class EventBO {
+ 
+    private EventDAO eventDAO;
     private String message;
-    private int idEvent;
 
-    public NewsBO() {
-        this.newsDao = new NewsDAO();
+    public EventBO() {
+        this.eventDAO = new EventDAO();
         this.message = "";
     }
     
-    public String insertNews(News news){
+    public String insertEvent(Event event){
         Connection conn = SysConnection.connect();
         try{
-            message = newsDao.insertNews(conn, news);
+            message = eventDAO.insertEvent(conn, event);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -42,10 +42,10 @@ public class NewsBO {
         }
         return message;
     }
-    public String updateNews(News news){
+    public String updateEvent(Event event){
         Connection conn = SysConnection.connect();
         try{
-            message = newsDao.updateNews(conn, news);
+            message = eventDAO.updateEvent(conn, event);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -59,10 +59,10 @@ public class NewsBO {
         }
         return message;
     }
-    public String deleteNews(int id){
+    public String deleteUser(int id){
         Connection conn = SysConnection.connect();
         try{
-            message = newsDao.deleteNews(conn, id);
+            message = eventDAO.deleteEvent(conn, id);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -76,9 +76,9 @@ public class NewsBO {
         }
         return message;
     }
-    public DefaultTableModel getNews(){
+    public DefaultTableModel getEvents(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = newsDao.getNews(conn, this.idEvent);
+        DefaultTableModel model = eventDAO.getEvents(conn);
         try {
             conn.close();
         } catch (SQLException ex) {
@@ -86,13 +86,4 @@ public class NewsBO {
         }
         return model;
     }
-
-    public int getIdEvent() {
-        return idEvent;
-    }
-
-    public void setIdEvent(int idEvent) {
-        this.idEvent = idEvent;
-    }
-    
 }

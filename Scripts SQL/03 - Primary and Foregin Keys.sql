@@ -286,6 +286,11 @@ ALTER TABLE GroupEvent
 ADD CONSTRAINT fk_group_event FOREIGN KEY
 (idEvent) REFERENCES Event(idEvent);
 
+-- Helper FKS
+ALTER TABLE Helper
+ADD CONSTRAINT fk_Helper_Event FOREIGN KEY
+(idEvent) REFERENCES Event(idEvent);
+
 ALTER TABLE Helper
 ADD CONSTRAINT fk_helper_team FOREIGN KEY
 (idTeam) REFERENCES Team(idTeam);
@@ -293,6 +298,12 @@ ADD CONSTRAINT fk_helper_team FOREIGN KEY
 ALTER TABLE Helper
 ADD CONSTRAINT fk_helper_type FOREIGN KEY
 (idHelperType) REFERENCES HelperType(idHelperType);
+
+-- Player FKS
+
+ALTER TABLE Player
+ADD CONSTRAINT fk_Player_Event FOREIGN KEY
+(idEvent) REFERENCES Event(idEvent);
 
 ALTER TABLE Player
 ADD CONSTRAINT fk_player_team FOREIGN KEY
@@ -319,11 +330,6 @@ ADD CONSTRAINT fk_Team_Lineup FOREIGN KEY
 (idLineup) REFERENCES Lineup(idLineup);
 --By: Joxan Andrey Fuertes Villegas
 --Date: 26/Dic/2022 08:05 p.m
-
--- Continent
-ALTER TABLE Continent
-ADD CONSTRAINT fk_Continent_Event FOREIGN KEY
-(idEvent) REFERENCES Event(idEvent);
 
 -- country
 ALTER TABLE Country
@@ -379,9 +385,14 @@ ADD CONSTRAINT fk_StadiumXSportMatch_SpMatch FOREIGN KEY
 --By: Rodolfo David Acuna Lopez
 --Date: 26/Dic/2022 08:50 p.m
 
+-- Worker FKS
 ALTER TABLE Worker
 ADD CONSTRAINT fk_workertype_worker FOREIGN KEY
 (idWorkerType) REFERENCES WorkerType(idWorkerType);
+
+ALTER TABLE Worker
+ADD CONSTRAINT fk_Worker_Event FOREIGN KEY
+(idEvent) REFERENCES Event(idEvent);
 
 ALTER TABLE PlayerXSportMatch
 ADD CONSTRAINT fk_playerxsportMatch_player FOREIGN KEY
@@ -434,10 +445,6 @@ ADD CONSTRAINT fk_person_Gender FOREIGN KEY
 ALTER TABLE person
 ADD CONSTRAINT fk_person_Adress FOREIGN KEY
 (idAddress) REFERENCES Address(idAddress);
-
-ALTER TABLE Person
-ADD CONSTRAINT fk_Person_Event FOREIGN KEY
-(idEvent) REFERENCES Event(idEvent);
 
 ALTER TABLE Person
 ADD CONSTRAINT fk_Person_UserPerson FOREIGN KEY

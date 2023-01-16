@@ -4,11 +4,10 @@
 
 -- Update Continent
 CREATE OR REPLACE PROCEDURE updateContinent 
-    (VidContinent IN NUMBER,v_idEvent IN NUMBER, VnameContinent IN VARCHAR2)
+    (VidContinent IN NUMBER, VnameContinent IN VARCHAR2)
     AS BEGIN
         UPDATE Continent
-        SET nameContinent = NVL(VnameContinent, nameContinent), 
-        idEvent = NVL(v_idEvent, idEvent)
+        SET nameContinent = NVL(VnameContinent, nameContinent)
         WHERE idContinent = VidContinent;
     COMMIT; 
 END updateContinent;
@@ -108,10 +107,11 @@ END updateGender;
 
 -- Update Worker
 CREATE OR REPLACE PROCEDURE updateWorker 
-    (V_idWorker IN NUMBER, V_hireDate IN DATE)
+    (V_idWorker IN NUMBER,V_idEvent IN NUMBER, V_hireDate IN DATE)
     AS BEGIN
         UPDATE Worker
-        SET hireDate = NVL(V_hireDate, hireDate)
+        SET idEvent = NVL(V_idEvent, idEvent),
+        hireDate = NVL(V_hireDate, hireDate)
         WHERE idWorker = V_idWorker;
     COMMIT; 
 END updateWorker;
@@ -198,13 +198,12 @@ CREATE OR REPLACE PROCEDURE updateIdentificationType
 END updateIdentificationType;
 
 CREATE OR REPLACE PROCEDURE updatePerson
-    (V_idPerson IN NUMBER, V_idGender IN NUMBER, V_idAddress IN NUMBER, v_idEvent IN NUMBER, 
+    (V_idPerson IN NUMBER, V_idGender IN NUMBER, V_idAddress IN NUMBER, 
         v_idUser IN NUMBER, V_BirthDate IN Date, V_personName IN VARCHAR2, V_Photo IN VARCHAR2)
     AS BEGIN
         UPDATE person
         SET idGender = NVL(V_idGender, idGender),
         idAddress = NVL(V_idAddress, idAddress),
-        idEvent = NVL(v_idEvent, idEvent),
         idUser = NVL(v_idUser, idUser),
         birthday = NVL(V_BirthDate, birthday),
         personName = NVL(V_personName, personName),
@@ -378,12 +377,14 @@ CREATE OR REPLACE PROCEDURE updateGroupEvent
 END updateGroupEvent;
 
 CREATE OR REPLACE PROCEDURE updateHelper
-    (V_idHelper IN NUMBER, V_idTeam IN NUMBER, V_idHelperType IN NUMBER, V_hireDate IN DATE)
+    (V_idHelper IN NUMBER, V_idTeam IN NUMBER, V_idHelperType IN NUMBER,
+    V_hireDate IN DATE, V_idEvent IN NUMBER)
     AS BEGIN
         UPDATE Helper
         SET idTeam = NVL(V_idTeam, idTeam),
             idHelperType = NVL(V_idHelperType, idHelperType),
-            hireDate = NVL(V_hireDate, hireDate)
+            hireDate = NVL(V_hireDate, hireDate),
+            idEvent = NVL(V_idEvent, idEvent)
         WHERE idHelper = V_idHelper;
     COMMIT; 
 END updateHelper;
@@ -408,12 +409,14 @@ CREATE OR REPLACE PROCEDURE updateParameterEvent
 END updateParameterEvent;
 
 CREATE OR REPLACE PROCEDURE updatePlayer
-    (V_idPlayer IN NUMBER, V_idTeam IN NUMBER, V_idPosition NUMBER, V_numberPlayer IN NUMBER)
+    (V_idPlayer IN NUMBER, V_idTeam IN NUMBER, V_idPosition NUMBER
+    , V_numberPlayer IN NUMBER, V_idEvent IN NUMBER)
     AS BEGIN
         UPDATE Player
         SET idTeam = NVL(V_idTeam, idTeam),
             idPosition = NVL(V_idPosition, idPosition),
-            numberPlayer = NVL(V_numberPlayer, numberPlayer)
+            numberPlayer = NVL(V_numberPlayer, numberPlayer),
+            idEvent = NVL(V_idEvent, idEvent)
         WHERE idPlayer = V_idPlayer;
     COMMIT; 
 END updatePlayer;

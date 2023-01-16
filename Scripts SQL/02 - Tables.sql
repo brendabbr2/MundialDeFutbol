@@ -75,7 +75,6 @@ CREATE TABLE person(
     --------------FK------------------
     idGender number(6),
     idAddress number(6),
-    idEvent NUMBER(6),
     idUser NUMBER(6),
     --------------Attribute------------
     birthday date NOT NULL,
@@ -293,6 +292,7 @@ CREATE TABLE Helper(
     --------------PK------------------
     idHelper NUMBER(6),
     --------------FK------------------
+    idEvent NUMBER(6),
     idTeam NUMBER(6),
     idHelperType NUMBER(6),
     --------------Attribute-----------
@@ -321,6 +321,7 @@ CREATE TABLE Player(
     --------------PK------------------
     idPlayer NUMBER(6),
     --------------FK------------------
+    idEvent NUMBER(6),
     idTeam NUMBER(6),
     idPosition NUMBER(6),
     --------------Attribute-----------
@@ -363,8 +364,6 @@ CREATE TABLE Demonym(
 CREATE TABLE Continent( 
     --------------PK------------------
     idContinent NUMBER(6),
-    --------------FK------------------
-    idEvent NUMBER(6),
     --------------Attribute-----------
     nameContinent VARCHAR2(20) NOT NULL,
     --------------Audit---------------
@@ -494,6 +493,7 @@ CREATE TABLE Worker(
     idWorker NUMBER(6),
     --------------FK-----------------
     idWorkerType NUMBER(6),
+    idEvent NUMBER(6),
     --------------Attribute-----------
     hireDate DATE,
     --------------Audit---------------
