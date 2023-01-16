@@ -7,6 +7,9 @@ package View;
 import B_Layer.UserBO;
 import Entities.User;
 import java.awt.BorderLayout;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -176,6 +179,13 @@ public class Login_Panel extends javax.swing.JPanel {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         this.user.setUsername(this.txtUser.getText());
         this.user.setPassword(this.txtPassword.getText());
+        
+        try {
+            userBO.encryptPassword(user);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Login_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         User userVerified = userBO.verifyUser(this.user); 
         if (userVerified.getIdUser() != -1){
             login(userVerified);

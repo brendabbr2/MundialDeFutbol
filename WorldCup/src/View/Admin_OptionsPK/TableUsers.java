@@ -2,6 +2,9 @@ package View.Admin_OptionsPK;
 
 import B_Layer.UserBO;
 import Entities.User;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
@@ -228,7 +231,11 @@ public class TableUsers extends javax.swing.JPanel {
             this.user.setUsername(this.txtUsername.getText());
             this.user.setPassword(this.txtPassword.getText());
             
-            System.out.println(userBO.insertUser(user));
+            try {
+                System.out.println(userBO.insertUser(user));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(TableUsers.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.getUsers();
         }
         else {

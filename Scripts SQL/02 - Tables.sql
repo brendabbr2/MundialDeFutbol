@@ -106,8 +106,8 @@ CREATE TABLE userPerson(
     --------------FK------------------
     idUserType number(6),
     --------------Attribute------------
-    username varchar2(50) UNIQUE NOT NULL,
-    passwordUser varchar2(50) NOT NULL,
+    username varchar2(80) UNIQUE NOT NULL,
+    passwordUser varchar2(80) NOT NULL,
     --------------Audit---------------
     creationUser varchar(20),
     creationDate date,

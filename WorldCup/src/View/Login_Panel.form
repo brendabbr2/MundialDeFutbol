@@ -60,15 +60,10 @@
                       <Component id="lblUser" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtUser" pref="271" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtPassword" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="txtUser" pref="271" max="32767" attributes="0"/>
+                      <Component id="txtPassword" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
               </Group>
