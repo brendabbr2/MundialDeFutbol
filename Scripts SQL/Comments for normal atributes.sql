@@ -279,3 +279,123 @@ IS 'This attribute saves the primer key of the Demonym table.';
 
 COMMENT ON COLUMN Country.nameCountry
 IS 'This attribute saves the country where a person comes from.';
+
+COMMENT ON COLUMN Province.idProvince
+IS 'This attribute saves the primer key of the Province table.';
+
+COMMENT ON COLUMN Province.idCountry
+IS 'This attribute saves a foreing key of the Country table.';
+
+COMMENT ON COLUMN Province.nameProvince
+IS 'This attribute saves the name of the Province where a person comes from.';
+
+COMMENT ON COLUMN Canton.idCanton
+IS 'This attribute saves the primer key of the Canton table.';
+
+COMMENT ON COLUMN Canton.idProvince
+IS 'This attribute saves a foreing key of the Province table.';
+
+COMMENT ON COLUMN Canton.nameCanton
+IS 'This attribute saves the name of the canton where a person comes from.';
+
+COMMENT ON COLUMN District.idDistrict
+IS 'This attribute saves the primer key of the District table.';
+
+COMMENT ON COLUMN District.idCanton
+IS 'This attribute saves a foreing key of the Canton table.';
+
+COMMENT ON COLUMN District.nameDistrict
+IS 'This attribute saves the name of the distric where a person comes from.';
+
+COMMENT ON COLUMN Address.idAddress
+IS 'This attribute saves the primer key of the Address table.';
+
+COMMENT ON COLUMN Address.idDistrict
+IS 'This attribute saves a foreing key of the district table.';
+
+COMMENT ON COLUMN Address.nameAddress
+IS 'This attribute saves the name of the address where a person comes from.';
+
+COMMENT ON COLUMN Stadium.idStadium
+IS 'This attribute saves the primer key of the Stadium table.';
+
+COMMENT ON COLUMN Stadium.idAddress
+IS 'This attribute saves a foreing key of the Address table.';
+
+COMMENT ON COLUMN Stadium.idEvent
+IS 'This attribute saves a foreing key of the Event table.';
+
+COMMENT ON COLUMN Stadium.nameStadium
+IS 'This attribute saves the name of the stadium.';
+
+COMMENT ON COLUMN StadiumXSportMatch.idStadium
+IS 'This attribute saves the primer key and foreing of the Stadium table.';
+
+COMMENT ON COLUMN StadiumXSportMatch.idSportMatch
+IS 'This attribute saves the primer key and foreing of the SportMatch table.';
+
+COMMENT ON COLUMN StadiumXSportMatch.dateStadiumXSportMatch
+IS 'This attribute saves the date of the match.';
+
+COMMENT ON COLUMN SportMatch.idSportMatch
+IS 'This attribute saves the primer key of the SportMatch table.';
+
+COMMENT ON COLUMN SportMatch.idEvent
+IS 'This attribute saves a foreing key of the Event table.';
+
+COMMENT ON COLUMN Worker.idWorker
+IS 'This attribute saves the primer key of the Worker table.';
+
+COMMENT ON COLUMN Worker.idWorkerType
+IS 'This attribute saves a foreing key of the WorkerType table.';
+
+COMMENT ON COLUMN Worker.idEvent
+IS 'This attribute saves a foreing key of the Event table.';
+
+COMMENT ON COLUMN Worker.hireDate
+IS 'This attribute saves the hire date of a new worker.';
+
+COMMENT ON COLUMN WorkerType.idWorkerType
+IS 'This attribute saves the primer key of the WorkerType table.';
+
+COMMENT ON COLUMN WorkerType.nameWorkerType
+IS 'This attribute saves the types of workers.';
+
+COMMENT ON COLUMN WorkerXSportMatch.idWorker
+IS 'This attribute saves the primer and foreing key of the Worker table.';
+
+COMMENT ON COLUMN WorkerXSportMatch.idSportMatch
+IS 'This attribute saves the primer and foreing key of theSportMatch table.';
+
+COMMENT ON COLUMN PlayerXSportMatch.idPlayer
+IS 'This attribute saves the primer and foreing key of the Player table.';
+
+COMMENT ON COLUMN PlayerXSportMatch.idSportMatch
+IS 'This attribute saves the primer and foreing key of the SportMatch table.';
+
+COMMENT ON COLUMN PlayerXSportMatch.yellow_card
+IS 'This attribute saves all yellow cards in a match.';
+
+COMMENT ON COLUMN PlayerXSportMatch.red_card
+IS 'This attribute saves all red cards in a match.';
+
+COMMENT ON COLUMN PlayerXSportMatch.savers
+IS 'This attribute saves all savers in a match.';
+
+COMMENT ON COLUMN PlayerXSportMatch.offside
+IS 'This attribute saves all offsides in a match.';
+
+COMMENT ON COLUMN PlayerXSportMatch.expulsion
+IS 'This attribute saves all expulsions in a match.';
+
+COMMENT ON COLUMN PlayerXSportMatch.goals
+IS 'This attribute saves all goals in a match.';
+
+COMMENT ON COLUMN PlayerXSportMatch.corners
+IS 'This attribute saves all corners in a match.';
+
+COMMENT ON COLUMN PlayerXCountry.idPlayer
+IS 'This attribute saves the primer and foreing key of the Player table.';
+
+COMMENT ON COLUMN PlayerXCountry.idCountry
+IS 'This attribute saves the primer and foreing key of the Country table.';
