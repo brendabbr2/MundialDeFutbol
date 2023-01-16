@@ -301,13 +301,6 @@ AS BEGIN
     Commit;
 END deleteGroupEvent;
 
-CREATE OR REPLACE PROCEDURE deleteHelperType (VidHelperType IN NUMBER) 
-AS BEGIN 
-    DELETE FROM HelperType
-    WHERE idHelperType = VidHelperType; 
-    Commit;
-END deleteHelperType;
-
 CREATE OR REPLACE PROCEDURE deleteParameterEvent (VidParameterEvent IN NUMBER) 
 AS BEGIN 
     DELETE FROM ParameterEvent

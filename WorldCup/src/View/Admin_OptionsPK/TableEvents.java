@@ -4,17 +4,49 @@
  */
 package View.Admin_OptionsPK;
 
+import B_Layer.EventBO;
+import Entities.Event;
+import View.EventDataPK.EventData;
+import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableEvents extends javax.swing.JPanel {
-
+    private JPanel pnlContent;
+    private Event event = new Event();
+    private EventData eventData;
+    private EventBO eventBO = new EventBO();
     /**
      * Creates new form TableEvents
      */
-    public TableEvents() {
+    public TableEvents(JPanel pnlContent) {
         initComponents();
+        this.pnlContent = pnlContent;
+        eventData = new EventData(pnlContent);
+        getEvents();
+    }
+    
+    public void getEvents(){
+            this.tblEvent.setModel(eventBO.getEvents());
+            TableColumnModel tblModelColumn = this.tblEvent.getColumnModel();
+            tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object user = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            user = table.getModel().getValueAt(row, column);
+            //return user;
+        }
+        return user;
     }
 
     /**
@@ -37,7 +69,7 @@ public class TableEvents extends javax.swing.JPanel {
         lblEventType = new javax.swing.JLabel();
         cmbEventType = new javax.swing.JComboBox<>();
         btnInsertEvent = new javax.swing.JButton();
-        btnUpdateEvent1 = new javax.swing.JButton();
+        btnEventData = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(94, 4, 32));
         jPanel1.setMaximumSize(new java.awt.Dimension(834, 578));
@@ -88,7 +120,7 @@ public class TableEvents extends javax.swing.JPanel {
         lblEventType.setText("Event Type");
 
         cmbEventType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cmbEventType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Admin" }));
+        cmbEventType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mundial", "mundial femenino" }));
         cmbEventType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbEventTypeActionPerformed(evt);
@@ -103,11 +135,11 @@ public class TableEvents extends javax.swing.JPanel {
             }
         });
 
-        btnUpdateEvent1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnUpdateEvent1.setText("Event Data");
-        btnUpdateEvent1.addActionListener(new java.awt.event.ActionListener() {
+        btnEventData.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        btnEventData.setText("Event Data");
+        btnEventData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateEvent1ActionPerformed(evt);
+                btnEventDataActionPerformed(evt);
             }
         });
 
@@ -130,7 +162,7 @@ public class TableEvents extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnUpdateEvent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnUpdateEvent1)
+                                .addComponent(btnEventData)
                                 .addGap(61, 61, 61)
                                 .addComponent(btnDeleteEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(btnInsertEvent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -152,7 +184,7 @@ public class TableEvents extends javax.swing.JPanel {
                     .addComponent(btnDeleteEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEventType)
                     .addComponent(cmbEventType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdateEvent1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEventData, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
 
@@ -216,19 +248,46 @@ public class TableEvents extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbEventTypeActionPerformed
 
     private void btnInsertEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertEventActionPerformed
+        if (!(this.txtNameEvent.getText().isEmpty())){
+            
+            if (this.cmbEventType.getSelectedItem().toString().toLowerCase().equals("mundial"))
+                this.event.setIdEvenType(3);
+            else
+                this.event.setIdEvenType(4);
 
+            this.event.setName(this.txtNameEvent.getText());
+            
+            System.out.println(eventBO.insertEvent(event));
+            this.getEvents();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid name, null value encountered");
+        }
     }//GEN-LAST:event_btnInsertEventActionPerformed
 
-    private void btnUpdateEvent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEvent1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateEvent1ActionPerformed
+    private void btnEventDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventDataActionPerformed
+        if (this.checkTableSelection(this.tblEvent,0) != null){
+            // sets the event id
+            int idEvent = Integer.parseInt((String) checkTableSelection(tblEvent, 0));
+            this.eventData.setIdEventToSubEntities(idEvent);
+            this.eventData.setSize(834, 567);
+            this.eventData.setLocation(0,0);
+            pnlContent.removeAll();
+            pnlContent.add(this.eventData,BorderLayout.CENTER);
+            pnlContent.revalidate();
+            pnlContent.repaint();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEventDataActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteEvent;
+    private javax.swing.JButton btnEventData;
     private javax.swing.JButton btnInsertEvent;
     private javax.swing.JButton btnUpdateEvent;
-    private javax.swing.JButton btnUpdateEvent1;
     private javax.swing.JComboBox<String> cmbEventType;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

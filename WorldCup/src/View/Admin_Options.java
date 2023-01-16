@@ -5,7 +5,7 @@
 package View;
 
 import View.Admin_OptionsPK.TableEvents;
-import View.Admin_OptionsPK.TableNews;
+import View.EventDataPK.TableNews;
 import View.Admin_OptionsPK.TableUsers;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -18,7 +18,6 @@ public class Admin_Options extends javax.swing.JPanel {
     private TableUsers tableUsersPanel;
     private TableEvents tableEventsPanel;
     private Catalogs catalogsPanel;
-    private TableNews tableNewsPanel;
     private JPanel pnlContent;
     /**
      * Creates new form Admin_Options
@@ -27,9 +26,8 @@ public class Admin_Options extends javax.swing.JPanel {
         initComponents();
         this.pnlContent = pnlContent;
         this.tableUsersPanel = new TableUsers();
-        this.tableEventsPanel = new TableEvents();
+        this.tableEventsPanel = new TableEvents(pnlContent);
         this.catalogsPanel = new Catalogs(pnlContent);
-        this.tableNewsPanel = new TableNews();
     }
 
     /**
@@ -44,7 +42,6 @@ public class Admin_Options extends javax.swing.JPanel {
         btnEvents = new javax.swing.JButton();
         btnUsers = new javax.swing.JButton();
         btnCatalogs = new javax.swing.JButton();
-        btnNews = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(94, 4, 32));
         setMaximumSize(new java.awt.Dimension(834, 578));
@@ -93,34 +90,20 @@ public class Admin_Options extends javax.swing.JPanel {
             }
         });
 
-        btnNews.setBackground(new java.awt.Color(152, 12, 51));
-        btnNews.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnNews.setForeground(new java.awt.Color(255, 255, 255));
-        btnNews.setText("News");
-        btnNews.setBorder(null);
-        btnNews.setMaximumSize(new java.awt.Dimension(220, 50));
-        btnNews.setMinimumSize(new java.awt.Dimension(220, 50));
-        btnNews.setPreferredSize(new java.awt.Dimension(220, 50));
-        btnNews.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewsActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(127, 127, 127)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnNews, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCatalogs, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(127, 127, 127))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCatalogs, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(312, 312, 312))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,11 +112,9 @@ public class Admin_Options extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCatalogs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(127, 127, 127))
+                .addGap(175, 175, 175)
+                .addComponent(btnCatalogs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(191, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -145,15 +126,6 @@ public class Admin_Options extends javax.swing.JPanel {
         pnlContent.revalidate();
         pnlContent.repaint();
     }//GEN-LAST:event_btnEventsActionPerformed
-
-    private void btnNewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewsActionPerformed
-        this.tableNewsPanel.setSize(834, 567);
-        this.tableNewsPanel.setLocation(0,0);
-        pnlContent.removeAll();
-        pnlContent.add(this.tableNewsPanel,BorderLayout.CENTER);
-        pnlContent.revalidate();
-        pnlContent.repaint();
-    }//GEN-LAST:event_btnNewsActionPerformed
 
     private void btnCatalogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogsActionPerformed
         this.catalogsPanel.setSize(834, 567);
@@ -177,7 +149,6 @@ public class Admin_Options extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCatalogs;
     private javax.swing.JButton btnEvents;
-    private javax.swing.JButton btnNews;
     private javax.swing.JButton btnUsers;
     // End of variables declaration//GEN-END:variables
 }

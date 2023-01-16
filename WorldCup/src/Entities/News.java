@@ -4,6 +4,8 @@
  */
 package Entities;
 
+import java.sql.Date;
+
 /**
  *
  * @author Datos
@@ -14,10 +16,10 @@ public class News {
     private String title;
     private String text;
     private String author;
-    private String date;
+    private Date date;
     private String photo;
 
-    public News(int idNews, int idEvent, String title, String text, String author, String date, String photo) {
+    public News(int idNews, int idEvent, String title, String text, String author, Date date, String photo) {
         this.idNews = idNews;
         this.idEvent = idEvent;
         this.title = title;
@@ -42,7 +44,7 @@ public class News {
         return author;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -62,7 +64,7 @@ public class News {
         this.author = author;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

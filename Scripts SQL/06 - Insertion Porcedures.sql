@@ -2,10 +2,10 @@
 
 --This is an insertion for the table worker
 CREATE OR REPLACE PROCEDURE insertWorker 
-    (V_idWorkerType IN NUMBER, V_hireDate IN DATE)
+    (V_idWorkerType IN NUMBER, V_hireDate IN DATE, V_idEvent IN NUMBER)
     AS BEGIN 
-    INSERT INTO Worker(idWorker, idWorkerType, hiredate)  
-    VALUES(s_Person.NEXTVAL, v_idworkertype, v_hiredate);
+    INSERT INTO Worker(idWorker, idWorkerType, hiredate, idEvent)  
+    VALUES(s_Person.NEXTVAL, v_idworkertype, v_hiredate, V_idEvent);
     COMMIT; 
 END insertWorker;
 
@@ -101,12 +101,12 @@ CREATE OR REPLACE PROCEDURE insertIdentification
 END insertIdentification;
 
 CREATE OR REPLACE PROCEDURE insertPerson
-    (VidGender IN NUMBER, Vadress IN NUMBER, v_idUser IN NUMBER, v_idEvent IN NUMBER, 
+    (VidGender IN NUMBER, Vadress IN NUMBER, v_idUser IN NUMBER, 
         Vbirthdate IN DATE, Vname IN VARCHAR2, Vphoto IN VARCHAR2)
     AS BEGIN 
-    INSERT INTO Person(idPerson, idGender, idAddress, idUser, 
-        idEvent, birthday, personName, photo)  
-    VALUES(s_person.NEXTVAL, VidGender, Vadress, v_idUser, v_idEvent,
+    INSERT INTO Person(idPerson, idGender, idAddress, idUser,
+    birthday, personName, photo)  
+    VALUES(s_person.NEXTVAL, VidGender, Vadress, v_idUser,
         Vbirthdate, Vname, Vphoto);
     COMMIT; 
 END insertPerson;
@@ -167,8 +167,8 @@ CREATE OR REPLACE PROCEDURE insertNews
     (VidEvent IN NUMBER,Vtitle IN VARCHAR2,Vtext IN VARCHAR2,
     Vauthor IN VARCHAR2,VnewsDate IN DATE,Vphoto IN VARCHAR2)
     AS BEGIN 
-    INSERT INTO News(idNews,idUser,idEvent,title,text,author,newsDate,photo)  
-    VALUES(s_News.NEXTVAL,VidUser, VidEvent,Vtitle,Vtext,Vauthor, VnewsDate,Vphoto);
+    INSERT INTO News n(n.idNews,n.idEvent,n.title,n.text,n.author,n.newsDate,n.photo)  
+    VALUES(s_News.NEXTVAL, VidEvent,Vtitle,Vtext,Vauthor, VnewsDate,Vphoto);
     COMMIT; 
 END insertNews;
 -----------------------------------------------------
@@ -204,10 +204,11 @@ END insertGroupEvent;
 
 --Helper
 CREATE OR REPLACE PROCEDURE insertHelper 
-    (VidHelper IN NUMBER, VidTeam IN NUMBER, VidHelperType IN NUMBER, VhireDate IN DATE)
+    (VidHelper IN NUMBER, VidTeam IN NUMBER, VidHelperType IN NUMBER, VhireDate IN DATE,
+    VidEvent IN NUMBER)
     AS BEGIN
-    INSERT INTO helper(idHelper, idTeam, idHelperType, hireDate)
-    VALUES(VidHelper, VidTeam, VidHelperType, VhireDate);
+    INSERT INTO helper(idHelper, idTeam, idHelperType, hireDate, idEvent)
+    VALUES(VidHelper, VidTeam, VidHelperType, VhireDate, VidEvent);
     COMMIT; 
 END insertHelper;
 
@@ -231,10 +232,11 @@ END insertParameterEvent;
 
 --Player
 CREATE OR REPLACE PROCEDURE insertPlayer 
-    (VidTeam IN NUMBER, VidPosition IN NUMBER, VnumberPlayer IN NUMBER)
+    (VidTeam IN NUMBER, VidPosition IN NUMBER, VnumberPlayer IN NUMBER
+    , VidEvent IN NUMBER)
     AS BEGIN
-    INSERT INTO Player(idPlayer, idTeam, idPosition, numberPlayer)
-    VALUES(s_person.nextval, VidTeam, VidPosition, VnumberPlayer);
+    INSERT INTO Player(idPlayer, idTeam, idPosition, numberPlayer, idEvent)
+    VALUES(s_person.nextval, VidTeam, VidPosition, VnumberPlayer, VidEvent);
     COMMIT; 
 END insertPlayer;
 
@@ -263,10 +265,10 @@ END insertLineup;
 
 --Continent
 CREATE OR REPLACE PROCEDURE insertContinent 
-    (v_idEvent IN NUMBER, VnameContinent IN VARCHAR2)
+    (VnameContinent IN VARCHAR2)
     AS BEGIN
-    INSERT INTO Continent(idContinent, idEvent, nameContinent)
-    VALUES(s_continent.nextval, v_idEvent, VnameContinent);
+    INSERT INTO Continent(idContinent, nameContinent)
+    VALUES(s_continent.nextval, VnameContinent);
     COMMIT; 
 END insertContinent;
 

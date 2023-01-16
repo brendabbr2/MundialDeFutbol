@@ -28,14 +28,6 @@ public class TableUsers extends javax.swing.JPanel {
             tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
     }
     
-    public void inserUser(){
-        userBO.insertUser(this.user);
-    }
-    
-    public void updateUser(){
-        userBO.updateUser(user);
-    }
-    
     private Object checkTableSelection(JTable table, int column){
         Object user = null;
         if(!table.getSelectionModel().isSelectionEmpty())
