@@ -125,7 +125,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnUpdateEvent" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnUpdateEvent1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnEventData" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                       <Component id="btnDeleteEvent" min="-2" pref="128" max="-2" attributes="0"/>
                                   </Group>
@@ -155,7 +155,7 @@
                           <Component id="btnDeleteEvent" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="lblEventType" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbEventType" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnUpdateEvent1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnEventData" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
@@ -216,8 +216,8 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
-                    <StringItem index="0" value="Normal"/>
-                    <StringItem index="1" value="Admin"/>
+                    <StringItem index="0" value="mundial"/>
+                    <StringItem index="1" value="mundial femenino"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -239,7 +239,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertEventActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnUpdateEvent1">
+            <Component class="javax.swing.JButton" name="btnEventData">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="18" style="1"/>
@@ -247,7 +247,7 @@
                 <Property name="text" type="java.lang.String" value="Event Data"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateEvent1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEventDataActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

@@ -2,15 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package View.Admin_OptionsPK;
+package View.EventDataPK;
 
 import B_Layer.NewsBO;
 import Entities.News;
 import java.awt.Image;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.TableColumnModel;
 
@@ -19,14 +28,16 @@ import javax.swing.table.TableColumnModel;
  * @author jox
  */
 public class TableNews extends javax.swing.JPanel {
- private final NewsBO newsBO = new NewsBO();
+    private final NewsBO newsBO = new NewsBO();
     private final News news = new News();
+    private String photo = "";
+    private int idEvent;
+    
     /**
      * Creates new form TableConsults
      */
     public TableNews() {
         initComponents();
-        getNews();
         //this.btnInsert.setVisible(false);
     }
     
@@ -34,14 +45,6 @@ public class TableNews extends javax.swing.JPanel {
             tblNews.setModel(newsBO.getNews());
             TableColumnModel tblModelColumn = tblNews.getColumnModel();
             tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
-    }
-    
-    public void inserUser(){
-        newsBO.insertNews(this.news);
-    }
-    
-    public void updateUser(){
-        newsBO.updateNews(news);
     }
     
     private Object checkTableSelection(JTable table, int column){
@@ -55,6 +58,15 @@ public class TableNews extends javax.swing.JPanel {
         return user;
     }
 
+    public int getIdEvent() {
+        return idEvent;
+    }
+
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
+        this.newsBO.setIdEvent(idEvent);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,7 +94,7 @@ public class TableNews extends javax.swing.JPanel {
         lblPhotoNews = new javax.swing.JLabel();
         lblLogoPhoto = new javax.swing.JLabel();
         btnBrowse = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        dtDateNews = new com.toedter.calendar.JDateChooser();
 
         jPanel1.setBackground(new java.awt.Color(94, 4, 32));
         jPanel1.setMaximumSize(new java.awt.Dimension(834, 578));
@@ -166,6 +178,8 @@ public class TableNews extends javax.swing.JPanel {
             }
         });
 
+        dtDateNews.setDateFormatString("dd/MM/yyyy");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -187,8 +201,8 @@ public class TableNews extends javax.swing.JPanel {
                         .addComponent(txtAuthorNews, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblDateNews)
-                        .addGap(46, 46, 46)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dtDateNews, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnUpdateNews, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -217,24 +231,24 @@ public class TableNews extends javax.swing.JPanel {
                     .addComponent(lblTextNews))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAuthorNews)
-                            .addComponent(txtAuthorNews, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblAuthorNews)
+                                    .addComponent(txtAuthorNews, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(dtDateNews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(76, 76, 76)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPhotoNews)
                             .addComponent(btnBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblDateNews)
-                                    .addComponent(btnUpdateNews, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(5, 5, 5)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDateNews)
+                            .addComponent(btnUpdateNews, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -299,7 +313,27 @@ public class TableNews extends javax.swing.JPanel {
     }//GEN-LAST:event_btnUpdateNewsActionPerformed
 
     private void btnInsertNewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertNewsActionPerformed
-        
+        if (!(this.txtTitleNews.getText().isEmpty() || this.txtTextNews.getText().isEmpty()
+                || this.txtAuthorNews.getText().isEmpty() || this.photo.isEmpty()
+                || ((JTextField)this.dtDateNews.getDateEditor().getUiComponent()).getText().isEmpty())){
+            
+            java.util.Date utilDate = this.dtDateNews.getDate();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            
+            this.news.setIdEvent(this.idEvent);
+            this.news.setTitle(this.txtTitleNews.getText());
+            this.news.setText(this.txtTextNews.getText());
+            this.news.setAuthor(this.txtAuthorNews.getText());
+            this.news.setDate(sqlDate);
+            this.news.setPhoto(this.photo);
+           
+            System.out.println(newsBO.insertNews(news));
+            this.getNews();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid event, title, text, author, date or photo,"
+                    + " null value encountered");
+        }
     }//GEN-LAST:event_btnInsertNewsActionPerformed
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
@@ -311,9 +345,9 @@ public class TableNews extends javax.swing.JPanel {
 
         if (showOpenDialogue == JFileChooser.APPROVE_OPTION){
             File selectedImageFile = browseImageFile.getSelectedFile();
-            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            this.photo = selectedImageFile.getAbsolutePath();
             //Display image on jlabel
-            ImageIcon image = new ImageIcon(selectedImagePath);
+            ImageIcon image = new ImageIcon(this.photo);
             // Resize image to fit jlable
             Image imageResized = image.getImage().getScaledInstance(this.lblLogoPhoto.getWidth(),this.lblLogoPhoto.getHeight(), Image.SCALE_SMOOTH);
 
@@ -327,7 +361,7 @@ public class TableNews extends javax.swing.JPanel {
     private javax.swing.JButton btnDeleteNews;
     private javax.swing.JButton btnInsertNews;
     private javax.swing.JButton btnUpdateNews;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser dtDateNews;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -4,17 +4,29 @@
  */
 package View.EventDataPK;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+
 /**
  *
  * @author jox
  */
 public class EventData extends javax.swing.JPanel {
-
+    private JPanel pnlContent;
+    private TableNews tableNewsPanel;
     /**
      * Creates new form EventData
      */
-    public EventData() {
+    public EventData(JPanel pnlContent) {
         initComponents();
+        this.tableNewsPanel = new TableNews();
+        this.pnlContent = pnlContent;
+    }
+
+    public void setIdEventToSubEntities(int idEvent) {
+        this.tableNewsPanel.setIdEvent(idEvent);
+        this.tableNewsPanel.getNews();
     }
 
     /**
@@ -33,11 +45,10 @@ public class EventData extends javax.swing.JPanel {
         btnHelpers = new javax.swing.JButton();
         btnTeams = new javax.swing.JButton();
         btnWorkers = new javax.swing.JButton();
-        btnNews6 = new javax.swing.JButton();
-        btnNews7 = new javax.swing.JButton();
-        btnNews8 = new javax.swing.JButton();
-        btnNews9 = new javax.swing.JButton();
-        btnNews10 = new javax.swing.JButton();
+        btnPhases = new javax.swing.JButton();
+        btnGroups = new javax.swing.JButton();
+        btnNews = new javax.swing.JButton();
+        btnPlayers = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(94, 4, 32));
         jPanel1.setMaximumSize(new java.awt.Dimension(834, 578));
@@ -127,73 +138,59 @@ public class EventData extends javax.swing.JPanel {
             }
         });
 
-        btnNews6.setBackground(new java.awt.Color(152, 12, 51));
-        btnNews6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnNews6.setForeground(new java.awt.Color(255, 255, 255));
-        btnNews6.setText("Phases");
-        btnNews6.setBorder(null);
-        btnNews6.setMaximumSize(new java.awt.Dimension(220, 50));
-        btnNews6.setMinimumSize(new java.awt.Dimension(220, 50));
-        btnNews6.setPreferredSize(new java.awt.Dimension(220, 50));
-        btnNews6.addActionListener(new java.awt.event.ActionListener() {
+        btnPhases.setBackground(new java.awt.Color(152, 12, 51));
+        btnPhases.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnPhases.setForeground(new java.awt.Color(255, 255, 255));
+        btnPhases.setText("Phases");
+        btnPhases.setBorder(null);
+        btnPhases.setMaximumSize(new java.awt.Dimension(220, 50));
+        btnPhases.setMinimumSize(new java.awt.Dimension(220, 50));
+        btnPhases.setPreferredSize(new java.awt.Dimension(220, 50));
+        btnPhases.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNews6ActionPerformed(evt);
+                btnPhasesActionPerformed(evt);
             }
         });
 
-        btnNews7.setBackground(new java.awt.Color(152, 12, 51));
-        btnNews7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnNews7.setForeground(new java.awt.Color(255, 255, 255));
-        btnNews7.setText("Groups");
-        btnNews7.setBorder(null);
-        btnNews7.setMaximumSize(new java.awt.Dimension(220, 50));
-        btnNews7.setMinimumSize(new java.awt.Dimension(220, 50));
-        btnNews7.setPreferredSize(new java.awt.Dimension(220, 50));
-        btnNews7.addActionListener(new java.awt.event.ActionListener() {
+        btnGroups.setBackground(new java.awt.Color(152, 12, 51));
+        btnGroups.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnGroups.setForeground(new java.awt.Color(255, 255, 255));
+        btnGroups.setText("Groups");
+        btnGroups.setBorder(null);
+        btnGroups.setMaximumSize(new java.awt.Dimension(220, 50));
+        btnGroups.setMinimumSize(new java.awt.Dimension(220, 50));
+        btnGroups.setPreferredSize(new java.awt.Dimension(220, 50));
+        btnGroups.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNews7ActionPerformed(evt);
+                btnGroupsActionPerformed(evt);
             }
         });
 
-        btnNews8.setBackground(new java.awt.Color(152, 12, 51));
-        btnNews8.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnNews8.setForeground(new java.awt.Color(255, 255, 255));
-        btnNews8.setText("Users");
-        btnNews8.setBorder(null);
-        btnNews8.setMaximumSize(new java.awt.Dimension(220, 50));
-        btnNews8.setMinimumSize(new java.awt.Dimension(220, 50));
-        btnNews8.setPreferredSize(new java.awt.Dimension(220, 50));
-        btnNews8.addActionListener(new java.awt.event.ActionListener() {
+        btnNews.setBackground(new java.awt.Color(152, 12, 51));
+        btnNews.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnNews.setForeground(new java.awt.Color(255, 255, 255));
+        btnNews.setText("News");
+        btnNews.setBorder(null);
+        btnNews.setMaximumSize(new java.awt.Dimension(220, 50));
+        btnNews.setMinimumSize(new java.awt.Dimension(220, 50));
+        btnNews.setPreferredSize(new java.awt.Dimension(220, 50));
+        btnNews.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNews8ActionPerformed(evt);
+                btnNewsActionPerformed(evt);
             }
         });
 
-        btnNews9.setBackground(new java.awt.Color(152, 12, 51));
-        btnNews9.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnNews9.setForeground(new java.awt.Color(255, 255, 255));
-        btnNews9.setText("Catalogs");
-        btnNews9.setBorder(null);
-        btnNews9.setMaximumSize(new java.awt.Dimension(220, 50));
-        btnNews9.setMinimumSize(new java.awt.Dimension(220, 50));
-        btnNews9.setPreferredSize(new java.awt.Dimension(220, 50));
-        btnNews9.addActionListener(new java.awt.event.ActionListener() {
+        btnPlayers.setBackground(new java.awt.Color(152, 12, 51));
+        btnPlayers.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnPlayers.setForeground(new java.awt.Color(255, 255, 255));
+        btnPlayers.setText("Players");
+        btnPlayers.setBorder(null);
+        btnPlayers.setMaximumSize(new java.awt.Dimension(220, 50));
+        btnPlayers.setMinimumSize(new java.awt.Dimension(220, 50));
+        btnPlayers.setPreferredSize(new java.awt.Dimension(220, 50));
+        btnPlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNews9ActionPerformed(evt);
-            }
-        });
-
-        btnNews10.setBackground(new java.awt.Color(152, 12, 51));
-        btnNews10.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnNews10.setForeground(new java.awt.Color(255, 255, 255));
-        btnNews10.setText("News");
-        btnNews10.setBorder(null);
-        btnNews10.setMaximumSize(new java.awt.Dimension(220, 50));
-        btnNews10.setMinimumSize(new java.awt.Dimension(220, 50));
-        btnNews10.setPreferredSize(new java.awt.Dimension(220, 50));
-        btnNews10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNews10ActionPerformed(evt);
+                btnPlayersActionPerformed(evt);
             }
         });
 
@@ -201,14 +198,15 @@ public class EventData extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHelpers, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNews7, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTeams, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNews, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnStadiums, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(79, 79, 79)
@@ -216,18 +214,12 @@ public class EventData extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnWorkers, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNews6, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnGroups, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(79, 79, 79)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnNews8, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTeams, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnPhases, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNews10, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115)
-                .addComponent(btnNews9, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(158, 158, 158))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,17 +233,19 @@ public class EventData extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHelpers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnWorkers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTeams, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNews7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNews6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNews8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNews9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNews10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(87, Short.MAX_VALUE))
+                    .addComponent(btnPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGroups, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPhases, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(btnTeams, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(53, 53, 53)
+                .addComponent(btnNews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -300,36 +294,36 @@ public class EventData extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnWorkersActionPerformed
 
-    private void btnNews6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNews6ActionPerformed
+    private void btnPhasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhasesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNews6ActionPerformed
+    }//GEN-LAST:event_btnPhasesActionPerformed
 
-    private void btnNews7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNews7ActionPerformed
+    private void btnGroupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGroupsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNews7ActionPerformed
+    }//GEN-LAST:event_btnGroupsActionPerformed
 
-    private void btnNews8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNews8ActionPerformed
+    private void btnNewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewsActionPerformed
+        this.tableNewsPanel.setSize(834, 567);
+        this.tableNewsPanel.setLocation(0,0);
+        pnlContent.removeAll();
+        pnlContent.add(this.tableNewsPanel,BorderLayout.CENTER);
+        pnlContent.revalidate();
+        pnlContent.repaint();
+    }//GEN-LAST:event_btnNewsActionPerformed
 
-    }//GEN-LAST:event_btnNews8ActionPerformed
-
-    private void btnNews9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNews9ActionPerformed
+    private void btnPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNews9ActionPerformed
-
-    private void btnNews10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNews10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNews10ActionPerformed
+    }//GEN-LAST:event_btnPlayersActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinents;
+    private javax.swing.JButton btnGroups;
     private javax.swing.JButton btnHelpers;
-    private javax.swing.JButton btnNews10;
-    private javax.swing.JButton btnNews6;
-    private javax.swing.JButton btnNews7;
-    private javax.swing.JButton btnNews8;
-    private javax.swing.JButton btnNews9;
+    private javax.swing.JButton btnNews;
     private javax.swing.JButton btnPeople;
+    private javax.swing.JButton btnPhases;
+    private javax.swing.JButton btnPlayers;
     private javax.swing.JButton btnStadiums;
     private javax.swing.JButton btnTeams;
     private javax.swing.JButton btnWorkers;
