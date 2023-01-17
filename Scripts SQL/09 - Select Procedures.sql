@@ -14,7 +14,7 @@ WorkerCursor OUT SYS_REFCURSOR)
 AS 
 BEGIN 
     OPEN WorkerCursor FOR  
-    SELECT idWorker, idWorkerType, hireDate , creationUser, creationDate, modificationUser, modificationDate
+    SELECT idWorker, idWorkerType, idEvent, hireDate , creationUser, creationDate, modificationUser, modificationDate
     FROM Worker  
     WHERE idWorker = NVL(v_idWorker, idWorker) AND idEvent = v_idEvent;  
 END getWorker;

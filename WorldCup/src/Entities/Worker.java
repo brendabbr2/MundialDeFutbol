@@ -12,11 +12,16 @@ public class Worker {
     private int idWorker;
     private int idWorkerType;
     private String hireDate;
+    private int idEvent;
 
-    public Worker(int idWorker, int idWorkerType, String hireDate) {
+    public Worker(int idWorker, int idWorkerType, String hireDate, int idEvent) {
         this.idWorker = idWorker;
         this.idWorkerType = idWorkerType;
         this.hireDate = hireDate;
+        this.idEvent = idEvent;
+    }
+
+    public Worker() {
     }
 
     public int getIdWorker() {
@@ -43,8 +48,16 @@ public class Worker {
         this.hireDate = hireDate;
     }
 
+    public int getIdEvent() {
+        return idEvent;
+    }
+
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
+    }
+
     @Override
     public String toString() {
-        return "Worker{" + "idWorker=" + idWorker + ", idWorkerType=" + idWorkerType + ", hireDate=" + hireDate + '}';
+        return "Worker{" + "idWorker=" + idWorker + ", idWorkerType=" + idWorkerType + ", hireDate=" + hireDate + ", idEvent=" + idEvent + '}';
     }
 }

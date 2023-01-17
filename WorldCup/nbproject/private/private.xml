@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/Admin_OptionsPK/TableUsers.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/B_Layer/UserTypeBO.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/DA_Layer/UserTypeDAO.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/EventDataPK/TableNews.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/MainFrame.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/Entities/UserType.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/Login_Panel.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/Entities/User.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
