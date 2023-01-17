@@ -4,7 +4,7 @@
  */
 package DA_Layer;
 
-import Entities.Canton;
+import Entities.Helper;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,65 +19,69 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author david
  */
-public class CantonDAO {
+public class HelperDAO {
     private String message = "";
     
-    public String insertCanton(Connection conn, Canton canton){
+    public String insertHelper(Connection conn, Helper helper){
         PreparedStatement pst = null;
-        String sql = "CALL insertCanton(?,?)";
+        String sql = "CALL insertHelper(?,?,?,?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, canton.getIdProvince());
-            pst.setString(2, canton.getNameCanton());
+            pst.setInt(1, helper.getIdHelper());
+            pst.setInt(2, helper.getIdTeam());
+            pst.setInt(3, helper.getIdHelperType());
+            pst.setString(4, helper.getHireDate());
             pst.execute();
             message = "Succesfully saved";
-            JOptionPane.showMessageDialog(null, "Canton inserted correctly");
+            JOptionPane.showMessageDialog(null, "Helper inserted correctly");
             pst.close();
         } catch (SQLException e){
             message = "Unsuccessfully saved\n" + e.getMessage();
-            JOptionPane.showMessageDialog(null, "Canton not inserted"
+            JOptionPane.showMessageDialog(null, "Helper not inserted"
                     , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
     
-    public String updateCanton(Connection conn, Canton canton){
+    public String updateHelper(Connection conn, Helper helper){
         PreparedStatement pst = null;
-        String sql = "CALL updateCanton(?,?,?)";
+        String sql = "CALL updateHelper(?,?,?,?,?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, canton.getIdCanton());
-            pst.setString(2, canton.getNameCanton());
-            pst.setInt(3, canton.getIdProvince());
+            pst.setInt(1, helper.getIdHelper());
+            pst.setInt(2, helper.getIdTeam());
+            pst.setInt(3, helper.getIdHelperType());
+            pst.setString(4, helper.getHireDate());
+            pst.setInt(5, helper.getIdEvent());
             pst.execute();
             message = "Succesfully updated";
-            JOptionPane.showMessageDialog(null, "Canton updated correctly");
+            JOptionPane.showMessageDialog(null, "Helper updated correctly");
             pst.close();
         } catch (SQLException e){
             message = "Unsuccessfully updated\n" + e.getMessage();
-            JOptionPane.showMessageDialog(null, "Canton not updated"
+            JOptionPane.showMessageDialog(null, "Helper not updated"
                     , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
     
-    public String deleteCanton(Connection conn, int idCanton){
+    public String deleteHelper(Connection conn, int idHelper){
         PreparedStatement pst = null;
-        String sql = "CALL deleteCanton(?)";
+        String sql = "CALL deleteHelper(?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, idCanton);
+            pst.setInt(1, idHelper);
             pst.execute();
             message = "Succesfully deleted";
-            JOptionPane.showMessageDialog(null, "Canton deleted correctly");
+            JOptionPane.showMessageDialog(null, "Helper deleted correctly");
             pst.close();
             
         } catch (SQLException e){
             message = "Unsuccessfully deleted\n" + e.getMessage();
-            JOptionPane.showMessageDialog(null, "Canton not deleted"
+            JOptionPane.showMessageDialog(null, "Helper not deleted"
                     , null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
@@ -85,15 +89,15 @@ public class CantonDAO {
     
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
-    public DefaultTableModel getCantons(Connection conn){
-        String [] columns = {"idCanton", "nameCanton", "creationUser", "creationDate", "modificationUser", "modificationDate"};
+    public DefaultTableModel getHelpers(Connection conn){
+        String [] columns = {"idHelper", "idTeam", "idHelperType", "hireDate", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
-        String sql = "CALL getCanton(?,?)";
+        String sql = "CALL getHelper(?,?)";
         
-        String [] row = new String[6];
+        String [] row = new String[8];
         Statement st = null;
         ResultSet rs = null;
         
@@ -105,7 +109,7 @@ public class CantonDAO {
             rs = (ResultSet) statement.getObject(2);
             
             while (rs.next()) {
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < 8; i++) {
                     row[i] = rs.getString(i+1);
                 }
                 model.addRow(row);
@@ -113,7 +117,7 @@ public class CantonDAO {
             System.out.println("Succesfully listed");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table Canton");
+            JOptionPane.showMessageDialog(null, "Unable to show table Helper");
             System.out.println(e.getMessage());
         }
         return model;

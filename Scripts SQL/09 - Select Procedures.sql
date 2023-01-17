@@ -349,14 +349,14 @@ BEGIN
         WHERE idLineup = NVL(v_idLineup,idLineup); 
 END getLineup;
 
-CREATE OR REPLACE PROCEDURE getHelper(v_idHelper IN NUMBER, v_idEvent IN NUMBER,
+CREATE OR REPLACE PROCEDURE getHelper(v_idHelper IN NUMBER,
 HelperCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
     OPEN HelperCursor FOR  
         SELECT idHelper, idTeam, idhelperType, hiredate, creationUser, creationDate, modificationUser, modificationDate
         FROM Helper
-        WHERE idHelper = NVL(v_idHelper,idHelper) AND idEvent = v_idEvent; 
+        WHERE idHelper = NVL(v_idHelper,idHelper); 
 END getHelper;
 
 CREATE OR REPLACE PROCEDURE getHelperType(v_idHelperType IN NUMBER, HelperTypeCursor OUT SYS_REFCURSOR) 
