@@ -77,13 +77,15 @@ public class TestBO {
             }
             hexString.append(hex);
         }
-        //System.out.println(hexString);
+        System.out.println(hexString);
         return hexString.toString();
     }
     
     public static void main(String[] args) throws NoSuchAlgorithmException, SQLException {
+        
         ArrayList<UserType> list = userTypeBO.getUserTypeList();
         list.toString();
+        byteToHex("xxx");
     }
 }
 

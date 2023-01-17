@@ -24,19 +24,23 @@ public class TableUsers extends javax.swing.JPanel {
     /**
      * Creates new form TableConsults
      */
-    public TableUsers() throws SQLException {
+    public TableUsers(){
         initComponents();
         fillCombobox();
         getUsers();
         //this.btnInsert.setVisible(false);
     }
     
-    public void fillCombobox() throws SQLException{
-        ArrayList<UserType> list = userType.getUserTypeList();
-        System.out.println("Antes de agregar");
-        for(int i =0; i < list.size();i++){
-            cmbUserType.addItem(list.get(i).getNameUserType());
-            System.out.println("Se agrego " + list.get(i).getNameUserType()+" al combobox ");
+    public void fillCombobox(){
+        try{
+            ArrayList<UserType> list = userType.getUserTypeList();
+            System.out.println("Antes de agregar");
+            for(int i =0; i < list.size();i++){
+                cmbUserType.addItem(list.get(i).getNameUserType());
+                System.out.println("Se agrego " + list.get(i).getNameUserType()+" al combobox ");
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
     public void getUsers(){
