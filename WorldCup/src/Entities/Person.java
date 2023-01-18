@@ -40,6 +40,9 @@ public class Person {
         this.photo = photo;
     }
 
+    public Person() {
+    }
+    
     public int getIdPerson() {
         return idPerson;
     }

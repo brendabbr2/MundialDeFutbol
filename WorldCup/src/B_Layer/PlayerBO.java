@@ -5,8 +5,8 @@
 package B_Layer;
 
 import Connection.SysConnection;
-import DA_Layer.PlayerPositionDAO;
-import Entities.PlayerPosition;
+import DA_Layer.PlayerDAO;
+import Entities.Player;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,21 +14,20 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author david
+ * @author Datos
  */
-public class PlayerPositionBO {
-    private PlayerPositionDAO playerpositionDao;
+public class PlayerBO {
+    private PlayerDAO playerpositionDao;
     private String message;
-
-    public PlayerPositionBO() {
-        this.playerpositionDao = new PlayerPositionDAO();
+    
+    public PlayerBO() {
+        this.playerpositionDao = new PlayerDAO();
         this.message = "";
     }
-    
-    public String insertPlayerPosition(PlayerPosition playerposition){
+  public String insertPlayerPosition(Player player){
         Connection conn = SysConnection.connect();
         try{
-            message = playerpositionDao.insertPlayerPosition(conn, playerposition);
+            message = playerpositionDao.insertPlayer(conn, player);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -42,10 +41,10 @@ public class PlayerPositionBO {
         }
         return message;
     }
-    public String updatePlayerPosition(PlayerPosition playerposition){
+    public String updatePlayerPosition(Player player){
         Connection conn = SysConnection.connect();
         try{
-            message = playerpositionDao.updatePlayerPosition(conn, playerposition);
+            message = playerpositionDao.updatePlayer(conn, player);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -62,7 +61,7 @@ public class PlayerPositionBO {
     public String deletePlayerPosition(int id){
         Connection conn = SysConnection.connect();
         try{
-            message = playerpositionDao.deletePlayerPosition(conn, id);
+            message = playerpositionDao.deletePlayer(conn, id);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -76,9 +75,9 @@ public class PlayerPositionBO {
         }
         return message;
     }
-    public DefaultTableModel getPlayerPositions(){
+    public DefaultTableModel getPlayer(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = playerpositionDao.getPlayerPositions(conn);
+        DefaultTableModel model = playerpositionDao.getPlayer(conn);
         try {
             conn.close();
         } catch (SQLException ex) {
@@ -86,10 +85,11 @@ public class PlayerPositionBO {
         }
         return model;
     }
-    public ArrayList getPlayerPositionList() throws SQLException{
+    
+    public ArrayList getPlayerList() throws SQLException{
         Connection conn = SysConnection.connect();
         ArrayList list = playerpositionDao.getList(conn);
         conn.close();
         return list;
-    }
+    }   
 }
