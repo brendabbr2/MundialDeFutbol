@@ -5,6 +5,9 @@
 package View;
 
 import B_Layer.NewsBO;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -13,10 +16,15 @@ import B_Layer.NewsBO;
 public class News_Panel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private News_Text newsText;
+    
     private final NewsBO newsBO = new NewsBO();
     private final News news = new News();
+    
     private int pagForRecent = 0;
+    
     private String path;
+    private ImageIcon imgIconRecentNews;
+    private Icon iconRecentNews;
     /**
      * Creates new form News
      * @param mainFrame
@@ -34,6 +42,18 @@ public class News_Panel extends javax.swing.JPanel {
             this.lblRecentTitle.setText("Title: " + (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(3));
             this.lblRecentAuthor.setText("Author: " + (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(5));
             this.lblRecentDate.setText("Date: " + (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(6));
+            getIconRecentNews();
+        }
+    }
+    
+    private void getIconRecentNews(){
+        try{
+            path = (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(7);
+            imgIconRecentNews = new ImageIcon(path);
+            iconRecentNews = new ImageIcon(imgIconRecentNews.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+            lblRecentNewsImage.setIcon(iconRecentNews);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
