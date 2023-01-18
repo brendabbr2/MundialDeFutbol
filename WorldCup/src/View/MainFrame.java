@@ -26,7 +26,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         setGuestUser();
         this.panelLog = new Login_Panel(this);
-        this.newsPanel = new News_Panel();
+        this.newsPanel = new News_Panel(this);
         this.adminOpsPanel = new Admin_Options(this.pnlContent);
         this.btnLogout.setVisible(false);
         this.btnAdminOptions.setVisible(false);
@@ -76,7 +76,7 @@ public class MainFrame extends javax.swing.JFrame {
         if (userType == 2)
             this.btnAdminOptions.setVisible(true);
         else
-            this.btnAdminOptions.setVisible(false);
+            this.btnAdminOptions.setVisible(true);
     }
     
 

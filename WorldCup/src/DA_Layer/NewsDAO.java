@@ -96,13 +96,13 @@ public class NewsDAO {
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
     public DefaultTableModel getNews(Connection conn, int idEvent){
-        String [] columns = {"idNews","idEvent","name event","title","text","author","news date",
+        String [] columns = {"idNews","idEvent","nameEvent","title","text","author","newsDate",
         "photo", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
-        String sql = "CALL getNews(?,?,?)";
+        String sql = "CALL getNews(?,?)";
         
         String [] row = new String[12];
         Statement st = null;
@@ -111,10 +111,9 @@ public class NewsDAO {
         try {
             statement = conn.prepareCall(sql);
             statement.setNull(1, Types.NUMERIC);
-            statement.setInt(2, idEvent);
-            statement.registerOutParameter(3, Types.REF_CURSOR);
+            statement.registerOutParameter(2, Types.REF_CURSOR);
             statement.execute();
-            rs = (ResultSet) statement.getObject(3);
+            rs = (ResultSet) statement.getObject(2);
             
             while (rs.next()) {
                 for (int i = 0; i < 12; i++) {

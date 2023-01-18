@@ -447,7 +447,7 @@ public class Register_Panel extends javax.swing.JPanel {
                                 .addComponent(pnlDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                            .addComponent(pnlPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                                 .addComponent(btnSelectPicture))))
@@ -465,7 +465,7 @@ public class Register_Panel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSelectPicture))
                     .addGroup(layout.createSequentialGroup()
@@ -525,16 +525,9 @@ public class Register_Panel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboxCountry;
     private javax.swing.JComboBox<String> cboxDistrict;
     private javax.swing.JComboBox<String> cboxIdType;
-    private javax.swing.JComboBox<String> cboxIdType2;
     private javax.swing.JComboBox<String> cboxProvince;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lblAdress;
     private javax.swing.JLabel lblCanton;
@@ -544,7 +537,6 @@ public class Register_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblLastName1;
-    private javax.swing.JLabel lblLastName3;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPhone;
@@ -560,7 +552,6 @@ public class Register_Panel extends javax.swing.JPanel {
     private javax.swing.JPanel pnlID2;
     private javax.swing.JPanel pnlID3;
     private javax.swing.JPanel pnlIdType;
-    private javax.swing.JPanel pnlIdType2;
     private javax.swing.JPanel pnlLastName;
     private javax.swing.JPanel pnlName;
     private javax.swing.JPanel pnlPhone;

@@ -44,6 +44,7 @@ public class GenderBO {
         }
         return message;
     }
+    
     public String updateGender(Gender gender){
         Connection conn = SysConnection.connect();
         try{
@@ -61,6 +62,7 @@ public class GenderBO {
         }
         return message;
     }
+    
     public String deleteGender(int id){
         Connection conn = SysConnection.connect();
         try{
@@ -78,6 +80,7 @@ public class GenderBO {
         }
         return message;
     }
+    
     public DefaultTableModel getGenders(){
         Connection conn = SysConnection.connect();
         DefaultTableModel model = genderDao.getGenders(conn);

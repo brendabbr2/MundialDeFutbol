@@ -4,17 +4,37 @@
  */
 package View;
 
+import B_Layer.NewsBO;
+
 /**
  *
  * @author Datos
  */
 public class News_Panel extends javax.swing.JPanel {
-
+    private MainFrame mainFrame;
+    private News_Text newsText;
+    private final NewsBO newsBO = new NewsBO();
+    private final News news = new News();
+    private int pagForRecent = 0;
+    private String path;
     /**
      * Creates new form News
+     * @param mainFrame
      */
-    public News_Panel() {
+    public News_Panel(MainFrame mainFrame) {
         initComponents();
+        this.mainFrame = mainFrame;
+        this.newsText = new News_Text(mainFrame);
+        getRecentNews();
+    }
+    
+    private void getRecentNews(){
+        if(!newsBO.getNews().getDataVector().isEmpty())
+        {
+            this.lblRecentTitle.setText("Title: " + (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(3));
+            this.lblRecentAuthor.setText("Author: " + (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(5));
+            this.lblRecentDate.setText("Date: " + (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(6));
+        }
     }
 
     /**
@@ -172,10 +192,25 @@ public class News_Panel extends javax.swing.JPanel {
         );
 
         btnRecentPrevious.setText("Previous");
+        btnRecentPrevious.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecentPreviousActionPerformed(evt);
+            }
+        });
 
         btnRecentNext.setText("Next");
+        btnRecentNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecentNextActionPerformed(evt);
+            }
+        });
 
         btnRecentRead.setText("Read Article");
+        btnRecentRead.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecentReadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlRecentNewsLayout = new javax.swing.GroupLayout(pnlRecentNews);
         pnlRecentNews.setLayout(pnlRecentNewsLayout);
@@ -229,7 +264,7 @@ public class News_Panel extends javax.swing.JPanel {
                         .addGroup(pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnRecentPrevious, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnRecentNext, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(pnlRecentNewsImage, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
+                    .addComponent(pnlRecentNewsImage, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -541,6 +576,28 @@ public class News_Panel extends javax.swing.JPanel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRecentNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentNextActionPerformed
+        if(newsBO.getNews().getDataVector().size()-1>this.pagForRecent)
+        {
+            this.pagForRecent++;
+            getRecentNews();
+        }
+    }//GEN-LAST:event_btnRecentNextActionPerformed
+
+    private void btnRecentReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentReadActionPerformed
+        mainFrame.setVisible(false);
+        newsText.setText((String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(4));
+        newsText.setVisible(true);
+    }//GEN-LAST:event_btnRecentReadActionPerformed
+
+    private void btnRecentPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentPreviousActionPerformed
+        if(this.pagForRecent>0)
+        {
+            this.pagForRecent--;
+            getRecentNews();
+        }
+    }//GEN-LAST:event_btnRecentPreviousActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

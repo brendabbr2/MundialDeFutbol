@@ -291,7 +291,7 @@ BEGIN
         WHERE idUser = NVL(v_idUser,idUser);  
 END getUserSave;
 
-CREATE OR REPLACE PROCEDURE getNews(v_idNews IN NUMBER, v_idEvent IN NUMBER, NewsCursor OUT SYS_REFCURSOR) 
+CREATE OR REPLACE PROCEDURE getNews(v_idNews IN NUMBER, NewsCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
     OPEN NewsCursor FOR  
@@ -300,7 +300,7 @@ BEGIN
         FROM News n
         INNER JOIN Event e
         ON n.idEvent = e.idEvent
-        WHERE n.idNews = NVL(v_idNews,n.idNews) AND n.idEvent = v_idEvent; 
+        WHERE n.idNews = NVL(v_idNews,n.idNews); 
 END getNews;
 
 CREATE OR REPLACE PROCEDURE getParameterEvent(v_idParameter IN NUMBER, ParameterEventCursor OUT SYS_REFCURSOR) 

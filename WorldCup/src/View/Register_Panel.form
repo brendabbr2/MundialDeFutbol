@@ -62,7 +62,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlPhoto" pref="228" max="32767" attributes="0"/>
+                          <Component id="pnlPhoto" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace pref="127" max="32767" attributes="0"/>
                               <Component id="btnSelectPicture" min="-2" max="-2" attributes="0"/>
@@ -88,7 +88,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="pnlPhoto" min="-2" pref="203" max="-2" attributes="0"/>
+                      <Component id="pnlPhoto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnSelectPicture" min="-2" max="-2" attributes="0"/>
                   </Group>

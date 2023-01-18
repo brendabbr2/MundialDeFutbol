@@ -6,6 +6,8 @@ package View.CatalogsPK;
 
 import B_Layer.GenderBO;
 import Entities.Gender;
+import java.sql.Array;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
@@ -27,6 +29,10 @@ public class TableGenders extends javax.swing.JPanel {
             tblGender.setModel(genderBO.getGenders());
             TableColumnModel tblModelColumn = tblGender.getColumnModel();
             tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+            
+            Object XXX = genderBO.getGenders().getDataVector().isEmpty();
+            //Object XXX = genderBO.getGenders().elementAt(0).elementAt(1);
+            System.out.println(XXX);
     }
     
     private Object checkTableSelection(JTable table, int column){

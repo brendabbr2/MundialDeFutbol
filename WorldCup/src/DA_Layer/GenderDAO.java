@@ -93,7 +93,6 @@ public class GenderDAO {
         String sql = "CALL getGender(?,?)";
         
         String [] row = new String[6];
-        Statement st = null;
         ResultSet rs = null;
         
         try {
@@ -111,7 +110,7 @@ public class GenderDAO {
             }
             System.out.println("Succesfully listed");
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Unable to show table Gender");
             System.out.println(e.getMessage());
         }
