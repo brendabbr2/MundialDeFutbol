@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/B_Layer/NewsBO.java</file>
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/News_Panel.java</file>
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/DA_Layer/NewsDAO.java</file>
@@ -14,6 +15,12 @@
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/News_Text.java</file>
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/Register_Panel.java</file>
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/Entities/User.java</file>
+=======
+            <file>file:/C:/Users/Datos.DESKTOP-PTQBI6M/Desktop/ProjectoDB/MundialDeFutbol/WorldCup/src/DA_Layer/TeamDAO.java</file>
+            <file>file:/C:/Users/Datos.DESKTOP-PTQBI6M/Desktop/ProjectoDB/MundialDeFutbol/WorldCup/src/DA_Layer/GroupDAO.java</file>
+            <file>file:/C:/Users/Datos.DESKTOP-PTQBI6M/Desktop/ProjectoDB/MundialDeFutbol/WorldCup/src/B_Layer/TeamBO.java</file>
+            <file>file:/C:/Users/Datos.DESKTOP-PTQBI6M/Desktop/ProjectoDB/MundialDeFutbol/WorldCup/src/B_Layer/GroupBO.java</file>
+>>>>>>> 3fa2361b8218a22cd4243ace763664d7a2038331
         </group>
     </open-files>
 </project-private>

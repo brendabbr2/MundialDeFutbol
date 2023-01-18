@@ -13,12 +13,25 @@ public class Player {
     private int idTeam;
     private int idPosition;
     private int numberPlayer;
+    private int idEvent;
 
-    public Player(int idPlayer, int idTeam, int idPosition, int numberPlayer) {
+    public Player(int idPlayer, int idTeam, int idPosition, int numberPlayer, int idEvent) {
         this.idPlayer = idPlayer;
         this.idTeam = idTeam;
         this.idPosition = idPosition;
         this.numberPlayer = numberPlayer;
+        this.idEvent = idEvent;
+    }
+
+    public Player() {
+    }
+
+    public int getIdEvent() {
+        return idEvent;
+    }
+
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
     }
 
     public int getIdPlayer() {

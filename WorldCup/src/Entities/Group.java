@@ -19,6 +19,10 @@ public class Group {
         this.name = name;
     }
 
+    public Group() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getIdGroup() {
         return idGroup;
     }

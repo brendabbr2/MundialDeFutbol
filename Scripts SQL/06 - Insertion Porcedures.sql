@@ -232,11 +232,11 @@ END insertParameterEvent;
 
 --Player
 CREATE OR REPLACE PROCEDURE insertPlayer 
-    (VidTeam IN NUMBER, VidPosition IN NUMBER, VnumberPlayer IN NUMBER
+    (vidPerson IN NUMBER,VidTeam IN NUMBER, VidPosition IN NUMBER, VnumberPlayer IN NUMBER
     , VidEvent IN NUMBER)
     AS BEGIN
     INSERT INTO Player(idPlayer, idTeam, idPosition, numberPlayer, idEvent)
-    VALUES(s_person.nextval, VidTeam, VidPosition, VnumberPlayer, VidEvent);
+    VALUES(vidPerson, VidTeam, VidPosition, VnumberPlayer, VidEvent);
     COMMIT; 
 END insertPlayer;
 
