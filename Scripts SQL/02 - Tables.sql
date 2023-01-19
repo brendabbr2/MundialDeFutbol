@@ -181,7 +181,6 @@ CREATE TABLE News(
     --------------PK------------------
     idNews number(6),
     --------------FK------------------
-    idUser number(6),
     idEvent number(6),
     --------------Attribute------------
     title varchar(2) NOT NULL, 
