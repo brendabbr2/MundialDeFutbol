@@ -298,7 +298,7 @@ BEGIN
         SELECT idNews, COUNT(idNews) AS voting
         FROM UserSave GROUP BY idNews
         ORDER BY voting DESC;
-END getUserSave;
+END getUserSaveMostVoted;
 
 CREATE OR REPLACE PROCEDURE getNews(v_idNews IN NUMBER, NewsCursor OUT SYS_REFCURSOR) 
 AS 

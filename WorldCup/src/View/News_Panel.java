@@ -5,6 +5,8 @@
 package View;
 
 import B_Layer.NewsBO;
+import B_Layer.UserSaveBO;
+import Entities.UserSave;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -14,19 +16,28 @@ import javax.swing.ImageIcon;
  * @author Datos
  */
 public class News_Panel extends javax.swing.JPanel {
+
     private MainFrame mainFrame;
     private News_Text newsText;
-    
+
     private final NewsBO newsBO = new NewsBO();
     private final News news = new News();
-    
+    private final UserSaveBO userSaveBO = new UserSaveBO();
+    private final UserSave userSave = new UserSave();
+
     private int pagForRecent = 0;
-    
+    private int pagForMostVoted = 0;
+    private int idSelectedForMostVoted = 0;
+
     private String path;
     private ImageIcon imgIconRecentNews;
     private Icon iconRecentNews;
+    private ImageIcon imgIconMostVotedNews;
+    private Icon iconMostVotedNews;
+
     /**
      * Creates new form News
+     *
      * @param mainFrame
      */
     public News_Panel(MainFrame mainFrame) {
@@ -35,24 +46,65 @@ public class News_Panel extends javax.swing.JPanel {
         this.newsText = new News_Text(mainFrame);
         getRecentNews();
     }
-    
-    private void getRecentNews(){
-        if(!newsBO.getNews().getDataVector().isEmpty())
-        {
-            this.lblRecentTitle.setText("Title: " + (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(3));
-            this.lblRecentAuthor.setText("Author: " + (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(5));
-            this.lblRecentDate.setText("Date: " + (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(6));
+
+    private void getRecentNews() {
+        if (!newsBO.getNews().getDataVector().isEmpty()) {
+            this.lblRecentTitle.setText("Title: " + (String) newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(3));
+            this.lblRecentAuthor.setText("Author: " + (String) newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(5));
+            this.lblRecentDate.setText("Date: " + (String) newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(6));
             getIconRecentNews();
+            logicForMostVoted();
+        }
+    }
+
+    private void getIconRecentNews() {
+        try {
+            path = (String) newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(7);
+            imgIconRecentNews = new ImageIcon(path);
+            iconRecentNews = new ImageIcon(imgIconRecentNews.getImage().getScaledInstance(150, 165, Image.SCALE_DEFAULT));
+            lblRecentNewsImage.setIcon(iconRecentNews);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void logicForMostVoted() {
+        boolean flag = false;
+        if (!userSaveBO.getUserSaveMostVoted().getDataVector().isEmpty()) {
+            System.out.println("id: " + userSaveBO.getUserSaveMostVoted().getDataVector().elementAt(pagForMostVoted).elementAt(0));
+            System.out.println("apariciones: " + userSaveBO.getUserSaveMostVoted().getDataVector().elementAt(pagForMostVoted).elementAt(1));
+            for (int i = 0; i < userSaveBO.getUserSaveMostVoted().getDataVector().size(); i++) {
+                if (newsBO.getNews().getDataVector().elementAt(i).elementAt(0)
+                        .equals(userSaveBO.getUserSaveMostVoted().getDataVector()
+                                .elementAt(pagForMostVoted).elementAt(0))) {
+                    flag = true;
+                    idSelectedForMostVoted = i;
+                    break;
+                }
+            }
+            System.out.println("Salimos del for jeje");
+            if (flag) {
+                getMostVotedNews();
+            }
         }
     }
     
-    private void getIconRecentNews(){
-        try{
-            path = (String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(7);
-            imgIconRecentNews = new ImageIcon(path);
-            iconRecentNews = new ImageIcon(imgIconRecentNews.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
-            lblRecentNewsImage.setIcon(iconRecentNews);
-        }catch(Exception e){
+    private void getMostVotedNews(){
+        if (!newsBO.getNews().getDataVector().isEmpty()) {
+            this.lblMostVotedTitle.setText("Title: " + (String) newsBO.getNews().getDataVector().elementAt(idSelectedForMostVoted).elementAt(3));
+            this.lblMostVotedAuthor.setText("Author: " + (String) newsBO.getNews().getDataVector().elementAt(idSelectedForMostVoted).elementAt(5));
+            this.lblMostVotedDate.setText("Date: " + (String) newsBO.getNews().getDataVector().elementAt(idSelectedForMostVoted).elementAt(6));
+            getIconMostVotedNews();
+        }
+    }
+    
+    private void getIconMostVotedNews() {
+        try {
+            path = (String) newsBO.getNews().getDataVector().elementAt(idSelectedForMostVoted).elementAt(7);
+            imgIconMostVotedNews = new ImageIcon(path);
+            iconMostVotedNews = new ImageIcon(imgIconMostVotedNews.getImage().getScaledInstance(150, 165, Image.SCALE_DEFAULT));
+            lblMostVotedImage.setIcon(iconMostVotedNews);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -491,8 +543,18 @@ public class News_Panel extends javax.swing.JPanel {
         );
 
         btnMostVotedPrevious.setText("Previous");
+        btnMostVotedPrevious.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostVotedPreviousActionPerformed(evt);
+            }
+        });
 
         btnMostVotedNext.setText("Next");
+        btnMostVotedNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostVotedNextActionPerformed(evt);
+            }
+        });
 
         btnReadArticle.setText("Read Article");
 
@@ -598,8 +660,7 @@ public class News_Panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRecentNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentNextActionPerformed
-        if(newsBO.getNews().getDataVector().size()-1>this.pagForRecent)
-        {
+        if (newsBO.getNews().getDataVector().size() - 1 > this.pagForRecent) {
             this.pagForRecent++;
             getRecentNews();
         }
@@ -607,17 +668,30 @@ public class News_Panel extends javax.swing.JPanel {
 
     private void btnRecentReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentReadActionPerformed
         mainFrame.setVisible(false);
-        newsText.setText((String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(4));
+        newsText.setText((String) newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(4));
         newsText.setVisible(true);
     }//GEN-LAST:event_btnRecentReadActionPerformed
 
     private void btnRecentPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentPreviousActionPerformed
-        if(this.pagForRecent>0)
-        {
+        if (this.pagForRecent > 0) {
             this.pagForRecent--;
             getRecentNews();
         }
     }//GEN-LAST:event_btnRecentPreviousActionPerformed
+
+    private void btnMostVotedNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostVotedNextActionPerformed
+        if (userSaveBO.getUserSaveMostVoted().getDataVector().size() - 1 > this.pagForMostVoted) {
+            this.pagForMostVoted++;
+            logicForMostVoted();
+        }
+    }//GEN-LAST:event_btnMostVotedNextActionPerformed
+
+    private void btnMostVotedPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostVotedPreviousActionPerformed
+        if (this.pagForMostVoted > 0) {
+            this.pagForMostVoted--;
+            logicForMostVoted();
+        }
+    }//GEN-LAST:event_btnMostVotedPreviousActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

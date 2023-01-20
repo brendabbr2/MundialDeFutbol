@@ -25,7 +25,7 @@ public class UserSaveDAO {
         
         CallableStatement statement = null;
         
-        String sql = "CALL getUserSave(?)";
+        String sql = "CALL getUserSaveMostVoted(?)";
         
         String [] row = new String[2];
         ResultSet rs = null;
