@@ -121,6 +121,11 @@ public class News_Panel extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        setBackground(new java.awt.Color(94, 4, 32));
+        setMaximumSize(new java.awt.Dimension(834, 578));
+        setMinimumSize(new java.awt.Dimension(834, 578));
+        setPreferredSize(new java.awt.Dimension(834, 578));
+
         jScrollPane1.setMaximumSize(new java.awt.Dimension(834, 578));
         jScrollPane1.setMinimumSize(new java.awt.Dimension(834, 578));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(834, 578));
@@ -437,7 +442,7 @@ public class News_Panel extends javax.swing.JPanel {
         );
         pnlMostVotedImageLayout.setVerticalGroup(
             pnlMostVotedImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblMostVotedImage, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(lblMostVotedImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         lblMostVotedTitle.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -580,20 +585,15 @@ public class News_Panel extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(pnlScrollDashboard);
 
-        setBackground(new java.awt.Color(94, 4, 32));
-        setMaximumSize(new java.awt.Dimension(834, 578));
-        setMinimumSize(new java.awt.Dimension(834, 578));
-        setPreferredSize(new java.awt.Dimension(834, 578));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
