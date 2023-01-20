@@ -291,25 +291,25 @@ BEGIN
         WHERE idUser = NVL(v_idUser,idUser);  
 END getUserSave;
 
-CREATE OR REPLACE PROCEDURE getUserSaveMostVoted(v_idUser IN NUMBER, SaveCursor OUT SYS_REFCURSOR) 
+CREATE OR REPLACE PROCEDURE getUserSaveMostVoted(SaveCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
     OPEN SaveCursor FOR  
-        select idNews, count(idNews) as voted
-        from UserSave group by idNews
-        order by voted DESC;
+        SELECT idNews, COUNT(idNews) AS voting
+        FROM UserSave GROUP BY idNews
+        ORDER BY voting DESC;
 END getUserSave;
 
 CREATE OR REPLACE PROCEDURE getNews(v_idNews IN NUMBER, NewsCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
-    OPEN NewsCursor FOR  
+    OPEN NewsCursor FOR
         SELECT n.idNews,n.idEvent,e.nameEvent,n.title,n.text,n.author,n.newsDate,
         n.photo, n.creationUser, n.creationDate, n.modificationUser, n.modificationDate
         FROM News n
         INNER JOIN Event e
         ON n.idEvent = e.idEvent
-        WHERE n.idNews = NVL(v_idNews,n.idNews); 
+        WHERE n.idNews = NVL(v_idNews,n.idNews);
 END getNews;
 
 CREATE OR REPLACE PROCEDURE getParameterEvent(v_idParameter IN NUMBER, ParameterEventCursor OUT SYS_REFCURSOR) 
