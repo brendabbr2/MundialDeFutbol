@@ -291,6 +291,15 @@ BEGIN
         WHERE idUser = NVL(v_idUser,idUser);  
 END getUserSave;
 
+CREATE OR REPLACE PROCEDURE getUserSaveMostVoted(v_idUser IN NUMBER, SaveCursor OUT SYS_REFCURSOR) 
+AS 
+BEGIN 
+    OPEN SaveCursor FOR  
+        select idNews, count(idNews) as voted
+        from UserSave group by idNews
+        order by voted DESC;
+END getUserSave;
+
 CREATE OR REPLACE PROCEDURE getNews(v_idNews IN NUMBER, NewsCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
