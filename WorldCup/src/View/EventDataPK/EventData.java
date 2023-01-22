@@ -5,6 +5,7 @@
 package View.EventDataPK;
 
 import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
@@ -14,14 +15,16 @@ import javax.swing.JTable;
  */
 public class EventData extends javax.swing.JPanel {
     private JPanel pnlContent;
-    private TableNews tableNewsPanel;
+    private TableNews tableNewsPanel = new TableNews();;
+    private TablePeople tablePeople = new TablePeople();
+    private TableContinents tableContinent;
     /**
      * Creates new form EventData
      */
     public EventData(JPanel pnlContent) {
         initComponents();
-        this.tableNewsPanel = new TableNews();
         this.pnlContent = pnlContent;
+        this.tableContinent = new TableContinents(pnlContent);
     }
 
     public void setIdEventToSubEntities(int idEvent) {
@@ -271,11 +274,21 @@ public class EventData extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPeopleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeopleActionPerformed
-
+        this.tablePeople.setSize(834, 578);
+        this.tablePeople.setLocation(0,0);
+        pnlContent.removeAll();
+        pnlContent.add(this.tablePeople,BorderLayout.CENTER);
+        pnlContent.revalidate();
+        pnlContent.repaint();
     }//GEN-LAST:event_btnPeopleActionPerformed
 
     private void btnContinentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinentsActionPerformed
-        // TODO add your handling code here:
+        this.tableContinent.setSize(834, 567);
+        this.tableContinent.setLocation(0,0);
+        pnlContent.removeAll();
+        pnlContent.add(this.tableContinent,BorderLayout.CENTER);
+        pnlContent.revalidate();
+        pnlContent.repaint();
     }//GEN-LAST:event_btnContinentsActionPerformed
 
     private void btnStadiumsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStadiumsActionPerformed

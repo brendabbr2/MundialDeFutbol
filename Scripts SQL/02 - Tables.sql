@@ -106,8 +106,8 @@ CREATE TABLE userPerson(
     --------------FK------------------
     idUserType number(6),
     --------------Attribute------------
-    username varchar2(50) UNIQUE NOT NULL,
-    passwordUser varchar2(50) NOT NULL,
+    username varchar2(80) UNIQUE NOT NULL,
+    passwordUser varchar2(80) NOT NULL,
     --------------Audit---------------
     creationUser varchar(20),
     creationDate date,
@@ -181,10 +181,11 @@ CREATE TABLE News(
     --------------PK------------------
     idNews number(6),
     --------------FK------------------
-    idUser number(6),
     idEvent number(6),
     --------------Attribute------------
-    title varchar(50) NOT NULL, 
+
+    title varchar(100) NOT NULL, 
+
     text varchar2(200) NOT NULL,
     author varchar2(50) NOT NULL,
     newsDate date NOT NULL,
@@ -381,7 +382,6 @@ CREATE TABLE Country(
     idDemonym NUMBER(6),
     --------------Attribute-----------
     nameCountry VARCHAR2(20) NOT NULL,
-    demonym VARCHAR2(20) NOT NULL,
     --------------Audit---------------
     creationUser VARCHAR2(20),
     creationDate DATE,

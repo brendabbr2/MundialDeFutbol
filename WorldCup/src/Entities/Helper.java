@@ -13,14 +13,19 @@ public class Helper {
     private int idTeam;
     private int idHelperType;
     private String hireDate;
+    private int idEvent;
 
-    public Helper(int idHelper, int idTeam, int idHelperType, String hireDate) {
+    public Helper(int idHelper, int idTeam, int idHelperType, String hireDate, int idEvent) {
         this.idHelper = idHelper;
         this.idTeam = idTeam;
         this.idHelperType = idHelperType;
         this.hireDate = hireDate;
+        this.idEvent = idEvent;
     }
 
+    public Helper() {
+    }
+    
     public int getIdHelper() {
         return idHelper;
     }
@@ -53,8 +58,16 @@ public class Helper {
         this.hireDate = hireDate;
     }
 
+    public int getIdEvent() {
+        return idEvent;
+    }
+
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
+    }
+
     @Override
     public String toString() {
-        return "Helper{" + "idHelper=" + idHelper + ", idTeam=" + idTeam + ", idHelperType=" + idHelperType + ", hireDate=" + hireDate + '}';
+        return "Helper{" + "idHelper=" + idHelper + ", idTeam=" + idTeam + ", idHelperType=" + idHelperType + ", hireDate=" + hireDate + ", idEvent=" + idEvent + '}';
     }
 }

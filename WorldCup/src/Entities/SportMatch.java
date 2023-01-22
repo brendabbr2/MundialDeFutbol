@@ -17,6 +17,10 @@ public class SportMatch {
         this.idEvent = idEvent;
     }
 
+    public SportMatch() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getIdSportMatch() {
         return idSportMatch;
     }

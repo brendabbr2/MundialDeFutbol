@@ -1,7 +1,14 @@
 package View.Admin_OptionsPK;
 
 import B_Layer.UserBO;
+import B_Layer.UserTypeBO;
 import Entities.User;
+import Entities.UserType;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
@@ -12,16 +19,28 @@ import javax.swing.table.TableColumnModel;
  */
 public class TableUsers extends javax.swing.JPanel {
     private final UserBO userBO = new UserBO();
+    private final UserTypeBO userType = new UserTypeBO();
     private final User user = new User();
     /**
      * Creates new form TableConsults
      */
-    public TableUsers() {
+    public TableUsers(){
         initComponents();
+        fillCombobox();
         getUsers();
         //this.btnInsert.setVisible(false);
     }
     
+    public void fillCombobox(){
+        try{
+            ArrayList<UserType> list = userType.getUserTypeList();
+            for(int i =0; i < list.size();i++){
+                cmbUserType.addItem(list.get(i).getNameUserType());
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
     public void getUsers(){
             tblUsers.setModel(userBO.getUsers());
             TableColumnModel tblModelColumn = tblUsers.getColumnModel();
@@ -113,7 +132,6 @@ public class TableUsers extends javax.swing.JPanel {
         lblUserType.setText("User Type");
 
         cmbUserType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cmbUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Admin" }));
         cmbUserType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbUserTypeActionPerformed(evt);
@@ -228,7 +246,11 @@ public class TableUsers extends javax.swing.JPanel {
             this.user.setUsername(this.txtUsername.getText());
             this.user.setPassword(this.txtPassword.getText());
             
-            System.out.println(userBO.insertUser(user));
+            try {
+                System.out.println(userBO.insertUser(user));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(TableUsers.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.getUsers();
         }
         else {
@@ -251,7 +273,11 @@ public class TableUsers extends javax.swing.JPanel {
             this.user.setUsername(this.txtUsername.getText());
             this.user.setPassword(this.txtPassword.getText());
             
-            System.out.println(this.userBO.updateUser(user));
+            try {
+                System.out.println(this.userBO.updateUser(user));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(TableUsers.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.getUsers();
         }
         else {

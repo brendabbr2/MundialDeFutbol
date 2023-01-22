@@ -19,6 +19,9 @@ public class UserSave {
         this.idUser = idUser;
     }
 
+    public UserSave() {
+    }
+    
     public int getIdSave() {
         return idSave;
     }

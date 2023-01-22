@@ -28,7 +28,7 @@ public class TableDemonyms extends javax.swing.JPanel {
     }
 
     public void getDemonym(){
-        tblEventDemonym.setModel(demoBO.getDemonym());
+        tblEventDemonym.setModel(demoBO.getTable());
         TableColumnModel tblModelColumn = tblEventDemonym.getColumnModel();
         tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
     }

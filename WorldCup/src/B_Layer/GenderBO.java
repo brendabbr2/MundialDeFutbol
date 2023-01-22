@@ -9,6 +9,7 @@ import DA_Layer.GenderDAO;
 import Entities.Gender;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,6 +44,7 @@ public class GenderBO {
         }
         return message;
     }
+    
     public String updateGender(Gender gender){
         Connection conn = SysConnection.connect();
         try{
@@ -60,6 +62,7 @@ public class GenderBO {
         }
         return message;
     }
+    
     public String deleteGender(int id){
         Connection conn = SysConnection.connect();
         try{
@@ -77,7 +80,8 @@ public class GenderBO {
         }
         return message;
     }
-    public DefaultTableModel getGenders(){
+    
+    public DefaultTableModel getTable(){
         Connection conn = SysConnection.connect();
         DefaultTableModel model = genderDao.getGenders(conn);
         try {
@@ -86,5 +90,12 @@ public class GenderBO {
             System.out.println(ex.getMessage());
         }
         return model;
+    }
+    
+    public ArrayList getList() throws SQLException{
+        Connection conn = SysConnection.connect();
+        ArrayList list = genderDao.getList(conn);
+        conn.close();
+        return list;
     }
 }

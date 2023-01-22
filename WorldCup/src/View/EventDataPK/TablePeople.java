@@ -4,19 +4,67 @@
  */
 package View.EventDataPK;
 
+import B_Layer.GenderBO;
+import B_Layer.IdentificationTypeBO;
+import B_Layer.PersonBO;
+import Entities.IdentificationType;
+import Entities.Person;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TablePeople extends javax.swing.JPanel {
-
+    private final PersonBO peopleBO = new PersonBO();
+    private final GenderBO genderBO = new GenderBO();
+    private final IdentificationTypeBO idType = new IdentificationTypeBO();
+    private final Person people = new Person();
     /**
      * Creates new form TablePeople
      */
     public TablePeople() {
         initComponents();
+        fillComboBoxIdType();
+        getPeople();
     }
-
+    
+    public void getPeople(){
+        tblPerson.setModel(peopleBO.getTable());
+        TableColumnModel tblModelColumn = tblPerson.getColumnModel();
+        tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    public void fillComboBoxIdType(){
+        try {
+            ArrayList<IdentificationType> list = idType.getList();
+            for(int i =0; i < list.size();i++){
+                cmbIdType.addItem(list.get(i).getIdName());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TablePeople.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void asignFormat(){
+        //this.ftxtIdentification
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object user = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            user = table.getModel().getValueAt(row, column);
+            //return user;
+        }
+        return user;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,17 +74,26 @@ public class TablePeople extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlBackground = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPerson = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
+        pnlOptions = new javax.swing.JPanel();
         btnDeletePerson = new javax.swing.JButton();
         btnUpdatePerson = new javax.swing.JButton();
         btnInsertPerson = new javax.swing.JButton();
+        pnlGender = new javax.swing.JPanel();
+        lblIdType = new javax.swing.JLabel();
+        cmbIdType = new javax.swing.JComboBox<>();
+        pnlId = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        ftxtIdentification = new javax.swing.JFormattedTextField();
 
-        jPanel1.setBackground(new java.awt.Color(94, 4, 32));
-        jPanel1.setMaximumSize(new java.awt.Dimension(834, 578));
-        jPanel1.setMinimumSize(new java.awt.Dimension(834, 578));
+        setMaximumSize(new java.awt.Dimension(834, 578));
+        setMinimumSize(new java.awt.Dimension(834, 578));
+
+        pnlBackground.setBackground(new java.awt.Color(94, 4, 32));
+        pnlBackground.setMaximumSize(new java.awt.Dimension(834, 578));
+        pnlBackground.setMinimumSize(new java.awt.Dimension(834, 578));
 
         tblPerson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,7 +113,7 @@ public class TablePeople extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPerson);
 
-        jPanel2.setBackground(new java.awt.Color(152, 12, 51));
+        pnlOptions.setBackground(new java.awt.Color(152, 12, 51));
 
         btnDeletePerson.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         btnDeletePerson.setText("DELETE");
@@ -82,70 +139,128 @@ public class TablePeople extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDeletePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdatePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInsertPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+        pnlGender.setBackground(new java.awt.Color(152, 12, 51));
+
+        lblIdType.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblIdType.setForeground(new java.awt.Color(255, 255, 255));
+        lblIdType.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIdType.setText("Tipo ID:");
+
+        cmbIdType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbIdTypeActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlGenderLayout = new javax.swing.GroupLayout(pnlGender);
+        pnlGender.setLayout(pnlGenderLayout);
+        pnlGenderLayout.setHorizontalGroup(
+            pnlGenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGenderLayout.createSequentialGroup()
+                .addComponent(lblIdType, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbIdType, 0, 207, Short.MAX_VALUE))
+        );
+        pnlGenderLayout.setVerticalGroup(
+            pnlGenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblIdType, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+            .addComponent(cmbIdType)
+        );
+
+        pnlId.setBackground(new java.awt.Color(152, 12, 51));
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ID:");
+
+        ftxtIdentification.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        ftxtIdentification.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtIdentificationActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlIdLayout = new javax.swing.GroupLayout(pnlId);
+        pnlId.setLayout(pnlIdLayout);
+        pnlIdLayout.setHorizontalGroup(
+            pnlIdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlIdLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ftxtIdentification, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+        );
+        pnlIdLayout.setVerticalGroup(
+            pnlIdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ftxtIdentification, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout pnlOptionsLayout = new javax.swing.GroupLayout(pnlOptions);
+        pnlOptions.setLayout(pnlOptionsLayout);
+        pnlOptionsLayout.setHorizontalGroup(
+            pnlOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOptionsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlOptionsLayout.createSequentialGroup()
+                        .addComponent(pnlGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(pnlId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addComponent(btnInsertPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlOptionsLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(pnlOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnDeletePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdatePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(btnInsertPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+        pnlOptionsLayout.setVerticalGroup(
+            pnlOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOptionsLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(pnlOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnInsertPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(btnUpdatePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(63, 63, 63)
                 .addComponent(btnDeletePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
+        pnlBackground.setLayout(pnlBackgroundLayout);
+        pnlBackgroundLayout.setHorizontalGroup(
+            pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBackgroundLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlBackgroundLayout.setVerticalGroup(
+            pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBackgroundLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addGap(18, 18, 18)
+                .addComponent(pnlOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 773, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 523, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -165,14 +280,28 @@ public class TablePeople extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnInsertPersonActionPerformed
 
+    private void cmbIdTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbIdTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbIdTypeActionPerformed
+
+    private void ftxtIdentificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtIdentificationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtIdentificationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeletePerson;
     private javax.swing.JButton btnInsertPerson;
     private javax.swing.JButton btnUpdatePerson;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JComboBox<String> cmbIdType;
+    private javax.swing.JFormattedTextField ftxtIdentification;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblIdType;
+    private javax.swing.JPanel pnlBackground;
+    private javax.swing.JPanel pnlGender;
+    private javax.swing.JPanel pnlId;
+    private javax.swing.JPanel pnlOptions;
     private javax.swing.JTable tblPerson;
     // End of variables declaration//GEN-END:variables
 }

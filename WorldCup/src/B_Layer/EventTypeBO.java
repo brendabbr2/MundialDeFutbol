@@ -10,6 +10,7 @@ import Entities.EventType;
 import Entities.User;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -88,4 +89,10 @@ public class EventTypeBO {
         return model;
     }
     
+    public ArrayList getUserTypeList() throws SQLException{
+        Connection conn = SysConnection.connect();
+        ArrayList list = EtypeDao.getList(conn);
+        conn.close();
+        return list;
+    }
 }

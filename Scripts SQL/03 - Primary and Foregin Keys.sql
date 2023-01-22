@@ -313,6 +313,10 @@ ALTER TABLE Player
 ADD CONSTRAINT fk_player_position FOREIGN KEY
 (idPosition) REFERENCES PlayerPosition(idPlayerPosition);
 
+ALTER TABLE Player
+ADD CONSTRAINT fk_player_person FOREIGN KEY
+(idPlayer) REFERENCES Person(idPerson);
+
 ALTER TABLE Team
 ADD CONSTRAINT fk_team_group FOREIGN KEY
 (idGroup) REFERENCES GroupEvent(idGroup);
@@ -489,9 +493,11 @@ ADD CONSTRAINT fk_save_User FOREIGN KEY
 (idUser) REFERENCES userPerson(idUser);
 -----------------------------------------------------
 ---------------------News Table----------------------
+/*
 ALTER TABLE news
 ADD CONSTRAINT fk_news_User FOREIGN KEY
 (idUser) REFERENCES userPerson(idUser);
+*/
 
 ALTER TABLE news
 ADD CONSTRAINT fk_news_Event FOREIGN KEY

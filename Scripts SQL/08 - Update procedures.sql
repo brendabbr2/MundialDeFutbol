@@ -11,7 +11,7 @@ CREATE OR REPLACE PROCEDURE updateContinent
         WHERE idContinent = VidContinent;
     COMMIT; 
 END updateContinent;
-
+/
 -- Update Country
 CREATE OR REPLACE PROCEDURE updateCountry
     (VidCountry IN NUMBER, VnameCountry IN VARCHAR2, V_idDemonym IN NUMBER, VidContinent IN NUMBER)
@@ -23,7 +23,7 @@ CREATE OR REPLACE PROCEDURE updateCountry
         WHERE idCountry = VidCountry;
     COMMIT; 
 END updateCountry;
-
+/
 -- Update Province
 CREATE OR REPLACE PROCEDURE updateProvince
     (VidProvince IN NUMBER, VnameProvince IN VARCHAR2, VidCountry IN NUMBER)
@@ -34,7 +34,7 @@ CREATE OR REPLACE PROCEDURE updateProvince
         WHERE idProvince = VidProvince;
     COMMIT; 
 END updateProvince;
-
+/
 -- Update Canton
 CREATE OR REPLACE PROCEDURE updateCanton
     (VidCanton IN NUMBER, VnameCanton IN VARCHAR2, VidProvince IN NUMBER)
@@ -45,7 +45,7 @@ CREATE OR REPLACE PROCEDURE updateCanton
         WHERE idCanton = VidCanton;
     COMMIT; 
 END updateCanton;
-
+/
 -- Update District
 CREATE OR REPLACE PROCEDURE updateDistrict
     (VidDistrict IN NUMBER, VnameDistrict IN VARCHAR2, VidCanton IN NUMBER)
@@ -56,7 +56,7 @@ CREATE OR REPLACE PROCEDURE updateDistrict
         WHERE idDistrict = VidDistrict;
     COMMIT; 
 END updateDistrict;
-
+/
 -- Update Address
 CREATE OR REPLACE PROCEDURE updateAddress
     (VidAddress IN NUMBER, VnameAddress IN VARCHAR2, VidDistrict IN NUMBER)
@@ -67,7 +67,7 @@ CREATE OR REPLACE PROCEDURE updateAddress
         WHERE idAddress = VidAddress;
     COMMIT; 
 END updateAddress;
-
+/
 -- Update Stadium
 CREATE OR REPLACE PROCEDURE updateStadium
     (VidStadium IN NUMBER, VnameStadium IN VARCHAR2, VidAddress IN NUMBER, v_idEvent IN NUMBER)
@@ -79,7 +79,7 @@ CREATE OR REPLACE PROCEDURE updateStadium
         WHERE idStadium = VidStadium;
     COMMIT; 
 END updateStadium;
-
+/
 -- SportMatch no tiene atributos editables
 
 -- Update StadiumXSportMatch
@@ -91,7 +91,7 @@ CREATE OR REPLACE PROCEDURE updateStadiumXSportMatch
         WHERE idStadium = VidStadium AND idSportMatch = VidSportMatch;
     COMMIT; 
 END updateStadiumXSportMatch;
-
+/
 -------------------------------------------------------------------------------------------------
 -- By: Rodolfo Acuña Lopez
 
@@ -104,7 +104,7 @@ CREATE OR REPLACE PROCEDURE updateGender
         WHERE idGender = V_idGender;
     COMMIT; 
 END updateGender;
-
+/
 -- Update Worker
 CREATE OR REPLACE PROCEDURE updateWorker 
     (V_idWorker IN NUMBER,V_idEvent IN NUMBER, V_hireDate IN DATE)
@@ -115,7 +115,7 @@ CREATE OR REPLACE PROCEDURE updateWorker
         WHERE idWorker = V_idWorker;
     COMMIT; 
 END updateWorker;
-
+/
 -- Update WorkerType
 CREATE OR REPLACE PROCEDURE updateWorkerType 
     (V_idWorkerType IN NUMBER, V_nameWorkerType IN VARCHAR2)
@@ -125,7 +125,7 @@ CREATE OR REPLACE PROCEDURE updateWorkerType
         WHERE idWorkerType = V_idWorkerType;
     COMMIT; 
 END updateWorkerType;
-
+/
 -- Update PlayerPosition
 CREATE OR REPLACE PROCEDURE updatePlayerPosition 
     (V_idPlayerPosition IN NUMBER, V_playerPositionName IN VARCHAR2)
@@ -135,7 +135,7 @@ CREATE OR REPLACE PROCEDURE updatePlayerPosition
         WHERE idPlayerPosition = V_idPlayerPosition;
     COMMIT; 
 END updatePlayerPosition;
-
+/
 -- Update PlayerXSportMatch
 CREATE OR REPLACE PROCEDURE updatePlayerXSportMatch 
     (v_idPlayer IN NUMBER, v_idSportMatch IN NUMBER, 
@@ -159,7 +159,7 @@ END updatePlayerXSportMatch;
 --------------------------------------------------------------------------------------------
 --By: David Salazar Rodriguez
 --Date: 29/Dic/2022 5:45 a.m
-
+/
 CREATE OR REPLACE PROCEDURE updatePhone
     (V_oldPhone IN NUMBER, V_newPhone IN NUMBER)
     AS BEGIN
@@ -168,7 +168,7 @@ CREATE OR REPLACE PROCEDURE updatePhone
         WHERE phone = V_oldPhone;
     COMMIT; 
 END updatePhone;
-
+/
 CREATE OR REPLACE PROCEDURE updateEmail
     (V_oldEmail IN NUMBER, V_newEmail IN NUMBER)
     AS BEGIN
@@ -177,7 +177,7 @@ CREATE OR REPLACE PROCEDURE updateEmail
         WHERE mail = V_oldEmail;
     COMMIT; 
 END updateEmail;
-
+/
 CREATE OR REPLACE PROCEDURE updateIdentification
     (V_oldIdentification IN NUMBER, V_newIdentification IN NUMBER)
     AS BEGIN
@@ -186,7 +186,7 @@ CREATE OR REPLACE PROCEDURE updateIdentification
         WHERE valueIdentification = V_oldIdentification;
     COMMIT; 
 END updateIdentification;
-
+/
 CREATE OR REPLACE PROCEDURE updateIdentificationType
     (V_idType IN NUMBER, V_idName IN VARCHAR2, V_idMask IN NUMBER)
     AS BEGIN
@@ -196,7 +196,7 @@ CREATE OR REPLACE PROCEDURE updateIdentificationType
         WHERE idIdentificationType = V_idType;
     COMMIT; 
 END updateIdentificationType;
-
+/
 CREATE OR REPLACE PROCEDURE updatePerson
     (V_idPerson IN NUMBER, V_idGender IN NUMBER, V_idAddress IN NUMBER, 
         v_idUser IN NUMBER, V_BirthDate IN Date, V_personName IN VARCHAR2, V_Photo IN VARCHAR2)
@@ -211,16 +211,16 @@ CREATE OR REPLACE PROCEDURE updatePerson
         WHERE idPerson = V_idPerson;
     COMMIT; 
 END updatePerson;
-
+/
 CREATE OR REPLACE PROCEDURE updateUserType
     (V_idUserType IN NUMBER, V_nameUserType IN VARCHAR2)
     AS BEGIN
         UPDATE userType
         SET nameUserType = V_nameUserType
-        WHERE idUserType = V_idUserType;+
+        WHERE idUserType = V_idUserType;
     COMMIT; 
 END updateUserType;
-
+/
 CREATE OR REPLACE PROCEDURE updateUserPerson
     (V_idUser IN NUMBER, V_idUserType IN NUMBER, V_username IN VARCHAR2, V_password VARCHAR2)
     AS BEGIN
@@ -231,7 +231,7 @@ CREATE OR REPLACE PROCEDURE updateUserPerson
         WHERE idUser = V_idUser;
     COMMIT; 
 END updateUserPerson;
-
+/
 CREATE OR REPLACE PROCEDURE updateUserLog
     (V_idLog IN NUMBER, V_idNews IN NUMBER, V_idUser NUMBER, V_logDate IN DATE, V_logText IN VARCHAR2)
     AS BEGIN
@@ -243,7 +243,7 @@ CREATE OR REPLACE PROCEDURE updateUserLog
         WHERE idLog = V_idLog;
     COMMIT; 
 END updateUserLog;
-
+/
 CREATE OR REPLACE PROCEDURE updateUserComment
     (V_idComment IN NUMBER, V_idNews IN NUMBER, V_idUser NUMBER, V_commentDate IN DATE, V_commentText IN VARCHAR2)
     AS BEGIN
@@ -255,7 +255,7 @@ CREATE OR REPLACE PROCEDURE updateUserComment
         WHERE idComment = V_idComment;
     COMMIT; 
 END updateUserComment;
-
+/
 CREATE OR REPLACE PROCEDURE updateUserReview
     (V_idReview IN NUMBER, V_idNews IN NUMBER, V_idUser NUMBER, V_score IN NUMBER)
     AS BEGIN
@@ -266,7 +266,7 @@ CREATE OR REPLACE PROCEDURE updateUserReview
         WHERE idReview = V_idReview;
     COMMIT; 
 END updateUserReview;
-
+/
 CREATE OR REPLACE PROCEDURE updateUserSave
     (V_idSave IN NUMBER, V_idNews IN NUMBER, V_idUser NUMBER)
     AS BEGIN
@@ -276,7 +276,7 @@ CREATE OR REPLACE PROCEDURE updateUserSave
         WHERE idSave = V_idSave;
     COMMIT; 
 END updateUserSave;
-
+/
 CREATE OR REPLACE PROCEDURE updateNews
     (V_idNews IN NUMBER, V_idEvent NUMBER, V_title IN VARCHAR2, V_text IN VARCHAR2,
         V_author IN VARCHAR2, V_newsDate IN DATE,V_Photo IN VARCHAR2)
@@ -291,7 +291,7 @@ CREATE OR REPLACE PROCEDURE updateNews
         WHERE idNews = V_idNews;
     COMMIT; 
 END updateNews;
-
+/
 CREATE OR REPLACE PROCEDURE updateParameterEvent
     (V_idParameter IN NUMBER, v_nameParameter IN VARCHAR2, v_valueParameter IN VARCHAR2)
     AS BEGIN
@@ -301,7 +301,7 @@ CREATE OR REPLACE PROCEDURE updateParameterEvent
         WHERE idParameter = V_idParameter;
     COMMIT; 
 END updateParameterEvent;
-
+/
 CREATE OR REPLACE PROCEDURE updateDemonym
     (V_idDemonym IN NUMBER, v_nameDemonym IN VARCHAR2)
     AS BEGIN
@@ -310,7 +310,7 @@ CREATE OR REPLACE PROCEDURE updateDemonym
         WHERE idDemonym = V_idDemonym;
     COMMIT; 
 END updateDemonym;
-
+/
 CREATE OR REPLACE PROCEDURE updateEventType
     (V_idEventType IN NUMBER, v_nameEventType IN VARCHAR2)
     AS BEGIN
@@ -319,7 +319,7 @@ CREATE OR REPLACE PROCEDURE updateEventType
         WHERE V_idEventType = V_idEventType;
     COMMIT; 
 END updateEventType;
-
+/
 CREATE OR REPLACE PROCEDURE updateTeam
     (V_idTeam IN NUMBER, v_idGroup IN NUMBER, v_idCountry IN NUMBER,v_idEvent IN NUMBER,
      v_idLineup IN NUMBER, v_captainNumber IN NUMBER, v_logoPhoto IN VARCHAR2)
@@ -334,7 +334,7 @@ CREATE OR REPLACE PROCEDURE updateTeam
         WHERE idGroup = V_idGroup;
     COMMIT; 
 END updateTeam;
-
+/
 CREATE OR REPLACE PROCEDURE updateLineup
     (V_idLineup IN NUMBER, v_nameLineup IN VARCHAR2)
     AS BEGIN
@@ -343,7 +343,7 @@ CREATE OR REPLACE PROCEDURE updateLineup
         WHERE V_idLineup = V_idLineup;
     COMMIT; 
 END updateLineup;
-
+/
 --By: Brenda Badilla Rodriguez
 --Date: 31/Dic/2022 3:00 p.m
 --Event, EventType, GroupEvent, Helper, HelperType, ParameterEvent, Player, Team
@@ -356,7 +356,7 @@ CREATE OR REPLACE PROCEDURE updateEvent
         WHERE idEvent = V_idEvent;
     COMMIT; 
 END updateEvent;
-
+/
 CREATE OR REPLACE PROCEDURE updateEventType
     (V_idEventType IN NUMBER, V_nameEventType IN VARCHAR2)
     AS BEGIN
@@ -365,7 +365,7 @@ CREATE OR REPLACE PROCEDURE updateEventType
         WHERE idEventType = V_idEventType;
     COMMIT; 
 END updateEventType;
-
+/
 CREATE OR REPLACE PROCEDURE updateGroupEvent
     (V_idGroup IN NUMBER, V_idEvent IN NUMBER, V_nameGroup IN VARCHAR2)
     AS BEGIN
@@ -375,7 +375,7 @@ CREATE OR REPLACE PROCEDURE updateGroupEvent
         WHERE idGroup = V_idGroup;
     COMMIT; 
 END updateGroupEvent;
-
+/
 CREATE OR REPLACE PROCEDURE updateHelper
     (V_idHelper IN NUMBER, V_idTeam IN NUMBER, V_idHelperType IN NUMBER,
     V_hireDate IN DATE, V_idEvent IN NUMBER)
@@ -388,18 +388,18 @@ CREATE OR REPLACE PROCEDURE updateHelper
         WHERE idHelper = V_idHelper;
     COMMIT; 
 END updateHelper;
-
+/
 CREATE OR REPLACE PROCEDURE updateHelperType
-    (V_idHelperType IN NUMBER, nameHelperType IN VARCHAR2)
+    (V_idHelperType IN NUMBER, V_nameHelperType IN VARCHAR2)
     AS BEGIN
         UPDATE HelperType
         SET nameHelperType = NVL(V_nameHelperType, nameHelperType)
         WHERE idHelperType = V_idHelperType;
     COMMIT; 
 END updateHelperType;
-
+/
 CREATE OR REPLACE PROCEDURE updateParameterEvent
-    (V_iduParameterEvent IN NUMBER, V_nameParameter IN VARCHAR2, V_valueParameter IN NUMBER)
+    (V_idParameter IN NUMBER, V_nameParameter IN VARCHAR2, V_valueParameter IN NUMBER)
     AS BEGIN
         UPDATE ParameterEvent
         SET nameParameter = NVL(V_nameParameter, nameParameter),
@@ -407,7 +407,7 @@ CREATE OR REPLACE PROCEDURE updateParameterEvent
         WHERE idParameter = V_idParameter;
     COMMIT; 
 END updateParameterEvent;
-
+/
 CREATE OR REPLACE PROCEDURE updatePlayer
     (V_idPlayer IN NUMBER, V_idTeam IN NUMBER, V_idPosition NUMBER
     , V_numberPlayer IN NUMBER, V_idEvent IN NUMBER)
@@ -420,7 +420,7 @@ CREATE OR REPLACE PROCEDURE updatePlayer
         WHERE idPlayer = V_idPlayer;
     COMMIT; 
 END updatePlayer;
-
+/
 CREATE OR REPLACE PROCEDURE updateTeam
     (V_idTeam IN NUMBER, V_idGroup IN NUMBER, V_idCountry IN NUMBER, V_captainNumber IN NUMBER, V_logoPhoto IN VARCHAR2,
         V_lineup IN NUMBER)
@@ -430,7 +430,7 @@ CREATE OR REPLACE PROCEDURE updateTeam
             idCountry = NVL(V_idCountry, idCountry),
             captainNumber = NVL(V_captainNumber, captainNumber),
             logoPhoto = NVL(V_logoPhoto, logoPhoto),
-            lineup = NVL(V_lineup, lineup)
+            idlineup = NVL(V_lineup, idlineup)
         WHERE idTeam = V_idTeam;
     COMMIT; 
 END updateTeam;

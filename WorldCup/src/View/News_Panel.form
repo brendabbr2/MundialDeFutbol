@@ -193,7 +193,7 @@
                                       <Component id="btnRecentNext" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="pnlRecentNewsImage" pref="154" max="32767" attributes="0"/>
+                              <Component id="pnlRecentNewsImage" pref="156" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -344,16 +344,25 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Previous"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRecentPreviousActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnRecentNext">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Next"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRecentNextActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnRecentRead">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Read Article"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRecentReadActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -793,11 +802,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Previous"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostVotedPreviousActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnMostVotedNext">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Next"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostVotedNextActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnReadArticle">
                   <Properties>

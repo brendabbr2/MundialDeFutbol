@@ -4,19 +4,52 @@
  */
 package View.EventDataPK;
 
+import B_Layer.ContinentBO;
+import Entities.Continent;
+import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableContinents extends javax.swing.JPanel {
-
+    private final ContinentBO continentBO = new ContinentBO();
+    private final Continent continent = new Continent();
+    private TableCountries countries;
+    private JPanel pnlContent;
     /**
      * Creates new form TableContinents
      */
-    public TableContinents() {
+    public TableContinents(JPanel pnlContent) {
         initComponents();
+        this.pnlContent = pnlContent;
+        countries = new TableCountries(pnlContent);
+        getContinents();
     }
-
+    
+    public void getContinents(){
+            this.tblContinents.setModel(continentBO.getTable());
+            TableColumnModel tblModelColumn = tblContinents.getColumnModel();
+            tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+            
+            Object XXX = continentBO.getTable().getDataVector().isEmpty();
+            System.out.println(XXX);
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object user = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            user = table.getModel().getValueAt(row, column);
+            //return user;
+        }
+        return user;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,6 +68,7 @@ public class TableContinents extends javax.swing.JPanel {
         lblNameContinents = new javax.swing.JLabel();
         txtNameContinents = new javax.swing.JTextField();
         btnInsertContinents = new javax.swing.JButton();
+        btnManageCountries = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(94, 4, 32));
         jPanel1.setMaximumSize(new java.awt.Dimension(834, 578));
@@ -62,6 +96,7 @@ public class TableContinents extends javax.swing.JPanel {
 
         btnDeleteContinents.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         btnDeleteContinents.setText("DELETE");
+        btnDeleteContinents.setEnabled(false);
         btnDeleteContinents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteContinentsActionPerformed(evt);
@@ -88,26 +123,38 @@ public class TableContinents extends javax.swing.JPanel {
             }
         });
 
+        btnManageCountries.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        btnManageCountries.setText("Manage Countries");
+        btnManageCountries.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageCountriesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
                         .addComponent(lblNameContinents)
-                        .addGap(59, 59, 59)
+                        .addGap(18, 18, 18)
                         .addComponent(txtNameContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(296, 296, 296)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdateContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDeleteContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(16, Short.MAX_VALUE))
+                        .addGap(296, 296, 296))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnInsertContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                        .addContainerGap()
+                        .addComponent(btnManageCountries)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUpdateContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInsertContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,10 +164,13 @@ public class TableContinents extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnUpdateContinents, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNameContinents, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNameContinents, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtNameContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNameContinents)))
                 .addGap(36, 36, 36)
-                .addComponent(btnDeleteContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDeleteContinents, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnManageCountries, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
 
@@ -139,8 +189,8 @@ public class TableContinents extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
         );
@@ -149,21 +199,13 @@ public class TableContinents extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -176,17 +218,52 @@ public class TableContinents extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteContinentsActionPerformed
 
     private void btnUpdateContinentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateContinentsActionPerformed
-
+        if (this.checkTableSelection(tblContinents,0) != null && !(this.txtNameContinents.getText().isEmpty())){
+            int idContinent = Integer.parseInt((String) checkTableSelection(tblContinents, 0));
+            this.continent.setIdContinent(idContinent);
+            
+            this.continent.setNameContinent(this.txtNameContinents.getText());
+            
+            System.out.println(this.continentBO.updateContinent(continent));
+            this.getContinents();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateContinentsActionPerformed
 
     private void btnInsertContinentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertContinentsActionPerformed
-
+        if(!this.txtNameContinents.getText().isEmpty()){
+            this.continent.setNameContinent(this.txtNameContinents.getText());
+            System.out.println(continentBO.insertContinent(continent));
+            this.getContinents();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Error continent not inserted!");
+        }
     }//GEN-LAST:event_btnInsertContinentsActionPerformed
+
+    private void btnManageCountriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCountriesActionPerformed
+        if(this.checkTableSelection(tblContinents, WIDTH) != null ){
+            int idContinent = Integer.parseInt((String) checkTableSelection(tblContinents, 0));
+            this.countries.SetContinentToCountrie(idContinent);
+            this.countries.setSize(834, 567);
+            this.countries.setLocation(0,0);
+            pnlContent.removeAll();
+            pnlContent.add(this.countries,BorderLayout.CENTER);
+            pnlContent.revalidate();
+            pnlContent.repaint();
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select a Continent");
+        }
+    }//GEN-LAST:event_btnManageCountriesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteContinents;
     private javax.swing.JButton btnInsertContinents;
+    private javax.swing.JButton btnManageCountries;
     private javax.swing.JButton btnUpdateContinents;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

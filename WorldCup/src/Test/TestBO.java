@@ -5,7 +5,15 @@
 package Test;
 
 import B_Layer.*;
+import Connection.SysConnection;
+import DA_Layer.EventTypeDAO;
 import Entities.*;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,11 +22,14 @@ import Entities.*;
 public class TestBO {
     UserBO userBO = new UserBO();
     User user = new User();
+    
+    static UserTypeBO userTypeBO= new UserTypeBO();
     String message = "";
     
     DemonymBO demoBO = new DemonymBO();
     Demonym demo = new Demonym();
-    
+    private static byte[] hash;
+            
     public void insert(){
         demo.setNameDemonym("Prueba");
         message = demoBO.insertDemonym(demo);  
@@ -30,7 +41,7 @@ public class TestBO {
         user.setIdUserType(1);
         user.setUsername("brenda");
         user.setPassword("258");
-        message = userBO.updateUser(user);  
+        //message = userBO.updateUser(user);  
         System.out.println(message);
     }
     public void delete(int idUser){
@@ -38,7 +49,7 @@ public class TestBO {
         System.out.println(message);
     }
     public void get(){
-        demoBO.getDemonym();
+        demoBO.getTable();
     }
     
     public User verify(){
@@ -47,9 +58,34 @@ public class TestBO {
         return userBO.verifyUser(user);
     }
     
-    public static void main(String[] args) {
-        TestBO test = new TestBO();
-        test.get();
+    
+    public static byte[] getHash(String password) throws NoSuchAlgorithmException{
+        MessageDigest messageDisgest = MessageDigest.getInstance("SHA-256");
+        return hash = messageDisgest.digest(password.getBytes(StandardCharsets.UTF_8));
+    }
+    
+    public static void byteToHex(String password) throws NoSuchAlgorithmException{
+        System.out.println(Hash(getHash(password)));
+    }
+    
+    public static String Hash(byte[] hash){
+        StringBuffer hexString = new StringBuffer();
+        for(int i = 0; i < hash.length; i++){
+            String hex = Integer.toHexString(255 & hash[i]);
+            if(hex.length() == 1){
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        System.out.println(hexString);
+        return hexString.toString();
+    }
+    
+    public static void main(String[] args) throws NoSuchAlgorithmException, SQLException {
+        
+        ArrayList<UserType> list = userTypeBO.getUserTypeList();
+        list.toString();
+        byteToHex("ds");
     }
 }
 

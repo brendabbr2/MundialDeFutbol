@@ -7,6 +7,9 @@ package B_Layer;
 import Connection.SysConnection;
 import DA_Layer.UserDAO;
 import Entities.User;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -21,13 +24,15 @@ public class UserBO {
     
     private UserDAO userDao;
     private String message;
+    private byte[] hash;
 
     public UserBO() {
         this.userDao = new UserDAO();
         this.message = "";
     }
     
-    public String insertUser(User user){
+    public String insertUser(User user) throws NoSuchAlgorithmException{
+        encryptPassword(user);
         Connection conn = SysConnection.connect();
         try{
             message = userDao.insertUser(conn, user);
@@ -44,7 +49,8 @@ public class UserBO {
         }
         return message;
     }
-    public String updateUser(User user){
+    public String updateUser(User user) throws NoSuchAlgorithmException{
+        encryptPassword(user);
         Connection conn = SysConnection.connect();
         try{
             message = userDao.updateUser(conn, user);
@@ -88,6 +94,7 @@ public class UserBO {
         }
         return model;
     }
+    
     public User verifyUser(User user){
         Connection conn = SysConnection.connect();
         // in [0] we set the idUser
@@ -99,5 +106,27 @@ public class UserBO {
             System.out.println(ex.getMessage());
         }
         return userVerified;
+    }
+    
+    public byte[] getHash(String password) throws NoSuchAlgorithmException{
+        MessageDigest messageDisgest = MessageDigest.getInstance("SHA-256");
+        return hash = messageDisgest.digest(password.getBytes(StandardCharsets.UTF_8));
+    }
+    
+    public void encryptPassword(User user) throws NoSuchAlgorithmException{
+        user.setPassword(Hash(getHash(user.getPassword())));
+    }
+    
+    public static String Hash(byte[] hash){
+        StringBuffer hexString = new StringBuffer();
+        for(int i = 0; i < hash.length; i++){
+            String hex = Integer.toHexString(255 & hash[i]);
+            if(hex.length() == 1){
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        System.out.println(hexString);
+        return hexString.toString();
     }
 }

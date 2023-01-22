@@ -7,6 +7,9 @@ package View;
 import B_Layer.UserBO;
 import Entities.User;
 import java.awt.BorderLayout;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -16,6 +19,7 @@ import javax.swing.JPanel;
  * @author Datos
  */
 public class Login_Panel extends javax.swing.JPanel {
+    private Register_Panel regPanel;
     private UserBO userBO = new UserBO();
     private User user = new User();
     private MainFrame mainFrame;
@@ -25,6 +29,7 @@ public class Login_Panel extends javax.swing.JPanel {
     public Login_Panel(MainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
+        this.regPanel = new Register_Panel(this.mainFrame.getPnlContent());
     }
     
     public void login(User userVerified){
@@ -118,6 +123,11 @@ public class Login_Panel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LoginIcon.png"))); // NOI18N
 
         btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
         pnlBackground.setLayout(pnlBackgroundLayout);
@@ -129,13 +139,10 @@ public class Login_Panel extends javax.swing.JPanel {
                 .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblUser)
                     .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlBackgroundLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
-                    .addGroup(pnlBackgroundLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPassword)))
+                    .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                    .addComponent(txtPassword))
                 .addGap(185, 185, 185))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBackgroundLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -176,6 +183,13 @@ public class Login_Panel extends javax.swing.JPanel {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         this.user.setUsername(this.txtUser.getText());
         this.user.setPassword(this.txtPassword.getText());
+        
+        try {
+            userBO.encryptPassword(user);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Login_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         User userVerified = userBO.verifyUser(this.user); 
         if (userVerified.getIdUser() != -1){
             login(userVerified);
@@ -183,6 +197,15 @@ public class Login_Panel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Invalid Credentials", "", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        this.regPanel.setSize(834, 567);
+        this.regPanel.setLocation(0,0);
+        this.mainFrame.getPnlContent().removeAll();
+        this.mainFrame.getPnlContent().add(this.regPanel,BorderLayout.CENTER);
+        this.mainFrame.getPnlContent().revalidate();
+        this.mainFrame.getPnlContent().repaint();
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
