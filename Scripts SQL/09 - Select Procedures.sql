@@ -83,10 +83,11 @@ CREATE OR REPLACE PROCEDURE getCountry(v_idCountry IN NUMBER, CountryCursor OUT 
 AS
 BEGIN 
     OPEN CountryCursor FOR  
-        SELECT Country.idCountry, Continent.NameContinent, Country.nameCountry, Country.creationUser, Country.creationDate, Country.modificationUser, Country.modificationDate
+        SELECT Country.idCountry, Continent.NameContinent, Country.nameCountry, Demonym.nameDemonym , Country.creationUser, Country.creationDate, Country.modificationUser, Country.modificationDate
         FROM Country
         JOIN Continent ON Country.idContinent = Continent.idContinent
-        WHERE idCountry = NVL(v_idCountry, idCountry); 
+        JOIN Demonym ON Country.idDemonym = Demonym.idDemonym
+        WHERE idCountry = NVL(v_idCountry, idCountry);
 END getCountry;
 /
 --return a cursor of Demonym

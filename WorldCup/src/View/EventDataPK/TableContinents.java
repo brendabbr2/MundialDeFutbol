@@ -255,7 +255,7 @@ public class TableContinents extends javax.swing.JPanel {
             pnlContent.repaint();
             
         }else{
-            JOptionPane.showMessageDialog(null, "Please select a country");
+            JOptionPane.showMessageDialog(null, "Please select a Continent");
         }
     }//GEN-LAST:event_btnManageCountriesActionPerformed
 

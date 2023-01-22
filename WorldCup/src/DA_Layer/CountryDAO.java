@@ -89,14 +89,14 @@ public class CountryDAO {
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
     public DefaultTableModel getCountrys(Connection conn){
-        String [] columns = {"ID", "Continent","Country", "creationUser", "creationDate", "modificationUser", "modificationDate"};
+        String [] columns = {"ID", "Continent","Country","Demonym", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
         String sql = "CALL getCountry(?,?)";
         
-        String [] row = new String[7];
+        String [] row = new String[8];
         Statement st = null;
         ResultSet rs = null;
         
@@ -108,7 +108,7 @@ public class CountryDAO {
             rs = (ResultSet) statement.getObject(2);
             
             while (rs.next()) {
-                for (int i = 0; i < 7; i++) {
+                for (int i = 0; i < 8; i++) {
                     row[i] = rs.getString(i+1);
                 }
                 model.addRow(row);
