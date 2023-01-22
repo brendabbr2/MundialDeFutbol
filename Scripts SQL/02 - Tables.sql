@@ -184,7 +184,7 @@ CREATE TABLE News(
     idUser number(6),
     idEvent number(6),
     --------------Attribute------------
-    title varchar(2) NOT NULL, 
+    title varchar(50) NOT NULL, 
     text varchar2(200) NOT NULL,
     author varchar2(50) NOT NULL,
     newsDate date NOT NULL,

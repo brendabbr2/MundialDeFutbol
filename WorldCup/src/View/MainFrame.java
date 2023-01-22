@@ -391,6 +391,9 @@ public class MainFrame extends javax.swing.JFrame {
         this.btnLogout.setVisible(false);
         this.btnLogin.setVisible(true);
         this.btnAdminOptions.setVisible(false);
+        pnlContent.removeAll();
+        pnlContent.revalidate();
+        pnlContent.repaint();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
