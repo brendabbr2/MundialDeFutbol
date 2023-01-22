@@ -183,7 +183,9 @@ CREATE TABLE News(
     --------------FK------------------
     idEvent number(6),
     --------------Attribute------------
+
     title varchar(100) NOT NULL, 
+
     text varchar2(200) NOT NULL,
     author varchar2(50) NOT NULL,
     newsDate date NOT NULL,

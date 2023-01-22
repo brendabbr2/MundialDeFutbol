@@ -6,6 +6,7 @@ package View.EventDataPK;
 
 import B_Layer.NewsBO;
 import Entities.News;
+import View.myTableCellRenderer;
 import java.awt.Image;
 import java.io.File;
 import java.text.DateFormat;
@@ -16,8 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -45,6 +48,31 @@ public class TableNews extends javax.swing.JPanel {
             tblNews.setModel(newsBO.getNews());
             TableColumnModel tblModelColumn = tblNews.getColumnModel();
             tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+            showPhotos(this.tblNews, 6);
+            fixWidth(this.tblNews);
+    }
+    
+    public void showPhotos(JTable table, int columnPhotos){
+        int rows = table.getRowCount();
+        // Get Photo column and override TableCellRenderer class component method (getTableCellRendererComponent
+        table.getColumn("photo").setCellRenderer(new myTableCellRenderer(200));
+        for (int i = 0; i < rows; i++){
+            String path = (String) this.tblNews.getValueAt(i, columnPhotos);
+            ImageIcon imageIcon = new ImageIcon(path);
+            JLabel lblPhoto = new JLabel();
+            Image imageResized = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+            lblPhoto.setIcon(new ImageIcon(imageResized));
+            this.tblNews.setValueAt(lblPhoto, i, columnPhotos);
+            
+        }
+    }
+    
+    public void fixWidth(JTable table){
+        int rows = table.getColumnCount();
+
+        for (int i = 0; i < rows; i++){
+            table.getColumnModel().getColumn(i).setPreferredWidth(200);
+        }
     }
     
     private Object checkTableSelection(JTable table, int column){
@@ -111,6 +139,7 @@ public class TableNews extends javax.swing.JPanel {
 
             }
         ));
+        tblNews.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tblNews.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblNewsMouseClicked(evt);
