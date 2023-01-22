@@ -19,6 +19,7 @@ import javax.swing.JPanel;
  * @author Datos
  */
 public class Login_Panel extends javax.swing.JPanel {
+    private Register_Panel regPanel;
     private UserBO userBO = new UserBO();
     private User user = new User();
     private MainFrame mainFrame;
@@ -28,6 +29,7 @@ public class Login_Panel extends javax.swing.JPanel {
     public Login_Panel(MainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
+        this.regPanel = new Register_Panel(this.mainFrame.getPnlContent());
     }
     
     public void login(User userVerified){
@@ -197,7 +199,12 @@ public class Login_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
+        this.regPanel.setSize(834, 567);
+        this.regPanel.setLocation(0,0);
+        this.mainFrame.getPnlContent().removeAll();
+        this.mainFrame.getPnlContent().add(this.regPanel,BorderLayout.CENTER);
+        this.mainFrame.getPnlContent().revalidate();
+        this.mainFrame.getPnlContent().repaint();
     }//GEN-LAST:event_btnRegisterActionPerformed
 
 

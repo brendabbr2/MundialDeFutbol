@@ -655,9 +655,6 @@ IS 'This attribute saves a foreing key of the Gender table.';
 COMMENT ON COLUMN Person.idAddress
 IS 'This attribute saves the primer key of the Address table.';
 
-COMMENT ON COLUMN Person.idEvent
-IS 'This attribute saves the primer key of the Event table.';
-
 COMMENT ON COLUMN Person.idUser
 IS 'This attribute saves the primer key of the UserType table.';
 
@@ -745,10 +742,7 @@ IS 'This attribute saves the primer key of the News table.';
 COMMENT ON COLUMN News.idEvent
 IS 'This attribute saves a fereing key of the Event table.';
 
-COMMENT ON COLUMN News.idUser
-IS 'This attribute saves a foreing key of the UserPerson table.';
-
-COMMENT ON COLUMN News.tittle
+COMMENT ON COLUMN News.title
 IS 'This attribute saves the name or title of the news.';
 
 COMMENT ON COLUMN News.text
@@ -757,7 +751,7 @@ IS 'This attribute saves all the text that is in the news.';
 COMMENT ON COLUMN News.author
 IS 'This attribute saves the name of the author who creted the news.';
 
-COMMENT ON COLUMN News.newDate
+COMMENT ON COLUMN News.newsDate
 IS 'This attribute saves the publication date of the news.';
 
 COMMENT ON COLUMN News.photo
@@ -867,9 +861,6 @@ IS 'This attribute saves the the demonym of a person.';
 
 COMMENT ON COLUMN Continent.idContinent
 IS 'This attribute saves the primer key of the Continent table.';
-
-COMMENT ON COLUMN Continent.idEvent
-IS 'This attribute saves the primer key of the Event table.';
 
 COMMENT ON COLUMN Continent.nameContinent
 IS 'This attribute saves the continent where a person comes from.';

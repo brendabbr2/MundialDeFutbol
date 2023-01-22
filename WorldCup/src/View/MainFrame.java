@@ -99,15 +99,14 @@ public class MainFrame extends javax.swing.JFrame {
         pnlMatches = new javax.swing.JPanel();
         btnMatches = new javax.swing.JButton();
         pnlContent = new javax.swing.JPanel();
-        pnlAdminOps = new javax.swing.JPanel();
-        btnAdminOptions = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        pnlLogOut = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        pnlLogIn = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
+        pnlAdminOpts = new javax.swing.JPanel();
+        btnAdminOptions = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1048, 580));
         setMinimumSize(new java.awt.Dimension(1048, 580));
 
         pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
@@ -130,7 +129,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 153, Short.MAX_VALUE)
         );
 
-        pnlNews.setBackground(new java.awt.Color(152, 12, 51));
+        pnlNews.setBackground(new java.awt.Color(94, 4, 32));
         pnlNews.setPreferredSize(new java.awt.Dimension(220, 50));
 
         btnNews.setBackground(new java.awt.Color(152, 12, 51));
@@ -158,7 +157,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(btnNews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnlLikes.setBackground(new java.awt.Color(0, 83, 159));
+        pnlLikes.setBackground(new java.awt.Color(94, 4, 32));
         pnlLikes.setMaximumSize(new java.awt.Dimension(220, 50));
         pnlLikes.setMinimumSize(new java.awt.Dimension(220, 50));
         pnlLikes.setPreferredSize(new java.awt.Dimension(220, 50));
@@ -183,7 +182,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(btnLikes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnlMatches.setBackground(new java.awt.Color(0, 83, 159));
+        pnlMatches.setBackground(new java.awt.Color(152, 12, 51));
 
         btnMatches.setBackground(new java.awt.Color(152, 12, 51));
         btnMatches.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -226,34 +225,8 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 578, Short.MAX_VALUE)
         );
 
-        pnlAdminOps.setBackground(new java.awt.Color(94, 4, 32));
-        pnlAdminOps.setMaximumSize(new java.awt.Dimension(220, 50));
-        pnlAdminOps.setMinimumSize(new java.awt.Dimension(220, 50));
-
-        btnAdminOptions.setBackground(new java.awt.Color(152, 12, 51));
-        btnAdminOptions.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnAdminOptions.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdminOptions.setText("Administrator Options");
-        btnAdminOptions.setBorder(null);
-        btnAdminOptions.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdminOptionsActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlAdminOpsLayout = new javax.swing.GroupLayout(pnlAdminOps);
-        pnlAdminOps.setLayout(pnlAdminOpsLayout);
-        pnlAdminOpsLayout.setHorizontalGroup(
-            pnlAdminOpsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-        );
-        pnlAdminOpsLayout.setVerticalGroup(
-            pnlAdminOpsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        jPanel1.setBackground(new java.awt.Color(94, 4, 32));
-        jPanel1.setPreferredSize(new java.awt.Dimension(73, 54));
+        pnlLogOut.setBackground(new java.awt.Color(94, 4, 32));
+        pnlLogOut.setPreferredSize(new java.awt.Dimension(73, 54));
 
         btnLogout.setBackground(new java.awt.Color(152, 12, 51));
         btnLogout.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -266,19 +239,19 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnlLogOutLayout = new javax.swing.GroupLayout(pnlLogOut);
+        pnlLogOut.setLayout(pnlLogOutLayout);
+        pnlLogOutLayout.setHorizontalGroup(
+            pnlLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlLogOutLayout.setVerticalGroup(
+            pnlLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
         );
 
-        jPanel2.setBackground(new java.awt.Color(94, 4, 32));
-        jPanel2.setPreferredSize(new java.awt.Dimension(73, 54));
+        pnlLogIn.setBackground(new java.awt.Color(94, 4, 32));
+        pnlLogIn.setPreferredSize(new java.awt.Dimension(73, 54));
 
         btnLogin.setBackground(new java.awt.Color(152, 12, 51));
         btnLogin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -291,15 +264,39 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnlLogInLayout = new javax.swing.GroupLayout(pnlLogIn);
+        pnlLogIn.setLayout(pnlLogInLayout);
+        pnlLogInLayout.setHorizontalGroup(
+            pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlLogInLayout.setVerticalGroup(
+            pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pnlAdminOpts.setBackground(new java.awt.Color(94, 4, 32));
+
+        btnAdminOptions.setBackground(new java.awt.Color(152, 12, 51));
+        btnAdminOptions.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnAdminOptions.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdminOptions.setText("Administrator Options");
+        btnAdminOptions.setBorder(null);
+        btnAdminOptions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminOptionsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlAdminOptsLayout = new javax.swing.GroupLayout(pnlAdminOpts);
+        pnlAdminOpts.setLayout(pnlAdminOptsLayout);
+        pnlAdminOptsLayout.setHorizontalGroup(
+            pnlAdminOptsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlAdminOptsLayout.setVerticalGroup(
+            pnlAdminOptsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnAdminOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
@@ -308,23 +305,22 @@ public class MainFrame extends javax.swing.JFrame {
             pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSidebarLayout.createSequentialGroup()
                 .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlNews, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(pnlLikes, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(pnlMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlSidebarLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(pnlLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(pnlLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlSidebarLayout.createSequentialGroup()
                         .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSidebarLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlSidebarLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(pnlAdminOps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(pnlNews, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(pnlLikes, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(pnlMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlAdminOpts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(pnlContent, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGap(33, 33, 33))
         );
         pnlSidebarLayout.setVerticalGroup(
             pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,12 +332,12 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(pnlLikes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlMatches, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlAdminOps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(101, 101, 101)
+                .addComponent(pnlAdminOpts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
             .addGroup(pnlSidebarLayout.createSequentialGroup()
                 .addComponent(pnlContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -354,7 +350,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,12 +441,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMatches;
     private javax.swing.JButton btnNews;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel pnlAdminOps;
+    private javax.swing.JPanel pnlAdminOpts;
     private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlLikes;
+    private javax.swing.JPanel pnlLogIn;
+    private javax.swing.JPanel pnlLogOut;
     private javax.swing.JPanel pnlLogo;
     private javax.swing.JPanel pnlMatches;
     private javax.swing.JPanel pnlNews;

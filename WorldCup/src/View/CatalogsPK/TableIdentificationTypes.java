@@ -24,10 +24,11 @@ public class TableIdentificationTypes extends javax.swing.JPanel {
      */
     public TableIdentificationTypes() {
         initComponents();
+        getIdentificationType();
     }
     
     public void getIdentificationType(){
-        tblIdentificationType.setModel(idTypeBO.getIdentificationType());
+        tblIdentificationType.setModel(idTypeBO.getTable());
         TableColumnModel tblModelColumn = tblIdentificationType.getColumnModel();
         tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
     }

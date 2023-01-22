@@ -21,6 +21,9 @@ public class Country {
         this.nameCountry = nameCountry;
     }
 
+    public Country() {
+    }
+
     public int getIdCountry() {
         return idCountry;
     }

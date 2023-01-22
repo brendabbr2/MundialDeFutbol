@@ -4,19 +4,56 @@
  */
 package View;
 
+import B_Layer.GenderBO;
+import B_Layer.IdentificationTypeBO;
+import Entities.Gender;
+import Entities.IdentificationType;
+import View.EventDataPK.TablePeople;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Datos
  */
 public class Register_Panel extends javax.swing.JPanel {
-
+    private JPanel pnlContent;
+    private final IdentificationTypeBO idType = new IdentificationTypeBO();
+    private final GenderBO genderBO = new GenderBO();
     /**
      * Creates new form Register_Panel
      */
-    public Register_Panel() {
+    public Register_Panel(JPanel pnlContent) {
         initComponents();
+        this.pnlContent = pnlContent;
+        fillCboxGender();
+        fillCboxIdType();
     }
 
+    public void fillCboxGender(){
+        try {
+            ArrayList<Gender> list = genderBO.getList();
+            for(int i =0; i < list.size();i++){
+                cboxGender.addItem(list.get(i).getGenderDescription());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TablePeople.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void fillCboxIdType(){
+        try {
+            ArrayList<IdentificationType> list = idType.getList();
+            for(int i =0; i < list.size();i++){
+                this.cboxIdType.addItem(list.get(i).getIdName());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TablePeople.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,7 +75,7 @@ public class Register_Panel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         pnlPhone = new javax.swing.JPanel();
         lblPhone = new javax.swing.JLabel();
-        txfPhone = new javax.swing.JTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         pnlEmail = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
@@ -48,7 +85,7 @@ public class Register_Panel extends javax.swing.JPanel {
         cboxIdType = new javax.swing.JComboBox<>();
         pnlID = new javax.swing.JPanel();
         lblId = new javax.swing.JLabel();
-        txfID = new javax.swing.JTextField();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
         pnlCountry = new javax.swing.JPanel();
         lblCountry = new javax.swing.JLabel();
         cboxCountry = new javax.swing.JComboBox<>();
@@ -70,6 +107,13 @@ public class Register_Panel extends javax.swing.JPanel {
         pnlID3 = new javax.swing.JPanel();
         lblPassword = new javax.swing.JLabel();
         txfID3 = new javax.swing.JTextField();
+        pnlGender = new javax.swing.JPanel();
+        lblGender = new javax.swing.JLabel();
+        cboxGender = new javax.swing.JComboBox<>();
+        pnlBirthday = new javax.swing.JPanel();
+        lblBirthday = new javax.swing.JLabel();
+        ftxfBirthday = new javax.swing.JFormattedTextField();
+        btnFinish = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(94, 4, 32));
         setMaximumSize(new java.awt.Dimension(834, 578));
@@ -97,8 +141,6 @@ public class Register_Panel extends javax.swing.JPanel {
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblName.setText("Name:");
 
-        txfName.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-
         javax.swing.GroupLayout pnlNameLayout = new javax.swing.GroupLayout(pnlName);
         pnlName.setLayout(pnlNameLayout);
         pnlNameLayout.setHorizontalGroup(
@@ -110,8 +152,8 @@ public class Register_Panel extends javax.swing.JPanel {
         );
         pnlNameLayout.setVerticalGroup(
             pnlNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(txfName, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(txfName)
         );
 
         lblLastName.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -155,7 +197,11 @@ public class Register_Panel extends javax.swing.JPanel {
         lblPhone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPhone.setText("Phone:");
 
-        txfPhone.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout pnlPhoneLayout = new javax.swing.GroupLayout(pnlPhone);
         pnlPhone.setLayout(pnlPhoneLayout);
@@ -164,12 +210,12 @@ public class Register_Panel extends javax.swing.JPanel {
             .addGroup(pnlPhoneLayout.createSequentialGroup()
                 .addComponent(lblPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txfPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
         );
         pnlPhoneLayout.setVerticalGroup(
             pnlPhoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(txfPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(lblPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(jFormattedTextField1)
         );
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -199,7 +245,6 @@ public class Register_Panel extends javax.swing.JPanel {
         lblLastName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLastName1.setText("Id Type");
 
-        cboxIdType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboxIdType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxIdTypeActionPerformed(evt);
@@ -226,7 +271,7 @@ public class Register_Panel extends javax.swing.JPanel {
         lblId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblId.setText("ID:");
 
-        txfID.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         javax.swing.GroupLayout pnlIDLayout = new javax.swing.GroupLayout(pnlID);
         pnlID.setLayout(pnlIDLayout);
@@ -235,19 +280,18 @@ public class Register_Panel extends javax.swing.JPanel {
             .addGroup(pnlIDLayout.createSequentialGroup()
                 .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txfID, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
         );
         pnlIDLayout.setVerticalGroup(
             pnlIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(txfID, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(jFormattedTextField2)
         );
 
         lblCountry.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         lblCountry.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCountry.setText("Country");
 
-        cboxCountry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboxCountry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxCountryActionPerformed(evt);
@@ -274,7 +318,6 @@ public class Register_Panel extends javax.swing.JPanel {
         lblProvince.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblProvince.setText("Province");
 
-        cboxProvince.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboxProvince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxProvinceActionPerformed(evt);
@@ -301,7 +344,6 @@ public class Register_Panel extends javax.swing.JPanel {
         lblCanton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCanton.setText("Canton");
 
-        cboxCanton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboxCanton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxCantonActionPerformed(evt);
@@ -328,7 +370,6 @@ public class Register_Panel extends javax.swing.JPanel {
         lblDistrict.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDistrict.setText("District");
 
-        cboxDistrict.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboxDistrict.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxDistrictActionPerformed(evt);
@@ -364,7 +405,7 @@ public class Register_Panel extends javax.swing.JPanel {
             .addGroup(pnlID1Layout.createSequentialGroup()
                 .addComponent(lblAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txfID1))
+                .addComponent(txfID1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE))
         );
         pnlID1Layout.setVerticalGroup(
             pnlID1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,9 +451,64 @@ public class Register_Panel extends javax.swing.JPanel {
         );
         pnlID3Layout.setVerticalGroup(
             pnlID3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(txfID3, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addGroup(pnlID3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(txfID3, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lblGender.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblGender.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGender.setText("Gender:");
+
+        cboxGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxGenderActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlGenderLayout = new javax.swing.GroupLayout(pnlGender);
+        pnlGender.setLayout(pnlGenderLayout);
+        pnlGenderLayout.setHorizontalGroup(
+            pnlGenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGenderLayout.createSequentialGroup()
+                .addComponent(lblGender, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboxGender, 0, 175, Short.MAX_VALUE))
+        );
+        pnlGenderLayout.setVerticalGroup(
+            pnlGenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cboxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        lblBirthday.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblBirthday.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBirthday.setText("Birthday:");
+
+        try {
+            ftxfBirthday.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        ftxfBirthday.setText("    ");
+
+        javax.swing.GroupLayout pnlBirthdayLayout = new javax.swing.GroupLayout(pnlBirthday);
+        pnlBirthday.setLayout(pnlBirthdayLayout);
+        pnlBirthdayLayout.setHorizontalGroup(
+            pnlBirthdayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBirthdayLayout.createSequentialGroup()
+                .addComponent(lblBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ftxfBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+        );
+        pnlBirthdayLayout.setVerticalGroup(
+            pnlBirthdayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(ftxfBirthday)
+        );
+
+        btnFinish.setText("Finish");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -423,38 +519,52 @@ public class Register_Panel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(pnlID1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(pnlName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(pnlLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(pnlPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(pnlEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(pnlID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pnlID3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(pnlName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pnlLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(pnlPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pnlEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(pnlCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pnlProvince, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(pnlCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pnlDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(pnlIdType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(pnlID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(pnlCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pnlGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pnlProvince, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(pnlCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pnlDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(pnlBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                                .addComponent(btnSelectPicture))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 62, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSelectPicture, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(56, 56, 56))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlID3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -476,25 +586,30 @@ public class Register_Panel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlIdType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlProvince, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pnlCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pnlIdType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlProvince, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(pnlID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(pnlID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pnlID3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 65, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlID3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFinish, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -518,21 +633,32 @@ public class Register_Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxDistrictActionPerformed
 
+    private void cboxGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxGenderActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFinish;
     private javax.swing.JButton btnSelectPicture;
     private javax.swing.JComboBox<String> cboxCanton;
     private javax.swing.JComboBox<String> cboxCountry;
     private javax.swing.JComboBox<String> cboxDistrict;
+    private javax.swing.JComboBox<String> cboxGender;
     private javax.swing.JComboBox<String> cboxIdType;
     private javax.swing.JComboBox<String> cboxProvince;
+    private javax.swing.JFormattedTextField ftxfBirthday;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lblAdress;
+    private javax.swing.JLabel lblBirthday;
     private javax.swing.JLabel lblCanton;
     private javax.swing.JLabel lblCountry;
     private javax.swing.JLabel lblDistrict;
+    private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblHeader;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblLastName;
@@ -542,10 +668,12 @@ public class Register_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblProvince;
     private javax.swing.JLabel lblUsername;
+    private javax.swing.JPanel pnlBirthday;
     private javax.swing.JPanel pnlCanton;
     private javax.swing.JPanel pnlCountry;
     private javax.swing.JPanel pnlDistrict;
     private javax.swing.JPanel pnlEmail;
+    private javax.swing.JPanel pnlGender;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlID;
     private javax.swing.JPanel pnlID1;
@@ -557,12 +685,10 @@ public class Register_Panel extends javax.swing.JPanel {
     private javax.swing.JPanel pnlPhone;
     private javax.swing.JPanel pnlPhoto;
     private javax.swing.JPanel pnlProvince;
-    private javax.swing.JTextField txfID;
     private javax.swing.JTextField txfID1;
     private javax.swing.JTextField txfID2;
     private javax.swing.JTextField txfID3;
     private javax.swing.JTextField txfLastName;
     private javax.swing.JTextField txfName;
-    private javax.swing.JTextField txfPhone;
     // End of variables declaration//GEN-END:variables
 }

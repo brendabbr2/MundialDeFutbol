@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -88,14 +89,14 @@ public class CountryDAO {
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
     public DefaultTableModel getCountrys(Connection conn){
-        String [] columns = {"idCountry", "nameCountry", "creationUser", "creationDate", "modificationUser", "modificationDate"};
+        String [] columns = {"ID", "Continent","Country", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
         String sql = "CALL getCountry(?,?)";
         
-        String [] row = new String[6];
+        String [] row = new String[7];
         Statement st = null;
         ResultSet rs = null;
         
@@ -107,7 +108,7 @@ public class CountryDAO {
             rs = (ResultSet) statement.getObject(2);
             
             while (rs.next()) {
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < 7; i++) {
                     row[i] = rs.getString(i+1);
                 }
                 model.addRow(row);
@@ -120,4 +121,34 @@ public class CountryDAO {
         }
         return model;
     }
+    /*
+    public ArrayList getList(Connection conn){
+        CallableStatement statement = null;
+        String sql = "CALL getCountry(?,?)";
+        Statement st = null;
+        ResultSet rs = null; 
+        ArrayList<Country> ObjectList = new ArrayList<>();
+        try {
+            statement = conn.prepareCall(sql);
+            statement.setNull(1, Types.NUMERIC);
+            statement.registerOutParameter(2, Types.REF_CURSOR);
+            statement.execute();
+            rs = (ResultSet) statement.getObject(2);
+            
+            while (rs.next()) {
+                Country country = new Country();
+                country.setIdCountry(rs.getInt(1));
+                country.set.getString(2));
+                
+                ObjectList.add(demo);
+            }
+            System.out.println("Succesfully listed Demonym");
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Unable to get Demonym list");
+            System.out.println(e.getMessage());
+        }
+        return ObjectList;
+    }*/
 }

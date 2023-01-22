@@ -41,7 +41,7 @@ public class TestBO {
         user.setIdUserType(1);
         user.setUsername("brenda");
         user.setPassword("258");
-        message = userBO.updateUser(user);  
+        //message = userBO.updateUser(user);  
         System.out.println(message);
     }
     public void delete(int idUser){
@@ -49,7 +49,7 @@ public class TestBO {
         System.out.println(message);
     }
     public void get(){
-        demoBO.getDemonym();
+        demoBO.getTable();
     }
     
     public User verify(){
@@ -85,7 +85,7 @@ public class TestBO {
         
         ArrayList<UserType> list = userTypeBO.getUserTypeList();
         list.toString();
-        byteToHex("xxx");
+        byteToHex("ds");
     }
 }
 

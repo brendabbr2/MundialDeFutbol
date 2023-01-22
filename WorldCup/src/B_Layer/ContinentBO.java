@@ -76,7 +76,7 @@ public class ContinentBO {
         return message;
     }
     
-    public DefaultTableModel getContinents(){
+    public DefaultTableModel getTable(){
         Connection conn = SysConnection.connect();
         DefaultTableModel model = continentDao.getContinents(conn);
         try {

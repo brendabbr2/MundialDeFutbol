@@ -49,7 +49,8 @@ public class UserBO {
         }
         return message;
     }
-    public String updateUser(User user){
+    public String updateUser(User user) throws NoSuchAlgorithmException{
+        encryptPassword(user);
         Connection conn = SysConnection.connect();
         try{
             message = userDao.updateUser(conn, user);

@@ -81,7 +81,7 @@ public class GenderBO {
         return message;
     }
     
-    public DefaultTableModel getGenders(){
+    public DefaultTableModel getTable(){
         Connection conn = SysConnection.connect();
         DefaultTableModel model = genderDao.getGenders(conn);
         try {
@@ -92,7 +92,7 @@ public class GenderBO {
         return model;
     }
     
-    public ArrayList getUserTypeList() throws SQLException{
+    public ArrayList getList() throws SQLException{
         Connection conn = SysConnection.connect();
         ArrayList list = genderDao.getList(conn);
         conn.close();

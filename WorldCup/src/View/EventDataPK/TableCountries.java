@@ -4,19 +4,69 @@
  */
 package View.EventDataPK;
 
+import B_Layer.CountryBO;
+import B_Layer.DemonymBO;
+import Entities.Country;
+import Entities.Demonym;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableCountries extends javax.swing.JPanel {
-
+    private JPanel pnlContent;
+    private final CountryBO countryBO = new CountryBO();
+    private final Country country = new Country();
+    private final DemonymBO demonymBO = new DemonymBO();
+    
     /**
      * Creates new form TableCountries
      */
-    public TableCountries() {
+    public TableCountries(JPanel pnlContent) {
         initComponents();
+        this.pnlContent = pnlContent;
+        fillCboxDemonym();
+        getCountries();
     }
-
+    public void fillCboxDemonym(){
+        try {
+            ArrayList<Demonym> list = demonymBO.getList();
+            for(int i =0; i < list.size();i++){
+                this.cmbDemonymCountry.addItem(list.get(i).getNameDemonym());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TablePeople.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }   
+    public void SetContinentToCountrie(int idContinent){
+        country.setIdContinent(idContinent);
+    }
+    
+    public void getCountries(){
+            this.tblCountry.setModel(countryBO.getCountrys());
+            TableColumnModel tblModelColumn = this.tblCountry.getColumnModel();
+            tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    public void getIdDemonym(){
+        try {
+            ArrayList<Demonym> list = this.demonymBO.getList();
+            int pos = this.cmbDemonymCountry.getSelectedIndex();
+            this.country.setIdDemonym(list.get(pos).getIdDemonym());
+            
+            System.out.println(this.cmbDemonymCountry.getSelectedItem());
+        } catch (SQLException ex) {
+            Logger.getLogger(TableCountries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,6 +114,7 @@ public class TableCountries extends javax.swing.JPanel {
 
         btnDeleteCountry.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         btnDeleteCountry.setText("DELETE");
+        btnDeleteCountry.setEnabled(false);
         btnDeleteCountry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteCountryActionPerformed(evt);
@@ -87,7 +138,6 @@ public class TableCountries extends javax.swing.JPanel {
         lblDemonymCountry.setText("Demonym");
 
         cmbDemonymCountry.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cmbDemonymCountry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Admin" }));
         cmbDemonymCountry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbDemonymCountryActionPerformed(evt);
@@ -111,19 +161,17 @@ public class TableCountries extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblNameCountry)
-                                .addGap(59, 59, 59)
-                                .addComponent(txtNameCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblDemonymCountry)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbDemonymCountry, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lblDemonymCountry)
+                            .addComponent(lblNameCountry))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbDemonymCountry, 0, 222, Short.MAX_VALUE)
+                            .addComponent(txtNameCountry))
                         .addGap(296, 296, 296)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnUpdateCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnDeleteCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(16, Short.MAX_VALUE))
+                        .addGap(19, 19, 19))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnInsertCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))))
@@ -136,9 +184,10 @@ public class TableCountries extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnUpdateCountry, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNameCountry, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNameCountry, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblNameCountry)
+                        .addComponent(txtNameCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDemonymCountry)
@@ -203,7 +252,15 @@ public class TableCountries extends javax.swing.JPanel {
     }//GEN-LAST:event_btnUpdateCountryActionPerformed
 
     private void btnInsertCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertCountryActionPerformed
-
+        if(!this.txtNameCountry.getText().isEmpty()){
+            this.country.setNameCountry(this.txtNameCountry.getText());
+            getIdDemonym();
+            System.out.println(countryBO.insertCountry(country));
+            getCountries();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Error Country not inserted!");
+        }
     }//GEN-LAST:event_btnInsertCountryActionPerformed
 
     private void cmbDemonymCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDemonymCountryActionPerformed

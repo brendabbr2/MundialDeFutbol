@@ -5,29 +5,48 @@
 package B_Layer;
 
 import Connection.SysConnection;
-import DA_Layer.DemonymDAO;
-import Entities.Demonym;
-import java.sql.*;
+import DA_Layer.SportMatchDAO;
+import Entities.SportMatch;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author david
+ * @author Datos
  */
-public class DemonymBO {
-    private DemonymDAO DemonymDao;
+public class SportMatchBO {
+    private SportMatchDAO sportMatchDAO;
     private String message;
 
-    public DemonymBO() {
-        this.DemonymDao = new DemonymDAO();
-        message = "";
+    public SportMatchBO() {
+        this.sportMatchDAO = new SportMatchDAO();
+        this.message = "";
     }
     
-    public String insertDemonym(Demonym demo){
+    public String insertSportMatch(SportMatch sportMatch){
         Connection conn = SysConnection.connect();
         try{
-            message = DemonymDao.insertDemonym(conn, demo);
+            message = sportMatchDAO.insertSportMatch(conn, sportMatch);
+        }catch (Exception e){
+            message = message + " " + e.getMessage();
+        }finally{
+            try {
+                if (conn != null){
+                    conn.close(); 
+                }
+            } catch (Exception e) {
+                message = message + " " + e.getMessage();
+            }
+        }
+        return message;
+    }    
+    
+    public String deleteSportMatch(SportMatch sportMatch){
+        Connection conn = SysConnection.connect();
+        try{
+            message = sportMatchDAO.insertSportMatch(conn, sportMatch);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -41,46 +60,10 @@ public class DemonymBO {
         }
         return message;
     }
-    
-    public String updateDemonym(Demonym demo){
-        Connection conn = SysConnection.connect();
-        try{
-            message = DemonymDao.updateDemonym(conn, demo);
-        }catch (Exception e){
-            message = message + " " + e.getMessage();
-        }finally{
-            try {
-                if (conn != null){
-                    conn.close(); 
-                }
-            } catch (Exception e) {
-                message = message + " " + e.getMessage();
-            }
-        }
-        return message;
-    }
-    
-    public String deleteDemonym(int id){
-        Connection conn = SysConnection.connect();
-        try{
-            message = DemonymDao.deleteDemonym(conn, id);
-        }catch (Exception e){
-            message = message + " " + e.getMessage();
-        }finally{
-            try {
-                if (conn != null){
-                    conn.close(); 
-                }
-            } catch (Exception e) {
-                message = message + " " + e.getMessage();
-            }
-        }
-        return message;
-    }
-    
+            
     public DefaultTableModel getTable(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = DemonymDao.getDemonym(conn);
+        DefaultTableModel model = sportMatchDAO.getTable(conn);
         try {
             conn.close();
         } catch (SQLException ex) {
@@ -91,9 +74,8 @@ public class DemonymBO {
     
     public ArrayList getList() throws SQLException{
         Connection conn = SysConnection.connect();
-        ArrayList list = DemonymDao.getList(conn);
+        ArrayList list = sportMatchDAO.getList(conn);
         conn.close();
         return list;
     }
-    
 }

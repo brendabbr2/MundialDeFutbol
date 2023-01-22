@@ -29,7 +29,7 @@ public class IdentificationTypeDAO {
         {
             pst = conn.prepareStatement(sql);
             pst.setString(1, idType.getIdName());
-            pst.setInt(1, idType.getIdMask());
+            pst.setInt(2, idType.getIdMask());
      
             pst.execute();
             message = "Succesfully saved";
@@ -68,13 +68,13 @@ public class IdentificationTypeDAO {
         return message;
     }
     
-        public String deleteIdentificationType(Connection conn, int idDemonym){
+        public String deleteIdentificationType(Connection conn, int idIdentificationType){
         PreparedStatement pst = null;
         String sql = "CALL deleteIdentificationType(?)";
         try
         {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, idDemonym);
+            pst.setInt(1, idIdentificationType);
             
             pst.execute();
             message = "Succesfully deleted";

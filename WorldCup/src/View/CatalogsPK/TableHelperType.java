@@ -220,8 +220,7 @@ public class TableHelperType extends javax.swing.JPanel {
     }//GEN-LAST:event_btnUpdateHelperTypeActionPerformed
 
     private void btnInsertHelperTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertHelperTypeActionPerformed
-        if (this.checkTableSelection(tblHelperType,0) != null){
-            int idUser = Integer.parseInt((String) checkTableSelection(tblHelperType, 0));
+        if (!this.txtNameHelperType.getText().isEmpty()){
             this.Helper.setNameHelperType(this.txtNameHelperType.getText());
             System.out.println(HelperBO.insertHelperType(Helper));
             this.getHelperType();

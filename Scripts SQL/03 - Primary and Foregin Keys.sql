@@ -493,9 +493,11 @@ ADD CONSTRAINT fk_save_User FOREIGN KEY
 (idUser) REFERENCES userPerson(idUser);
 -----------------------------------------------------
 ---------------------News Table----------------------
+/*
 ALTER TABLE news
 ADD CONSTRAINT fk_news_User FOREIGN KEY
 (idUser) REFERENCES userPerson(idUser);
+*/
 
 ALTER TABLE news
 ADD CONSTRAINT fk_news_Event FOREIGN KEY

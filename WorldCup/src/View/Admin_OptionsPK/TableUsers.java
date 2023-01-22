@@ -34,10 +34,8 @@ public class TableUsers extends javax.swing.JPanel {
     public void fillCombobox(){
         try{
             ArrayList<UserType> list = userType.getUserTypeList();
-            System.out.println("Antes de agregar");
             for(int i =0; i < list.size();i++){
                 cmbUserType.addItem(list.get(i).getNameUserType());
-                System.out.println("Se agrego " + list.get(i).getNameUserType()+" al combobox ");
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -275,7 +273,11 @@ public class TableUsers extends javax.swing.JPanel {
             this.user.setUsername(this.txtUsername.getText());
             this.user.setPassword(this.txtPassword.getText());
             
-            System.out.println(this.userBO.updateUser(user));
+            try {
+                System.out.println(this.userBO.updateUser(user));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(TableUsers.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.getUsers();
         }
         else {

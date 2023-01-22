@@ -80,7 +80,7 @@ public class IdentificationTypeBO {
         return message;
     }
     
-    public DefaultTableModel getIdentificationType(){
+    public DefaultTableModel getTable(){
         Connection conn = SysConnection.connect();
         DefaultTableModel model = idTypeDAO.getIdentificationType(conn);
         try {
@@ -91,7 +91,7 @@ public class IdentificationTypeBO {
         return model;
     }
 
-    public ArrayList getUserTypeList() throws SQLException{
+    public ArrayList getList() throws SQLException{
         Connection conn = SysConnection.connect();
         ArrayList list = idTypeDAO.getList(conn);
         conn.close();

@@ -84,7 +84,7 @@ public class ContinentDAO {
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
     public DefaultTableModel getContinents(Connection conn){
-        String [] columns = {"idContinent", "nameContinent", "creationUser", "creationDate", "modificationUser", "modificationDate"};
+        String [] columns = {"idContinent", "Continent Name", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;

@@ -26,11 +26,11 @@ public class TableGenders extends javax.swing.JPanel {
     }
 
     public void getGenders(){
-            tblGender.setModel(genderBO.getGenders());
+            tblGender.setModel(genderBO.getTable());
             TableColumnModel tblModelColumn = tblGender.getColumnModel();
             tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
             
-            Object XXX = genderBO.getGenders().getDataVector().isEmpty();
+            Object XXX = genderBO.getTable().getDataVector().isEmpty();
             //Object XXX = genderBO.getGenders().elementAt(0).elementAt(1);
             System.out.println(XXX);
     }
