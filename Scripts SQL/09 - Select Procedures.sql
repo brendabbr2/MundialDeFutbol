@@ -305,16 +305,16 @@ BEGIN
         ORDER BY voting DESC;
 END getUserSaveMostVoted;
 /
-CREATE OR REPLACE PROCEDURE getNews(v_idNews IN NUMBER, NewsCursor OUT SYS_REFCURSOR) 
+create or replace PROCEDURE getNews(v_idNews IN NUMBER, v_idEvent IN NUMBER, NewsCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
-    OPEN NewsCursor FOR
+    OPEN NewsCursor FOR  
         SELECT n.idNews,n.idEvent,e.nameEvent,n.title,n.text,n.author,n.newsDate,
         n.photo, n.creationUser, n.creationDate, n.modificationUser, n.modificationDate
         FROM News n
         INNER JOIN Event e
         ON n.idEvent = e.idEvent
-        WHERE n.idNews = NVL(v_idNews,n.idNews);
+        WHERE n.idNews = NVL(v_idNews,n.idNews) AND n.idEvent = v_idEvent; 
 END getNews;
 /
 CREATE OR REPLACE PROCEDURE getParameterEvent(v_idParameter IN NUMBER, ParameterEventCursor OUT SYS_REFCURSOR) 
