@@ -232,7 +232,9 @@ public class TableProvinces extends javax.swing.JPanel {
     private void btnManageCantonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCantonsActionPerformed
         if(this.checkTableSelection(tblProvince, WIDTH) != null ){
             int idProvince = Integer.parseInt((String) checkTableSelection(tblProvince, 0));
+
             this.cantons.SetProvinceToCanton(idProvince);
+
             this.cantons.setSize(834, 567);
             this.cantons.setLocation(0,0);
             pnlContent.removeAll();

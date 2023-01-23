@@ -83,9 +83,9 @@ public class TestBO {
     
     public static void main(String[] args) throws NoSuchAlgorithmException, SQLException {
         
-        ArrayList<UserType> list = userTypeBO.getUserTypeList();
-        list.toString();
-        byteToHex("ds");
+        //ArrayList<UserType> list = userTypeBO.getUserTypeList();
+        //list.toString();
+        byteToHex("123");
     }
 }
 

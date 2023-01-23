@@ -60,7 +60,7 @@ public class EventBO {
         }
         return message;
     }
-    public String deleteUser(int id){
+    public String deleteEvent(int id){
         Connection conn = SysConnection.connect();
         try{
             message = eventDAO.deleteEvent(conn, id);

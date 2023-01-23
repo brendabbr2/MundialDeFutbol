@@ -57,6 +57,19 @@ public class TableUsers extends javax.swing.JPanel {
         }
         return user;
     }
+    
+    // compares the index of the cmb with the index of userTypes
+    private int getUserTypeId(){
+        int id = -1;
+        try {
+            ArrayList<UserType> list = userType.getUserTypeList();
+            // user type id from the selected cmb item
+            id = list.get(this.cmbUserType.getSelectedIndex()).getIdUserType();
+        } catch (SQLException ex) {
+            Logger.getLogger(TableUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -238,10 +251,7 @@ public class TableUsers extends javax.swing.JPanel {
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         if (!(this.txtUsername.getText().isEmpty() || this.txtPassword.getText().isEmpty())){
             
-            if (this.cmbUserType.getSelectedItem().toString().toLowerCase().equals("normal"))
-                this.user.setIdUserType(1);
-            else
-                this.user.setIdUserType(2);
+            this.user.setIdUserType(getUserTypeId());
 
             this.user.setUsername(this.txtUsername.getText());
             this.user.setPassword(this.txtPassword.getText());
@@ -265,11 +275,7 @@ public class TableUsers extends javax.swing.JPanel {
             int idUser = Integer.parseInt((String) checkTableSelection(tblUsers, 0));
             this.user.setIdUser(idUser);
             
-            String type = this.cmbUserType.getSelectedItem().toString().toLowerCase();
-            if (type.toLowerCase().equals("normal"))
-                this.user.setIdUserType(1);
-            else
-                this.user.setIdUserType(2);
+            this.user.setIdUserType(getUserTypeId());
             this.user.setUsername(this.txtUsername.getText());
             this.user.setPassword(this.txtPassword.getText());
             

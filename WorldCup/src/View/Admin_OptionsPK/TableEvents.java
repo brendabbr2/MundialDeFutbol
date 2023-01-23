@@ -5,9 +5,16 @@
 package View.Admin_OptionsPK;
 
 import B_Layer.EventBO;
+import B_Layer.EventTypeBO;
 import Entities.Event;
+import Entities.EventType;
 import View.EventDataPK.EventData;
 import java.awt.BorderLayout;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -22,6 +29,7 @@ public class TableEvents extends javax.swing.JPanel {
     private Event event = new Event();
     private EventData eventData;
     private EventBO eventBO = new EventBO();
+    private EventTypeBO eventType = new EventTypeBO();
     /**
      * Creates new form TableEvents
      */
@@ -47,6 +55,18 @@ public class TableEvents extends javax.swing.JPanel {
             //return user;
         }
         return user;
+    }
+    
+    private int getEventTypeId(){
+        int id = -1;
+        try {
+            ArrayList<EventType> list = eventType.getEventTypeList();
+            // user type id from the selected cmb item
+            id = list.get(this.cmbEventType.getSelectedIndex()).getIdEvenType();
+        } catch (SQLException ex) {
+            Logger.getLogger(TableUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
     }
 
     /**
@@ -232,15 +252,38 @@ public class TableEvents extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEventMouseClicked
-
+        int selection = this.tblEvent.rowAtPoint(evt.getPoint());
+        String type = this.tblEvent.getValueAt(selection, 0)+"";
+        
+        this.txtNameEvent.setText(this.tblEvent.getValueAt(selection,1)+"");
     }//GEN-LAST:event_tblEventMouseClicked
 
     private void btnDeleteEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEventActionPerformed
-
+        if(this.checkTableSelection(this.tblEvent, 0) != null){
+            int idEvent = Integer.parseInt((String) checkTableSelection(this.tblEvent, 0));
+            //  System.out.println(this.eventBO.deleteEvent(idEvent));
+            this.getEvents();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteEventActionPerformed
 
     private void btnUpdateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventActionPerformed
+        if (this.checkTableSelection(this.tblEvent,0) != null){
+            
+            int idEvent = Integer.parseInt((String) checkTableSelection(this.tblEvent, 0));
 
+            this.event.setIdEvent(idEvent);
+            this.event.setIdEvenType(this.getEventTypeId());
+            this.event.setName(this.txtNameEvent.getText());
+            
+            System.out.println(this.eventBO.updateEvent(event));
+            this.getEvents();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateEventActionPerformed
 
     private void cmbEventTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEventTypeActionPerformed

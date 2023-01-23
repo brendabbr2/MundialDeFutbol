@@ -6,6 +6,9 @@ package View;
 
 import Entities.User;
 import java.awt.BorderLayout;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -72,10 +75,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     public void checkUserPrivileges(int userType){
-        System.out.println("tipo de usuarios" + userType);
         if (userType == 2)
-            this.btnAdminOptions.setVisible(true);
-        else
             this.btnAdminOptions.setVisible(true);
     }
     
@@ -92,6 +92,7 @@ public class MainFrame extends javax.swing.JFrame {
         pnlBackground = new javax.swing.JPanel();
         pnlSidebar = new javax.swing.JPanel();
         pnlLogo = new javax.swing.JPanel();
+        lblText = new javax.swing.JLabel();
         pnlNews = new javax.swing.JPanel();
         btnNews = new javax.swing.JButton();
         pnlLikes = new javax.swing.JPanel();
@@ -118,15 +119,17 @@ public class MainFrame extends javax.swing.JFrame {
 
         pnlSidebar.setBackground(new java.awt.Color(94, 4, 32));
 
+        lblText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo.jpeg"))); // NOI18N
+
         javax.swing.GroupLayout pnlLogoLayout = new javax.swing.GroupLayout(pnlLogo);
         pnlLogo.setLayout(pnlLogoLayout);
         pnlLogoLayout.setHorizontalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 247, Short.MAX_VALUE)
+            .addComponent(lblText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlLogoLayout.setVerticalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 153, Short.MAX_VALUE)
+            .addComponent(lblText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnlNews.setBackground(new java.awt.Color(94, 4, 32));
@@ -316,9 +319,12 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(pnlNews, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                             .addComponent(pnlLikes, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                             .addComponent(pnlMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnlAdminOpts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSidebarLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)))
                 .addComponent(pnlContent, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -446,6 +452,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMatches;
     private javax.swing.JButton btnNews;
+    private javax.swing.JLabel lblText;
     private javax.swing.JPanel pnlAdminOpts;
     private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlContent;
