@@ -4,19 +4,56 @@
  */
 package View.EventDataPK;
 
+import B_Layer.ProvinceBO;
+import Entities.Province;
+import java.awt.BorderLayout;
+import static java.awt.image.ImageObserver.WIDTH;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableProvinces extends javax.swing.JPanel {
-
+    private JPanel pnlContent;
+    private final ProvinceBO provinceBO = new ProvinceBO();
+    private final Province province = new Province();
+    private  TableCantons cantons;
+    
     /**
      * Creates new form TableProvinces
      */
-    public TableProvinces() {
+    public TableProvinces(JPanel pnlContent) {
+        this.pnlContent = pnlContent;
+        cantons = new TableCantons(pnlContent);
         initComponents();
+        getProvinces();
     }
-
+    
+    public void SetContryToProvince(int idCountry){
+        province.setIdCountry(idCountry);
+    }
+    
+    public void getProvinces(){
+            this.tblProvince.setModel(provinceBO.getTable());
+            TableColumnModel tblModelColumn = this.tblProvince.getColumnModel();
+            tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object user = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            user = table.getModel().getValueAt(row, column);
+            //return user;
+        }
+        return user;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,11 +67,11 @@ public class TableProvinces extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProvince = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        btnDeleteProvince = new javax.swing.JButton();
         btnUpdateProvince = new javax.swing.JButton();
         lblNameProvince = new javax.swing.JLabel();
         txtNameProvince = new javax.swing.JTextField();
         btnInsertProvince = new javax.swing.JButton();
+        btnManageCantons = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(94, 4, 32));
         jPanel1.setMaximumSize(new java.awt.Dimension(834, 578));
@@ -60,14 +97,6 @@ public class TableProvinces extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(152, 12, 51));
 
-        btnDeleteProvince.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnDeleteProvince.setText("DELETE");
-        btnDeleteProvince.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteProvinceActionPerformed(evt);
-            }
-        });
-
         btnUpdateProvince.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         btnUpdateProvince.setText("UPDATE");
         btnUpdateProvince.addActionListener(new java.awt.event.ActionListener() {
@@ -88,39 +117,44 @@ public class TableProvinces extends javax.swing.JPanel {
             }
         });
 
+        btnManageCantons.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        btnManageCantons.setText("Manage Cantons");
+        btnManageCantons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageCantonsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnManageCantons)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblNameProvince)
                         .addGap(18, 18, 18)
                         .addComponent(txtNameProvince, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(296, 296, 296)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdateProvince, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDeleteProvince, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnInsertProvince, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                            .addComponent(btnInsertProvince, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdateProvince, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(23, 23, 23)
                 .addComponent(btnInsertProvince, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnUpdateProvince, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNameProvince, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNameProvince, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(btnDeleteProvince, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageCantons, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
@@ -133,7 +167,7 @@ public class TableProvinces extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,42 +185,69 @@ public class TableProvinces extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 834, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 576, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(27, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(27, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblProvinceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProvinceMouseClicked
-
+        int selection = this.tblProvince.rowAtPoint(evt.getPoint());
+        String type = this.tblProvince.getValueAt(selection, 0)+"";
+        
+        this.txtNameProvince.setText(this.tblProvince.getValueAt(selection, 1)+"");
     }//GEN-LAST:event_tblProvinceMouseClicked
 
-    private void btnDeleteProvinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProvinceActionPerformed
-
-    }//GEN-LAST:event_btnDeleteProvinceActionPerformed
-
     private void btnUpdateProvinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProvinceActionPerformed
-
+        if (this.checkTableSelection(tblProvince,0) != null && !(this.txtNameProvince.getText().isEmpty())){
+            int idProvince = Integer.parseInt((String) checkTableSelection(tblProvince, 0));
+            this.province.setIdProvince(idProvince);
+            this.province.setNameProvince(this.txtNameProvince.getText());
+            System.out.println(this.provinceBO.updateProvince(province));
+            getProvinces();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateProvinceActionPerformed
 
     private void btnInsertProvinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertProvinceActionPerformed
-
+        if(!this.txtNameProvince.getText().isEmpty()){
+            this.province.setNameProvince(this.txtNameProvince.getText());
+            System.out.println(provinceBO.insertProvince(province));
+            getProvinces();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Error Country not inserted!");
+        }
     }//GEN-LAST:event_btnInsertProvinceActionPerformed
+
+    private void btnManageCantonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCantonsActionPerformed
+        if(this.checkTableSelection(tblProvince, WIDTH) != null ){
+            int idProvince = Integer.parseInt((String) checkTableSelection(tblProvince, 0));
+            this.cantons.SetProvinceToCanton(idProvince);
+            this.cantons.setSize(834, 567);
+            this.cantons.setLocation(0,0);
+            pnlContent.removeAll();
+            pnlContent.add(this.cantons,BorderLayout.CENTER);
+            pnlContent.revalidate();
+            pnlContent.repaint();
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select a Country");
+        }
+    }//GEN-LAST:event_btnManageCantonsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDeleteProvince;
     private javax.swing.JButton btnInsertProvince;
+    private javax.swing.JButton btnManageCantons;
     private javax.swing.JButton btnUpdateProvince;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -121,12 +121,10 @@
                                   <Component id="cmbDemonymCountry" pref="222" max="32767" attributes="0"/>
                                   <Component id="txtNameCountry" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                              <Component id="btnManageProvinces" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnUpdateCountry" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
-                                  <Component id="btnDeleteCountry" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="btnUpdateCountry" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <Component id="btnManageProvinces" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           </Group>
@@ -153,7 +151,6 @@
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnDeleteCountry" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="lblDemonymCountry" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbDemonymCountry" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnManageProvinces" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
@@ -164,18 +161,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnDeleteCountry">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="18" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="DELETE"/>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteCountryActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="btnUpdateCountry">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

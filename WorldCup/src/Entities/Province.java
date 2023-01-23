@@ -19,6 +19,9 @@ public class Province {
         this.nameProvince = nameProvince;
     }
 
+    public Province() {
+    }
+
     public int getIdProvince() {
         return idProvince;
     }
