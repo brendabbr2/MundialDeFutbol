@@ -4,7 +4,7 @@
  */
 package DA_Layer;
 
-import Entities.UserSave;
+import Entities.UserComment;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,57 +18,57 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author david
  */
-public class UserSaveDAO {
-    private String message = "";
+public class UserCommentDAO {
+   private String message = "";
 
-    public String insertUserSave(Connection conn, UserSave usersave) {
+    public String insertUserComment(Connection conn, UserComment usercomment) {
         PreparedStatement pst = null;
-        String sql = "CALL insertUserSave(?,?)";
+        String sql = "CALL insertUserComment(?,?)";
         try {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, usersave.getIdNews());
-            pst.setInt(2, usersave.getIdUser());
+            pst.setInt(1, usercomment.getIdNews());
+            pst.setInt(2, usercomment.getIdUser());
 
             pst.execute();
-            message = "Succesfully saved";
+            message = "Succesfully commentd";
             pst.close();
 
         } catch (SQLException e) {
-            message = "Unsuccessfully saved\n" + e.getMessage();
-            JOptionPane.showMessageDialog(null, "UserSave not inserted",
+            message = "Unsuccessfully commentd\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "UserComment not inserted",
                      null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
     
-    public String deleteUserSave(Connection conn, UserSave usersave) {
+    public String deleteUserComment(Connection conn, UserComment usercomment) {
         PreparedStatement pst = null;
-        String sql = "CALL deleteUserSave(?,?)";
+        String sql = "CALL deleteUserComment(?,?)";
         try {
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, usersave.getIdUser());
-            pst.setInt(2, usersave.getIdNews());
+            pst.setInt(1, usercomment.getIdUser());
+            pst.setInt(2, usercomment.getIdNews());
 
             pst.execute();
             message = "Succesfully deleted";
-            JOptionPane.showMessageDialog(null, "UserSave deleted correctly");
+            JOptionPane.showMessageDialog(null, "UserComment deleted correctly");
             pst.close();
 
         } catch (SQLException e) {
             message = "Unsuccessfully deleted\n" + e.getMessage();
-            JOptionPane.showMessageDialog(null, "UserSave not deleted",
+            JOptionPane.showMessageDialog(null, "UserComment not deleted",
                      null, JOptionPane.ERROR_MESSAGE);
         }
         return message;
     }
     
-    public DefaultTableModel getUserSaveMostVoted(Connection conn){
-        String [] columns = {"idUserSave", "voting"};
+    public DefaultTableModel getUserCommentMostVoted(Connection conn){
+        String [] columns = {"idUserComment", "voting"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
-        String sql = "CALL getUserSaveMostVoted(?)";
+        String sql = "CALL getUserCommentMostVoted(?)";
         
         String [] row = new String[2];
         ResultSet rs = null;
@@ -88,7 +88,7 @@ public class UserSaveDAO {
             System.out.println("Succesfully listed");
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Unable to show table UserSave");
+            JOptionPane.showMessageDialog(null, "Unable to show table UserComment");
             System.out.println(e.getMessage());
         }
         return model;
