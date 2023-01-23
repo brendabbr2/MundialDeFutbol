@@ -105,8 +105,9 @@ CREATE OR REPLACE PROCEDURE getProvince(v_idProvince IN NUMBER, ProvinceCursor O
 AS 
 BEGIN 
     OPEN ProvinceCursor FOR  
-        SELECT idProvince, nameProvince, creationUser, creationDate, modificationUser, modificationDate
+        SELECT Province.idProvince,Country.NameCountry, Province.nameProvince, Province.creationUser, Province.creationDate, Province.modificationUser, Province.modificationDate
         FROM Province 
+        JOIN Country ON Province.idCountry = Country.idCountry
         WHERE idProvince = NVL(v_idProvince, idProvince);  
 END getProvince;
 /

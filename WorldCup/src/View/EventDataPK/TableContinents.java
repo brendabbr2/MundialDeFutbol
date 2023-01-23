@@ -246,7 +246,7 @@ public class TableContinents extends javax.swing.JPanel {
     private void btnManageCountriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCountriesActionPerformed
         if(this.checkTableSelection(tblContinents, WIDTH) != null ){
             int idContinent = Integer.parseInt((String) checkTableSelection(tblContinents, 0));
-            this.countries.SetContinentToCountrie(idContinent);
+            this.countries.SetContinentToCountry(idContinent);
             this.countries.setSize(834, 567);
             this.countries.setLocation(0,0);
             pnlContent.removeAll();
