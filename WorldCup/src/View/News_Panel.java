@@ -5,7 +5,9 @@
 package View;
 
 import B_Layer.NewsBO;
+import B_Layer.UserCommentBO;
 import B_Layer.UserSaveBO;
+import Entities.UserComment;
 import Entities.UserSave;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -26,6 +28,8 @@ public class News_Panel extends javax.swing.JPanel {
     private final News news = new News();
     private final UserSaveBO userSaveBO = new UserSaveBO();
     private final UserSave userSave = new UserSave();
+    private final UserCommentBO userCommentBO = new UserCommentBO();
+    private final UserComment userComment = new UserComment();
 
     private int pagForRecent = 0;
     private int pagForMostVoted = 0;
@@ -45,7 +49,7 @@ public class News_Panel extends javax.swing.JPanel {
     private Icon iconEmptyHeart;
     private ImageIcon imgFilledHeart;
     private Icon iconFilledHeart;
-    
+
     private ArrayList<Icon> arrayListOfLikesInIcon;
 
     /**
@@ -66,13 +70,17 @@ public class News_Panel extends javax.swing.JPanel {
         iconEmptyHeart = new ImageIcon(imgEmptyHeart.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
         imgFilledHeart = new ImageIcon("Images/iconForNews/corazonLleno.jfif");
         iconFilledHeart = new ImageIcon(imgFilledHeart.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-        
+
         arrayListOfLikesInIcon = new <Icon>ArrayList();
         btnLikeRecent.setIcon(iconEmptyHeart);
     }
-    
-    public void resetLikeIcon(){
+
+    public void resetLikeIcon() {
         btnLikeRecent.setIcon(iconEmptyHeart);
+        arrayListOfLikesInIcon.clear();
+        for (int i = 0; i < newsBO.getNews().getDataVector().size(); i++) {
+            arrayListOfLikesInIcon.add(iconEmptyHeart);
+        }
     }
 
     private void getRecentNews() {
@@ -326,6 +334,11 @@ public class News_Panel extends javax.swing.JPanel {
         });
 
         btnCommentRecent.setText("Comment");
+        btnCommentRecent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCommentRecentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlRecentNewsLayout = new javax.swing.GroupLayout(pnlRecentNews);
         pnlRecentNews.setLayout(pnlRecentNewsLayout);
@@ -735,7 +748,7 @@ public class News_Panel extends javax.swing.JPanel {
     private void btnRecentPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentPreviousActionPerformed
         if (this.pagForRecent > 0) {
             this.pagForRecent--;
-            getRecentNews(); 
+            getRecentNews();
         }
         btnLikeRecent.setIcon(arrayListOfLikesInIcon.get(pagForRecent));
     }//GEN-LAST:event_btnRecentPreviousActionPerformed
@@ -755,7 +768,20 @@ public class News_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnMostVotedPreviousActionPerformed
 
     private void btnCommentMostVotedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommentMostVotedActionPerformed
-        // TODO add your handling code here:
+        if (mainFrame.getUser().getIdUser() == -1) {
+            JOptionPane.showMessageDialog(null, "First, you have to log in.");
+        } else {
+            String comment = JOptionPane.showInputDialog("Comment: ");
+            System.out.println(comment);
+            if (!(comment == null || comment.equals(""))) {
+                userComment.setIdUser(mainFrame.getUser().getIdUser());
+                userComment.setCommentDate("11/11/2023");
+                userComment.setLogText(comment);
+                userComment.setIdNews(Integer.parseInt((String) newsBO.getNews().getDataVector().elementAt(idSelectedForMostVoted).elementAt(0)));
+
+                userCommentBO.insertUserComment(userComment);
+            }
+        }
     }//GEN-LAST:event_btnCommentMostVotedActionPerformed
 
     private void btnLikeRecentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLikeRecentActionPerformed
@@ -764,25 +790,42 @@ public class News_Panel extends javax.swing.JPanel {
         } else {
             if (btnLikeRecent.getIcon().equals(iconEmptyHeart)) {
                 btnLikeRecent.setIcon(iconFilledHeart);
-                
-                userSave.setIdNews(Integer.parseInt((String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(0)));
+
+                userSave.setIdNews(Integer.parseInt((String) newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(0)));
                 userSave.setIdUser(mainFrame.getUser().getIdUser());
-                
+
                 userSaveBO.insertUserSave(userSave);
                 arrayListOfLikesInIcon.remove(pagForRecent);
                 arrayListOfLikesInIcon.add(pagForRecent, iconFilledHeart);
             } else {
                 btnLikeRecent.setIcon(iconEmptyHeart);
-                
-                userSave.setIdNews(Integer.parseInt((String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(0)));
+
+                userSave.setIdNews(Integer.parseInt((String) newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(0)));
                 userSave.setIdUser(mainFrame.getUser().getIdUser());
-                
+
                 userSaveBO.deleteNews(userSave);
                 arrayListOfLikesInIcon.remove(pagForRecent);
                 arrayListOfLikesInIcon.add(pagForRecent, iconEmptyHeart);
             }
         }
     }//GEN-LAST:event_btnLikeRecentActionPerformed
+
+    private void btnCommentRecentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommentRecentActionPerformed
+        if (mainFrame.getUser().getIdUser() == -1) {
+            JOptionPane.showMessageDialog(null, "First, you have to log in.");
+        } else {
+            String comment = JOptionPane.showInputDialog("Comment: ");
+            System.out.println(comment);
+            if (!(comment == null || comment.equals(""))) {
+                userComment.setIdUser(mainFrame.getUser().getIdUser());
+                userComment.setCommentDate("11/11/2023");
+                userComment.setLogText(comment);
+                userComment.setIdNews(Integer.parseInt((String) newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(0)));
+
+                userCommentBO.insertUserComment(userComment);
+            }
+        }
+    }//GEN-LAST:event_btnCommentRecentActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -60,9 +60,9 @@ public class UserCommentBO {
 //        return message;
 //    }
     
-    public DefaultTableModel getUserCommentMostVoted(){
+    public DefaultTableModel getUserComment(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = usercommentDao.getUserCommentMostVoted(conn);
+        DefaultTableModel model = usercommentDao.getUserComment(conn);
         try {
             conn.close();
         } catch (SQLException ex) {

@@ -22,9 +22,10 @@ public class UserComment {
         this.commentDate = commentDate;
         this.commentText = commentText;
     }
-    
-    
 
+    public UserComment() {
+    }
+    
     public int getIdComment() {
         return idComment;
     }

@@ -6,13 +6,16 @@
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/B_Layer/UserSaveBO.java</file>
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/DA_Layer/UserSaveDAO.java</file>
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/News_Panel.java</file>
+            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/DA_Layer/UserCommentDAO.java</file>
+            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/EventDataPK/TableAddresses.java</file>
+            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/News_Text.java</file>
+            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/Entities/Address.java</file>
+            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/Entities/UserComment.java</file>
+            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/B_Layer/NewsBO.java</file>
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/Entities/UserSave.java</file>
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/DA_Layer/NewsDAO.java</file>
             <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/MainFrame.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/Catalogs.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/Login_Panel.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/View/News_Text.java</file>
-            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/Entities/User.java</file>
+            <file>file:/C:/Users/david/Documents/GitHub/MundialDeFutbol/WorldCup/src/B_Layer/UserCommentBO.java</file>
         </group>
     </open-files>
 </project-private>

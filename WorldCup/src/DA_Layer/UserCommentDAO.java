@@ -64,7 +64,7 @@ public class UserCommentDAO {
 //        return message;
 //    }
     
-    public DefaultTableModel getUserCommentMostVoted(Connection conn){
+    public DefaultTableModel getUserComment(Connection conn){
         String [] columns = {"commentText", "cammentDate", "userName"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
