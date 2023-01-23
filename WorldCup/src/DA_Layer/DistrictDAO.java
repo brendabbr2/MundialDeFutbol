@@ -86,7 +86,7 @@ public class DistrictDAO {
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
     public DefaultTableModel getDistricts(Connection conn){
-        String [] columns = {"idDistrict", "nameDistrict", "creationUser", "creationDate", "modificationUser", "modificationDate"};
+        String [] columns = {"idDistrict","Canton", "District", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;

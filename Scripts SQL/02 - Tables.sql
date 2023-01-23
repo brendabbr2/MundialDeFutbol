@@ -434,7 +434,7 @@ CREATE TABLE Address(
     --------------FK------------------
     idDistrict NUMBER(6),
     --------------Attribute-----------
-    nameAddress VARCHAR2(20) NOT NULL,
+    nameAddress VARCHAR2(250) NOT NULL,
     --------------Audit---------------
     creationUser VARCHAR2(20),
     creationDate DATE,

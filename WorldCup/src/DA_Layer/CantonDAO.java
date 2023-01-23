@@ -86,7 +86,7 @@ public class CantonDAO {
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
     public DefaultTableModel getCantons(Connection conn){
-        String [] columns = {"ID", "Canton","Province", "creationUser", "creationDate", "modificationUser", "modificationDate"};
+        String [] columns = {"ID", "Province", "Canton", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;

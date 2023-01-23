@@ -6,6 +6,8 @@ package View.EventDataPK;
 
 import B_Layer.DistrictBO;
 import Entities.District;
+import java.awt.BorderLayout;
+import static java.awt.image.ImageObserver.WIDTH;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -19,11 +21,13 @@ public class TableDistricts extends javax.swing.JPanel {
     private JPanel pnlContent;
     private final DistrictBO districtBO = new DistrictBO();
     private final District district = new District();
+    private TableAddresses address;
     /**
      * Creates new form TableDistricts
      */
     public TableDistricts(JPanel pnlContent) {
         this.pnlContent = pnlContent;
+        this.address = new TableAddresses();
         initComponents();
         getDistricts();
     }
@@ -61,11 +65,12 @@ public class TableDistricts extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDistrict = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        btnDeleteDistrict = new javax.swing.JButton();
+        btnManageAdresses = new javax.swing.JButton();
         btnUpdateDistrict = new javax.swing.JButton();
         lblNameDistrict = new javax.swing.JLabel();
         txtNameDistrict = new javax.swing.JTextField();
         btnInsertDistrict = new javax.swing.JButton();
+        lblDistricts = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(94, 4, 32));
         jPanel1.setMaximumSize(new java.awt.Dimension(834, 578));
@@ -91,12 +96,11 @@ public class TableDistricts extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(152, 12, 51));
 
-        btnDeleteDistrict.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnDeleteDistrict.setText("DELETE");
-        btnDeleteDistrict.setEnabled(false);
-        btnDeleteDistrict.addActionListener(new java.awt.event.ActionListener() {
+        btnManageAdresses.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        btnManageAdresses.setText("Manage Adresses");
+        btnManageAdresses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteDistrictActionPerformed(evt);
+                btnManageAdressesActionPerformed(evt);
             }
         });
 
@@ -127,8 +131,8 @@ public class TableDistricts extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnManageAdresses)
                     .addComponent(btnInsertDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDeleteDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblNameDistrict)
                         .addGap(18, 18, 18)
@@ -148,30 +152,39 @@ public class TableDistricts extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtNameDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnUpdateDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36)
-                .addComponent(btnDeleteDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(38, 38, 38)
+                .addComponent(btnManageAdresses, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
+
+        lblDistricts.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblDistricts.setForeground(new java.awt.Color(255, 255, 255));
+        lblDistricts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDistricts.setText("Districts");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblDistricts, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addComponent(lblDistricts, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -184,9 +197,9 @@ public class TableDistricts extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
+            .addGap(0, 578, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -197,9 +210,21 @@ public class TableDistricts extends javax.swing.JPanel {
         this.txtNameDistrict.setText(this.tblDistrict.getValueAt(selection, 1)+"");
     }//GEN-LAST:event_tblDistrictMouseClicked
 
-    private void btnDeleteDistrictActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDistrictActionPerformed
-
-    }//GEN-LAST:event_btnDeleteDistrictActionPerformed
+    private void btnManageAdressesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdressesActionPerformed
+        if(this.checkTableSelection(tblDistrict, WIDTH) != null ){
+            int idDistrict = Integer.parseInt((String) checkTableSelection(tblDistrict, 0));
+            this.address.SetDistrictToAddress(idDistrict);
+            this.address.setSize(834, 567);
+            this.address.setLocation(0,0);
+            pnlContent.removeAll();
+            pnlContent.add(this.address,BorderLayout.CENTER);
+            pnlContent.revalidate();
+            pnlContent.repaint();
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select a Canton");
+        }
+        
+    }//GEN-LAST:event_btnManageAdressesActionPerformed
 
     private void btnUpdateDistrictActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDistrictActionPerformed
         if (this.checkTableSelection(tblDistrict,0) != null && !(this.txtNameDistrict.getText().isEmpty())){
@@ -221,18 +246,19 @@ public class TableDistricts extends javax.swing.JPanel {
             getDistricts();
         }
         else {
-            JOptionPane.showMessageDialog(null, "Error Country not inserted!");
+            JOptionPane.showMessageDialog(null, "Error District not inserted!");
         }
     }//GEN-LAST:event_btnInsertDistrictActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDeleteDistrict;
     private javax.swing.JButton btnInsertDistrict;
+    private javax.swing.JButton btnManageAdresses;
     private javax.swing.JButton btnUpdateDistrict;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDistricts;
     private javax.swing.JLabel lblNameDistrict;
     private javax.swing.JTable tblDistrict;
     private javax.swing.JTextField txtNameDistrict;

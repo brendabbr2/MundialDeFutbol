@@ -65,7 +65,7 @@ public class ProvinceDAO {
         return message;
     }
     public DefaultTableModel getTable(Connection conn){
-        String [] columns = {"ID", "Province","Country", "creationUser", "creationDate", "modificationUser", "modificationDate"};
+        String [] columns = {"ID","Country", "Province", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;

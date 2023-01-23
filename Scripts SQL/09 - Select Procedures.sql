@@ -116,8 +116,9 @@ CREATE OR REPLACE PROCEDURE getDistrict(v_idDistrict IN NUMBER, DistrictCursor O
 AS
 BEGIN 
     OPEN DistrictCursor FOR  
-        SELECT idDistrict, nameDistrict, creationUser, creationDate, modificationUser, modificationDate
-        FROM District 
+        SELECT District.idDistrict,Canton.nameCanton, District.nameDistrict, District.creationUser, District.creationDate, District.modificationUser, District.modificationDate
+        FROM District
+        JOIN Canton ON District.idCanton = Canton.idCanton
         WHERE idDistrict = NVL(v_idDistrict, idDistrict); 
 END getDistrict;
 /
@@ -126,7 +127,7 @@ CREATE OR REPLACE PROCEDURE getCanton(v_idCanton IN NUMBER, CantonCursor OUT SYS
 AS 
 BEGIN 
     OPEN CantonCursor FOR  
-        SELECT Canton.idCanton, Canton.nameCanton, Province.NameProvince , Canton.creationUser, Canton.creationDate, Canton.modificationUser, Canton.modificationDate
+        SELECT Canton.idCanton, Province.NameProvince, Canton.nameCanton, Canton.creationUser, Canton.creationDate, Canton.modificationUser, Canton.modificationDate
         FROM Canton
         JOIN Province On Canton.idProvince = Province.idProvince
         WHERE idCanton = NVL(v_idCanton, idCanton); 

@@ -19,6 +19,9 @@ public class Address {
         this.nameAddress = nameAddress;
     }
 
+    public Address() {
+   }
+
     public int getIdAddress() {
         return idAddress;
     }
