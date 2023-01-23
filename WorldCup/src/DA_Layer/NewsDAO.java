@@ -59,7 +59,7 @@ public class NewsDAO {
             pst.setString(4, news.getText());
             pst.setString(5, news.getAuthor());
             pst.setDate(6, news.getDate());
-            pst.setString(4, news.getPhoto());
+            pst.setString(7, news.getPhoto());
 
             pst.execute();
             message = "Succesfully updated";
@@ -103,7 +103,7 @@ public class NewsDAO {
 
         CallableStatement statement = null;
 
-        String sql = "CALL getNews(?,?)";
+        String sql = "CALL getNews(?,?,?)";
 
         String[] row = new String[12];
         Statement st = null;
@@ -112,9 +112,10 @@ public class NewsDAO {
         try {
             statement = conn.prepareCall(sql);
             statement.setNull(1, Types.NUMERIC);
-            statement.registerOutParameter(2, Types.REF_CURSOR);
+            statement.setInt(2, idEvent);
+            statement.registerOutParameter(3, Types.REF_CURSOR);
             statement.execute();
-            rs = (ResultSet) statement.getObject(2);
+            rs = (ResultSet) statement.getObject(3);
 
             while (rs.next()) {
                 for (int i = 0; i < 12; i++) {

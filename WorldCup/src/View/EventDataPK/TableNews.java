@@ -207,6 +207,8 @@ public class TableNews extends javax.swing.JPanel {
             }
         });
 
+        dtDateNews.setDateFormatString("dd-MM-yy");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -286,7 +288,7 @@ public class TableNews extends javax.swing.JPanel {
                                 .addGap(12, 12, 12)
                                 .addComponent(dtDateNews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -333,11 +335,40 @@ public class TableNews extends javax.swing.JPanel {
     }//GEN-LAST:event_tblNewsMouseClicked
 
     private void btnDeleteNewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteNewsActionPerformed
-
+        if(this.checkTableSelection(this.tblNews, 0) != null){
+            int idNews = Integer.parseInt((String) checkTableSelection(this.tblNews, 0));
+            System.out.println(this.newsBO.deleteNews(idNews));
+            this.getNews();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteNewsActionPerformed
 
     private void btnUpdateNewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateNewsActionPerformed
-
+        if (this.checkTableSelection(this.tblNews,0) != null){
+            
+            if (!((JTextField)this.dtDateNews.getDateEditor().getUiComponent()).getText().isEmpty()){
+                java.util.Date utilDate = this.dtDateNews.getDate();
+                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                this.news.setDate(sqlDate);
+            }
+            
+            int idNews = Integer.parseInt((String) checkTableSelection(this.tblNews, 0));
+            
+            this.news.setIdNews(idNews);
+            this.news.setIdEvent(this.idEvent);
+            this.news.setTitle(this.txtTitleNews.getText());
+            this.news.setText(this.txtTextNews.getText());
+            this.news.setAuthor(this.txtAuthorNews.getText());
+            this.news.setPhoto(this.photo);
+           
+            System.out.println(newsBO.updateNews(news));
+            this.getNews();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnUpdateNewsActionPerformed
 
     private void btnInsertNewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertNewsActionPerformed

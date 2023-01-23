@@ -89,7 +89,7 @@ public class EventTypeBO {
         return model;
     }
     
-    public ArrayList getUserTypeList() throws SQLException{
+    public ArrayList getEventTypeList() throws SQLException{
         Connection conn = SysConnection.connect();
         ArrayList list = EtypeDao.getList(conn);
         conn.close();
