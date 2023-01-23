@@ -9,6 +9,7 @@ import DA_Layer.DistrictDAO;
 import Entities.District;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -85,5 +86,16 @@ public class DistrictBO {
             System.out.println(ex.getMessage());
         }
         return model;
+    }
+    
+    public ArrayList getList(int idProvince){
+        Connection conn = SysConnection.connect();
+        ArrayList list = districtDao.getList(conn,idProvince);
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
     }
 }

@@ -98,15 +98,15 @@ public class ProvinceDAO {
         return model;
     }
     
-    public ArrayList getList(Connection conn){
+    public ArrayList getList(Connection conn,int idCountry){
         CallableStatement statement = null;
-        String sql = "CALL getProvince(?,?)";
+        String sql = "CALL getProvinceList(?,?)";
         Statement st = null;
         ResultSet rs = null; 
         ArrayList<Province> ObjectList = new ArrayList<>();
         try {
             statement = conn.prepareCall(sql);
-            statement.setNull(1, Types.NUMERIC);
+            statement.setInt(1,idCountry);
             statement.registerOutParameter(2, Types.REF_CURSOR);
             statement.execute();
             rs = (ResultSet) statement.getObject(2);
@@ -119,11 +119,11 @@ public class ProvinceDAO {
                 
                 ObjectList.add(province);
             }
-            System.out.println("Succesfully listed Demonym");
+            System.out.println("Succesfully listed Province");
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Unable to get Demonym list");
+            JOptionPane.showMessageDialog(null, "Unable to get Province list");
             System.out.println(e.getMessage());
         }
         return ObjectList;

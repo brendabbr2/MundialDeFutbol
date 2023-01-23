@@ -9,6 +9,7 @@ import DA_Layer.CountryDAO;
 import Entities.Country;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -85,5 +86,12 @@ public class CountryBO {
             System.out.println(ex.getMessage());
         }
         return model;
+    }
+    
+    public ArrayList getList() throws SQLException{
+        Connection conn = SysConnection.connect();
+        ArrayList list = countryDao.getList(conn);
+        conn.close();
+        return list;
     }
 }

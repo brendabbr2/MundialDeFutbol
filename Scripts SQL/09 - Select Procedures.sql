@@ -111,6 +111,15 @@ BEGIN
         WHERE idProvince = NVL(v_idProvince, idProvince);  
 END getProvince;
 /
+CREATE OR REPLACE PROCEDURE getProvinceList(v_idCountry IN NUMBER, ProvinceCursor OUT SYS_REFCURSOR) 
+AS 
+BEGIN 
+    OPEN ProvinceCursor FOR  
+        SELECT idProvince, idCountry,nameProvince, creationUser, creationDate, modificationUser, modificationDate
+        FROM Province
+        WHERE idCountry = NVL(v_idCountry, idCountry);  
+END getProvinceList;
+/
 --return a cursor of District
 CREATE OR REPLACE PROCEDURE getDistrict(v_idDistrict IN NUMBER, DistrictCursor OUT SYS_REFCURSOR) 
 AS
@@ -122,8 +131,17 @@ BEGIN
         WHERE idDistrict = NVL(v_idDistrict, idDistrict); 
 END getDistrict;
 /
+CREATE OR REPLACE PROCEDURE getDistrictList(v_idCanton IN NUMBER, DistrictCursor OUT SYS_REFCURSOR) 
+AS
+BEGIN 
+    OPEN DistrictCursor FOR  
+        SELECT idDistrict,idCanton, nameDistrict, creationUser, creationDate, modificationUser, modificationDate
+        FROM District
+        WHERE idCanton = NVL(v_idCanton, idCanton); 
+END getDistrict;
+/
 --return a cursor of Canton
-CREATE OR REPLACE PROCEDURE getCanton(v_idCanton IN NUMBER, CantonCursor OUT SYS_REFCURSOR) 
+CREATE OR REPLACE PROCEDURE getCantonTable(v_idCanton IN NUMBER, CantonCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
     OPEN CantonCursor FOR  
@@ -132,8 +150,18 @@ BEGIN
         JOIN Province On Canton.idProvince = Province.idProvince
         WHERE idCanton = NVL(v_idCanton, idCanton); 
     COMMIT;
-END getCanton;
+END getCantonTable;
 /
+
+CREATE OR REPLACE PROCEDURE getCantonList(v_idProvince IN NUMBER, CantonCursor OUT SYS_REFCURSOR) 
+AS 
+BEGIN 
+    OPEN CantonCursor FOR  
+        SELECT idCanton, idProvince, nameCanton, creationUser,creationDate, modificationUser, modificationDate
+        FROM Canton
+        WHERE idProvince = NVL(v_idProvince, idProvince); 
+    COMMIT;
+END getCantonList;
 --return a cursor of Address
 CREATE OR REPLACE PROCEDURE getAddress(v_idAddress IN NUMBER, AddressCursor OUT SYS_REFCURSOR) 
 AS 

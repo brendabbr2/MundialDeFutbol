@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -91,7 +92,7 @@ public class CantonDAO {
         
         CallableStatement statement = null;
         
-        String sql = "CALL getCanton(?,?)";
+        String sql = "CALL getCantonTable(?,?)";
         
         String [] row = new String[7];
         Statement st = null;
@@ -117,5 +118,35 @@ public class CantonDAO {
             System.out.println(e.getMessage());
         }
         return model;
+    }
+    
+    public ArrayList getList(Connection conn, int idProvince){
+        CallableStatement statement = null;
+        String sql = "CALL getCantonList(?,?)";
+        Statement st = null;
+        ResultSet rs = null; 
+        ArrayList<Canton> ObjectList = new ArrayList<>();
+        try {
+            statement = conn.prepareCall(sql);
+            statement.setInt(1, idProvince);
+            statement.registerOutParameter(2, Types.REF_CURSOR);
+            statement.execute();
+            rs = (ResultSet) statement.getObject(2);
+            
+            while (rs.next()) {
+                Canton canton = new Canton();
+                canton.setIdCanton(rs.getInt(1));
+                canton.setIdProvince(rs.getInt(2));
+                canton.setNameCanton(rs.getString(3));
+                ObjectList.add(canton);
+            }
+            System.out.println("Succesfully listed Demonym");
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Unable to get Demonym list");
+            System.out.println(e.getMessage());
+        }
+        return ObjectList;
     }
 }

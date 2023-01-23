@@ -4,10 +4,19 @@
  */
 package View;
 
+import B_Layer.AddressBO;
+import B_Layer.CantonBO;
+import B_Layer.CountryBO;
+import B_Layer.DistrictBO;
 import B_Layer.GenderBO;
 import B_Layer.IdentificationTypeBO;
+import B_Layer.ProvinceBO;
+import Entities.Canton;
+import Entities.Country;
+import Entities.District;
 import Entities.Gender;
 import Entities.IdentificationType;
+import Entities.Province;
 import View.EventDataPK.TablePeople;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,6 +32,11 @@ public class Register_Panel extends javax.swing.JPanel {
     private JPanel pnlContent;
     private final IdentificationTypeBO idType = new IdentificationTypeBO();
     private final GenderBO genderBO = new GenderBO();
+    private final CountryBO countryBO = new CountryBO();
+    private final ProvinceBO provinceBO = new ProvinceBO();
+    private final CantonBO cantonBO = new CantonBO();
+    private final DistrictBO districtBO = new DistrictBO();
+    private final AddressBO addressBO = new AddressBO();
     /**
      * Creates new form Register_Panel
      */
@@ -31,8 +45,33 @@ public class Register_Panel extends javax.swing.JPanel {
         this.pnlContent = pnlContent;
         fillCboxGender();
         fillCboxIdType();
+        fillCboxCountry();
     }
-
+    
+    public int getCountryID() throws SQLException{
+        ArrayList<Country> list = this.countryBO.getList();
+        int idCountry = list.get(this.cboxCountry.getSelectedIndex()).getIdCountry();
+        return idCountry;
+    }
+    
+    public int getProvinceID() throws SQLException{
+        ArrayList<Province> list = this.provinceBO.getList(getCountryID());
+        int idProvince = list.get(this.cboxProvince.getSelectedIndex()).getIdProvince();
+        return idProvince;
+    }
+    
+    public int getCantonID() throws SQLException{
+        ArrayList<Canton> list = this.cantonBO.getList(getProvinceID());
+        int idCanton = list.get(this.cboxCanton.getSelectedIndex()).getIdProvince();
+        return idCanton;
+    }
+    
+    public int getDistrictID() throws SQLException{
+        ArrayList<District> list = this.cantonBO.getList(getProvinceID());
+        int idDistrict = list.get(this.cboxDistrict.getSelectedIndex()).getIdDistrict();
+        return idDistrict;
+    }
+    
     public void fillCboxGender(){
         try {
             ArrayList<Gender> list = genderBO.getList();
@@ -54,6 +93,54 @@ public class Register_Panel extends javax.swing.JPanel {
             Logger.getLogger(TablePeople.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void fillCboxCountry(){
+        try {
+            ArrayList<Country> list = countryBO.getList();
+            for(int i =0; i < list.size();i++){
+                this.cboxCountry.addItem(list.get(i).getNameCountry());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Register_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void fillCboxProvince(){
+        this.cboxProvince.removeAllItems();
+        try {
+            ArrayList<Province> list = provinceBO.getList(getCountryID());
+            for(int i =0; i < list.size();i++){
+                this.cboxProvince.addItem(list.get(i).getNameProvince());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Register_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void fillCboxCanton(){
+        this.cboxCanton.removeAllItems();
+        try {
+            ArrayList<Canton> list = cantonBO.getList(getProvinceID());
+            for(int i =0; i < list.size();i++){
+                this.cboxCanton.addItem(list.get(i).getNameCanton());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Register_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void fillCboxDistrict(){
+        this.cboxDistrict.removeAllItems();
+        try {
+            ArrayList<District> list = districtBO.getList(getCantonID());
+            for(int i =0; i < list.size();i++){
+                this.cboxDistrict.addItem(list.get(i).getNameDistrict());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Register_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -292,9 +379,19 @@ public class Register_Panel extends javax.swing.JPanel {
         lblCountry.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCountry.setText("Country");
 
+        cboxCountry.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboxCountryItemStateChanged(evt);
+            }
+        });
         cboxCountry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxCountryActionPerformed(evt);
+            }
+        });
+        cboxCountry.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cboxCountryPropertyChange(evt);
             }
         });
 
@@ -318,6 +415,11 @@ public class Register_Panel extends javax.swing.JPanel {
         lblProvince.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblProvince.setText("Province");
 
+        cboxProvince.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboxProvinceItemStateChanged(evt);
+            }
+        });
         cboxProvince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxProvinceActionPerformed(evt);
@@ -618,11 +720,11 @@ public class Register_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_cboxIdTypeActionPerformed
 
     private void cboxCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCountryActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cboxCountryActionPerformed
 
     private void cboxProvinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxProvinceActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cboxProvinceActionPerformed
 
     private void cboxCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCantonActionPerformed
@@ -636,6 +738,18 @@ public class Register_Panel extends javax.swing.JPanel {
     private void cboxGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxGenderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxGenderActionPerformed
+
+    private void cboxCountryPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cboxCountryPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxCountryPropertyChange
+
+    private void cboxProvinceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxProvinceItemStateChanged
+        fillCboxCanton();
+    }//GEN-LAST:event_cboxProvinceItemStateChanged
+
+    private void cboxCountryItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxCountryItemStateChanged
+        fillCboxProvince();
+    }//GEN-LAST:event_cboxCountryItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

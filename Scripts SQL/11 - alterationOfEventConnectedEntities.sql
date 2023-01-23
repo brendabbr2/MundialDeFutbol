@@ -30,6 +30,6 @@ ADD CONSTRAINT fk_player_event FOREIGN KEY
 
 -- increasing the length of News.title from 2 to 50
 ALTER TABLE News
-  MODIFY(Title VARCHAR2(50));
+  MODIFY(Title VARCHAR2(100));
   
 ALTER TABLE USERPERSON MODIFY (PASSWORDUSER VARCHAR2(80));

@@ -72,9 +72,9 @@ public class ProvinceBO {
         return model;
     }
     
-    public ArrayList getList() throws SQLException{
+    public ArrayList getList(int idCountry) throws SQLException{
         Connection conn = SysConnection.connect();
-        ArrayList list = provinceDAO.getList(conn);
+        ArrayList list = provinceDAO.getList(conn,idCountry);
         conn.close();
         return list;
     }

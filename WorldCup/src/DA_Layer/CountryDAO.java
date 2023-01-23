@@ -121,7 +121,7 @@ public class CountryDAO {
         }
         return model;
     }
-    /*
+    
     public ArrayList getList(Connection conn){
         CallableStatement statement = null;
         String sql = "CALL getCountry(?,?)";
@@ -138,9 +138,8 @@ public class CountryDAO {
             while (rs.next()) {
                 Country country = new Country();
                 country.setIdCountry(rs.getInt(1));
-                country.set.getString(2));
-                
-                ObjectList.add(demo);
+                country.setNameCountry(rs.getString(3));
+                ObjectList.add(country);
             }
             System.out.println("Succesfully listed Demonym");
 
@@ -150,5 +149,5 @@ public class CountryDAO {
             System.out.println(e.getMessage());
         }
         return ObjectList;
-    }*/
+    }
 }
