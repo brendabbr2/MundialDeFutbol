@@ -23,11 +23,13 @@ public class UserCommentDAO {
 
     public String insertUserComment(Connection conn, UserComment usercomment) {
         PreparedStatement pst = null;
-        String sql = "CALL insertUserComment(?,?)";
+        String sql = "CALL insertUserComment(?,?,?,?)";
         try {
             pst = conn.prepareStatement(sql);
             pst.setInt(1, usercomment.getIdNews());
             pst.setInt(2, usercomment.getIdUser());
+            pst.setString(3, usercomment.getCommentDate());
+            pst.setString(4, usercomment.getCommentText());
 
             pst.execute();
             message = "Succesfully commentd";
@@ -41,36 +43,36 @@ public class UserCommentDAO {
         return message;
     }
     
-    public String deleteUserComment(Connection conn, UserComment usercomment) {
-        PreparedStatement pst = null;
-        String sql = "CALL deleteUserComment(?,?)";
-        try {
-            pst = conn.prepareStatement(sql);
-            pst.setInt(1, usercomment.getIdUser());
-            pst.setInt(2, usercomment.getIdNews());
-
-            pst.execute();
-            message = "Succesfully deleted";
-            JOptionPane.showMessageDialog(null, "UserComment deleted correctly");
-            pst.close();
-
-        } catch (SQLException e) {
-            message = "Unsuccessfully deleted\n" + e.getMessage();
-            JOptionPane.showMessageDialog(null, "UserComment not deleted",
-                     null, JOptionPane.ERROR_MESSAGE);
-        }
-        return message;
-    }
+//    public String deleteUserComment(Connection conn, UserComment usercomment) {
+//        PreparedStatement pst = null;
+//        String sql = "CALL deleteUserComment(?,?)";
+//        try {
+//            pst = conn.prepareStatement(sql);
+//            pst.setInt(1, usercomment.getIdUser());
+//            pst.setInt(2, usercomment.getIdNews());
+//
+//            pst.execute();
+//            message = "Succesfully deleted";
+//            JOptionPane.showMessageDialog(null, "UserComment deleted correctly");
+//            pst.close();
+//
+//        } catch (SQLException e) {
+//            message = "Unsuccessfully deleted\n" + e.getMessage();
+//            JOptionPane.showMessageDialog(null, "UserComment not deleted",
+//                     null, JOptionPane.ERROR_MESSAGE);
+//        }
+//        return message;
+//    }
     
     public DefaultTableModel getUserCommentMostVoted(Connection conn){
-        String [] columns = {"idUserComment", "voting"};
+        String [] columns = {"commentText", "cammentDate", "userName"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
-        String sql = "CALL getUserCommentMostVoted(?)";
+        String sql = "CALL getUserComment(?)";
         
-        String [] row = new String[2];
+        String [] row = new String[3];
         ResultSet rs = null;
         
         try {
@@ -80,7 +82,7 @@ public class UserCommentDAO {
             rs = (ResultSet) statement.getObject(1);
             
             while (rs.next()) {
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < 3; i++) {
                     row[i] = rs.getString(i+1);
                 }
                 model.addRow(row);

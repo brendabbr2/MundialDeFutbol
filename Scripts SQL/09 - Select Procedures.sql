@@ -268,13 +268,14 @@ BEGIN
         WHERE idUser = NVL(v_idUser,idUser);
 END getUserLog;
 /
-CREATE OR REPLACE PROCEDURE getUserComment(v_idUser IN NUMBER, CommentCursor OUT SYS_REFCURSOR) 
+CREATE OR REPLACE PROCEDURE getUserComment(UserCommentCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
-    OPEN CommentCursor FOR  
-        SELECT idComment, idNews,idUser,CommentDate,CommentText, creationUser, creationDate, modificationUser, modificationDate
-        FROM userComment
-        WHERE idUser = NVL(v_idUser,idUser);
+    OPEN UserCommentCursor FOR
+        SELECT c.commentText, c.commentDate, u.userName
+        FROM UserComment c
+        INNER JOIN UserPerson u
+        ON c.idUser = u.idUser;
 END getUserComment;
 /
 CREATE OR REPLACE PROCEDURE getUserReview(v_idUser IN NUMBER, ReviewCursor OUT SYS_REFCURSOR) 
