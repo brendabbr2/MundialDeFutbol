@@ -28,7 +28,7 @@ public class UserCommentDAO {
             pst = conn.prepareStatement(sql);
             pst.setInt(1, usercomment.getIdNews());
             pst.setInt(2, usercomment.getIdUser());
-            pst.setString(3, usercomment.getCommentDate());
+            pst.setDate(3, usercomment.getCommentDate());
             pst.setString(4, usercomment.getCommentText());
 
             pst.execute();
@@ -39,6 +39,7 @@ public class UserCommentDAO {
             message = "Unsuccessfully commentd\n" + e.getMessage();
             JOptionPane.showMessageDialog(null, "UserComment not inserted",
                      null, JOptionPane.ERROR_MESSAGE);
+            System.out.println(message);
         }
         return message;
     }

@@ -4,6 +4,8 @@
  */
 package Entities;
 
+import java.sql.Date;
+
 /**
  *
  * @author david
@@ -12,10 +14,10 @@ public class UserComment {
     private int idComment;
     private int idNews;
     private int idUser;
-    private String commentDate;
+    private Date commentDate;
     private String commentText;
 
-    public UserComment(int idComment, int idNews, int idUser, String commentDate, String commentText) {
+    public UserComment(int idComment, int idNews, int idUser, Date commentDate, String commentText) {
         this.idComment = idComment;
         this.idNews = idNews;
         this.idUser = idUser;
@@ -50,12 +52,13 @@ public class UserComment {
         this.idUser = idUser;
     }
 
-    public String getCommentDate() {
+    public Date getCommentDate() {
         return commentDate;
     }
 
     public void setCommentDate(String commentDate) {
-        this.commentDate = commentDate;
+        Date comment = Date.valueOf(commentDate);
+        this.commentDate = comment;
     }
 
     public String getCommentText() {

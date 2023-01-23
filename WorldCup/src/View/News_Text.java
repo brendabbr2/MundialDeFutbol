@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author david
@@ -34,7 +36,7 @@ public class News_Text extends javax.swing.JFrame {
         txaText = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txaComments = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,9 +55,9 @@ public class News_Text extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel1.setText("Comments");
 
-        jTextPane1.setEditable(false);
-        jTextPane1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
-        jScrollPane1.setViewportView(jTextPane1);
+        txaComments.setEditable(false);
+        txaComments.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jScrollPane1.setViewportView(txaComments);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,8 +113,23 @@ public class News_Text extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
     
-    void setText(String text) {
+    public void setText(String text) {
         txaText.setText(text);
+    }
+    
+    public void setComments(DefaultTableModel comments){
+        String buffer = "";
+        for (int i = 0; i < comments.getDataVector().size(); i++) {
+            txaComments.setText(buffer + "["
+            + (String)comments.getDataVector().elementAt(i).elementAt(2)
+            + " - "
+            + (String)comments.getDataVector().elementAt(i).elementAt(1)
+            + "]: "
+            + (String)comments.getDataVector().elementAt(i).elementAt(0)
+            +"\n");
+            
+            buffer = txaComments.getText();
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -121,7 +138,7 @@ public class News_Text extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane txaComments;
     private javax.swing.JTextPane txaText;
     // End of variables declaration//GEN-END:variables
 }

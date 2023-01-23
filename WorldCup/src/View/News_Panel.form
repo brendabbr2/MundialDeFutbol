@@ -852,6 +852,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Read Article"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReadArticleActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCommentMostVoted">
                   <Properties>

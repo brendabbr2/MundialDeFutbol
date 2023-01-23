@@ -10,10 +10,12 @@ import B_Layer.UserSaveBO;
 import Entities.UserComment;
 import Entities.UserSave;
 import java.awt.Image;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.util.Date;  
 
 /**
  *
@@ -31,9 +33,9 @@ public class News_Panel extends javax.swing.JPanel {
     private final UserCommentBO userCommentBO = new UserCommentBO();
     private final UserComment userComment = new UserComment();
 
-    private int pagForRecent = 0;
-    private int pagForMostVoted = 0;
-    private int idSelectedForMostVoted = 0;
+    private int pagForRecent;
+    private int pagForMostVoted;
+    private int idSelectedForMostVoted;
 
     //ATRIBUTES FOR IMAGES
     private String path;
@@ -59,6 +61,9 @@ public class News_Panel extends javax.swing.JPanel {
      */
     public News_Panel(MainFrame mainFrame) {
         initComponents();
+        pagForRecent = 0;
+        pagForMostVoted = 0;
+        idSelectedForMostVoted = 0;
         initButtonsIcon();
         this.mainFrame = mainFrame;
         this.newsText = new News_Text(mainFrame);
@@ -72,6 +77,7 @@ public class News_Panel extends javax.swing.JPanel {
         iconFilledHeart = new ImageIcon(imgFilledHeart.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 
         arrayListOfLikesInIcon = new <Icon>ArrayList();
+        resetLikeIcon();
         btnLikeRecent.setIcon(iconEmptyHeart);
     }
 
@@ -110,9 +116,8 @@ public class News_Panel extends javax.swing.JPanel {
             System.out.println("id: " + userSaveBO.getUserSaveMostVoted().getDataVector().elementAt(pagForMostVoted).elementAt(0));
             System.out.println("apariciones: " + userSaveBO.getUserSaveMostVoted().getDataVector().elementAt(pagForMostVoted).elementAt(1));
             for (int i = 0; i < userSaveBO.getUserSaveMostVoted().getDataVector().size(); i++) {
-                if (newsBO.getNews().getDataVector().elementAt(i).elementAt(0)
-                        .equals(userSaveBO.getUserSaveMostVoted().getDataVector()
-                                .elementAt(pagForMostVoted).elementAt(0))) {
+                if (Integer.parseInt((String)newsBO.getNews().getDataVector().elementAt(i).elementAt(0)) == 
+                        Integer.parseInt((String)userSaveBO.getUserSaveMostVoted().getDataVector().elementAt(pagForMostVoted).elementAt(0))) {
                     flag = true;
                     idSelectedForMostVoted = i;
                     break;
@@ -618,6 +623,11 @@ public class News_Panel extends javax.swing.JPanel {
         });
 
         btnReadArticle.setText("Read Article");
+        btnReadArticle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReadArticleActionPerformed(evt);
+            }
+        });
 
         btnCommentMostVoted.setText("Comment");
         btnCommentMostVoted.addActionListener(new java.awt.event.ActionListener() {
@@ -742,6 +752,7 @@ public class News_Panel extends javax.swing.JPanel {
     private void btnRecentReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentReadActionPerformed
         mainFrame.setVisible(false);
         newsText.setText((String) newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(4));
+        newsText.setComments(userCommentBO.getUserComment());
         newsText.setVisible(true);
     }//GEN-LAST:event_btnRecentReadActionPerformed
 
@@ -771,11 +782,12 @@ public class News_Panel extends javax.swing.JPanel {
         if (mainFrame.getUser().getIdUser() == -1) {
             JOptionPane.showMessageDialog(null, "First, you have to log in.");
         } else {
-            String comment = JOptionPane.showInputDialog("Comment: ");
+            String comment = JOptionPane.showInputDialog(null,"Comment: ", "Comment News", JOptionPane.INFORMATION_MESSAGE);
             System.out.println(comment);
             if (!(comment == null || comment.equals(""))) {
                 userComment.setIdUser(mainFrame.getUser().getIdUser());
-                userComment.setCommentDate("11/11/2023");
+                LocalDateTime dtm = LocalDateTime.now();
+                userComment.setCommentDate(String.valueOf(dtm).substring(0, 10));
                 userComment.setLogText(comment);
                 userComment.setIdNews(Integer.parseInt((String) newsBO.getNews().getDataVector().elementAt(idSelectedForMostVoted).elementAt(0)));
 
@@ -814,11 +826,12 @@ public class News_Panel extends javax.swing.JPanel {
         if (mainFrame.getUser().getIdUser() == -1) {
             JOptionPane.showMessageDialog(null, "First, you have to log in.");
         } else {
-            String comment = JOptionPane.showInputDialog("Comment: ");
+            String comment = JOptionPane.showInputDialog(null,"Comment: ", "Comment News", JOptionPane.INFORMATION_MESSAGE);
             System.out.println(comment);
             if (!(comment == null || comment.equals(""))) {
                 userComment.setIdUser(mainFrame.getUser().getIdUser());
-                userComment.setCommentDate("11/11/2023");
+                LocalDateTime dtm = LocalDateTime.now();
+                userComment.setCommentDate(String.valueOf(dtm).substring(0, 10));
                 userComment.setLogText(comment);
                 userComment.setIdNews(Integer.parseInt((String) newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(0)));
 
@@ -826,6 +839,13 @@ public class News_Panel extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnCommentRecentActionPerformed
+
+    private void btnReadArticleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadArticleActionPerformed
+        mainFrame.setVisible(false);
+        newsText.setText((String) newsBO.getNews().getDataVector().elementAt(this.idSelectedForMostVoted).elementAt(4));
+        newsText.setComments(userCommentBO.getUserComment());
+        newsText.setVisible(true);
+    }//GEN-LAST:event_btnReadArticleActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
