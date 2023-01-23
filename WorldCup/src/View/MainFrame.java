@@ -10,6 +10,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -75,8 +76,12 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     public void checkUserPrivileges(int userType){
-        if (userType == 2)
+        if (userType == 2){
             this.btnAdminOptions.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Welcome! Admin", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Welcome! User", "", JOptionPane.INFORMATION_MESSAGE);
     }
     
 
