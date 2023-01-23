@@ -138,7 +138,7 @@ BEGIN
         SELECT idDistrict,idCanton, nameDistrict, creationUser, creationDate, modificationUser, modificationDate
         FROM District
         WHERE idCanton = NVL(v_idCanton, idCanton); 
-END getDistrict;
+END getDistrictList;
 /
 --return a cursor of Canton
 CREATE OR REPLACE PROCEDURE getCantonTable(v_idCanton IN NUMBER, CantonCursor OUT SYS_REFCURSOR) 
@@ -162,6 +162,7 @@ BEGIN
         WHERE idProvince = NVL(v_idProvince, idProvince); 
     COMMIT;
 END getCantonList;
+/
 --return a cursor of Address
 CREATE OR REPLACE PROCEDURE getAddress(v_idAddress IN NUMBER, AddressCursor OUT SYS_REFCURSOR) 
 AS 

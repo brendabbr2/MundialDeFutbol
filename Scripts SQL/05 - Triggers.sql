@@ -550,6 +550,13 @@ CREATE OR REPLACE TRIGGER proj.beforeInsertHelperType
 BEFORE INSERT ON proj.HelperType
 FOR EACH ROW 
 BEGIN 
+:new.creationUser:=USER; :new.creationDate:=SYSDATE; 
+END beforeInsertHelperType;
+/
+CREATE OR REPLACE TRIGGER proj.beforeUpdateHelperType
+BEFORE UPDATE ON proj.HelperType
+FOR EACH ROW 
+BEGIN 
 :new.modificationUser:=USER; :new.modificationDate:=SYSDATE; 
 END beforeInsertHelperType;
 /

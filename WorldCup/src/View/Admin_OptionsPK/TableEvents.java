@@ -37,7 +37,19 @@ public class TableEvents extends javax.swing.JPanel {
         initComponents();
         this.pnlContent = pnlContent;
         eventData = new EventData(pnlContent);
+        fillCombobox();
         getEvents();
+    }
+    
+    public void fillCombobox(){
+        try{
+            ArrayList<EventType> list = eventType.getEventTypeList();
+            for(int i =0; i < list.size();i++){
+                this.cmbEventType.addItem(list.get(i).getName());
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     
     public void getEvents(){
@@ -140,7 +152,6 @@ public class TableEvents extends javax.swing.JPanel {
         lblEventType.setText("Event Type");
 
         cmbEventType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cmbEventType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mundial", "mundial femenino" }));
         cmbEventType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbEventTypeActionPerformed(evt);
@@ -293,11 +304,7 @@ public class TableEvents extends javax.swing.JPanel {
     private void btnInsertEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertEventActionPerformed
         if (!(this.txtNameEvent.getText().isEmpty())){
             
-            if (this.cmbEventType.getSelectedItem().toString().toLowerCase().equals("mundial"))
-                this.event.setIdEvenType(3);
-            else
-                this.event.setIdEvenType(4);
-
+            this.event.setIdEvenType(getEventTypeId());
             this.event.setName(this.txtNameEvent.getText());
             
             System.out.println(eventBO.insertEvent(event));
