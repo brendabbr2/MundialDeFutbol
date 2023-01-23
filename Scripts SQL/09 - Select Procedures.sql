@@ -126,8 +126,9 @@ CREATE OR REPLACE PROCEDURE getCanton(v_idCanton IN NUMBER, CantonCursor OUT SYS
 AS 
 BEGIN 
     OPEN CantonCursor FOR  
-        SELECT idCanton, nameCanton, creationUser, creationDate, modificationUser, modificationDate
+        SELECT Canton.idCanton, Canton.nameCanton, Province.NameProvince , Canton.creationUser, Canton.creationDate, Canton.modificationUser, Canton.modificationDate
         FROM Canton
+        JOIN Province On Canton.idProvince = Province.idProvince
         WHERE idCanton = NVL(v_idCanton, idCanton); 
     COMMIT;
 END getCanton;
@@ -333,6 +334,7 @@ BEGIN
         WHERE idEventType = NVL(v_idEventType,idEventType); 
 END getEventType;
 /
+
 CREATE OR REPLACE PROCEDURE getEvent(v_idEvent IN NUMBER, EventCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 

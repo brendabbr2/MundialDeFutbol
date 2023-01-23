@@ -19,6 +19,9 @@ public class District {
         this.nameDistrict = nameDistrict;
     }
 
+    public District() {
+    }
+
     public int getIdDistrict() {
         return idDistrict;
     }

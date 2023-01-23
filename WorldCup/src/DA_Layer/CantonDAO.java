@@ -86,14 +86,14 @@ public class CantonDAO {
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
     public DefaultTableModel getCantons(Connection conn){
-        String [] columns = {"idCanton", "nameCanton", "creationUser", "creationDate", "modificationUser", "modificationDate"};
+        String [] columns = {"ID", "Canton","Province", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
         
         String sql = "CALL getCanton(?,?)";
         
-        String [] row = new String[6];
+        String [] row = new String[7];
         Statement st = null;
         ResultSet rs = null;
         
@@ -105,7 +105,7 @@ public class CantonDAO {
             rs = (ResultSet) statement.getObject(2);
             
             while (rs.next()) {
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < 7; i++) {
                     row[i] = rs.getString(i+1);
                 }
                 model.addRow(row);

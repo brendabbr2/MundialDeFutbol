@@ -4,19 +4,55 @@
  */
 package View.EventDataPK;
 
+import B_Layer.CantonBO;
+import Entities.Canton;
+import java.awt.BorderLayout;
+import static java.awt.image.ImageObserver.WIDTH;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jox
  */
 public class TableCantons extends javax.swing.JPanel {
-
+    private JPanel pnlContent;
+    private final CantonBO cantonBO = new CantonBO();
+    private final Canton canton = new Canton();
+    private TableDistricts district ;
     /**
      * Creates new form TableCantons
      */
-    public TableCantons() {
+    public TableCantons(JPanel pnlContent) {
+        this.pnlContent = pnlContent;
+        this.district = new TableDistricts(pnlContent);
         initComponents();
+        getCantons();
     }
-
+    
+    public void SetProvinceToCanton(int idProvince){
+        canton.setIdProvince(idProvince);
+    }
+    
+    public void getCantons(){
+            this.tblCanton.setModel(cantonBO.getCantons());
+            TableColumnModel tblModelColumn = this.tblCanton.getColumnModel();
+            tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
+    }
+    
+    private Object checkTableSelection(JTable table, int column){
+        Object user = null;
+        if(!table.getSelectionModel().isSelectionEmpty())
+        {
+            int row = table.getSelectedRow();
+            user = table.getModel().getValueAt(row, column);
+            //return user;
+        }
+        return user;
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +66,7 @@ public class TableCantons extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCanton = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        btnDeleteCanton = new javax.swing.JButton();
+        btnManageDistricts = new javax.swing.JButton();
         btnUpdateCanton = new javax.swing.JButton();
         lblNameCanton = new javax.swing.JLabel();
         txtNameCanton = new javax.swing.JTextField();
@@ -60,11 +96,11 @@ public class TableCantons extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(152, 12, 51));
 
-        btnDeleteCanton.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnDeleteCanton.setText("DELETE");
-        btnDeleteCanton.addActionListener(new java.awt.event.ActionListener() {
+        btnManageDistricts.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        btnManageDistricts.setText("Manage Districts");
+        btnManageDistricts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteCantonActionPerformed(evt);
+                btnManageDistrictsActionPerformed(evt);
             }
         });
 
@@ -101,11 +137,14 @@ public class TableCantons extends javax.swing.JPanel {
                 .addComponent(lblNameCanton)
                 .addGap(59, 59, 59)
                 .addComponent(txtNameCanton, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(296, 296, 296)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUpdateCanton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDeleteCanton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(btnUpdateCanton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(btnManageDistricts)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +157,7 @@ public class TableCantons extends javax.swing.JPanel {
                     .addComponent(lblNameCanton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNameCanton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(btnDeleteCanton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageDistricts, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
@@ -166,25 +205,59 @@ public class TableCantons extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblCantonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCantonMouseClicked
-
+        int selection = this.tblCanton.rowAtPoint(evt.getPoint());
+        String type = this.tblCanton.getValueAt(selection, 0)+"";
+        
+        this.txtNameCanton.setText(this.tblCanton.getValueAt(selection, 0)+"");
     }//GEN-LAST:event_tblCantonMouseClicked
 
-    private void btnDeleteCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCantonActionPerformed
-
-    }//GEN-LAST:event_btnDeleteCantonActionPerformed
+    private void btnManageDistrictsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDistrictsActionPerformed
+        if(this.checkTableSelection(tblCanton, WIDTH) != null ){
+            int idCanton = Integer.parseInt((String) checkTableSelection(tblCanton, 0));
+            this.district.SetCantonToDistrict(idCanton);
+            this.district.setSize(834, 567);
+            this.district.setLocation(0,0);
+            pnlContent.removeAll();
+            pnlContent.add(this.district,BorderLayout.CENTER);
+            pnlContent.revalidate();
+            pnlContent.repaint();
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select a Country");
+        }
+    }//GEN-LAST:event_btnManageDistrictsActionPerformed
 
     private void btnUpdateCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCantonActionPerformed
-
+        if (this.checkTableSelection(tblCanton,0) != null && !(this.txtNameCanton.getText().isEmpty())){
+            int idCanton = Integer.parseInt((String) checkTableSelection(tblCanton, 0));
+            this.canton.setIdCanton(idCanton);
+            this.canton.setNameCanton(this.txtNameCanton.getText());
+            getCantons();
+            
+            System.out.println(this.cantonBO.updateCanton(canton));
+            getCantons();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Register not Selected", null, JOptionPane.ERROR_MESSAGE);
+        }
+       
+        
     }//GEN-LAST:event_btnUpdateCantonActionPerformed
 
     private void btnInsertCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertCantonActionPerformed
-
+        if(!this.txtNameCanton.getText().isEmpty()){
+            this.canton.setNameCanton(this.txtNameCanton.getText());
+            System.out.println(cantonBO.insertCanton(canton));
+            getCantons();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Error Country not inserted!");
+        }
     }//GEN-LAST:event_btnInsertCantonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDeleteCanton;
     private javax.swing.JButton btnInsertCanton;
+    private javax.swing.JButton btnManageDistricts;
     private javax.swing.JButton btnUpdateCanton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
