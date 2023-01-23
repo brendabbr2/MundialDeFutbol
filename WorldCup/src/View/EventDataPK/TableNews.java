@@ -45,7 +45,7 @@ public class TableNews extends javax.swing.JPanel {
     }
     
     public void getNews(){
-            tblNews.setModel(newsBO.getNews());
+            tblNews.setModel(newsBO.getNewsEvent());
             TableColumnModel tblModelColumn = tblNews.getColumnModel();
             tblModelColumn.removeColumn(tblModelColumn.getColumn(0));
             showPhotos(this.tblNews, 6);
