@@ -126,8 +126,9 @@ CREATE OR REPLACE PROCEDURE getCanton(v_idCanton IN NUMBER, CantonCursor OUT SYS
 AS 
 BEGIN 
     OPEN CantonCursor FOR  
-        SELECT idCanton, nameCanton, creationUser, creationDate, modificationUser, modificationDate
+        SELECT Canton.idCanton, Canton.nameCanton, Province.NameProvince , Canton.creationUser, Canton.creationDate, Canton.modificationUser, Canton.modificationDate
         FROM Canton
+        JOIN Province On Canton.idProvince = Province.idProvince
         WHERE idCanton = NVL(v_idCanton, idCanton); 
     COMMIT;
 END getCanton;
@@ -267,13 +268,14 @@ BEGIN
         WHERE idUser = NVL(v_idUser,idUser);
 END getUserLog;
 /
-CREATE OR REPLACE PROCEDURE getUserComment(v_idUser IN NUMBER, CommentCursor OUT SYS_REFCURSOR) 
+CREATE OR REPLACE PROCEDURE getUserComment(UserCommentCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 
-    OPEN CommentCursor FOR  
-        SELECT idComment, idNews,idUser,CommentDate,CommentText, creationUser, creationDate, modificationUser, modificationDate
-        FROM userComment
-        WHERE idUser = NVL(v_idUser,idUser);
+    OPEN UserCommentCursor FOR
+        SELECT c.commentText, c.commentDate, u.userName
+        FROM UserComment c
+        INNER JOIN UserPerson u
+        ON c.idUser = u.idUser;
 END getUserComment;
 /
 CREATE OR REPLACE PROCEDURE getUserReview(v_idUser IN NUMBER, ReviewCursor OUT SYS_REFCURSOR) 
@@ -333,6 +335,7 @@ BEGIN
         WHERE idEventType = NVL(v_idEventType,idEventType); 
 END getEventType;
 /
+
 CREATE OR REPLACE PROCEDURE getEvent(v_idEvent IN NUMBER, EventCursor OUT SYS_REFCURSOR) 
 AS 
 BEGIN 

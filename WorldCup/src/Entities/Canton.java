@@ -18,6 +18,10 @@ public class Canton {
         this.idProvince = idProvince;
         this.nameCanton = nameCanton;
     }
+
+    public Canton() {
+        
+    }
     
     public int getIdCanton() {
         return idCanton;

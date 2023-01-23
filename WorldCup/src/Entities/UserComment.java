@@ -57,7 +57,7 @@ public class UserComment {
         this.commentDate = commentDate;
     }
 
-    public String getLogText() {
+    public String getCommentText() {
         return commentText;
     }
 

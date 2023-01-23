@@ -28,7 +28,7 @@ public class TableProvinces extends javax.swing.JPanel {
      */
     public TableProvinces(JPanel pnlContent) {
         this.pnlContent = pnlContent;
-        cantons = new TableCantons();
+        cantons = new TableCantons(pnlContent);
         initComponents();
         getProvinces();
     }
@@ -199,7 +199,10 @@ public class TableProvinces extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblProvinceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProvinceMouseClicked
-
+        int selection = this.tblProvince.rowAtPoint(evt.getPoint());
+        String type = this.tblProvince.getValueAt(selection, 0)+"";
+        
+        this.txtNameProvince.setText(this.tblProvince.getValueAt(selection, 1)+"");
     }//GEN-LAST:event_tblProvinceMouseClicked
 
     private void btnUpdateProvinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProvinceActionPerformed
@@ -229,7 +232,9 @@ public class TableProvinces extends javax.swing.JPanel {
     private void btnManageCantonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCantonsActionPerformed
         if(this.checkTableSelection(tblProvince, WIDTH) != null ){
             int idProvince = Integer.parseInt((String) checkTableSelection(tblProvince, 0));
-            //this.cantons.SetProvinceToCantons(idProvince);
+
+            this.cantons.SetProvinceToCanton(idProvince);
+
             this.cantons.setSize(834, 567);
             this.cantons.setLocation(0,0);
             pnlContent.removeAll();

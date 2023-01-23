@@ -396,6 +396,8 @@ public class MainFrame extends javax.swing.JFrame {
         pnlContent.removeAll();
         pnlContent.revalidate();
         pnlContent.repaint();
+        
+        newsPanel.resetLikeIcon();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed

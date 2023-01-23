@@ -8,8 +8,10 @@ import B_Layer.NewsBO;
 import B_Layer.UserSaveBO;
 import Entities.UserSave;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,11 +31,22 @@ public class News_Panel extends javax.swing.JPanel {
     private int pagForMostVoted = 0;
     private int idSelectedForMostVoted = 0;
 
+    //ATRIBUTES FOR IMAGES
     private String path;
+
+    //Images for photo of news
     private ImageIcon imgIconRecentNews;
     private Icon iconRecentNews;
     private ImageIcon imgIconMostVotedNews;
     private Icon iconMostVotedNews;
+
+    //Images for the button of like
+    private ImageIcon imgEmptyHeart;
+    private Icon iconEmptyHeart;
+    private ImageIcon imgFilledHeart;
+    private Icon iconFilledHeart;
+    
+    private ArrayList<Icon> arrayListOfLikesInIcon;
 
     /**
      * Creates new form News
@@ -42,9 +55,24 @@ public class News_Panel extends javax.swing.JPanel {
      */
     public News_Panel(MainFrame mainFrame) {
         initComponents();
+        initButtonsIcon();
         this.mainFrame = mainFrame;
         this.newsText = new News_Text(mainFrame);
         getRecentNews();
+    }
+
+    private void initButtonsIcon() {
+        imgEmptyHeart = new ImageIcon("Images/iconForNews/corazonVacio.jfif");
+        iconEmptyHeart = new ImageIcon(imgEmptyHeart.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+        imgFilledHeart = new ImageIcon("Images/iconForNews/corazonLleno.jfif");
+        iconFilledHeart = new ImageIcon(imgFilledHeart.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+        
+        arrayListOfLikesInIcon = new <Icon>ArrayList();
+        btnLikeRecent.setIcon(iconEmptyHeart);
+    }
+    
+    public void resetLikeIcon(){
+        btnLikeRecent.setIcon(iconEmptyHeart);
     }
 
     private void getRecentNews() {
@@ -84,12 +112,13 @@ public class News_Panel extends javax.swing.JPanel {
             }
             System.out.println("Salimos del for jeje");
             if (flag) {
+                System.out.println("VAMOS POR LOS MAS VOTADOS");
                 getMostVotedNews();
             }
         }
     }
-    
-    private void getMostVotedNews(){
+
+    private void getMostVotedNews() {
         if (!newsBO.getNews().getDataVector().isEmpty()) {
             this.lblMostVotedTitle.setText("Title: " + (String) newsBO.getNews().getDataVector().elementAt(idSelectedForMostVoted).elementAt(3));
             this.lblMostVotedAuthor.setText("Author: " + (String) newsBO.getNews().getDataVector().elementAt(idSelectedForMostVoted).elementAt(5));
@@ -97,7 +126,7 @@ public class News_Panel extends javax.swing.JPanel {
             getIconMostVotedNews();
         }
     }
-    
+
     private void getIconMostVotedNews() {
         try {
             path = (String) newsBO.getNews().getDataVector().elementAt(idSelectedForMostVoted).elementAt(7);
@@ -135,6 +164,8 @@ public class News_Panel extends javax.swing.JPanel {
         btnRecentPrevious = new javax.swing.JButton();
         btnRecentNext = new javax.swing.JButton();
         btnRecentRead = new javax.swing.JButton();
+        btnLikeRecent = new javax.swing.JButton();
+        btnCommentRecent = new javax.swing.JButton();
         pnlTodaysMatches = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -161,6 +192,7 @@ public class News_Panel extends javax.swing.JPanel {
         btnMostVotedPrevious = new javax.swing.JButton();
         btnMostVotedNext = new javax.swing.JButton();
         btnReadArticle = new javax.swing.JButton();
+        btnCommentMostVoted = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -284,6 +316,17 @@ public class News_Panel extends javax.swing.JPanel {
             }
         });
 
+        btnLikeRecent.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnLikeRecent.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnLikeRecent.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnLikeRecent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLikeRecentActionPerformed(evt);
+            }
+        });
+
+        btnCommentRecent.setText("Comment");
+
         javax.swing.GroupLayout pnlRecentNewsLayout = new javax.swing.GroupLayout(pnlRecentNews);
         pnlRecentNews.setLayout(pnlRecentNewsLayout);
         pnlRecentNewsLayout.setHorizontalGroup(
@@ -293,25 +336,26 @@ public class News_Panel extends javax.swing.JPanel {
                 .addGroup(pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlRecentNewsLayout.createSequentialGroup()
                         .addComponent(pnlRecentNewsImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlRecentNewsLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pnlRecentTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRecentNewsLayout.createSequentialGroup()
-                                        .addGroup(pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(pnlRecentAuthor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlRecentNewsLayout.createSequentialGroup()
-                                                .addComponent(btnRecentPrevious)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(pnlRecentDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnRecentNext, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRecentNewsLayout.createSequentialGroup()
+                                .addComponent(btnLikeRecent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnRecentRead)
-                                .addGap(9, 9, 9))))
+                                .addGap(9, 9, 9))
+                            .addComponent(pnlRecentTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRecentNewsLayout.createSequentialGroup()
+                                .addGroup(pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pnlRecentAuthor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlRecentNewsLayout.createSequentialGroup()
+                                        .addComponent(btnRecentPrevious)
+                                        .addGap(169, 169, 169)
+                                        .addComponent(btnCommentRecent)
+                                        .addGap(0, 66, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pnlRecentDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnRecentNext, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(pnlRecentNewsLayout.createSequentialGroup()
                         .addComponent(pnlRecentNewsHead, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -331,12 +375,16 @@ public class News_Panel extends javax.swing.JPanel {
                             .addComponent(pnlRecentAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlRecentDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRecentRead)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addGroup(pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRecentPrevious, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRecentRead)
+                            .addComponent(btnLikeRecent, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addGroup(pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRecentNewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnRecentPrevious)
+                                .addComponent(btnCommentRecent))
                             .addComponent(btnRecentNext, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(pnlRecentNewsImage, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                    .addComponent(pnlRecentNewsImage, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -421,7 +469,7 @@ public class News_Panel extends javax.swing.JPanel {
                         .addGroup(pnlTodaysMatchesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlTodaysMatchesLayout.createSequentialGroup()
                                 .addComponent(pnlFlagTeamA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                                 .addGroup(pnlTodaysMatchesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTodaysMatchesLayout.createSequentialGroup()
                                         .addComponent(lblVS)
@@ -558,6 +606,13 @@ public class News_Panel extends javax.swing.JPanel {
 
         btnReadArticle.setText("Read Article");
 
+        btnCommentMostVoted.setText("Comment");
+        btnCommentMostVoted.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCommentMostVotedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlMostVotedLayout = new javax.swing.GroupLayout(pnlMostVoted);
         pnlMostVoted.setLayout(pnlMostVotedLayout);
         pnlMostVotedLayout.setHorizontalGroup(
@@ -577,7 +632,9 @@ public class News_Panel extends javax.swing.JPanel {
                                             .addComponent(pnlMostVotedAuthor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMostVotedLayout.createSequentialGroup()
                                                 .addComponent(btnMostVotedPrevious)
-                                                .addGap(0, 310, Short.MAX_VALUE)))
+                                                .addGap(170, 170, 170)
+                                                .addComponent(btnCommentMostVoted)
+                                                .addGap(0, 65, Short.MAX_VALUE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(pnlMostVotedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(pnlMostVotedDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -606,9 +663,11 @@ public class News_Panel extends javax.swing.JPanel {
                             .addComponent(pnlMostVotedDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnReadArticle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(pnlMostVotedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMostVotedPrevious, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMostVotedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnMostVotedPrevious)
+                                .addComponent(btnCommentMostVoted))
                             .addComponent(btnMostVotedNext, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addComponent(pnlMostVotedImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -623,12 +682,12 @@ public class News_Panel extends javax.swing.JPanel {
                 .addGroup(pnlScrollDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(pnlRecentNews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlTodaysMatches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
             .addGroup(pnlScrollDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlScrollDashboardLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(pnlMostVoted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(54, Short.MAX_VALUE)))
+                    .addContainerGap(63, Short.MAX_VALUE)))
         );
         pnlScrollDashboardLayout.setVerticalGroup(
             pnlScrollDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -642,7 +701,7 @@ public class News_Panel extends javax.swing.JPanel {
                 .addGroup(pnlScrollDashboardLayout.createSequentialGroup()
                     .addGap(228, 228, 228)
                     .addComponent(pnlMostVoted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(267, Short.MAX_VALUE)))
+                    .addContainerGap(275, Short.MAX_VALUE)))
         );
 
         jScrollPane1.setViewportView(pnlScrollDashboard);
@@ -664,6 +723,7 @@ public class News_Panel extends javax.swing.JPanel {
             this.pagForRecent++;
             getRecentNews();
         }
+        btnLikeRecent.setIcon(arrayListOfLikesInIcon.get(pagForRecent));
     }//GEN-LAST:event_btnRecentNextActionPerformed
 
     private void btnRecentReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentReadActionPerformed
@@ -675,8 +735,9 @@ public class News_Panel extends javax.swing.JPanel {
     private void btnRecentPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentPreviousActionPerformed
         if (this.pagForRecent > 0) {
             this.pagForRecent--;
-            getRecentNews();
+            getRecentNews(); 
         }
+        btnLikeRecent.setIcon(arrayListOfLikesInIcon.get(pagForRecent));
     }//GEN-LAST:event_btnRecentPreviousActionPerformed
 
     private void btnMostVotedNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostVotedNextActionPerformed
@@ -693,8 +754,41 @@ public class News_Panel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnMostVotedPreviousActionPerformed
 
+    private void btnCommentMostVotedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommentMostVotedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCommentMostVotedActionPerformed
+
+    private void btnLikeRecentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLikeRecentActionPerformed
+        if (mainFrame.getUser().getIdUser() == -1) {
+            JOptionPane.showMessageDialog(null, "First, you have to log in.");
+        } else {
+            if (btnLikeRecent.getIcon().equals(iconEmptyHeart)) {
+                btnLikeRecent.setIcon(iconFilledHeart);
+                
+                userSave.setIdNews(Integer.parseInt((String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(0)));
+                userSave.setIdUser(mainFrame.getUser().getIdUser());
+                
+                userSaveBO.insertUserSave(userSave);
+                arrayListOfLikesInIcon.remove(pagForRecent);
+                arrayListOfLikesInIcon.add(pagForRecent, iconFilledHeart);
+            } else {
+                btnLikeRecent.setIcon(iconEmptyHeart);
+                
+                userSave.setIdNews(Integer.parseInt((String)newsBO.getNews().getDataVector().elementAt(pagForRecent).elementAt(0)));
+                userSave.setIdUser(mainFrame.getUser().getIdUser());
+                
+                userSaveBO.deleteNews(userSave);
+                arrayListOfLikesInIcon.remove(pagForRecent);
+                arrayListOfLikesInIcon.add(pagForRecent, iconEmptyHeart);
+            }
+        }
+    }//GEN-LAST:event_btnLikeRecentActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCommentMostVoted;
+    private javax.swing.JButton btnCommentRecent;
+    private javax.swing.JButton btnLikeRecent;
     private javax.swing.JButton btnMostVotedNext;
     private javax.swing.JButton btnMostVotedPrevious;
     private javax.swing.JButton btnReadArticle;

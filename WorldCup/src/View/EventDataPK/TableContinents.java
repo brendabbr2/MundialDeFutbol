@@ -210,7 +210,10 @@ public class TableContinents extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblContinentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblContinentsMouseClicked
-
+        int selection = this.tblContinents.rowAtPoint(evt.getPoint());
+        String type = this.tblContinents.getValueAt(selection, 0)+"";
+        
+        this.txtNameContinents.setText(this.tblContinents.getValueAt(selection, 0)+"");
     }//GEN-LAST:event_tblContinentsMouseClicked
 
     private void btnDeleteContinentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteContinentsActionPerformed

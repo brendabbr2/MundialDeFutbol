@@ -227,10 +227,11 @@ AS BEGIN
 END deleteUserReview;
 /
 --Delete Save
-CREATE OR REPLACE PROCEDURE deleteUserSave (VidSave IN NUMBER) 
+CREATE OR REPLACE PROCEDURE deleteUserSave (VidUser IN NUMBER, v_idNews IN NUMBER) 
 AS BEGIN 
     DELETE FROM UserSave
-    WHERE idSave = VidSave;
+    WHERE idUser = VidUser
+    AND idNews = v_idNews;
     Commit;
 END deleteUserSave;
 /

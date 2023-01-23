@@ -5,8 +5,8 @@
 package B_Layer;
 
 import Connection.SysConnection;
-import DA_Layer.UserSaveDAO;
-import Entities.UserSave;
+import DA_Layer.UserCommentDAO;
+import Entities.UserComment;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
@@ -15,19 +15,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author david
  */
-public class UserSaveBO {
-    private UserSaveDAO usersaveDao;
+public class UserCommentBO {
+    private UserCommentDAO usercommentDao;
     private String message;
 
-    public UserSaveBO() {
-        this.usersaveDao = new UserSaveDAO();
+    public UserCommentBO() {
+        this.usercommentDao = new UserCommentDAO();
         this.message = "";
     }
 
-        public String insertUserSave(UserSave usersave){
+        public String insertUserComment(UserComment usercomment){
         Connection conn = SysConnection.connect();
         try{
-            message = usersaveDao.insertUserSave(conn, usersave);
+            message = usercommentDao.insertUserComment(conn, usercomment);
         }catch (Exception e){
             message = message + " " + e.getMessage();
         }finally{
@@ -42,27 +42,27 @@ public class UserSaveBO {
         return message;
     }
         
-    public String deleteNews(UserSave usersave){
-        Connection conn = SysConnection.connect();
-        try{
-            message = usersaveDao.deleteUserSave(conn, usersave);
-        }catch (Exception e){
-            message = message + " " + e.getMessage();
-        }finally{
-            try {
-                if (conn != null){
-                    conn.close(); 
-                }
-            } catch (Exception e) {
-                message = message + " " + e.getMessage();
-            }
-        }
-        return message;
-    }
+//    public String deleteNews(UserComment usercomment){
+//        Connection conn = SysConnection.connect();
+//        try{
+//            message = usercommentDao.deleteUserComment(conn, usercomment);
+//        }catch (Exception e){
+//            message = message + " " + e.getMessage();
+//        }finally{
+//            try {
+//                if (conn != null){
+//                    conn.close(); 
+//                }
+//            } catch (Exception e) {
+//                message = message + " " + e.getMessage();
+//            }
+//        }
+//        return message;
+//    }
     
-    public DefaultTableModel getUserSaveMostVoted(){
+    public DefaultTableModel getUserCommentMostVoted(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = usersaveDao.getUserSaveMostVoted(conn);
+        DefaultTableModel model = usercommentDao.getUserCommentMostVoted(conn);
         try {
             conn.close();
         } catch (SQLException ex) {

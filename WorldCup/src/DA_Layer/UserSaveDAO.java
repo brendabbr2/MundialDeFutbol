@@ -4,8 +4,10 @@
  */
 package DA_Layer;
 
+import Entities.UserSave;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -18,9 +20,50 @@ import javax.swing.table.DefaultTableModel;
  */
 public class UserSaveDAO {
     private String message = "";
+
+    public String insertUserSave(Connection conn, UserSave usersave) {
+        PreparedStatement pst = null;
+        String sql = "CALL insertUserSave(?,?)";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, usersave.getIdNews());
+            pst.setInt(2, usersave.getIdUser());
+
+            pst.execute();
+            message = "Succesfully saved";
+            pst.close();
+
+        } catch (SQLException e) {
+            message = "Unsuccessfully saved\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "UserSave not inserted",
+                     null, JOptionPane.ERROR_MESSAGE);
+        }
+        return message;
+    }
+    
+    public String deleteUserSave(Connection conn, UserSave usersave) {
+        PreparedStatement pst = null;
+        String sql = "CALL deleteUserSave(?,?)";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, usersave.getIdUser());
+            pst.setInt(2, usersave.getIdNews());
+
+            pst.execute();
+            message = "Succesfully deleted";
+            JOptionPane.showMessageDialog(null, "UserSave deleted correctly");
+            pst.close();
+
+        } catch (SQLException e) {
+            message = "Unsuccessfully deleted\n" + e.getMessage();
+            JOptionPane.showMessageDialog(null, "UserSave not deleted",
+                     null, JOptionPane.ERROR_MESSAGE);
+        }
+        return message;
+    }
     
     public DefaultTableModel getUserSaveMostVoted(Connection conn){
-        String [] columns = {"idNews", "voting"};
+        String [] columns = {"idUserSave", "voting"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
         
         CallableStatement statement = null;
