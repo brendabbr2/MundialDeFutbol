@@ -113,9 +113,7 @@ public class News_Panel extends javax.swing.JPanel {
     private void logicForMostVoted() {
         boolean flag = false;
         if (!userSaveBO.getUserSaveMostVoted().getDataVector().isEmpty()) {
-            System.out.println("id: " + userSaveBO.getUserSaveMostVoted().getDataVector().elementAt(pagForMostVoted).elementAt(0));
-            System.out.println("apariciones: " + userSaveBO.getUserSaveMostVoted().getDataVector().elementAt(pagForMostVoted).elementAt(1));
-            for (int i = 0; i < userSaveBO.getUserSaveMostVoted().getDataVector().size(); i++) {
+            for (int i = 0; i < newsBO.getNews().getDataVector().size(); i++) {
                 if (Integer.parseInt((String)newsBO.getNews().getDataVector().elementAt(i).elementAt(0)) == 
                         Integer.parseInt((String)userSaveBO.getUserSaveMostVoted().getDataVector().elementAt(pagForMostVoted).elementAt(0))) {
                     flag = true;
@@ -123,9 +121,7 @@ public class News_Panel extends javax.swing.JPanel {
                     break;
                 }
             }
-            System.out.println("Salimos del for jeje");
             if (flag) {
-                System.out.println("VAMOS POR LOS MAS VOTADOS");
                 getMostVotedNews();
             }
         }
