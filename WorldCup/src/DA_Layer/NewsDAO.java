@@ -96,14 +96,52 @@ public class NewsDAO {
 
     // for the table to read the model, eliminate the default model of the table
     // in view: table right click >> properties >> model >> delete all registes
-    public DefaultTableModel getNews(Connection conn, int idEvent) {
+    public DefaultTableModel getNews(Connection conn) {
         String[] columns = {"idNews", "idEvent", "nameEvent", "title", "text", "author", "newsDate",
             "photo", "creationUser", "creationDate", "modificationUser", "modificationDate"};
         DefaultTableModel model = new DefaultTableModel(null, columns);
 
         CallableStatement statement = null;
 
-        String sql = "CALL getNews(?,?,?)";
+        String sql = "CALL getNews(?,?)";
+
+        String[] row = new String[12];
+        Statement st = null;
+        ResultSet rs = null;
+
+        try {
+            statement = conn.prepareCall(sql);
+            statement.setNull(1, Types.NUMERIC);
+            statement.registerOutParameter(2, Types.REF_CURSOR);
+            statement.execute();
+            rs = (ResultSet) statement.getObject(2);
+
+            while (rs.next()) {
+                for (int i = 0; i < 12; i++) {
+                    row[i] = rs.getString(i + 1);
+                }
+                model.addRow(row);
+            }
+            System.out.println("Succesfully listed");
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Unable to show table News");
+
+            System.out.println(e.getMessage());
+        }
+
+        return model;
+    }
+    
+    public DefaultTableModel getNewsEvent(Connection conn, int idEvent) {
+        String[] columns = {"idNews", "idEvent", "nameEvent", "title", "text", "author", "newsDate",
+            "photo", "creationUser", "creationDate", "modificationUser", "modificationDate"};
+        DefaultTableModel model = new DefaultTableModel(null, columns);
+
+        CallableStatement statement = null;
+
+        String sql = "CALL getNewsEvent(?,?,?)";
 
         String[] row = new String[12];
         Statement st = null;

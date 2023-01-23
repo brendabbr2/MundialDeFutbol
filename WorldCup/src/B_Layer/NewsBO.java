@@ -78,7 +78,18 @@ public class NewsBO {
     }
     public DefaultTableModel getNews(){
         Connection conn = SysConnection.connect();
-        DefaultTableModel model = newsDao.getNews(conn, this.idEvent);
+        DefaultTableModel model = newsDao.getNews(conn);
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return model;
+    }
+    
+    public DefaultTableModel getNewsEvent(){
+        Connection conn = SysConnection.connect();
+        DefaultTableModel model = newsDao.getNewsEvent(conn, this.idEvent);
         try {
             conn.close();
         } catch (SQLException ex) {
